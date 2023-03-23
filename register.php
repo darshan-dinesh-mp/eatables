@@ -50,7 +50,7 @@
                 <p className="text-sm text-center md:text-lg font-poppy">
                     have an account?
                     <a href="login.php">
-                        <span className="underline pl-1 cursor-pointer">Log In</span>
+                        <span className="underline pl-1 cursor-pointer">Login</span>
                     </a>
                     .
                 </p>
