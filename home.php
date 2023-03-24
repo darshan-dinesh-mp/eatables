@@ -3,11 +3,7 @@
 
 <head>
 	<title>Eatables</title>
-	<style>
-		a {
-			text-decoration: none;
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
