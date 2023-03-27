@@ -28,7 +28,7 @@
                     <h1 className="outline-none text-5xl md:text-6xl font-colvet cursor-none">eatables.</h1>
                     <p className="font-poppy text-sm md:text-md">Find your next favorite.</p>
                 </div>
-                <form action="register.php" method="POST"
+                <form action="signup.php" method="POST"
                     className="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
                     <input type="text" name="fullname"
                         className="border-none outline-none w-full text-xl md:text-2xl px-3 py-3  placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2"
