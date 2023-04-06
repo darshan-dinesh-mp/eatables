@@ -11,13 +11,6 @@
 </head>
 
 <body>
-    <?php
-    $con = new mysqli("localhost", "root", "", "eatables");
-    if ($con->connect_errno) {
-        die("Not connected");
-    }
-    if (!isset($_POST['submit'])) {
-        ?>
         <div class="bg-brand bg-img min-h-screen flex flex-col items-center py-4 px-4 md:px-16">
             <div class="flex items-center w-full justify-between md:pt-4">
                 <div class="flex items-center">
@@ -33,7 +26,7 @@
                     <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
                 </div>
 
-                <form action="signup.php" method="post"
+                <form action="validate.php" method="post"
                     class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
                     <input type="text" name="fullname"
                         class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3  placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2"
@@ -51,7 +44,7 @@
                     <input type="password" name="confirm"
                         class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
                         placeholder="confirm" autoComplete="off" />
-                    <input type="submit" value="explore"
+                    <input type="submit" value="explore" name="submit"
                         class="py-[0.50rem] md:py-[0.70rem] bg-dense w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover:bg-dense duration-500" />
                 </form>
                 <p class="text-sm text-center md:text-lg font-poppy">
@@ -63,31 +56,6 @@
                 </p>
             </div>
         </div>
-        <?php
-    } else {
-        $fullname = $_POST["fullname"];
-        $username = $_POST["username"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $sql = "select max(uid) from user";
-        $res = $con->query($sql);
-        if ($res->num_rows == 0) {
-            $id = 1;
-        } else {
-            $row = $res->fetch_assoc();
-            $id = $row['max(uid)'] + 1;
-        }
-        $sql = "insert into user values($id,'$fullname','$username','$email','$password')";
-        $res = $con->query($sql);
-        if ($res) {
-            echo "<script>alert('Registration successfull.')</script>";
-            echo "<script>window.location.href='login.php'</script>";
-            exit;
-        } else {
-            echo "Error registering. Try again.";
-        }
-    }
-    ?>
 </body>
 
 </html>
