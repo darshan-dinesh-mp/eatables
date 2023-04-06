@@ -33,7 +33,7 @@
                     <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
                 </div>
 
-                <form action="/api/register" method="post"
+                <form action="signup.php" method="post"
                     class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
                     <input type="text" name="fullname"
                         class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3  placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2"
@@ -69,8 +69,6 @@
         $username = $_POST["username"];
         $email = $_POST["email"];
         $password = $_POST["password"];
-
-
         $sql = "select max(uid) from user";
         $res = $con->query($sql);
         if ($res->num_rows == 0) {
