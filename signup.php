@@ -91,22 +91,22 @@
             if (!empty($fullname) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm)) {
                 if (!preg_match("/^[a-z A-Z-']*$/", $fullname)) {
                     //display error msg in the same page
-                    echo "<script>alert('Error.')</script>";
+                    echo "<script>alert('Error1.')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                 } elseif (!ctype_alpha($username)) {
                     //display error......
-                    echo "<script>alert('Error.')</script>";
+                    echo "<script>alert('Error2.')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     //display error....
-                    echo "<script>alert('Error.')</script>";
+                    echo "<script>alert('Error3.')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                 } elseif (strlen($password) < 8 || (!preg_match("/[a-zA-Z]/", $password) || !preg_match("/[0-9]/", $password))) {
                     //display error....
-                    echo "<script>alert('Error.')</script>";
+                    echo "<script>alert('Error4.')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                 } elseif ($password != $confirm) {
-                    echo "<script>alert('Error.')</script>";
+                    echo "<script>alert('Error5.')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                 } else {
                     $sql = "insert into user values($id,'$fullname','$username','$email','$password')";
