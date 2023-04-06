@@ -12,7 +12,7 @@
 
 <body>
     <?php
-    $con = new mysqli("localhost", "root", "", "eatables");
+    $con = new mysqli("localhost","root","","eatables");
     if ($con->connect_errno) {
         die("Not connected");
     }
@@ -27,14 +27,14 @@
                     </a>
                     <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
                 </div>
-                <form action="/api/login" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
+                <form action="login.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
                     <input class="border-dense w-full outline-none text-xl md:text-2xl px-3 py-3 md:px-24 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autoComplete="off" />
                     <input class="border-dense w-full outline-none text-xl md:text-2xl px-3 py-3 md:px-24 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autoComplete="off" />
-                    <input class="py-[0.50rem] md:py-[0.70rem] bg-dense tracking-wider text-white px-9 md:px-12 text-xl font-poppy rounded-md hover:bg-dense duration-500 " type="submit" />
+                    <input class="py-[0.50rem] md:py-[0.70rem] bg-dense tracking-wider text-white px-9 md:px-12 text-xl font-poppy rounded-md hover:bg-dense duration-500 " type="submit" name="submit" />
                 </form>
                 <h1 class="font-poppy text-sm">OR</h1>
                 <div class="flex items-center justify-center space-x-3">
-                    <a href="/api/auth/signin" class=" bg-dense text-white px-6 py-3 text-sm font-poppy rounded-md hover:bg-dense duration-500" type="button">
+                    <a href="signin.php" class=" bg-dense text-white px-6 py-3 text-sm font-poppy rounded-md hover:bg-dense duration-500" type="button">
                         other sign in options
                     </a>
                 </div>
@@ -67,6 +67,9 @@
             echo "<script>alert('Login successfull.')</script>";
             echo "<script>window.location.href='home.php'</script>";
             exit;
+        }
+        else{
+            echo "<script>window.location.href='login.php'</script>"; 
         }
     }
     ?>
