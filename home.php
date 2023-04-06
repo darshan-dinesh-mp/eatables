@@ -17,19 +17,12 @@
 		if (mysqli_connect_error()) {
 			die("Not connected");
 		}
-		if (isset($_SESSION['status'])) {
-			if (isset($_POST['logout'])) {
-				session_destroy();
-				header("Location: login.php");
-				exit;
-			}
-			?>
-			<form action="home.php" method="post" id="logout-form">
-				<a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
-				<input type="hidden" name="logout" value="1">
-			</form>
-			<?php
-		}
+		?>
+		<form action="logout.php" method="post" id="logout-form">
+			<input type="submit" name="logout" value="LOGOUT">
+		</form>
+		<?php
+
 		echo "<br>";
 		echo "<h3><b><u>Top places in mangalore</u></b><br><br></h3>";
 		$sql = "select * from location";
