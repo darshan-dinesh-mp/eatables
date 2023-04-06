@@ -64,22 +64,33 @@
         session_start();
         $username = $_POST["username"];
         $password = $_POST["password"];
-
-            $sql = "select * from user where uname='$username' and password='$password'";
-            $res = $con->query($sql);
+        $sql = "select * from user where uname='$username'";
+        $res = $con->query($sql);
             if ($res->num_rows > 0) {
                 $row = $res->fetch_assoc();
-                $_SESSION['id'] = $row['uid'];
-                $_SESSION['fullname'] = $row['fullname'];
-                $_SESSION['username'] = $row['uname'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['status'] = true;
-                echo "<script>alert('Login successfull.')</script>";
-                echo "<script>window.location.href='home.php'</script>";
-                exit;
-            } else {
-                echo "<script>window.location.href='login.php'</script>";
+                $hash=$row['password'];
+                echo $hash;
             }
+        if (password_verify($password, $hash)) {
+            echo "<script>alert('Login successfull.')</script>";
+        } else {
+            echo "<script>alert('Login UNsuccessfull.')</script>";
+        }
+            // $sql = "select * from user where uname='$username' and password='$password'";
+            // $res = $con->query($sql);
+            // if ($res->num_rows > 0) {
+            //     $row = $res->fetch_assoc();
+            //     $_SESSION['id'] = $row['uid'];
+            //     $_SESSION['fullname'] = $row['fullname'];
+            //     $_SESSION['username'] = $row['uname'];
+            //     $_SESSION['email'] = $row['email'];
+            //     $_SESSION['status'] = true;
+            //     echo "<script>alert('Login successfull.')</script>";
+            //     echo "<script>window.location.href='home.php'</script>";
+            //     exit;
+            // } else {
+            //     echo "<script>window.location.href='login.php'</script>";
+            // }
     }
     ?>
 </body>

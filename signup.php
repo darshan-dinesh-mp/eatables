@@ -109,7 +109,14 @@
                     echo "<script>alert('Error5.')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                 } else {
-                    $sql = "insert into user values($id,'$fullname','$username','$email','$password')";
+                    $sql = "select * from user where uname='$username'";
+                    $res = $con->query($sql);
+                    if ($res->num_rows > 0) {
+                        echo "<script>alert('user name already taken')</script>";
+                    echo "<script>window.location.href='signup.php'</script>";
+                    } else {
+                    $hash=password_hash($password,PASSWORD_DEFAULT);
+                    $sql = "insert into user values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
                         echo "<script>alert('Registration successfull.')</script>";
@@ -118,8 +125,9 @@
                     } else {
                         echo "Error registering. Try again.";
                     }
+                    }
                 }
-            } else {
+                } else {
                 echo "<script>alert('Please fill all the credentials.')</script>";
                 echo "<script>window.location.href='signup.php'</script>";
             }
