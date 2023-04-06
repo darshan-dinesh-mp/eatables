@@ -1,4 +1,3 @@
-hai
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,32 +126,29 @@ hai
             $id = $row['max(uid)'] + 1;
         }
 
-        if(!empty($fullname) && !empty($username) && !empty($email) && !empty($password)){
-            if(!preg_match("/^[a-z A-Z-']*$/",$fullname)){
+        if (!empty($fullname) && !empty($username) && !empty($email) && !empty($password)) {
+            if (!preg_match("/^[a-z A-Z-']*$/", $fullname)) {
                 //display error msg in the same page
-            }
-            elseif(!ctype_alpha($username)){
+            } elseif (!ctype_alpha($username)) {
                 //display error......
-            }
-            elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 //display error....
+            } elseif (strlen($password) < 8 || (!preg_match("/[a-zA-Z]/", $password) || !preg_match("/[0-9]/", $password))) {
+                //display error....
+            } else {
+                $sql = "insert into user values($id,'$fullname','$username','$email','$password')";
+                $res = $con->query($sql);
+                if ($res) {
+                    echo "<script>alert('Registration successfull.')</script>";
+                    echo "<script>window.location.href='login.php'</script>";
+                    exit;
+                } else {
+                    echo "Error registering. Try again.";
+                }
             }
-            elseif(strlen($password)<8 || (!preg_match("/[a-zA-Z]/",$password) && !preg_match("/[0-9]/",$password)) ){
-            
-            }
-        }
-        else{
+        } else {
             echo "<script>alert('Please fill all the credentials.')</script>";
             echo "<script>window.location.href='signup.php'</script>";
-        }
-        $sql = "insert into user values($id,'$fullname','$username','$email','$password')";
-        $res = $con->query($sql);
-        if ($res) {
-            echo "<script>alert('Registration successfull.')</script>";
-            echo "<script>window.location.href='login.php'</script>";
-            exit;
-        } else {
-            echo "Error registering. Try again.";
         }
     }
     ?>

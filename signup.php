@@ -11,6 +11,13 @@
 </head>
 
 <body>
+    <?php
+    $con = new mysqli("localhost", "root", "", "eatables");
+    if ($con->connect_errno) {
+        die("Not connected");
+    }
+    if (!isset($_POST['submit'])) {
+        ?>
         <div class="bg-brand bg-img min-h-screen flex flex-col items-center py-4 px-4 md:px-16">
             <div class="flex items-center w-full justify-between md:pt-4">
                 <div class="flex items-center">
@@ -26,7 +33,7 @@
                     <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
                 </div>
 
-                <form action="validate.php" method="post"
+                <form action="signup.php" method="post"
                     class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
                     <input type="text" name="fullname"
                         class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3  placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2"
@@ -56,6 +63,65 @@
                 </p>
             </div>
         </div>
+        <?php
+    } else {
+        $con = new mysqli("localhost", "root", "", "eatables");
+        if ($con->connect_errno) {
+            die("Not connected");
+        }
+        if (isset($_POST['submit'])) {
+            $fullname = $_POST["fullname"];
+            $username = $_POST["username"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+
+            //generating unique userid
+            $sql = "select max(uid) from user";
+            $res = $con->query($sql);
+            if ($res->num_rows == 0) {
+                $id = 1;
+            } else {
+                $row = $res->fetch_assoc();
+                $id = $row['max(uid)'] + 1;
+            }
+
+
+            //VALIDATION
+            if (!empty($fullname) && !empty($username) && !empty($email) && !empty($password)) {
+                if (!preg_match("/^[a-z A-Z-']*$/", $fullname)) {
+                    //display error msg in the same page
+                    echo "<script>alert('Error.')</script>";
+                        echo "<script>window.location.href='signup.php'</script>";
+                } elseif (!ctype_alpha($username)) {
+                    //display error......
+                    echo "<script>alert('Registration successfull.')</script>";
+                        echo "<script>window.location.href='signup.php'</script>";
+                } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    //display error....
+                    echo "<script>alert('Registration successfull.')</script>";
+                        echo "<script>window.location.href='signup.php'</script>";
+                } elseif (strlen($password) < 8 || (!preg_match("/[a-zA-Z]/", $password) || !preg_match("/[0-9]/", $password))) {
+                    //display error....
+                    echo "<script>alert('Registration successfull.')</script>";
+                        echo "<script>window.location.href='signup.php'</script>";
+                } else {
+                    $sql = "insert into user values($id,'$fullname','$username','$email','$password')";
+                    $res = $con->query($sql);
+                    if ($res) {
+                        echo "<script>alert('Registration successfull.')</script>";
+                        echo "<script>window.location.href='login.php'</script>";
+                        exit;
+                    } else {
+                        echo "Error registering. Try again.";
+                    }
+                }
+            } else {
+                echo "<script>alert('Please fill all the credentials.')</script>";
+                echo "<script>window.location.href='signup.php'</script>";
+            }
+        }
+    }
+    ?>
 </body>
 
 </html>
