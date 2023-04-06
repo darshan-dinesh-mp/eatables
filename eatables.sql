@@ -113,7 +113,8 @@ CREATE TABLE `user` (
   `fullname` varchar(30) NOT NULL,
   `uname` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `lname` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

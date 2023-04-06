@@ -115,6 +115,7 @@
                         echo "<script>alert('user name already taken')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
                     } else {
+                        //encripting the password
                     $hash=password_hash($password,PASSWORD_DEFAULT);
                     $sql = "insert into user values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);

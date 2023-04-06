@@ -13,7 +13,7 @@ module.exports = {
                 "black-op": "rgb(0,0,0,50%)",
             },
             backgroundImage: {
-                img: "url(../media/images/BgCover.webp)",
+                img: "url(media/BgCover.webp)",
             },
             fontFamily: {
                 poppy: ["Poppins", "sans-serif"],
