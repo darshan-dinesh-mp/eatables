@@ -80,7 +80,7 @@
             echo "<script>window.location.href='home.php'</script>";
             exit;
         } else {
-            echo "<script>alert('Login UNsuccessfull.')</script>";
+            echo "<script>alert('Login Unsuccessfull.')</script>";
             echo "<script>window.location.href='login.php'</script>";
         }
     }
