@@ -30,6 +30,45 @@
 }
 
 .bg-img {
+    background-image: url(media/BgCover.webp);
+}
+
+.font-colvet {
+    font-family: "Coolvetica";
+}
+
+.font-poppy {
+    font-family: "Poppins";
+}
+
+@font-face {
+    font-family: "Coolvetica";
+    src: url(media/fonts/coolvetica.otf);
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(media/fonts/Poppins-Medium.ttf);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f9bb21;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+::selection {
+    background-color: #f9bb21;
+    color: #000000;
+}
+
+.bg-img {
     background-image: url(media/images/BgCover.webp);
 }
 

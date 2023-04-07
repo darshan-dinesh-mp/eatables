@@ -118,7 +118,7 @@
                     } else {
                         //encripting the password
                     $hash=password_hash($password,PASSWORD_DEFAULT);
-                    $sql = "insert into user values($id,'$fullname','$username','$email','$hash')";
+                    $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
                         echo "<script>alert('Registration successfull.')</script>";
