@@ -115,7 +115,9 @@ CREATE TABLE `user` (
   `uname` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `user_type` int(1) NOT NULL DEFAULT 1
+  `user_type` int(11) NOT NULL DEFAULT 1,
+  `reset_token` varchar(100) DEFAULT NULL,
+  `reset_expiration` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
