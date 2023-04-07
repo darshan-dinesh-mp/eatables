@@ -4,6 +4,7 @@
 <head>
 	<title>Eatables</title>
 	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="stylesheet" href="input.css"> -->
 </head>
 
 <body>
@@ -12,29 +13,23 @@
 	if (!$_SESSION['status']) {
 		header("Location: login.php");
 		exit;
-	} else {
-		$con = new mysqli("localhost", "root", "", "eatables");
-		if (mysqli_connect_error()) {
-			die("Not connected");
-		}
-		?>
-		<form action="logout.php" method="post" id="logout-form">
-			<input type="submit" name="logout" value="LOGOUT">
-		</form>
-		<?php
-
-		echo "<br>";
-		echo "<h3><b><u>Top places in mangalore</u></b><br><br></h3>";
-		$sql = "select * from location";
-		$res = $con->query($sql);
-		if ($res->num_rows > 0) {
-			while ($row = $res->fetch_assoc()) {
-				echo "<a href='items.php?lname=$row[lname]'>$row[lname]";
-				echo "<br>";
-			}
-		}
 	}
 	?>
+	<form action="logout.php" method="post" id="logout-form">
+		<input type="submit" name="logout" value="LOGOUT">
+	</form>
+	<table>
+		<tr>
+			<th>
+				<a href="manage_restaurant.php"><b>Manage restaurants</b></a>
+			</th>
+		</tr>
+		<tr>
+			<th>
+			<b><?php echo "<a href='add_hotel.php'>ADD NEW RESTAURANT</a>"; ?></b>
+			</th>
+		</tr>
+	</table>
 </body>
 
 </html>

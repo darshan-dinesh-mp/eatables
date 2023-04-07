@@ -13,10 +13,7 @@
 
 <body>
     <?php
-    $con = new mysqli("localhost", "root", "", "eatables");
-    if ($con->connect_errno) {
-        die("Not connected");
-    }
+    include "dbconnect.php";
     if (!isset($_POST['submit'])) {
         ?>
         <div class="bg-brand bg-img min-h-screen flex flex-col items-center py-4 px-4 md:px-16">
@@ -112,24 +109,29 @@
                 } else {
                     $sql = "select * from user where uname='$username'";
                     $res = $con->query($sql);
+                    $sql1 = "select * from user where email='$email'";
+                    $res1 = $con->query($sql1);
                     if ($res->num_rows > 0) {
                         echo "<script>alert('user name already taken')</script>";
-                    echo "<script>window.location.href='signup.php'</script>";
+                        echo "<script>window.location.href='signup.php'</script>";
+                    } elseif ($res1->num_rows > 0) {
+                        echo "<script>alert('Account already exist for this email.')</script>";
+                        echo "<script>window.location.href='signup.php'</script>";
                     } else {
                         //encripting the password
-                    $hash=password_hash($password,PASSWORD_DEFAULT);
-                    $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
-                    $res = $con->query($sql);
-                    if ($res) {
-                        echo "<script>alert('Registration successfull.')</script>";
-                        echo "<script>window.location.href='login.php'</script>";
-                        exit;
-                    } else {
-                        echo "Error registering. Try again.";
-                    }
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
+                        $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
+                        $res = $con->query($sql);
+                        if ($res) {
+                            echo "<script>alert('Registration successfull.')</script>";
+                            echo "<script>window.location.href='login.php'</script>";
+                            exit;
+                        } else {
+                            echo "Error registering. Try again.";
+                        }
                     }
                 }
-                } else {
+            } else {
                 echo "<script>alert('Please fill all the credentials.')</script>";
                 echo "<script>window.location.href='signup.php'</script>";
             }

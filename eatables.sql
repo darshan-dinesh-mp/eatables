@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 12:28 PM
+-- Generation Time: Apr 07, 2023 at 05:54 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,7 +40,8 @@ CREATE TABLE `hotel` (
 
 INSERT INTO `hotel` (`hid`, `hname`, `lname`, `iname`) VALUES
 (1, 'cochin village', 'kankanady', 'biriyani'),
-(2, 'shwetha', 'kankanady', 'biriyani');
+(2, 'shwetha', 'kankanady', 'biriyani'),
+(3, 'sai palace', 'kodialbail', 'noodles');
 
 -- --------------------------------------------------------
 
@@ -114,15 +115,17 @@ CREATE TABLE `user` (
   `uname` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `lname` varchar(50) NULL
+  `user_type` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`) VALUES
-(1, 'darshan', 'darshan', 'abc@gmail.com', '123');
+INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`) VALUES
+(1, 'darshan', 'darshan', 'darshan@gmail.com', '$2y$10$TQOMzbyY9rDjl5LaZbaWF.Auw13FdOcGyeTxJkItqSMuBc/Y.hQam', 0),
+(2, 'ashwin', 'ashwin', 'ashwin@gmail.com', '$2y$10$apNERN3fc8pUiWaxFXz8K.IKX9zHtEWwj9MITEKUI62fLtkIYchU2', 1),
+(3, 'delbin', 'delbin', 'delbin@gmail.com', '$2y$10$NjV23hQaywVkh3WoBrYLee.I/TuNz2wwQGsufCjnAacru66yH1AlG', 1);
 
 --
 -- Indexes for dumped tables
@@ -156,7 +159,18 @@ ALTER TABLE `review`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`uid`);
+  ADD PRIMARY KEY (`uid`),
+  ADD UNIQUE KEY `uid` (`uid`,`uname`,`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `hotel`
+--
+ALTER TABLE `hotel`
+  MODIFY `hid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

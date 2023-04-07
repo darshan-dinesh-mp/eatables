@@ -7,18 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="input.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="input.css">
     <title>Eatables|Login</title>
 
 </head>
 
-<body >
+<body>
     <?php
-  
-$con = new mysqli("localhost", "root", "", "eatables");
-    if ($con->connect_errno) {
-        die("Not connected");
-    }
+    include "dbconnect.php";
     if (!isset($_POST['submit'])) {
         ?>
         <div class="bg-brand bg-img min-h-screen grid">
@@ -42,6 +37,7 @@ $con = new mysqli("localhost", "root", "", "eatables");
                             class="py-[0.50rem] md:py-[0.70rem] bg-dense tracking-wider text-white px-9 md:px-12 text-xl font-poppy rounded-md hover:bg-dense duration-500 bg-blue-500"
                             type="submit" name="submit" />
                     </form>
+                    <br>
                     <h1 class="font-poppy text-sm">OR</h1>
                     <div class="flex items-center justify-center space-x-3">
                         <a href="signin.php"
@@ -72,8 +68,7 @@ $con = new mysqli("localhost", "root", "", "eatables");
         if ($res->num_rows > 0) {
             $row = $res->fetch_assoc();
             $hash = $row['password'];
-        }
-        else{
+        } else {
             echo "<script>alert('User not found.')</script>";
             echo "<script>window.location.href='login.php'</script>";
         }
@@ -83,13 +78,12 @@ $con = new mysqli("localhost", "root", "", "eatables");
             $_SESSION['username'] = $row['uname'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['status'] = true;
-            $type=$row['user_type'];
-            if($type!=0){
-            echo "<script>alert('Login successfull.')</script>";
-            echo "<script>window.location.href='home.php'</script>";
-            exit;
-            }
-            else{
+            $type = $row['user_type'];
+            if ($type != 0) {
+                echo "<script>alert('Login successfull.')</script>";
+                echo "<script>window.location.href='home.php'</script>";
+                exit;
+            } else {
                 echo "<script>alert('Login successfull.')</script>";
                 header("Location: admin.php");
                 exit();
@@ -101,4 +95,5 @@ $con = new mysqli("localhost", "root", "", "eatables");
     }
     ?>
 </body>
+
 </html>
