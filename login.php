@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="input.css">
     <link rel="stylesheet" href="style.css">
     <title>Eatables|Login</title>
 
@@ -70,6 +71,10 @@
             $row = $res->fetch_assoc();
             $hash = $row['password'];
         }
+        else{
+            echo "<script>alert('User not found.')</script>";
+            echo "<script>window.location.href='login.php'</script>";
+        }
         if (password_verify($password, $hash)) {
             $_SESSION['id'] = $row['uid'];
             $_SESSION['fullname'] = $row['fullname'];
@@ -80,7 +85,7 @@
             echo "<script>window.location.href='home.php'</script>";
             exit;
         } else {
-            echo "<script>alert('Login UNsuccessfull.')</script>";
+            echo "<script>alert('Password incorrect.')</script>";
             echo "<script>window.location.href='login.php'</script>";
         }
     }
