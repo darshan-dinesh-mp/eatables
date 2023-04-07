@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="input.css">
     <title>Eatables|Login</title>
 
 </head>
 
 <body >
     <?php
-    $con = new mysqli("localhost", "root", "", "eatables");
+  
+$con = new mysqli("localhost", "root", "", "eatables");
     if ($con->connect_errno) {
         die("Not connected");
     }
@@ -36,7 +38,7 @@
                             class="border-dense w-full outline-none text-xl md:text-2xl px-3 py-3 md:px-24 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder:text-dense font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
                             placeholder="password" type="password" name="password" autoComplete="off" />
                         <input
-                            class="py-[0.50rem] md:py-[0.70rem] bg-dense tracking-wider text-white px-9 md:px-12 text-xl font-poppy rounded-md hover:bg-dense duration-500 "
+                            class="py-[0.50rem] md:py-[0.70rem] bg-dense tracking-wider text-white px-9 md:px-12 text-xl font-poppy rounded-md hover:bg-dense duration-500 bg-blue-500"
                             type="submit" name="submit" />
                     </form>
                     <h1 class="font-poppy text-sm">OR</h1>
@@ -70,16 +72,29 @@
             $row = $res->fetch_assoc();
             $hash = $row['password'];
         }
+        else{
+            echo "<script>alert('User not found.')</script>";
+            echo "<script>window.location.href='login.php'</script>";
+        }
         if (password_verify($password, $hash)) {
             $_SESSION['id'] = $row['uid'];
             $_SESSION['fullname'] = $row['fullname'];
             $_SESSION['username'] = $row['uname'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['status'] = true;
+            $type=$row['user_type'];
+            if($type!=0){
             echo "<script>alert('Login successfull.')</script>";
             echo "<script>window.location.href='home.php'</script>";
             exit;
+            }
+            else{
+                echo "<script>alert('Login successfull.')</script>";
+                header("Location: admin.php");
+                exit();
+            }
         } else {
+            echo "<script>alert('Password incorrect.')</script>";
             echo "<script>window.location.href='login.php'</script>";
         }
     }

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="input.css">
     <title>Eatables|Register</title>
 
 </head>
@@ -117,7 +118,7 @@
                     } else {
                         //encripting the password
                     $hash=password_hash($password,PASSWORD_DEFAULT);
-                    $sql = "insert into user values($id,'$fullname','$username','$email','$hash')";
+                    $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
                         echo "<script>alert('Registration successfull.')</script>";
