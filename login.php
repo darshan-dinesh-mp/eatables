@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="input.css">
     <link rel="stylesheet" href="style.css">
     <title>Eatables|Login</title>
-
 </head>
 
 <body>
@@ -48,7 +47,7 @@
                     </div>
                 </div>
                 <div class="md:space-x-4 flex flex-col md:flex-row items-center justify-center">
-                    <a href="forgotpassword.php" as="/forgotpassword"
+                    <a href="forgot.php" as="/forgot"
                         class="font-poppy md:text-lg underline hover:text-gray-700">
                         forgot password?
                     </a>
@@ -58,6 +57,7 @@
                 </div>
             </div>
         </div>
+        
         <?php
     } else {
         session_start();
