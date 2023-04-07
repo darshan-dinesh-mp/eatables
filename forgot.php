@@ -67,7 +67,7 @@ $con = new mysqli("localhost", "root", "", "eatables");
   
   $mail->setFrom('eatables.bitdrag@gmail.com', 'Name');          
   $mail->addAddress($email);
-  $reset_link = 'https://localhost/eatables_backend/reset_password.php?token=' . $token;
+  $reset_link = 'https://localhost/eatables/reset_password.php?token=' . $token;
   $mail->isHTML(false);                                 
   $mail->Subject = 'PASSWORD RESET LINK';
   $mail->Body    = "Click the link below to reset your password:\n\n" . $reset_link;

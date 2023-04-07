@@ -45,7 +45,7 @@ $stmt ="SELECT * FROM user WHERE reset_token = '$token'";
             $stmt = $con->prepare('UPDATE user SET password = ? WHERE reset_token = ?');
             $stmt->execute([$password, $token]);
             echo "<script>alert('PASSWORD CHANGED SUCCESFULLY')</script>";
-            header('Location: http://localhost/eatables_backend/login.php');
+            header('Location: http://localhost/eatables/login.php');
         }
         
     exit();
