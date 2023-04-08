@@ -60,25 +60,20 @@ $con = new mysqli("localhost", "root", "", "eatables");
 
   // Store token in database with expiration time
   //have to check the expiry
-  $stmt = $con->prepare('UPDATE user SET reset_token = ?, reset_expiration = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE email = ? and uname= ?');
+  $stmt = $con->prepare('UPDATE user SET reset_token = ?, reset_expiration = DATE_ADD(NOW(), INTERVAL 10 minute) WHERE email = ? and uname= ?');
   $stmt->execute([$token, $email, $name]);
 
   // Send email with reset password link
   
-  $mail->setFrom('eatables.bitdrag@gmail.com', 'Name');          
+  $mail->setFrom('eatables.bitdrag@gmail.com', 'eatables');          
   $mail->addAddress($email);
   $reset_link = 'https://localhost/eatables/reset_password.php?token=' . $token;
-  $mail->isHTML(false);                                 
+  $mail->isHTML(true);                                 
   $mail->Subject = 'PASSWORD RESET LINK';
   $mail->Body    = "Click the link below to reset your password:\n\n" . $reset_link;
   $mail->AltBody = 'nill';
-
-  echo "Mail has been sent successfully!";
-
-  
- 
-
   if ($mail->send()) {
+    echo "Mail has been sent successfully!";
     //give alert
     $_SESSION['success'] = 'Password reset link sent to your email.';
     echo"<script>alert('PASSWORD RESET LINK SEND TO THE MAIL')</script>";
