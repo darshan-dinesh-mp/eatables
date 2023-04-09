@@ -6,12 +6,27 @@ if(mysqli_connect_error())
 	die("Not connected");
 }
 echo "<br>";
-$item_id=$_SESSION['item_id'];
+//unset($_SESSION['item_id']);
+// if(isset($_GET['item_id'])){
+
+// }
+// if(!isset($_SESSION['item_id'])){
+// $item_id=$_GET['item_id'];
+// $_SESSION['item_id']=$item_id;
+// }
+if(isset($_GET['item_id'])){
+    $item_id=$_GET['item_id'];
+    $_SESSION['item_id']=$item_id;
+}
+else {
+    $item_id=$_SESSION['item_id'];
+}
+
 echo "DETAILS OF THE ITEM";
 $sql = "SELECT item.item_name,item.item_price,item.item_rating, hotel.hotel_name
 FROM item
 INNER JOIN hotel
-ON item.hotel_id = hotel.hotel_id";
+ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
 $res=$con->query($sql);
 if($res->num_rows>0)
 {
@@ -71,6 +86,7 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         echo "Name: " . $row["uname"] . "<br>";
         echo "Review: " . $row["review_content"] . "<br><hr>";
+        // session_abort();
     }
 } else {
     echo "No reviews found.";

@@ -17,8 +17,8 @@ if($res->num_rows>0)
 	
 	while($row=$res->fetch_assoc())
 	{
-		$_SESSION['item_id']=$row['item_id'];
-		echo "<a href='itempage.php'>$row[item_name]";
+		
+		echo "<a href='itempage.php?item_id=$row[item_id]'>$row[item_name]";
 		echo "<br>";
 	}
 }

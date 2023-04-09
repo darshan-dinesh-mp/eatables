@@ -15,7 +15,7 @@ if (!isset($_POST["submit"])) {
     $hname = $_POST["hname"];
     $newname = $_POST["newname"];
     $newloc = $_POST["newloc"];
-    $sql = "update hotel set hname='$newname',lname='$newloc' where hname='$hname'";
+    $sql = "update hotel set hotel_name='$newname',hotel_loc='$newloc' where hotel_name='$hname'";
     $res = $con->query($sql);
     if ($res) {
         echo "<script>alert('Hotel details successfully updated.')</script>";
