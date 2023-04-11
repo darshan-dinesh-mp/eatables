@@ -11,8 +11,12 @@ $result = mysqli_query($con,$sql);
 // Display search results as HTML
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
-    echo '<p>' . $row['loc_name'] . '</p>';
-  }
+    ?>
+
+<a href="<?php echo $row['loc_name']; ?>"><?php echo $row['loc_name']; ?></a>
+
+<?php  
+}
 } else {
 }
 

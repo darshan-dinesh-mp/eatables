@@ -30,7 +30,7 @@ if (!$_SESSION['status']) {
 
 		echo "<br>";
 
-		$hotel_name = $_GET['loc_name'];
+		$hotel_name = $_GET['hotel_name'];
 		echo "<div class='flex w-full pt-4 items-center justify-between'>
 				<div class='flex space-x-2 border-b-2 pb-2 border-black'>
 					<i class='fa-sharp fa-solid fa-magnifying-glass text-2xl'></i>		

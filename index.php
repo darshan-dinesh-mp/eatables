@@ -34,10 +34,16 @@ if (!$_SESSION['status']) {
             $('#search-results').html(data);
           }
         });
+		$('#search-results').on('click', 'a', function(e) {
+    e.preventDefault();
+    var query = $(this).text();
+    window.location.href = 'index.php?search=' + query;
+  });
       } else {
         $('#search-results').html('');
       }
     });
+	
   });
   
 		</script>
@@ -80,7 +86,7 @@ if (!$_SESSION['status']) {
 						</form>
 						<div id="search-results" style="font-family: 'Poppins black';">
 						</div>
-						
+						<br><br>
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 						<?php
 			
@@ -99,7 +105,7 @@ if (!$_SESSION['status']) {
 							$res=$con->query($sql);
 							if($res->num_rows > 0){
 								while($row=$res->fetch_assoc()){
-									echo "<br><br><a class='py-2 md:my-4 my-1 mx-2 px-4 hover:bg-black/75 capitalize font-poppy text-center text-white rounded-md bg-black duration-300' href='hotels.php?loc_name=$row[hotel_name]'>$row[hotel_name]</a>";
+									echo "<br><br><a class='py-2 md:my-4 my-1 mx-2 px-4 hover:bg-black/75 capitalize font-poppy text-center text-white rounded-md bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
 								}
 							} else {
 								echo "<p>No results found</p>";
