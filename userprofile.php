@@ -70,8 +70,18 @@ $email = $_SESSION['email'];
                </hr>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 py-8 w-full md:w-11/12">
-               <button key={key} class="rounded-lg bg-gradient-to-r from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300">
-               </button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+
           </div>
      </div>
 </body>
