@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "dbconnect.php";
 if (!$_SESSION['status']) {
      header("Location: login.php");
      exit;
@@ -68,6 +69,33 @@ $email = $_SESSION['email'];
                </div>
                <hr class="h-[1px] bg-dense border-none w-3/4">
                </hr>
+          </div>
+          <div>
+          <?php
+
+$user = $_SESSION['id'];
+
+$sql = "SELECT f.fav_id,i.item_name, i.item_price, h.hotel_name
+FROM favorite f
+INNER JOIN item i ON f.item_id = i.item_id
+INNER JOIN hotel h ON i.hotel_id = h.hotel_id
+WHERE f.uid = '$user'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "Item Name: " . $row["item_name"] . "<br>";
+        echo "Item Price: " . $row["item_price"] . "<br>";
+        echo "Hotel Name: " . $row["hotel_name"] . "<br>";
+        echo"<a href='remove_favorite.php?id=" . $row["fav_id"] . "'>Remove</a></p> <br><br>";
+     
+    }
+} else {
+    echo "No favorites found.";
+}
+?>
+
+
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 py-8 w-full md:w-11/12">
                <button key={key} class="rounded-lg bg-gradient-to-r from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300">
