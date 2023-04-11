@@ -35,6 +35,12 @@ if($res->num_rows>0)
 		echo "<p> HOTEL :$row[hotel_name] <br></p>";
 		echo "ITEM : $row[item_name] <br>";
         echo "PRICE : $row[item_price] <br></p>";
+        ?>
+        <form method="post">
+    <input type="hidden" name="item_id" value="123">
+    <button type="submit" name="add_favorite">Add to Favorite</button>
+    </form>
+<?php
 	}
 
 ?>
@@ -44,9 +50,32 @@ if($res->num_rows>0)
     </form>
     <?php
 }
+//adding to favouirte
+$user_id = $_SESSION["id"];
 
-// conect to database
-include "dbconnect.php";
+// Check if form was submitted
+if (isset($_POST["add_favorite"])) {
+
+    // Check if item is already in favorites
+    $check_sql = "SELECT * FROM favorite WHERE uid = $user_id AND item_id = $item_id";
+    $check_result = $con->query($check_sql);
+    if ($check_result->num_rows > 0) {
+        // Item is already in favorites, show error message
+        echo "Item is already in favorites.";
+    } else {
+        // Item is not in favorites, add it
+        $add_sql = "INSERT INTO favorite (uid, item_id) VALUES ($user_id, $item_id)";
+        $add_result = $con->query($add_sql);
+        if ($add_result) {
+            // Item added to favorites, show success message
+            echo "<script>alert('Item added to favorites')</script>.";
+        } else {
+            // Error adding item to favorites, show error message
+            echo "Error adding item to favorites.";
+        }
+    }
+}
+
 
 // Check conection
 if (!$con) {

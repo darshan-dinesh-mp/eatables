@@ -67,6 +67,7 @@
             $_SESSION['username'] = $row['uname'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['status'] = true;
+            $_SESSION['user_type'] = $row['user_type'];
             $type = $row['user_type'];
             if ($type != 0) {
                 header("Location: index.php");

@@ -19,6 +19,14 @@ $token=$_SESSION['token'];
 $stmt ="SELECT * FROM user WHERE reset_token = '$token'";
   $res=$con->query($stmt);
   $user=$res->fetch_assoc();
+  $reset_expiration = $user['reset_expiration']; // example reset expiration time
+  $current_time = time(); // current timestamp
+
+if (strtotime($reset_expiration) < $current_time) {
+    // reset expiration time has ended
+    echo "Password reset has expired.";
+} else {
+
   if ($user) {
     ?>
     <form action="reset_password.php" method="post">
@@ -31,6 +39,7 @@ $stmt ="SELECT * FROM user WHERE reset_token = '$token'";
   }
   else{
     echo"some error occured";
+  }
 }
 }else{
     
