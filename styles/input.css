@@ -31,7 +31,7 @@
 
 .bg-img {
     background-image: url(../media/images/BgCover.png);
-    background-size: cover;
+    background-size: contain;
 }
 
 .font-colvet {
