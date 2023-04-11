@@ -30,11 +30,11 @@ if (!$_SESSION['status']) {
 
 		echo "<br>";
 
-		$loc_name = $_GET['loc_name'];
+		$hotel_name = $_GET['hotel_name'];
 		echo "<div class='flex w-full pt-4 items-center justify-between'>
 				<div class='flex space-x-2 border-b-2 pb-2 border-black'>
 					<i class='fa-sharp fa-solid fa-magnifying-glass text-2xl'></i>		
-					<h3 class='font-poppy text-xl'>top picks that suits you in <span class='font-bold text-2xl capitalize'> $loc_name</span></h3>
+					<h3 class='font-poppy text-xl'>top picks that suits you in <span class='font-bold text-2xl capitalize'> $hotel_name</span></h3>
 				</div>	
 				<a href='index.php'>
 					<i class='fa-solid fa-xmark text-3xl'></i>
@@ -44,7 +44,7 @@ if (!$_SESSION['status']) {
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-12 w-full ">
 			<?php
-			$sql = "select * from hotel where loc_name='$loc_name'";
+			$sql = "select * from hotel where hotel_name='$hotel_name'";
 			$res = $con->query($sql);
 			if ($res->num_rows > 0) {
 				while ($row = $res->fetch_assoc()) {

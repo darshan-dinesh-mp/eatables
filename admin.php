@@ -6,13 +6,18 @@
 	<link rel="stylesheet" href="style.css">
 	<!-- <link rel="stylesheet" href="input.css"> -->
 </head>
-
 <body>
 	<?php
 	session_start();
 	if (!$_SESSION['status']) {
+
 		header("Location: login.php");
 		exit;
+		
+	}
+	elseif($_SESSION['user_type'] != 0) {
+		header("Location: login.php");
+		echo"<script>alert('engoottaaaaaa')</script>";
 	}
 	?>
 	<form action="logout.php" method="post" id="logout-form">
