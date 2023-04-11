@@ -25,7 +25,6 @@ if (!isset($_POST["submit"])) {
     $hname = $_POST["hname"];
     $lname = $_POST["lname"];
     $lat = $_POST["lat"];
-    echo "$hname$lname.dfdfd ";
     $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`) VALUES (NULL, '$hname', '$lat', '$lname')";
     $res = $con->query($sql);
     if ($res) {
