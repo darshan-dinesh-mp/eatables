@@ -22,15 +22,6 @@ if (!$_SESSION['status']) {
 
 <body>
 	<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
-		<!-- <div class="flex items-center w-full justify-between margin-one">
-			<a href="login.php" class="text-2xl md:text-4xl font-colvet">
-				eatables.
-			</a>
-
-			<a href="login.php">
-				<i class="fa-solid fa-user text-xl"></i>
-			</a>
-		</div> -->
 		<?php
 		$con = new mysqli("localhost", "root", "", "eatables");
 		if (mysqli_connect_error()) {
@@ -74,6 +65,7 @@ if (!$_SESSION['status']) {
 		</div>
 	<?php
 			}
+
 	?>
 </body>
 

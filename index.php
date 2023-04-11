@@ -22,12 +22,26 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
+		<script>
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				console.log("Geolocation is not supported by this browser.");
+			}
+
+			function showPosition(position) {
+				const latitude = position.coords.latitude;
+				const longitude = position.coords.longitude;
+				console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+			}
+		</script>
+		
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-2xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<form action="logout.php" method="post">
+				<form action="userprofile.php" method="post">
 					<button type="submit" name="logout" class="logout-btn">
 						<i class="fa-solid fa-user text-xl"></i>
 					</button>
@@ -40,8 +54,9 @@ if (!$_SESSION['status']) {
 							find your favorite!
 						</h1>
 						<input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="Fudopia, Mars" type="text" />
-						<h1 class='text-left font-poppy pt-4'> nearby places
+						<h1 class='text-left font-poppy pt-4'>
 							<i class="fa-sharp fa-solid fa-location-dot"></i>
+							nearby restaurants
 						</h1>
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 						<?php
