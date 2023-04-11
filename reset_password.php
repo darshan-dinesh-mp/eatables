@@ -23,51 +23,50 @@
     $_SESSION['token'] = $_GET['token'];
     $token = $_SESSION['token'];
 
-$stmt ="SELECT * FROM user WHERE reset_token = '$token'";
-  $res=$con->query($stmt);
-  $user=$res->fetch_assoc();
-  $reset_expiration = $user['reset_expiration']; // example reset expiration time
-  $current_time = time(); // current timestamp
+    $stmt = "SELECT * FROM user WHERE reset_token = '$token'";
+    $res = $con->query($stmt);
+    $user = $res->fetch_assoc();
+    $reset_expiration = $user['reset_expiration']; // example reset expiration time
+    $current_time = time(); // current timestamp
 
-if (strtotime($reset_expiration) < $current_time) {
-    // reset expiration time has ended
-    echo "Password reset has expired.";
-} else {
+    if (strtotime($reset_expiration) < $current_time) {
+      // reset expiration time has ended
+      echo "Password reset has expired.";
+    } else {
 
-  if ($user) {
-    ?>
-    <form action="reset_password.php" method="post">
-        <input type="text" name="pass" id="pass">
-        <input type="text" name="cnfpass" id="cnfpass">
-        <input type="submit" name="submit">
-    </form>
+      if ($user) {
+  ?>
+        <form action="reset_password.php" method="post">
+          <input type="text" name="pass" id="pass">
+          <input type="text" name="cnfpass" id="cnfpass">
+          <input type="submit" name="submit">
+        </form>
 
-    <?php
-  }
-  else{
-    echo"some error occured";
-}
-}else{
-    
-        $token=$_SESSION['token'];
-        $pass=$_POST['pass'];
-        $cnfpass=$_POST['cnfpass'];
-        if($pass!=$cnfpass){
-            echo "<script>alert('PASSWORD MISSMATCH')</script>";
-        }
-        else{
-            $password=password_hash($pass,PASSWORD_DEFAULT);
-            $stmt = $con->prepare('UPDATE user SET password = ? WHERE reset_token = ?');
-            $stmt->execute([$password, $token]);
-            echo "<script>alert('PASSWORD CHANGED SUCCESFULLY')</script>";
-            header('Location: http://localhost/eatables/login.php');
-        }
-        
+  <?php
+      } else {
+        echo "some error occured";
+      }
+    }
+  } else {
+
+    $token = $_SESSION['token'];
+    $pass = $_POST['pass'];
+    $cnfpass = $_POST['cnfpass'];
+    if ($pass != $cnfpass) {
+      echo "<script>alert('PASSWORD MISSMATCH')</script>";
+    } else {
+      $password = password_hash($pass, PASSWORD_DEFAULT);
+      $stmt = $con->prepare('UPDATE user SET password = ? WHERE reset_token = ?');
+      $stmt->execute([$password, $token]);
+      echo "<script>alert('PASSWORD CHANGED SUCCESFULLY')</script>";
+      header('Location: http://localhost/eatables/login.php');
+    }
+
     exit();
   }
 
 
-      ?>
+  ?>
 
 </body>
 
