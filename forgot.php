@@ -21,7 +21,7 @@
           <a href="login.php" class="text-5xl md:text-6xl font-colvet">
             eatables.
           </a>
-          <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
+          <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
         </div>
         <h1 class='text-xl font-poppy'>Don't Let a Forgotten Password Leave You Hangry - Reset Now!</h1>
         <form action="forgot.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">

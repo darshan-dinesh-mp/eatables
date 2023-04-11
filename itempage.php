@@ -38,7 +38,7 @@ if($res->num_rows>0)
         ?>
         <form method="post">
     <input type="hidden" name="item_id" value="123">
-    <button type="submit" name="add_favorite">Add to Favorite</button>
+    <button type="submit" name="add_favourite">Add to favourite</button>
     </form>
 <?php
 	}
@@ -54,24 +54,24 @@ if($res->num_rows>0)
 $user_id = $_SESSION["id"];
 
 // Check if form was submitted
-if (isset($_POST["add_favorite"])) {
+if (isset($_POST["add_favourite"])) {
 
-    // Check if item is already in favorites
-    $check_sql = "SELECT * FROM favorite WHERE uid = $user_id AND item_id = $item_id";
+    // Check if item is already in favourites
+    $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
     $check_result = $con->query($check_sql);
     if ($check_result->num_rows > 0) {
-        // Item is already in favorites, show error message
-        echo "Item is already in favorites.";
+        // Item is already in favourites, show error message
+        echo "Item is already in favourites.";
     } else {
-        // Item is not in favorites, add it
-        $add_sql = "INSERT INTO favorite (uid, item_id) VALUES ($user_id, $item_id)";
+        // Item is not in favourites, add it
+        $add_sql = "INSERT INTO favourite (uid, item_id) VALUES ($user_id, $item_id)";
         $add_result = $con->query($add_sql);
         if ($add_result) {
-            // Item added to favorites, show success message
-            echo "<script>alert('Item added to favorites')</script>.";
+            // Item added to favourites, show success message
+            echo "<script>alert('Item added to favourites')</script>.";
         } else {
-            // Error adding item to favorites, show error message
-            echo "Error adding item to favorites.";
+            // Error adding item to favourites, show error message
+            echo "Error adding item to favourites.";
         }
     }
 }

@@ -80,7 +80,7 @@ if (!$_SESSION['status']) {
 				<div class="flex items-center justify-around relative w-full md:w-2/4">
 					<div class="flex items-center justify-center flex-col w-full">
 						<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-bold text-center">
-							find your favorite!
+							find your favourite!
 						</h1>
 						<form action="" method="get">
 							<input id="search-bar" name="search" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="Search for places..." type="text" />
