@@ -13,7 +13,7 @@ if (!$_SESSION['status']) {
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Eatables - Search</title>
+		<title>Eatables App - Search</title>
 		<link rel="stylesheet" href="styles/input.css">
 		<link rel="stylesheet" href="styles/style.css">
 		<script src="https://cdn.tailwindcss.com"></script>
