@@ -25,8 +25,8 @@
         </div>
         <h1 class='text-xl font-poppy'>Don't Let a Forgotten Password Leave You Hangry - Reset Now!</h1>
         <form action="forgot.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
-            <input type="email" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="enter you email here" name="email" id="email">
-            <input type="submit" value='reset now' class="py-[0.50rem] md:py-[0.70rem] px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit">
+          <input type="email" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="enter you email here" name="email" id="email">
+          <input type="submit" value='reset now' class="py-[0.50rem] md:py-[0.70rem] px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit">
         </form>
         <?php
 
@@ -47,7 +47,6 @@
           $mail->Password   = 'ahakgscejbmyrdsc';
           $mail->SMTPSecure = 'ssl';
           $mail->Port       = 465;
-
 
           // Include database connection code
           $con = new mysqli("localhost", "root", "", "eatables");
