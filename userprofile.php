@@ -38,7 +38,7 @@ $email = $_SESSION['email'];
                </form>
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
-               <img alt="user profile" src='https://cdn-icons-png.flaticon.com/512/456/456212.png' class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
+               <img alt="user profile" src='https://www.delb.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FDB.6969481a.webp&w=1080&q=75' class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
@@ -56,14 +56,14 @@ $email = $_SESSION['email'];
                          ?>
                     </h2>
                </div>
-               <div class="flex items-center space-x-2 md:space-x-16 border-b-4 justify-center border-black">
+               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-center border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 py-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourites</h3>
+                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 py-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourites</h3>
+                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
                     </button>
 
                </div>
