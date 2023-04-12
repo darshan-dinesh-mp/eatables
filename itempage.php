@@ -161,7 +161,7 @@
                             echo "
                             <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
                                 <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
-                                    <img src=$image class='w-10 h-10 rounded-full bg-black'>
+                                    <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
                                     <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
                                 </div>  
                                 <div class='flex items-start flex-col justify-center'>

@@ -4,8 +4,10 @@ if (!$_SESSION['status']) {
 	header("Location: login.php");
 	exit;
 } elseif ($_SESSION['user_type'] != 0) {
-	header("Location: login.php");
+	
 	echo "<script>alert('engoottaaaaaa')</script>";
+	echo "<script>window.location.href='login.php'</script>";
+	
 }
 ?>
 <!DOCTYPE html>
