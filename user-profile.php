@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
      header("Location: login.php");
      exit;
 }
-
+$uid=$_SESSION['id'];
 $fullName = $_SESSION['fullname'];
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
@@ -137,9 +137,21 @@ if (!isset($_SESSION["path"])) {
           <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
 
      <?php
-               }
           }
-          else{}
+     }
+          else{
+     ?>
+       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
+       <?php  
+       if(ergt){
+          ?>
+          <?php
+               } else {
+               ?>
+          </div>
+     <?php
+          }
+     }
      ?>
 
      </div>
