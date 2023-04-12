@@ -56,7 +56,7 @@ if (!$_SESSION['status']) {
 				<a href="index.php" class="text-2xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<form action="userprofile.php" method="post">
+				<form action="user-profile.php" method="post">
 					<button type="submit" name="logout" class="logout-btn">
 						<i class="fa-solid fa-user text-2xl"></i>
 					</button>
