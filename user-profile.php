@@ -13,6 +13,11 @@ $sql = "select * from user where uname='$username'";
 $res = $con->query($sql);
 $row = $res->fetch_assoc();
 $imageNull = $row["img"];
+if (isset($_GET['review'])) {
+     $review_id = $_GET['review'];
+ } else {
+     $review_id = "";
+ }
 if (!isset($_SESSION["path"])) {
      $path = "media/images/user-image/" . $row["img"];
 } else {
@@ -82,7 +87,7 @@ if (!isset($_SESSION["path"])) {
                <div class="flex items-center pt-4 space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
+                         <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
@@ -90,12 +95,16 @@ if (!isset($_SESSION["path"])) {
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
+                         <a href="user-profile.php?review=1" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
                     </button>
                </div>
                <hr class="h-[1px] bg-dense border-none">
                </hr>
           </div>
+          <?php 
+          if($review_id==null){
+          ?>
+
 
           <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full">
                <?php
@@ -124,6 +133,8 @@ if (!isset($_SESSION["path"])) {
 
      <?php
                }
+          }
+          else{}
      ?>
 
      </div>
