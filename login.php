@@ -19,7 +19,6 @@
     <?php
     session_start();
     $err = false;
-    $err=false;
     include "dbconnect.php";
     ?>
     <div class="bg-brand bg-img min-h-screen grid">
