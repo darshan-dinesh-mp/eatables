@@ -39,10 +39,6 @@
         if (mysqli_connect_error()) {
             die("Not connected");
         }
-
-        $path = "media/images/user-images/";
-        $image = $path . $_SESSION['img'];
-
         if (isset($_GET['item_id'])) {
             $item_id = $_GET['item_id'];
             $_SESSION['item_id'] = $item_id;
@@ -64,22 +60,26 @@
                             echo "<h1 class='text-3xl font-bold capitalize'>$row[hotel_name]</h1>";
                             echo "<h2 class='text-2xl font-medium'>$row[item_name]</h2>";
                             echo "<h3 class='text-2xl font-medium'><span class='text-lg'>₹</span>" . $row["item_price"] . ".00</h3>";
-                    ?>
-                </div>
-                <div class="w-full">
-                    <form method="post" class="">
-                        <input type="hidden" name="item_id">
-                        <button type="submit" class="group flex items-center space-x-2 font-poppy font-semibold bg-white/40 py-2 px-8 rounded-full" name="add_favourite">
-                            <i class="fa-solid fa-heart text-3xl text-red-600 group-hover:scale-[1.10] animate-pulse duration-500"></i>
-                            <h1>Add to favouirte</h1>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        <?php
+                            ?>
+                        </div>
+                        <div class="w-full">
+                            <form method="post" class="">
+                                <input type="hidden" name="item_id">
+                                <button type="submit"
+                                    class="group flex items-center space-x-2 font-poppy font-semibold bg-white/40 py-2 px-8 rounded-full"
+                                    name="add_favourite">
+                                    <i
+                                        class="fa-solid fa-heart text-3xl text-red-600 group-hover:scale-[1.10] animate-pulse duration-500"></i>
+                                    <h1>Add to favouirte</h1>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <?php
                         }
 
-        ?> <div class="w-full flex items-start flex-col my-4">
+                        ?>
+                <div class="w-full flex items-start flex-col my-4">
 
             <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
                 <input type='text' maxlength="150" class="hover:border-brand outline-none rounded-s-lg opacity-90 border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
@@ -89,7 +89,7 @@
             </form>
         </div>
 
-        </div>
+            </div>
 
         <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
     <?php
