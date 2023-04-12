@@ -51,20 +51,6 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
-		<script>
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(showPosition);
-			} else {
-				console.log("Geolocation is not supported by this browser.");
-			}
-
-			function showPosition(position) {
-				const latitude = position.coords.latitude;
-				const longitude = position.coords.longitude;
-				console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-			}
-		</script>
-
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-2xl md:text-4xl font-colvet">
@@ -72,7 +58,7 @@ if (!$_SESSION['status']) {
 				</a>
 				<form action="userprofile.php" method="post">
 					<button type="submit" name="logout" class="logout-btn">
-						<i class="fa-solid fa-user text-xl"></i>
+						<i class="fa-solid fa-user text-2xl"></i>
 					</button>
 				</form>
 			</div>
