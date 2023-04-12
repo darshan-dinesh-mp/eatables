@@ -14,11 +14,17 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
 
 </head>
-
 <body>
     <?php
+    session_start();
     include "dbconnect.php";
-    if (!isset($_POST['submit'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+        unset($_SESSION['password_error']);
+    }
+    
+    if(!isset($_SESSION['password_error'])){
+    $_SESSION['password_error']="";
+    }
     ?>
         <div class="bg-brand bg-img min-h-screen grid">
             <div class="flex flex-col items-center justify-center">
@@ -49,8 +55,8 @@
         </div>
 
     <?php
-    } else {
-        session_start();
+   if (isset($_POST['submit'])) {
+        
         $username = $_POST["username"];
         $password = $_POST["password"];
         $err = "";
@@ -86,6 +92,8 @@
             echo "$err";
             echo "<script>window.location.href='login.php'</script>";
         }
+        
+        
     }
     // include './components/footer.php';
     if ($err) {
