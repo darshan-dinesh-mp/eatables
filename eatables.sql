@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 07:25 PM
+-- Generation Time: Apr 12, 2023 at 10:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,14 +24,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Table structure for table `drops`
 --
 
-CREATE TABLE `blog` (
-  `blog_id` int(11) NOT NULL,
+CREATE TABLE `drops` (
+  `drop_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `blog_img` varchar(30) NOT NULL,
-  `blog_date` varchar(11) NOT NULL
+  `video` varchar(30) NOT NULL,
+  `blog_date` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -46,13 +46,6 @@ CREATE TABLE `favourite` (
   `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `favourite`
---
-
-INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
-(6, 6, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -65,82 +58,83 @@ CREATE TABLE `hotel` (
   `hotel_loc` varchar(50) DEFAULT NULL COMMENT 'lat and long',
   `loc_name` varchar(30) NOT NULL,
   `ratings` varchar(10) DEFAULT NULL,
-  `links` varchar(100) DEFAULT NULL
+  `links` varchar(100) DEFAULT NULL,
+  `disc` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hotel`
 --
 
-INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings`, `links`) VALUES
-(1, 'Laziz Pizza', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/laziz-pizza-attavar/order'),
-(2, 'Hamburg Street Food Cafe', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hamburg-street-food-cafe-kankanady/order'),
-(3, 'Bamboo Restaurant', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/bamboo-restaurant-kankanady/order'),
-(4, 'CKK Kitchens Of Maharaja', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/ckk-kitchens-of-maharaja-lalbagh/order'),
-(5, 'Hotel Sai Palace', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hotel-sai-palace-hampankatta/order'),
-(6, 'Grameen Kulfi', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/grameen-kulfi-kottara/order'),
-(7, 'Momos Hut', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/momos-hut-kankanady/order'),
-(8, 'Keventers - Milkshakes & Desse', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/keventers-milkshakes-desserts-balmatta/order'),
-(9, 'Danish Bamboo House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/danish-bamboo-house-kankanady/order'),
-(10, 'Aladdin Shawarma', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/aladdin-shawarma-kankanady/order'),
-(11, 'Hotel Sai Tudar', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hotel-sai-tudar-lalbagh/order'),
-(12, 'Baskin Robbins', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/baskin-robbins-hampankatta/order'),
-(13, 'BT Devrali', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/bt-devrali-kankanady/order'),
-(14, 'Sharaabi Bar & Family Restaura', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/sharaabi-bar-family-restaurant-kadri/order'),
-(15, 'Taste of Parika', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/taste-of-parika-kapikad/order'),
-(16, 'Urban House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/urban-house-bendoor/order'),
-(17, 'Pavman', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/pavman-mallikatte/order'),
-(18, 'Andhra House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/andhra-house-kadri/order'),
-(19, 'Wholesome Kitchen', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/wholesome-kitchen-mallikatte/order'),
-(20, 'Mangala', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/mangala-bendoor/order'),
-(21, 'Frizzle', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/frizzle-balmatta/order'),
-(22, 'Taco Street', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/taco-street-kodailbail/order'),
-(23, 'Kaati Zone Rolls And Wraps', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/kaati-zone-rolls-and-wraps-kodailbail/order'),
-(24, 'Burger Shack', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/burger-shack-bendoor/order'),
-(25, 'Wine And Dine', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/wine-and-dine-thokottu/order'),
-(26, 'Frozen Scoops', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/frozen-scoops-1-hampankatta/order'),
-(27, 'Sizzler\'s Ranch', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sizzlers-ranch-hampankatta/order'),
-(28, 'The Good Bowl', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/the-good-bowl-hampankatta/order'),
-(29, 'Sri Durga Lunch Home', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sri-durga-lunch-home-attavar/order'),
-(30, 'Pure Veg Meals By LunchBox', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/pure-veg-meals-by-lunchbox-hampankatta/order'),
-(31, 'Westburg', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/westburg-thokottu/order'),
-(32, 'Gajalee Sea Food', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/gajalee-sea-food-kadri/order'),
-(33, 'Hao Ming', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/hao-ming-balmatta/order'),
-(34, 'WarmOven Cake & Desserts', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/warmoven-cake-desserts-kodailbail/order'),
-(35, 'Behrouz Biryani', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/behrouz-biryani-hampankatta/order'),
-(36, 'Basil Cafe', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/basil-cafe-kapikad/order'),
-(37, 'Sundae Everyday Ice Creams', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/sundae-everyday-ice-creams-kodailbail/order'),
-(38, 'Gauji Gammath', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/gauji-gammath-hampankatta/order'),
-(39, 'Olive Street Food Cafe', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/olive-street-food-cafe-kodailbail/order'),
-(40, 'Crave Desserts & Bakes', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/crave-desserts-bakes-balmatta/order'),
-(41, 'Raslaffan Ice Cream Parlour', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/raslaffan-ice-cream-parlour-pumpwell/order'),
-(42, 'New Kudla', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/new-kudla-ashok-nagar/order'),
-(43, 'Rathna\'s Wine Gate', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/rathnas-wine-gate-kodailbail/order'),
-(44, 'Machali', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/machali-kodailbail/order'),
-(45, 'G Food \'N\' Fun', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/g-food-n-fun-bendoor/order'),
-(46, 'Ideal Cafe', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/ideal-cafe-hampankatta/order'),
-(47, 'Chandus Biryani Spot', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/chandus-biryani-spot-kavoor/order'),
-(48, 'Meisterwurst', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/meisterwurst-kodailbail/order'),
-(49, 'Pabbas', '', 'Manglore', '4.5', 'https://www.zomato.com/mangalore/pabbas-lalbagh/order'),
-(50, 'Drood Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/drood-cafe-kankanady/order'),
-(51, 'Biryani Express', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/biryani-express-kavoor/order'),
-(52, 'Parika Bakes', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/parika-bakes-marnamikatte/order'),
-(53, 'The Juice Dude', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-juice-dude-kankanady/order'),
-(54, 'Nomou - Vegan Gelato', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/nomou-vegan-gelato-attavar/order'),
-(55, 'Chit Chaat', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/chit-chaat-lalbagh/order'),
-(56, 'Kling Krishna Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kling-krishna-cafe-hampankatta/order'),
-(57, 'Jumbo\'s Kitchen', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/jumbos-kitchen-kodailbail/order'),
-(58, 'Taj Mahal Restaurant', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/taj-mahal-restaurant-hampankatta/order'),
-(59, 'Kottara\'s 70 Surprise', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kottaras-70-surprise-kottara/order'),
-(60, 'Cafe Margarita', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/cafe-margarita-lalbagh/order'),
-(61, 'The Grand Kitchen By AJ Grand ', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-grand-kitchen-by-aj-grand-hotel-balmatta/order'),
-(62, 'R 9 Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/r-9-cafe-attavar/order'),
-(63, 'Bapama\'s Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/bapamas-cafe-kadri/order'),
-(64, 'Ferns & Martins', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/ferns-martins-kavoor/order'),
-(65, 'The Waffle Man - House of Cook', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-waffle-man-house-of-cookie-man-attavar/order'),
-(66, 'Frankie Delight', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/frankie-delight-kottara/order'),
-(67, 'Amma\'s Kitchen', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/ammas-kitchen-kankanady/order'),
-(68, 'The Hungry Birds', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-hungry-birds-hampankatta/order');
+INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings`, `links`, `disc`) VALUES
+(1, 'Laziz Pizza', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/laziz-pizza-attavar/order', NULL),
+(2, 'Hamburg Street Food Cafe', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hamburg-street-food-cafe-kankanady/order', NULL),
+(3, 'Bamboo Restaurant', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/bamboo-restaurant-kankanady/order', NULL),
+(4, 'CKK Kitchens Of Maharaja', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/ckk-kitchens-of-maharaja-lalbagh/order', NULL),
+(5, 'Hotel Sai Palace', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hotel-sai-palace-hampankatta/order', NULL),
+(6, 'Grameen Kulfi', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/grameen-kulfi-kottara/order', NULL),
+(7, 'Momos Hut', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/momos-hut-kankanady/order', NULL),
+(8, 'Keventers - Milkshakes & Desse', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/keventers-milkshakes-desserts-balmatta/order', NULL),
+(9, 'Danish Bamboo House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/danish-bamboo-house-kankanady/order', NULL),
+(10, 'Aladdin Shawarma', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/aladdin-shawarma-kankanady/order', NULL),
+(11, 'Hotel Sai Tudar', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hotel-sai-tudar-lalbagh/order', NULL),
+(12, 'Baskin Robbins', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/baskin-robbins-hampankatta/order', NULL),
+(13, 'BT Devrali', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/bt-devrali-kankanady/order', NULL),
+(14, 'Sharaabi Bar & Family Restaura', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/sharaabi-bar-family-restaurant-kadri/order', NULL),
+(15, 'Taste of Parika', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/taste-of-parika-kapikad/order', NULL),
+(16, 'Urban House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/urban-house-bendoor/order', NULL),
+(17, 'Pavman', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/pavman-mallikatte/order', NULL),
+(18, 'Andhra House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/andhra-house-kadri/order', NULL),
+(19, 'Wholesome Kitchen', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/wholesome-kitchen-mallikatte/order', NULL),
+(20, 'Mangala', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/mangala-bendoor/order', NULL),
+(21, 'Frizzle', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/frizzle-balmatta/order', NULL),
+(22, 'Taco Street', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/taco-street-kodailbail/order', NULL),
+(23, 'Kaati Zone Rolls And Wraps', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/kaati-zone-rolls-and-wraps-kodailbail/order', NULL),
+(24, 'Burger Shack', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/burger-shack-bendoor/order', NULL),
+(25, 'Wine And Dine', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/wine-and-dine-thokottu/order', NULL),
+(26, 'Frozen Scoops', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/frozen-scoops-1-hampankatta/order', NULL),
+(27, 'Sizzler\'s Ranch', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sizzlers-ranch-hampankatta/order', NULL),
+(28, 'The Good Bowl', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/the-good-bowl-hampankatta/order', NULL),
+(29, 'Sri Durga Lunch Home', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sri-durga-lunch-home-attavar/order', NULL),
+(30, 'Pure Veg Meals By LunchBox', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/pure-veg-meals-by-lunchbox-hampankatta/order', NULL),
+(31, 'Westburg', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/westburg-thokottu/order', NULL),
+(32, 'Gajalee Sea Food', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/gajalee-sea-food-kadri/order', NULL),
+(33, 'Hao Ming', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/hao-ming-balmatta/order', NULL),
+(34, 'WarmOven Cake & Desserts', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/warmoven-cake-desserts-kodailbail/order', NULL),
+(35, 'Behrouz Biryani', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/behrouz-biryani-hampankatta/order', NULL),
+(36, 'Basil Cafe', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/basil-cafe-kapikad/order', NULL),
+(37, 'Sundae Everyday Ice Creams', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/sundae-everyday-ice-creams-kodailbail/order', NULL),
+(38, 'Gauji Gammath', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/gauji-gammath-hampankatta/order', NULL),
+(39, 'Olive Street Food Cafe', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/olive-street-food-cafe-kodailbail/order', NULL),
+(40, 'Crave Desserts & Bakes', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/crave-desserts-bakes-balmatta/order', NULL),
+(41, 'Raslaffan Ice Cream Parlour', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/raslaffan-ice-cream-parlour-pumpwell/order', NULL),
+(42, 'New Kudla', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/new-kudla-ashok-nagar/order', NULL),
+(43, 'Rathna\'s Wine Gate', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/rathnas-wine-gate-kodailbail/order', NULL),
+(44, 'Machali', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/machali-kodailbail/order', NULL),
+(45, 'G Food \'N\' Fun', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/g-food-n-fun-bendoor/order', NULL),
+(46, 'Ideal Cafe', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/ideal-cafe-hampankatta/order', NULL),
+(47, 'Chandus Biryani Spot', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/chandus-biryani-spot-kavoor/order', NULL),
+(48, 'Meisterwurst', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/meisterwurst-kodailbail/order', NULL),
+(49, 'Pabbas', '', 'Manglore', '4.5', 'https://www.zomato.com/mangalore/pabbas-lalbagh/order', NULL),
+(50, 'Drood Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/drood-cafe-kankanady/order', NULL),
+(51, 'Biryani Express', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/biryani-express-kavoor/order', NULL),
+(52, 'Parika Bakes', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/parika-bakes-marnamikatte/order', NULL),
+(53, 'The Juice Dude', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-juice-dude-kankanady/order', NULL),
+(54, 'Nomou - Vegan Gelato', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/nomou-vegan-gelato-attavar/order', NULL),
+(55, 'Chit Chaat', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/chit-chaat-lalbagh/order', NULL),
+(56, 'Kling Krishna Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kling-krishna-cafe-hampankatta/order', NULL),
+(57, 'Jumbo\'s Kitchen', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/jumbos-kitchen-kodailbail/order', NULL),
+(58, 'Taj Mahal Restaurant', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/taj-mahal-restaurant-hampankatta/order', NULL),
+(59, 'Kottara\'s 70 Surprise', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kottaras-70-surprise-kottara/order', NULL),
+(60, 'Cafe Margarita', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/cafe-margarita-lalbagh/order', NULL),
+(61, 'The Grand Kitchen By AJ Grand ', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-grand-kitchen-by-aj-grand-hotel-balmatta/order', NULL),
+(62, 'R 9 Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/r-9-cafe-attavar/order', NULL),
+(63, 'Bapama\'s Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/bapamas-cafe-kadri/order', NULL),
+(64, 'Ferns & Martins', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/ferns-martins-kavoor/order', NULL),
+(65, 'The Waffle Man - House of Cook', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-waffle-man-house-of-cookie-man-attavar/order', NULL),
+(66, 'Frankie Delight', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/frankie-delight-kottara/order', NULL),
+(67, 'Amma\'s Kitchen', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/ammas-kitchen-kankanady/order', NULL),
+(68, 'The Hungry Birds', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-hungry-birds-hampankatta/order', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,64 +147,164 @@ CREATE TABLE `item` (
   `hotel_id` int(11) NOT NULL,
   `item_name` varchar(30) NOT NULL,
   `item_price` int(11) NOT NULL,
-  `item_rating` int(11) DEFAULT NULL
+  `item_rating` int(11) DEFAULT NULL,
+  `item_img` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rating`) VALUES
-(1, 1, 'BBQ Pizza', 210, NULL),
-(2, 1, 'Special Spicy Pizza', 220, NULL),
-(3, 1, 'Lions Appetite Pizza', 245, NULL),
-(4, 1, 'Paneer Ghee Roast Pizza', 240, NULL),
-(5, 1, 'Cheese N Cheese Pizza', 145, NULL),
-(6, 1, 'Pizza Box for One [Veg]', 299, NULL),
-(7, 1, 'Pizza Box for One [Non-Veg]', 325, NULL),
-(8, 1, 'Family pizza box [Veg]', 745, NULL),
-(9, 1, 'Family pizza box [Non-Veg]', 799, NULL),
-(10, 1, 'Pizza Party Box', 1050, NULL),
-(11, 1, 'Laziz Special Combo', 799, NULL),
-(12, 1, 'Margherita Pizza', 145, NULL),
-(13, 1, 'Cheese N Cheese Pizza', 145, NULL),
-(14, 1, 'Pomidor Pizza', 145, NULL),
-(15, 1, 'Laziz Desi Veg Pizza', 180, NULL),
-(16, 1, 'Corn Golden Pizza', 175, NULL),
-(17, 1, 'Vegetariana Pizza', 180, NULL),
-(18, 1, 'Garden Fresh Pizza', 190, NULL),
-(19, 1, 'Veg Paprika Pizza', 190, NULL),
-(20, 1, 'Paneer Tikka Pizza', 190, NULL),
-(21, 1, 'Fiery Paneer Pizza', 195, NULL),
-(22, 1, 'Mushroom Paprika Pizza', 195, NULL),
-(23, 1, 'Veg Schezwan Pizza', 190, NULL),
-(24, 1, 'Paneer Chilli Pizza', 195, NULL),
-(25, 1, 'Carnival Veg Pizza', 210, NULL),
-(26, 1, 'Mexican Veg Pizza', 215, NULL),
-(27, 1, 'Corn Exotica Pizza', 215, NULL),
-(28, 1, 'Veg Extra Delight Pizza', 215, NULL),
-(29, 1, 'Achari Veg Pizza', 210, NULL),
-(30, 1, 'Yum Dum Pizza', 210, NULL),
-(31, 1, 'Curry Veg Pizza', 210, NULL),
-(32, 1, 'Special Spicy Pizza', 220, NULL),
-(33, 1, 'Mushroom Garlic Delight Pizza', 215, NULL),
-(34, 1, 'Pepper Paneer Pizza', 215, NULL),
-(35, 1, 'Paneer Ghee Roast Pizza', 240, NULL),
-(36, 1, 'Jamaican Veg Pizza', 240, NULL),
-(37, 1, 'Veg Extraveganza Pizza', 250, NULL),
-(38, 1, 'Egg Scrambled Pizza', 230, NULL),
-(39, 1, 'Egg Hot and Spicy Pizza', 230, NULL),
-(40, 1, 'Peppy Egg Pizza', 230, NULL),
-(41, 1, 'Chicken Tikka Pizza', 195, NULL),
-(42, 1, 'Chicken Schezwan Pizza', 195, NULL),
-(43, 1, 'Chicken Seekh Kabab Pizza', 195, NULL),
-(44, 1, 'Tandoori Chicken Pizza', 195, NULL),
-(45, 1, 'Chicken Hawaiian Pizza', 190, NULL),
-(46, 1, 'Chicken Keema Pizza', 195, NULL),
-(47, 1, 'Mexican Chicken Pizza', 210, NULL),
-(48, 1, 'Carnival Chicken Pizza', 210, NULL),
-(49, 1, 'BBQ Pizza', 210, NULL),
-(50, 1, 'Butter Chicken Pizza', 210, NULL);
+INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rating`, `item_img`) VALUES
+(1, 1, 'BBQ Pizza', 210, NULL, NULL),
+(2, 1, 'Special Spicy Pizza', 220, NULL, NULL),
+(3, 1, 'Lions Appetite Pizza', 245, NULL, NULL),
+(4, 1, 'Paneer Ghee Roast Pizza', 240, NULL, NULL),
+(5, 1, 'Cheese N Cheese Pizza', 145, NULL, NULL),
+(6, 1, 'Pizza Box for One [Veg]', 299, NULL, NULL),
+(7, 1, 'Pizza Box for One [Non-Veg]', 325, NULL, NULL),
+(8, 1, 'Family pizza box [Veg]', 745, NULL, NULL),
+(9, 1, 'Family pizza box [Non-Veg]', 799, NULL, NULL),
+(10, 1, 'Pizza Party Box', 1050, NULL, NULL),
+(11, 1, 'Laziz Special Combo', 799, NULL, NULL),
+(12, 1, 'Margherita Pizza', 145, NULL, NULL),
+(13, 1, 'Cheese N Cheese Pizza', 145, NULL, NULL),
+(14, 1, 'Pomidor Pizza', 145, NULL, NULL),
+(15, 1, 'Laziz Desi Veg Pizza', 180, NULL, NULL),
+(16, 1, 'Corn Golden Pizza', 175, NULL, NULL),
+(17, 1, 'Vegetariana Pizza', 180, NULL, NULL),
+(18, 1, 'Garden Fresh Pizza', 190, NULL, NULL),
+(19, 1, 'Veg Paprika Pizza', 190, NULL, NULL),
+(20, 1, 'Paneer Tikka Pizza', 190, NULL, NULL),
+(21, 1, 'Fiery Paneer Pizza', 195, NULL, NULL),
+(22, 1, 'Mushroom Paprika Pizza', 195, NULL, NULL),
+(23, 1, 'Veg Schezwan Pizza', 190, NULL, NULL),
+(24, 1, 'Paneer Chilli Pizza', 195, NULL, NULL),
+(25, 1, 'Carnival Veg Pizza', 210, NULL, NULL),
+(26, 1, 'Mexican Veg Pizza', 215, NULL, NULL),
+(27, 1, 'Corn Exotica Pizza', 215, NULL, NULL),
+(28, 1, 'Veg Extra Delight Pizza', 215, NULL, NULL),
+(29, 1, 'Achari Veg Pizza', 210, NULL, NULL),
+(30, 1, 'Yum Dum Pizza', 210, NULL, NULL),
+(31, 1, 'Curry Veg Pizza', 210, NULL, NULL),
+(32, 1, 'Special Spicy Pizza', 220, NULL, NULL),
+(33, 1, 'Mushroom Garlic Delight Pizza', 215, NULL, NULL),
+(34, 1, 'Pepper Paneer Pizza', 215, NULL, NULL),
+(35, 1, 'Paneer Ghee Roast Pizza', 240, NULL, NULL),
+(36, 1, 'Jamaican Veg Pizza', 240, NULL, NULL),
+(37, 1, 'Veg Extraveganza Pizza', 250, NULL, NULL),
+(38, 1, 'Egg Scrambled Pizza', 230, NULL, NULL),
+(39, 1, 'Egg Hot and Spicy Pizza', 230, NULL, NULL),
+(40, 1, 'Peppy Egg Pizza', 230, NULL, NULL),
+(41, 1, 'Chicken Tikka Pizza', 195, NULL, NULL),
+(42, 1, 'Chicken Schezwan Pizza', 195, NULL, NULL),
+(43, 1, 'Chicken Seekh Kabab Pizza', 195, NULL, NULL),
+(44, 1, 'Tandoori Chicken Pizza', 195, NULL, NULL),
+(45, 1, 'Chicken Hawaiian Pizza', 190, NULL, NULL),
+(46, 1, 'Chicken Keema Pizza', 195, NULL, NULL),
+(47, 1, 'Mexican Chicken Pizza', 210, NULL, NULL),
+(48, 1, 'Carnival Chicken Pizza', 210, NULL, NULL),
+(49, 1, 'BBQ Pizza', 210, NULL, NULL),
+(50, 1, 'Butter Chicken Pizza', 210, NULL, NULL),
+(177, 2, 'Vanilla Milkshake', 63, NULL, NULL),
+(178, 2, 'Classic Veggie Salad', 76, NULL, NULL),
+(179, 2, 'Classic Chicken Salad', 89, NULL, NULL),
+(180, 2, 'Egg Chips Burger', 89, NULL, NULL),
+(181, 2, 'Omelette Cheese Burger', 97, NULL, NULL),
+(182, 2, 'Steak Chicken Burger', 110, NULL, NULL),
+(183, 2, 'Mughlai Chicken Burger', 115, NULL, NULL),
+(184, 2, 'OMG Chicken Burger', 150, NULL, NULL),
+(185, 2, 'Mexi Chicken Burger', 162, NULL, NULL),
+(186, 2, 'Ham Chicken Burger', 167, NULL, NULL),
+(187, 2, 'King of Chicken Burger', 175, NULL, NULL),
+(188, 2, 'Veggie Burger', 76, NULL, NULL),
+(189, 2, 'Veggie Cheese Burger', 84, NULL, NULL),
+(190, 2, 'Paneer Burger', 102, NULL, NULL),
+(191, 2, 'Mushroom Burger', 102, NULL, NULL),
+(192, 2, 'Paneer Cheese Burger', 115, NULL, NULL),
+(193, 2, 'Mushroom Cheese Burger', 115, NULL, NULL),
+(194, 2, 'Mixed Veggie Hot Dog    Burger', 141, NULL, NULL),
+(195, 2, 'Steak Club Sandwich', 167, NULL, NULL),
+(196, 2, 'Mughlai Club Sandwich', 175, NULL, NULL),
+(197, 2, 'Veg Sandwich', 76, NULL, NULL),
+(198, 2, 'Veg Cheese Sandwich', 84, NULL, NULL),
+(199, 2, 'Veggies Salad Sandwich', 89, NULL, NULL),
+(200, 2, 'Paneer Sandwich', 97, NULL, NULL),
+(201, 2, 'Mushroom Sandwich', 97, NULL, NULL),
+(202, 2, 'Veggie Club Sandwich', 136, NULL, NULL),
+(203, 2, 'Hamburg Mixed Veg Club    Sand', 175, NULL, NULL),
+(204, 2, 'Egg Sandwich', 76, NULL, NULL),
+(205, 2, 'Steak Chicken Sandwich', 97, NULL, NULL),
+(206, 2, 'Mughlai Chicken    Sandwich', 102, NULL, NULL),
+(207, 2, 'Veggie Chips Wrap', 39, NULL, NULL),
+(208, 2, 'Fried Parotta Wrap', 50, NULL, NULL),
+(209, 2, 'Mixed Veggie Chips Wrap', 63, NULL, NULL),
+(210, 2, 'Grilled Mix Veg Chips', 71, NULL, NULL),
+(211, 2, 'Paneer Parotta Wrap', 84, NULL, NULL),
+(212, 2, 'Mushroom Parotta Wrap', 84, NULL, NULL),
+(213, 2, 'Grilled Paneer Parotta', 97, NULL, NULL),
+(214, 2, 'Grilled Mushroom    Parotta', 97, NULL, NULL),
+(215, 2, 'French Fries', 76, NULL, NULL),
+(216, 2, 'Omelette Chips Wrap', 58, NULL, NULL),
+(217, 2, 'Steak Chicken Wrap', 84, NULL, NULL),
+(218, 2, 'Special Chicken Kothu    Parot', 89, NULL, NULL),
+(219, 2, 'Mughlai Chicken Wrap', 89, NULL, NULL),
+(220, 2, 'Mughlai Cheese Chicken    Wrap', 102, NULL, NULL),
+(221, 2, 'Kathi Grilled Parotta    Wrap', 110, NULL, NULL),
+(222, 2, 'Mumbai Wala Mixed Wrap', 113, NULL, NULL),
+(223, 2, 'Fatty Grilled Parotta', 115, NULL, NULL),
+(224, 2, 'Banana Milkshake', 63, NULL, NULL),
+(225, 2, 'Oreo Milkshake', 63, NULL, NULL),
+(493, 3, 'Chicken Biryani', 150, NULL, NULL),
+(494, 3, 'Bamboo Chicken Biryani', 330, NULL, NULL),
+(495, 3, 'Bamboo Tikka Biriyani', 380, NULL, NULL),
+(496, 3, 'Mutton Biriyani', 160, NULL, NULL),
+(497, 3, 'Drums Of Heaven', 280, NULL, NULL),
+(498, 3, 'Chicken Lollipop', 230, NULL, NULL),
+(499, 3, 'Alfaham Mandi', 480, NULL, NULL),
+(500, 3, 'Bamboo Mutton Biryani', 440, NULL, NULL),
+(501, 3, 'Mojito', 80, NULL, NULL),
+(502, 3, 'Boneless Butter Chicken', 310, NULL, NULL),
+(503, 3, 'Chicken Rara', 290, NULL, NULL),
+(504, 3, 'Dragon Chicken', 290, NULL, NULL),
+(505, 3, 'Chicken Pepper', 280, NULL, NULL),
+(506, 3, 'Chicken Tikka', 280, NULL, NULL),
+(507, 3, 'Chicken ManchurianGravy', 280, NULL, NULL),
+(508, 3, 'Paneer Butter Masala', 240, NULL, NULL),
+(509, 3, 'Chicken Fried Rice', 200, NULL, NULL),
+(510, 3, 'French Fries', 170, NULL, NULL),
+(511, 3, 'Lime Juice', 60, NULL, NULL),
+(512, 3, 'Lime Soda', 60, NULL, NULL),
+(513, 3, 'Fruit Salad', 110, NULL, NULL),
+(514, 3, 'Chicken Tikka [1 Piece]', 90, NULL, NULL),
+(515, 3, 'Grape Juice', 80, NULL, NULL),
+(516, 3, 'Butter Naan', 35, NULL, NULL),
+(517, 3, 'Lime Minit', 60, NULL, NULL),
+(518, 3, 'Lime With Mint + Ginger', 60, NULL, NULL),
+(519, 3, 'Butter Kulcha', 30, NULL, NULL),
+(520, 3, 'Ginger Lime', 60, NULL, NULL),
+(521, 3, 'Raita', 10, NULL, NULL),
+(522, 3, 'Tandoori Chicken', 230, NULL, NULL),
+(523, 3, 'Chicken Ghee Roast Dry', 320, NULL, NULL),
+(524, 3, 'Alfaham', 160, NULL, NULL),
+(525, 3, 'Chicken Hot And SourSoup', 120, NULL, NULL),
+(526, 3, 'Chicken Manchow Soup', 120, NULL, NULL),
+(527, 3, 'Coriander Lemon Soup', 100, NULL, NULL),
+(528, 3, 'Cream of Mushroom Soup', 120, NULL, NULL),
+(529, 3, 'Mutton Hot And Sour', 0, NULL, NULL),
+(530, 3, 'Mutton Manchow Soup', 140, NULL, NULL),
+(531, 3, 'Prawns Soup', 140, NULL, NULL),
+(532, 3, 'Veg Hot And Sour Soup', 100, NULL, NULL),
+(533, 3, 'Veg Manchow Soup', 100, NULL, NULL),
+(534, 3, 'Baby Corn ManchurianDry', 200, NULL, NULL),
+(535, 3, 'French Fries', 170, NULL, NULL),
+(536, 3, 'Gobi Manchurian Dry', 200, NULL, NULL),
+(537, 3, 'Mushroom 65', 220, NULL, NULL),
+(538, 3, 'Paneer Tikka 6 Pieces', 240, NULL, NULL),
+(539, 3, 'Paneer Manchurian', 220, NULL, NULL),
+(540, 3, 'Mushroom Manchurian', 220, NULL, NULL),
+(541, 3, 'Mushroom Pepper', 220, NULL, NULL),
+(542, 3, 'Baby Corn Pepper', 220, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -249,10 +343,7 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `uid`, `item_id`, `review_content`, `review_date`) VALUES
-(36, 6, 6, 'good', '2023-04-12 19:18:19'),
-(37, 6, 6, 'ljdgb', '2023-04-12 19:18:33'),
-(38, 6, 6, 'kiehrg', '2023-04-12 19:18:43'),
-(39, 6, 1, 'huh', '2023-04-12 19:21:46');
+(41, 2, 493, 'niceeee', '2023-04-12 21:40:38');
 
 -- --------------------------------------------------------
 
@@ -277,21 +368,17 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`, `reset_token`, `reset_expiration`, `img`) VALUES
-(1, 'darshan dinesh', 'darshan', 'darshandinesh@gmail.com', '$2y$10$TQOMzbyY9rDjl5LaZbaWF.Auw13FdOcGyeTxJkItqSMuBc/Y.hQam', 0, NULL, NULL, NULL),
-(2, 'ashwin', 'ashwin', 'ashwinkv.akv@gmail.com', '$2y$10$dcdkPt8NKUnRAOupyrN1ruOzCb.8mZXuG4jZOfHaGnM9YSlDILjCi', 1, 'e47e13fe1ed12f8ca1f21d784b8a9c2b7350c8b4a9bb89e858a00cd7c9136179', '2023-04-09 18:30:06', NULL),
-(3, 'delbin', 'delbin', 'delbin@gmail.com', '$2y$10$NjV23hQaywVkh3WoBrYLee.I/TuNz2wwQGsufCjnAacru66yH1AlG', 1, NULL, NULL, NULL),
-(4, 'maya v', 'mayavi', 'mayavakkadavath27@gmail.com', '$2y$10$Dv57Q9y/CPvWpJRM3uFrgONfEvWa7fW.aJVxuNGuQvcVazvRWK.1u', 1, NULL, NULL, NULL),
-(6, 'jinu', 'jinu', 'jinadevjinu93@gmail.com', '$2y$10$XQFyY7cL.O8rhpUf2rnsbuFhzMxBJTYWht.B4brZyzIkijqeyrx/y', 1, NULL, NULL, 'IMG_1426.JPG'),
-(7, 'ashwin kv', 'dreamographer', 'dreamographer.akv@gmail.com', '$2y$10$gPerrUeKffiNWeuqTLdQt.bR3rJNPqDjBd3F.dMnWKB1AWosveKyi', 1, 'de7aee685eae72294f1baec0b6f4da19830d15eda98e93e4997d0b5fc77a8e76', '2023-04-11 22:57:15', NULL);
+(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 1, NULL, NULL, NULL),
+(2, 'user', 'user', 'ashwinkv.akv@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `blog`
+-- Indexes for table `drops`
 --
-ALTER TABLE `blog`
+ALTER TABLE `drops`
   ADD KEY `uid` (`uid`);
 
 --
@@ -347,7 +434,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hotel`
@@ -359,7 +446,7 @@ ALTER TABLE `hotel`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=556;
 
 --
 -- AUTO_INCREMENT for table `location`
@@ -371,17 +458,17 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `blog`
+-- Constraints for table `drops`
 --
-ALTER TABLE `blog`
-  ADD CONSTRAINT `blog_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `drops`
+  ADD CONSTRAINT `drops_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `favourite`
