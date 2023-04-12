@@ -93,28 +93,32 @@ input.incorrect {
 }
 
 .error {
-    background-color: red;
     animation: shake 0.2s;
 }
 
 .error::placeholder {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 @keyframes shake {
     0% {
         transform: translateX(0);
+        background-color: red;
     }
     25% {
+        background-color: red;
         transform: translateX(-5px);
     }
     50% {
+        background-color: red;
         transform: translateX(5px);
     }
     75% {
+        background-color: red;
         transform: translateX(-5px);
     }
     100% {
+        background-color: red;
         transform: translateX(0);
     }
 }

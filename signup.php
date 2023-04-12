@@ -18,6 +18,8 @@
 <body>
     <?php
     include "dbconnect.php";
+    $err_name = false;
+    $error = "";
     if (!isset($_POST['submit'])) {
     ?>
         <div class="bg-brand bg-img min-h-screen flex flex-col items-center py-4 px-4 md:px-16">
@@ -35,11 +37,15 @@
                     <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
                 </div>
                 <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
-                    <input type="text" name="fullname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2" placeholder="fullname" autocomplete="off"  />
-                    <input type="text" name="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="off"  />
-                    <input type="email" name="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="off"  />
-                    <input type="password" name="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="off"  />
-                    <input type="password" name="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="off"  />
+                    <input type="text" name="fullname" id="fullname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2<?php
+                                                                                                                                                                                                                                                                                                    if ($err_name == true) {
+                                                                                                                                                                                                                                                                                                        echo "error";
+                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                    ?>" placeholder="fullname" autocomplete="on" />
+                    <input type="text" name="username" class="error border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" />
+                    <input type="email" name="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" />
+                    <input type="password" name="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" />
+                    <input type="password" name="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" />
                     <input type="submit" value="explore" name="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
                 </form>
                 <p class="text-sm text-center md:text-lg font-poppy">
@@ -77,9 +83,7 @@
             //VALIDATION
             if (!empty($fullname) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm)) {
                 if (!preg_match("/^[a-z A-Z-']*$/", $fullname)) {
-                    //display error msg in the same page
-                    echo "<script>alert('Error1.')</script>";
-                    echo "<script>window.location.href='signup.php'</script>";
+                    $err_name = true;
                 } elseif (!ctype_alpha($username)) {
                     //display error......
                     echo "<script>alert('Error2.')</script>";
@@ -131,4 +135,5 @@
 </body>
 
 </html>
+
 </html>
