@@ -28,12 +28,16 @@ if (!$_SESSION['status']) {
 	}
 	$hotel_id = $_GET['hotel_id'];
 	$hotel_name = $_GET['hotel_name'];
-	$rating = $_GET['ratings'];
+	$rating = $_GET['rating'];
 
 	$sql = "select * from item where hotel_id='$hotel_id'";
 	$res = $con->query($sql);
 	$sql = "select links from hotel where hotel_id='$hotel_id'";
 	$row = $con->query($sql);
+
+	while ($rowTwo = $row->fetch_assoc()) {
+		$links = $rowTwo['links'];
+	}
 	?>
 	<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 		<div class="flex items-center w-full justify-between md:pt-4">
@@ -46,13 +50,30 @@ if (!$_SESSION['status']) {
 		</div>
 		<div class="flex justify-between w-full py-7 md:py-6 md:flex-row flex-col space-y-2 md:space-y-0">
 			<div class='w-full md:w-3/6'>
-				<div class="flex items-center space-x-2">
+				<div class="flex flex-col">
 					<h1 class='font-poppy text-2xl md:text-3xl font-bold'><?php echo $hotel_name ?></h1>
 					<h1 class="text-xl"><?php
-									echo $rating;
-									?></h1>
+									if ($rating == '5') {
+										echo "⭐⭐⭐⭐⭐";
+									} else if ($rating == '4') {
+										echo "⭐⭐⭐⭐";
+									} else if ($rating == '3') {
+										echo "⭐⭐⭐";
+									} else if ($rating == '2') {
+										echo "⭐⭐";
+									} else if ($rating == '1') {
+										echo "⭐";
+									} else {
+										echo "";
+									}
+									?>
+					</h1>
 				</div>
-				<p class='font-poppy text-xl text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, incidunt deserunt optio pariatur dolorem natus est quod eos error, rem porro ut amet praesentium voluptas possimus quidem, laborum accusamus vero!</p>
+				<p class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, incidunt deserunt optio pariatur dolorem natus est quod eos error, rem porro ut amet praesentium voluptas possimus quidem, laborum accusamus vero!</p>
+				<div class="flex space-x-5 mt-4">
+					<a href='<?php echo $links; ?>'><img class="w-21 h-9 cursor-pointer" src='media/images/zomato.png' /></a>
+					<a href='<?php echo $links; ?>'><img class="w-21 h-9 cursor-pointer" src='media/images/swiggy.png' /></a>
+				</div>
 			</div>
 			<div class='w-full md:w-2/6'>
 				<h1 class='font-poppy text-lg md:text-xl font-bold'><i class="fa-sharp fa-solid fa-location-dot mr-1 mb-2"></i>locate on map</h1>
@@ -60,7 +81,7 @@ if (!$_SESSION['status']) {
 			</div>
 		</div>
 		<?php
-		echo "<div class='flex w-full pt-4 items-center justify-between'>
+		echo "<div class='flex w-full items-center justify-between'>
 				<div class='flex space-x-2 border-b-2 pb-2 border-black'>
 					<i class='fa-sharp fa-solid fa-magnifying-glass text-xl md:text-2xl'></i>		
 					<h3 class='font-poppy text-md md:text-xl'>top dishes for you at <span class='font-bold text-xl md:text-2xl capitalize'> $hotel_name</span></h3>
