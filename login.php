@@ -18,6 +18,7 @@
 <body>
     <?php
     session_start();
+    $err = false;
     include "dbconnect.php";
     ?>
     <div class="bg-brand bg-img min-h-screen grid">
@@ -29,18 +30,11 @@
                     </a>
                     <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
                 </div>
-                <form action="login.php" method="post"
-                    class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
-                    <input
-                        class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                        placeholder="username" type="text" name="username" autocomplete="off" required />
-                    <input
-                        class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                        placeholder="password" type="password" name="password" autocomplete="off" required />
-                    <p id="err"></p>
-                    <input
-                        class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500"
-                        type="submit" name="submit" value="explore" />
+                <form action="login.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
+                    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" required />
+                    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autocomplete="off" required />
+                    <p id="err" class="font-poppy"></p>
+                    <input class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit" value="explore" />
                 </form>
                 <br>
             </div>
@@ -82,21 +76,29 @@
                     exit();
                 }
             } else {
-                $err = "Password incorrect";
+                $err = "Password incorrect!";
             }
         } else {
-            $err = "User not found";
+            $err = "User not found!";
         }
     }
     if ($err) {
-        ?>
+    ?>
         <script>
             document.getElementById("err").innerHTML = "<?php echo "$err"; ?>";
-            </script>
-        <?php
+        </script>
+    <?php
     }
-    // include './components/footer.php';
     ?>
+    <script>
+        setTimeout(() => {
+            const errEl = document.getElementById("err");
+            if (errEl) {
+                errEl.style.display = "none";
+            }
+        }, 10000);
+    </script>
+
 </body>
 
 </html>
