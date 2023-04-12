@@ -52,7 +52,6 @@ if (!isset($_SESSION["path"])) {
                <img src=<?php if ($imageNull == null) {
                               echo 'media/images/user.png';
                          } else {
-
                               echo "$path";
                          }
                          ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
