@@ -101,19 +101,21 @@ if (!isset($_SESSION["path"])) {
           <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full">
                <?php
                $user = $_SESSION['id'];
-               $sql = "SELECT f.fav_id,i.item_name, i.item_price, h.hotel_name
+               $sql = "SELECT f.fav_id, i.item_id, i.item_name, i.item_price, h.hotel_name
                FROM favourite f
                INNER JOIN item i ON f.item_id = i.item_id
                INNER JOIN hotel h ON i.hotel_id = h.hotel_id
                WHERE f.uid = '$user'";
                $result = $con->query($sql);
-
+ 
                if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                         echo "<a href='remove-favourite.php?id=" . $row["fav_id"] . "' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
+                         echo "<a href='itempage.php?item_id=$row[item_id]' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
                                    <img src='media/images/eat-fav.png'/>
                                    <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
-                              </a>";
+                              </a>
+                              <a href='remove-favorite.php?item_id=$row[item_id]'>Remove</a>
+                              ";
                     }
                } else {
                ?>
