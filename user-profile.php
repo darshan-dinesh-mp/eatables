@@ -59,7 +59,7 @@ if (!isset($_SESSION["path"])) {
                          } else {
                               echo "$path";
                          }
-                         ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
+                         ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-36 md:h-36 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
@@ -84,7 +84,7 @@ if (!isset($_SESSION["path"])) {
                     </a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
-               <div class="flex items-center pt-4 space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
+               <div class="flex items-center pt-4 space-x-2 w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
@@ -98,15 +98,14 @@ if (!isset($_SESSION["path"])) {
                          <a href="user-profile.php?review=1" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
                     </button>
                </div>
-               <hr class="h-[1px] bg-dense border-none">
-               </hr>
+
           </div>
           <?php 
           if($review_id==null){
           ?>
 
 
-          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full">
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
                <?php
                $user = $_SESSION['id'];
                $sql = "SELECT f.fav_id, i.item_id, i.item_name, i.item_price, h.hotel_name
@@ -118,11 +117,17 @@ if (!isset($_SESSION["path"])) {
 
                if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                         echo "<a href='itempage.php?item_id=$row[item_id]' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
-                                   <img src='media/images/eat-fav.png'/>
-                                   <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
+                         echo "
+                         <div class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op  pb-4 px-6 hover:scale-[1.01] hover:shadow-xl duration-500 flex flex-col items-end'>
+                              <a href='remove-favorite.php?item_id=$row[item_id]' class='hover:scale-[1.2] hover:rotate-[30deg] duration-500 mt-4'>
+                                             <i class='fa-solid fa-xmark text-4xl text-red-500'></i>
+                               </a>
+                              <a href='itempage.php?item_id=$row[item_id]' class='pt-40'>
+                                        <img src='media/images/eat-fav.png'/>
+                                        <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
+                                        
                               </a>
-                              <a href='remove-favorite.php?item_id=$row[item_id]'>Remove</a>
+                         </div>
                               ";
                     }
                } else {
