@@ -67,10 +67,11 @@
                     ?>
                 </div>
                 <div class="w-full">
-                    <form method="post">
+                    <form method="post" class="">
                         <input type="hidden" name="item_id">
-                        <button type="submit" name="add_favourite">
-                            <i class="fa-solid fa-heart text-3xl hover:text-red-600"></i>
+                        <button type="submit" class="group flex items-center space-x-2 font-poppy font-semibold bg-white/40 py-2 px-8 rounded-full" name="add_favourite">
+                            <i class="fa-solid fa-heart text-3xl text-red-600 group-hover:scale-[1.10] animate-pulse duration-500"></i>
+                            <h1>Add to favouirte</h1>
                         </button>
                     </form>
                 </div>
@@ -83,7 +84,7 @@
             <form action="itempage.php" class="flex items-center justify-center" method="post">
                 <input type='text' maxlength="150" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-[0.80rem] rounded-md md:px-16 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
                 <button type="submit" class="ml-3" name="submit">
-                    <i class="fa-solid fa-location-arrow  text-4xl hover:scale-[1.1] hover:rotate-[50deg] duration-500"></i>
+                    <i class="fa-solid fa-location-arrow text-4xl hover:rotate-[50deg] duration-500"></i>
                 </button>
             </form>
         </div>
@@ -155,7 +156,7 @@
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "
-                <div class='flex items-start py-8 bg-black/50 px-8 rounded-xl text-white'>
+                <div class='flex items-start py-8 bg-black/50 px-8 rounded-xl text-white mb-4'>
                     <div class='flex items-start flex-col justify-center mr-3'>
                     <p class='w-10 h-10 rounded-full bg-black'></p>
                 </div>  

@@ -34,25 +34,13 @@
                 </a>
                 <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
             </div>
-            <form action="signup.php" method="post"
-                class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
-                <input type="text" name="fullname" id="fullname"
-                    class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2"
-                    placeholder="fullname" autocomplete="on" />
-                <input type="text" name="username" id="username"
-                    class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                    placeholder="username" maxlength={15} minlength={4} autocomplete="on" />
-                <input type="email" name="email" id="email"
-                    class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                    placeholder="email" autocomplete="on" />
-                <input type="password" name="password" id="password"
-                    class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                    placeholder="password" autocomplete="on" />
-                <input type="password" name="confirm" id="confirm"
-                    class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                    placeholder="confirm" autocomplete="on" />
-                <input type="submit" value="explore" name="submit"
-                    class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
+            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
+                <input type="text" name="fullname" id="fullname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2" placeholder="fullname" autocomplete="on" />
+                <input type="text" name="username" id="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" />
+                <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" />
+                <input type="password" name="password" id="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" />
+                <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" />
+                <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
             </form>
             <p class="text-sm text-center md:text-lg font-poppy">
                 have an account?
@@ -134,18 +122,15 @@
                     $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
-                        echo "<script>alert('Registration successfull.')</script>";
-                        echo "<script>window.location.href='login.php'</script>";
-                        exit;
+                        header("Location: login.php");
+                        exit();
                     } else {
                         echo "Error registering. Try again.";
                     }
                 }
             }
-
         } else {
-            echo "<script>alert('Please fill all the credentials.')</script>";
-            echo "<script>window.location.href='signup.php'</script>";
+            $error_cred = true;
         }
         if ($errfullname) {
             echo "<script>document.getElementById('fullname').classList.add('error');</script>";
@@ -161,6 +146,9 @@
         }
         if ($errconfirm) {
             echo "<script>document.getElementById('confirm').classList.add('error');</script>";
+        }
+        if ($error_cred) {
+            echo "<script>document.getElementById('submit').classList.add('error');</script>";
         }
     }
     // include './components/footer.php';

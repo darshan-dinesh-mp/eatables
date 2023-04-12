@@ -93,7 +93,7 @@ input.incorrect {
 }
 
 .error {
-    animation: shake 2s;
+    animation: shake .5s;
 }
 
 .error::placeholder {
