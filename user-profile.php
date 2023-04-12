@@ -80,19 +80,19 @@ if (!isset($_SESSION["path"])) {
                     </a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
-               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
+               <div class="flex items-center pt-4 space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
                     </button>
-                    <!-- <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
-                    </button> -->
-                    <!-- <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                    </button>
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Posts</h3>
-                    </button> -->
+                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
+                    </button>
                </div>
                <hr class="h-[1px] bg-dense border-none">
                </hr>
@@ -107,7 +107,7 @@ if (!isset($_SESSION["path"])) {
                INNER JOIN hotel h ON i.hotel_id = h.hotel_id
                WHERE f.uid = '$user'";
                $result = $con->query($sql);
- 
+
                if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                          echo "<a href='itempage.php?item_id=$row[item_id]' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
