@@ -12,6 +12,7 @@ $email = $_SESSION['email'];
 $sql = "select * from user where uname='$username'";
 $res = $con->query($sql);
 $row = $res->fetch_assoc();
+$imageNull = $row["img"];
 if (!isset($_SESSION["path"])) {
      $path = "media/images/user-image/" . $row["img"];
 } else {
@@ -48,7 +49,13 @@ if (!isset($_SESSION["path"])) {
                </form>
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
-               <img alt="user profile" src='<?php echo $path; ?>' class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
+               <img src=<?php if ($imageNull == null) {
+                              echo 'media/images/user.png';
+                         } else {
+
+                              echo "$path";
+                         }
+                         ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
