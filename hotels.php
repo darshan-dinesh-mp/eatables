@@ -63,6 +63,10 @@ if (!$_SESSION['status']) {
 			if ($res->num_rows > 0) {
 				while ($row = $res->fetch_assoc()) {
 			?>
+					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="<?php echo $row['links']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
+						<h4 class="text-lg  mb-2 "><?php echo $row['links']; ?></h4>
+						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
+					</a>
 					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
 						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
 						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
