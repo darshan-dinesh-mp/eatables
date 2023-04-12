@@ -112,7 +112,7 @@
                             $add_result = $con->query($add_sql);
                             if ($add_result) {
                                 // Item added to favourites, show success message
-                                echo "Item added to favourites!";
+                                echo "Item added to favourites";
                             } else {
                                 // Error adding item to favourites, show error message
                                 echo "Error adding item to favourites.";
