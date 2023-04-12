@@ -89,10 +89,10 @@ if (!isset($_SESSION["path"])) {
                          <i class="fa-solid fa-droplet text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
                     </button> -->
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                    <!-- <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Posts</h3>
-                    </button>
+                    </button> -->
                </div>
                <hr class="h-[1px] bg-dense border-none">
                </hr>
