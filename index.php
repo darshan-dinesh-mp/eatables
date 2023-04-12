@@ -46,9 +46,9 @@ if (!$_SESSION['status']) {
 					}
 				});
 
-			});
-		</script>
-	</head>
+     });
+     </script>
+</head>
 
 	<body>
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
