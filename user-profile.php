@@ -52,7 +52,6 @@ if (!isset($_SESSION["path"])) {
                <img src=<?php if ($imageNull == null) {
                               echo 'media/images/user.png';
                          } else {
-
                               echo "$path";
                          }
                          ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
@@ -80,18 +79,18 @@ if (!isset($_SESSION["path"])) {
                     </a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
-               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
+               <div class="flex items-center pt-4 space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
                     </button>
-                    <!-- <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
-                    </button> -->
+                    </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Posts</h3>
+                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
                     </button>
                </div>
                <hr class="h-[1px] bg-dense border-none">
@@ -101,7 +100,7 @@ if (!isset($_SESSION["path"])) {
           <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full">
                <?php
                $user = $_SESSION['id'];
-               $sql = "SELECT f.fav_id,i.item_name, i.item_price, h.hotel_name
+               $sql = "SELECT f.fav_id, i.item_id, i.item_name, i.item_price, h.hotel_name
                FROM favourite f
                INNER JOIN item i ON f.item_id = i.item_id
                INNER JOIN hotel h ON i.hotel_id = h.hotel_id
@@ -110,10 +109,12 @@ if (!isset($_SESSION["path"])) {
 
                if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                         echo "<a href='remove-favourite.php?id=" . $row["fav_id"] . "' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
+                         echo "<a href='itempage.php?item_id=$row[item_id]' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
                                    <img src='media/images/eat-fav.png'/>
                                    <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
-                              </a>";
+                              </a>
+                              <a href='remove-favorite.php?item_id=$row[item_id]'>Remove</a>
+                              ";
                     }
                } else {
                ?>

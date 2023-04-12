@@ -57,42 +57,42 @@
                     <?php
                     if ($res->num_rows > 0) {
                         while ($row = $res->fetch_assoc()) {
-                            echo "<h1 class='text-3xl font-bold capitalize'>$row[hotel_name]</h1>";
-                            echo "<h2 class='text-2xl font-medium'>$row[item_name]</h2>";
+                            echo "<h2 class='text-3xl font-bold capitalize'>$row[item_name]</h2>";
+                            echo "<h1 class='text-2xl font-medium'>$row[hotel_name]</h1>";
                             echo "<h3 class='text-2xl font-medium'><span class='text-lg'>₹</span>" . $row["item_price"] . ".00</h3>";
-                            ?>
-                        </div>
-                        <div class="w-full">
-                            <form method="post" class="">
-                                <input type="hidden" name="item_id">
-                                <button type="submit"
-                                    class="group flex items-center space-x-2 font-poppy font-semibold bg-white/40 py-2 px-8 rounded-full"
-                                    name="add_favourite">
-                                    <i
-                                        class="fa-solid fa-heart text-3xl text-red-600 group-hover:scale-[1.10] animate-pulse duration-500"></i>
-                                    <h1>Add to favouirte</h1>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <?php
+                    ?>
+                </div>
+                <div class="w-full">
+                    <form method="post" class="">
+                        <input type="hidden" name="item_id">
+                        <button type="submit" class="group flex items-center space-x-2 font-poppy font-semibold bg-white/40 py-2 px-8 rounded-full" name="add_favourite">
+                            <i class="fa-solid fa-heart text-3xl text-red-600 group-hover:scale-[1.10] animate-pulse duration-500"></i>
+                            <h1>Add to favouirte</h1>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <?php
                         }
 
-                        ?>
-                <div class="w-full flex items-start flex-col my-4">
+        ?>
+        <div class="w-full flex items-start flex-col my-4">
 
-            <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
-                <input type='text' maxlength="150" class="hover:border-brand outline-none rounded-s-lg opacity-90 border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
-                <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
-                    <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
-                </button>
-            </form>
+                    <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
+                        <input type='text' maxlength="150"
+                            class="hover:border-brand outline-none rounded-s-lg opacity-90 border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                            placeholder="write your review here." name="review" id="review" />
+                        <button type="submit"
+                            class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
+                            <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
+                        </button>
+                    </form>
+                </div>
+
         </div>
 
-            </div>
-
-        <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
-    <?php
+            <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
+            <?php
                     }
                     //adding to favouirte
                     $user_id = $_SESSION["id"];
@@ -142,33 +142,38 @@
                     }
 
                     // Retrieve reviews from database
-                    $sql = "SELECT review.review_content, user.uname, user.img
+                    $sql = "SELECT review.review_content, user.uname, user.img, review.review_date
                     FROM review
                     INNER JOIN user
-                    ON review.uid = user.uid where item_id = $item_id;
-                    ";
+                    ON review.uid = user.uid
+                    WHERE item_id = $item_id
+                    ORDER BY review.review_date DESC";
+
                     $result = mysqli_query($con, $sql);
                     // Display reviews
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $image="media/images/user-image/" . $row["img"];
+                            if ($row["img"] == null) {
+                                $image="media/images/user.png";
+                            } else {
+                                $image = "media/images/user-image/" . $row["img"];
+                            }
                             echo "
-                                <div class='h-2/4'>
-                                            <div class='flex items-start py-8 bg-black/50 px-8 rounded-xl text-white mb-4'>
-                                                <div class='flex items-start flex-col justify-center mr-3'>
-                                                <img src=$image class='w-10 h-10 rounded-full bg-black'>
-                                            </div>  
-                                            <div class='flex items-start flex-col justify-center'>
-                                                    <h1 class='text-xl font-poppy font-medium'>$row[uname]</h1>
-                                                    <p class='font-poppy text-lg pt-1'>$row[review_content]</p>
-                                            </div>
+                            <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
+                                <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
+                                    <img src=$image class='w-10 h-10 rounded-full bg-black'>
+                                    <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
+                                </div>  
+                                <div class='flex items-start flex-col justify-center'>
+                                    <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
                                 </div>
+                            </div>
                                     ";
                         }
                     } else {
                         echo "<h1 class='font-poppy text-center text-xl'>Oops no reviews found!</h1>";
                     }
-    ?>
+                    ?>
     </div>
 </body>
 

@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
 	exit;
 } else {
 	include "dbconnect.php";
-	?>
+?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -22,8 +22,8 @@ if (!$_SESSION['status']) {
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="shortcut icon" href="public/eatables.png" type="image/x-icon">
 		<script>
-			$(document).ready(function () {
-				$('#search-bar').keyup(function () {
+			$(document).ready(function() {
+				$('#search-bar').keyup(function() {
 					var query = $(this).val();
 					if (query !== '') {
 						$.ajax({
@@ -32,11 +32,11 @@ if (!$_SESSION['status']) {
 							data: {
 								query: query
 							},
-							success: function (data) {
+							success: function(data) {
 								$('#search-results').html(data);
 							}
 						});
-						$('#search-results').on('click', 'a', function (e) {
+						$('#search-results').on('click', 'a', function(e) {
 							e.preventDefault();
 							var query = $(this).text();
 							window.location.href = 'index.php?search=' + query;
@@ -46,9 +46,9 @@ if (!$_SESSION['status']) {
 					}
 				});
 
-     });
-     </script>
-</head>
+			});
+		</script>
+	</head>
 
 	<body>
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
@@ -69,20 +69,18 @@ if (!$_SESSION['status']) {
 							find your favourite!
 						</h1>
 						<form action="" method="get">
-							<input id="search-bar" name="search"
-								class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-								placeholder="Search for places..." type="text" />
+							<input id="search-bar" name="search" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] capitalize" placeholder="Search for places..." type="text" />
 						</form>
 						<div id="search-results" class="font-poppy text-xl pt-4 ">
 						</div>
-						<h1 class='text-left font-poppy py-4'>
-							<i class="fa-sharp fa-solid fa-location-dot"></i>
+						<a href="index.php" class='text-left font-poppy text-xl py-4'>
+							<i class="fa-sharp fa-solid fa-location-dot "></i>
 							nearby restaurants
-						</h1>
+						</a>
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 							<?php
 
-							$sql = "SELECT h.hotel_name,h.hotel_id
+							$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 							FROM hotel h 
 							INNER JOIN location l ON h.loc_name = l.loc_name ";
 
@@ -90,41 +88,43 @@ if (!$_SESSION['status']) {
 
 							if (isset($_GET['search'])) {
 								$search = $_GET['search'];
-								$sql = "SELECT h.hotel_name,h.hotel_id
+								$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 								FROM hotel h 
 								INNER JOIN location l ON h.loc_name = l.loc_name 
-								WHERE l.loc_name LIKE '%$search%' and h.ratings<=";
+								WHERE l.loc_name LIKE '%$search%'";
 								$res = $con->query($sql);
+								
 								if ($res->num_rows > 0) {
-									$i = 1;
-									while ($row = $res->fetch_assoc() && $i <= 10) {
-										$i++;
-										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
+
+									while ($row = $res->fetch_assoc()) {
+										$ratings = $row['ratings'];
+
+										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]'>$row[hotel_name]&rating=$ratings</a>";
 									}
 								} else {
-									?>
+							?>
 									<div class='flex items-center justify-center h-[60vh] flex-col'>
 										<i class='fa-regular fa-face-sad-tear text-3xl mb-1'></i>
 										<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
 									</div>
 
-									<?php
+						<?php
 								}
-							} elseif ($res->num_rows > 0) { ?>
-								<?php
+							} elseif ($res->num_rows > 0) {
 								$i = 1;
-								while (($row = $res->fetch_assoc() )&& $i <= 10) {
+								while (($row = $res->fetch_assoc()) && $i <= 10) {
+									$ratings = $row['ratings'];
 									$i++;
-									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
+									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings'>$row[hotel_name]</a>";
 								}
 							}
-}
-?>
+						}
+						?>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
+	</body>
 
-</html>
+	</html>
