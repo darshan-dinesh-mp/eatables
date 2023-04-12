@@ -8,8 +8,7 @@ $sql = "DELETE FROM favourite WHERE item_id = $item_id AND uid = $user_id";
 $res = $con->query($sql);
 
 if ($res) {
-    echo "<script>alert('Item removed from favourites.')</script>";
-    echo "<script>window.location.href='user-profile.php'</script>";
+    echo "Item removed from favourites.";
 } else {
     echo "An error occurred while trying to remove the item from your favourites.";
 }
