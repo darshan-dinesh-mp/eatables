@@ -152,12 +152,11 @@
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $image="media/images/user-image/" . $row["img"];
-                            echo "$image";
                             echo "
                                 <div class='h-2/4'>
                                             <div class='flex items-start py-8 bg-black/50 px-8 rounded-xl text-white mb-4'>
                                                 <div class='flex items-start flex-col justify-center mr-3'>
-                                                <img scr=$image class='w-10 h-10 rounded-full bg-black'>
+                                                <img src=$image class='w-10 h-10 rounded-full bg-black'>
                                             </div>  
                                             <div class='flex items-start flex-col justify-center'>
                                                     <h1 class='text-xl font-poppy font-medium'>$row[uname]</h1>
