@@ -56,16 +56,23 @@ $email = $_SESSION['email'];
                          ?>
                     </h2>
                </div>
-               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-center border-black">
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 py-3 text-dense">
+               <div class="my-5 font-poppy flex items-center justify-evenly w-1/5">
+                    <a href="#" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">Edit Profile</a>
+                    <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
+               </div>
+               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-around border-black">
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
                     </button>
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 py-3 text-dense">
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
                     </button>
-
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                         <i class="fa-solid fa-image text-2xl"></i>
+                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Posts</h3>
+                    </button>
                </div>
                <hr class="h-[1px] bg-dense border-none w-3/4">
                </hr>
