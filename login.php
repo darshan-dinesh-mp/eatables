@@ -14,11 +14,17 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
 
 </head>
-
 <body>
     <?php
+    session_start();
     include "dbconnect.php";
-    if (!isset($_POST['submit'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+        unset($_SESSION['password_error']);
+    }
+    
+    if(!isset($_SESSION['password_error'])){
+    $_SESSION['password_error']="";
+    }
     ?>
         <div class="bg-brand bg-img min-h-screen grid">
             <div class="flex flex-col items-center justify-center">
@@ -29,11 +35,12 @@
                         </a>
                         <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
                     </div>
-                    <form action="login.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
-                        <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" />
-                        <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autocomplete="off" />
-                        <input class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit" value="explore" />
-                    </form>
+                    <form  method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
+    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" />
+    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autocomplete="off" />
+    <span class="error-message"><?php echo $_SESSION['password_error'] ?></span> <!-- Add error message span element -->
+    <input class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit" value="explore" />
+</form>
                     <br>
                 </div>
                 <div class="flex md:flex-row flex-col items-center justify-center w-full">
@@ -48,8 +55,8 @@
         </div>
 
     <?php
-    } else {
-        session_start();
+   if (isset($_POST['submit'])) {
+        
         $username = $_POST["username"];
         $password = $_POST["password"];
         $sql = "select * from user where uname='$username'";
@@ -57,29 +64,34 @@
         if ($res->num_rows > 0) {
             $row = $res->fetch_assoc();
             $hash = $row['password'];
-        } else {
-            echo "<script>alert('User not found.')</script>";
-            echo "<script>window.location.href='login.php'</script>";
-        }
-        if (password_verify($password, $hash)) {
-            $_SESSION['id'] = $row['uid'];
-            $_SESSION['fullname'] = $row['fullname'];
-            $_SESSION['username'] = $row['uname'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['status'] = true;
-            $_SESSION['user_type'] = $row['user_type'];
-            $type = $row['user_type'];
-            if ($type != 0) {
-                header("Location: index.php");
-                exit;
+            if (password_verify($password, $hash)) {
+                $_SESSION['id'] = $row['uid'];
+                $_SESSION['fullname'] = $row['fullname'];
+                $_SESSION['username'] = $row['uname'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['status'] = true;
+                $_SESSION['user_type'] = $row['user_type'];
+                $type = $row['user_type'];
+                if ($type != 0) {
+                    $_SESSION['username_error'] = "";
+                    header("Location: index.php");
+
+                    exit;
+                } else {
+                    $_SESSION['username_error'] = "";
+                    header("Location: admin.php");
+                    exit();
+                }
             } else {
-                header("Location: admin.php");
-                exit();
+                $_SESSION['password_error']="Incorrect password/username";
+                // header("Location:login.php");
             }
         } else {
-            echo "<script>alert('Password incorrect.')</script>";
-            echo "<script>window.location.href='login.php'</script>";
+            $_SESSION['password_error']="Incorrect password/username";
+            // header("Location:login.php");
         }
+        
+        
     }
     // include './components/footer.php';
     ?>
