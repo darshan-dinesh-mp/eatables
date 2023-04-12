@@ -9,6 +9,15 @@ if (!$_SESSION['status']) {
 $fullName = $_SESSION['fullname'];
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
+$sql = "select * from user where uname='$username'";
+$res = $con->query($sql);
+$row=$res->fetch_assoc();
+if(!isset($_SESSION["path"])){
+     $path ="media/images/user-image/".$row["img"]; 
+}
+else{
+     $path = $_SESSION['path'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +26,9 @@ $email = $_SESSION['email'];
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title><?php echo $fullName; ?></title>
+     <title>
+          <?php echo $fullName; ?>
+     </title>
      <link rel="stylesheet" href="styles/input.css">
      <link rel="stylesheet" href="styles/style.css">
      <script src="https://cdn.tailwindcss.com"></script>
@@ -38,16 +49,17 @@ $email = $_SESSION['email'];
                </form>
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
-               <img alt="user profile" src='https://www.delb.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FDB.6969481a.webp&w=1080&q=75' class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
+               <img alt="user profile" src='<?php echo $path; ?>' class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
                     ?>
                </h1>
                <h1 class="font-poppy text-lg font-medium text-center">
-                    @<?php
-                         echo $username;
-                         ?>
+                    @
+                    <?php
+                    echo $username;
+                    ?>
                </h1>
                <div class="flex space-x-2">
                     <h2 class="font-poppy text-md font-medium lowercase">
@@ -57,7 +69,8 @@ $email = $_SESSION['email'];
                     </h2>
                </div>
                <div class="my-3 font-poppy flex items-center justify-evenly w-full">
-                    <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <a href="edit-profile.php"
+                         class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
@@ -99,14 +112,14 @@ $email = $_SESSION['email'];
                               </a>";
                     }
                } else {
-               ?>
-          </div>
+                    ?>
+               </div>
 
-          <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
+               <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
 
-     <?php
+               <?php
                }
-     ?>
+               ?>
 
      </div>
 
