@@ -56,7 +56,7 @@ $email = $_SESSION['email'];
                          ?>
                     </h2>
                </div>
-               <div class="my-5 font-poppy flex items-center justify-evenly w-1/5">
+               <div class="my-5 font-poppy flex items-center justify-evenly w-full">
                     <a href="edit_profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">Edit Profile</a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
