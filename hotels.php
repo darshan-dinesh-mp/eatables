@@ -33,6 +33,9 @@ if (!$_SESSION['status']) {
 			<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 				eatables.
 			</a>
+			<a href="index.php">
+				<i class="fa-solid fa-xmark text-2xl"></i>
+			</a>
 		</div>
 		<div class="flex justify-between w-full py-7 md:py-6 md:flex-row flex-col space-y-2 md:space-y-0">
 			<div class='w-full md:w-3/6'>

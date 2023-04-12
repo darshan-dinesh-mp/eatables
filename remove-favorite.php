@@ -10,7 +10,7 @@ $res = $con->query($sql);
 
 if ($res) {
     echo "<script>alert('Item removed from favourites.')</script>";
-    echo "<script>window.location.href='userprofile.php'</script>";
+    echo "<script>window.location.href='user-profile.php'</script>";
 } else {
     echo "An error occurred while trying to remove the item from your favourites.";
 }

@@ -33,6 +33,9 @@
     background-image: url(../media/images/BgCover.png);
     background-size: cover;
 }
+.bg-brand {
+    background-color: #f9bb21;
+}
 
 .font-colvet {
     font-family: "Coolvetica";
@@ -87,4 +90,31 @@ input[type="submit"]:hover {
 
 input.incorrect {
     border-color: red;
+}
+
+.error {
+    background-color: red;
+    animation: shake 0.2s;
+}
+
+.error::placeholder {
+    color: white;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
