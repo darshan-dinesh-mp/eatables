@@ -142,7 +142,7 @@
                     }
 
                     // Retrieve reviews from database
-                    $sql = "SELECT review.review_content, user.uname
+                    $sql = "SELECT review.review_content, user.uname, user.img
                     FROM review
                     INNER JOIN user
                     ON review.uid = user.uid where item_id = $item_id;
@@ -151,15 +151,16 @@
                     // Display reviews
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
+                            $image="media/images/user-image/" . $row["img"];
                             echo "
                                 <div class='h-2/4'>
                                             <div class='flex items-start py-8 bg-black/50 px-8 rounded-xl text-white mb-4'>
                                                 <div class='flex items-start flex-col justify-center mr-3'>
-                                                <p class='w-10 h-10 rounded-full bg-black'></p>
+                                                <img src=$image class='w-10 h-10 rounded-full bg-black'>
                                             </div>  
                                             <div class='flex items-start flex-col justify-center'>
-                                                    <h1 class='text-xl font-poppy font-medium'>Darshan Dinesh MP</h1>
-                                                    <p class='font-poppy text-lg pt-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit adipisci ex velit ad laborum, dolorum vel autem maiores cumque ea? Ratione, sit voluptas cumque harum deleniti officiis et eveniet labore?</p>
+                                                    <h1 class='text-xl font-poppy font-medium'>$row[uname]</h1>
+                                                    <p class='font-poppy text-lg pt-1'>$row[review_content]</p>
                                             </div>
                                 </div>
                                     ";
