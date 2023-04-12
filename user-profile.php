@@ -59,7 +59,7 @@ if (!isset($_SESSION["path"])) {
                          } else {
                               echo "$path";
                          }
-                         ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-36 md:h-36 object-cover" />
+                         ?> class="rounded-full border-black border-4 md:border-[2px] shadow-xl w-28 h-28 md:w-36 md:h-36 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
@@ -87,15 +87,15 @@ if (!isset($_SESSION["path"])) {
                <div class="flex items-center pt-4 space-x-2 w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
+                         <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</a>
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
+                         <a href="user-profile.php?review=2" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</a>
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <a href="user-profile.php?review=1" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
+                         <a href="user-profile.php?review=1" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</a>
                     </button>
                </div>
 
@@ -139,7 +139,7 @@ if (!isset($_SESSION["path"])) {
      <?php
           }
      }
-          else{
+          elseif($review_id==1){
      ?>
        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
        <?php  
@@ -163,7 +163,7 @@ if (!isset($_SESSION["path"])) {
                echo "
                <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
                    <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
-                       <img src=$image class='w-10 h-10 rounded-full bg-black'>
+                       <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
                        <h1 class='text-lg font-poppy font-medium'>$username</h1>
                        <h2 class='text-lg font-poppy font-medium'>$row[item_name]</h2>
                        <h3 class='text-lg font-poppy font-medium'>$row[hotel_name]</h3>
@@ -177,6 +177,15 @@ if (!isset($_SESSION["path"])) {
        } else {
            echo "<h1 class='font-poppy text-center text-xl'>Oops no reviews found!</h1>";
        }
+     }
+     elseif($review_id==2){
+          ?>
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
+               <h1>SOMETHIG BIG IS COOKING</h1>
+     </div>
+
+
+     <?php
      }
        ?>
 
