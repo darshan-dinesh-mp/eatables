@@ -11,11 +11,10 @@ $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 $sql = "select * from user where uname='$username'";
 $res = $con->query($sql);
-$row=$res->fetch_assoc();
-if(!isset($_SESSION["path"])){
-     $path ="media/images/user-image/".$row["img"]; 
-}
-else{
+$row = $res->fetch_assoc();
+if (!isset($_SESSION["path"])) {
+     $path = "media/images/user-image/" . $row["img"];
+} else {
      $path = $_SESSION['path'];
 }
 ?>
@@ -56,10 +55,9 @@ else{
                     ?>
                </h1>
                <h1 class="font-poppy text-lg font-medium text-center">
-                    @
-                    <?php
-                    echo $username;
-                    ?>
+                    @<?php
+                         echo $username;
+                         ?>
                </h1>
                <div class="flex space-x-2">
                     <h2 class="font-poppy text-md font-medium lowercase">
@@ -69,8 +67,7 @@ else{
                     </h2>
                </div>
                <div class="my-3 font-poppy flex items-center justify-evenly w-full">
-                    <a href="edit-profile.php"
-                         class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
@@ -112,14 +109,14 @@ else{
                               </a>";
                     }
                } else {
-                    ?>
-               </div>
-
-               <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
-
-               <?php
-               }
                ?>
+          </div>
+
+          <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
+
+     <?php
+               }
+     ?>
 
      </div>
 
