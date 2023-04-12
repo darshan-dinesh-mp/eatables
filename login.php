@@ -65,6 +65,7 @@
                 $_SESSION['fullname'] = $row['fullname'];
                 $_SESSION['username'] = $row['uname'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['img'] = $row['img'];
                 $_SESSION['status'] = true;
                 $_SESSION['user_type'] = $row['user_type'];
                 $type = $row['user_type'];
@@ -96,7 +97,7 @@
             if (errEl) {
                 errEl.style.display = "none";
             }
-        }, 10000);
+        }, 7000);
     </script>
 
 </body>
