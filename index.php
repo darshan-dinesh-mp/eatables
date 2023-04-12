@@ -95,15 +95,21 @@ if (!$_SESSION['status']) {
 								$res = $con->query($sql);
 								if ($res->num_rows > 0) {
 									while ($row = $res->fetch_assoc()) {
-										echo "<br><br><a class='py-2 md:my-4 my-1 mx-2 px-4 hover:bg-black/75 capitalize font-poppy text-center text-white rounded-md bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
+										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
 									}
 								} else {
-									echo "<p>No results found</p>";
+							?>
+									<div class='flex items-center justify-center h-[60vh] flex-col'>
+										<i class='fa-regular fa-face-sad-tear text-3xl mb-1'></i>
+										<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
+									</div>
+
+								<?php
 								}
 							} elseif ($res->num_rows > 0) { ?>
 						<?php
 								while ($row = $res->fetch_assoc()) {
-									echo "<br><br><a class='py-2 md:my-4 my-1 mx-2 px-4 hover:bg-black/75 capitalize font-poppy text-center text-white rounded-md bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
+									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
 								}
 							}
 						}
@@ -111,9 +117,7 @@ if (!$_SESSION['status']) {
 						</div>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</body>
 
