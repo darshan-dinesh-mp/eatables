@@ -143,16 +143,44 @@ if (!isset($_SESSION["path"])) {
      ?>
        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
        <?php  
-       if(ergt){
-          ?>
-          <?php
+       // Retrieve reviews from database
+       $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date
+       FROM review
+       INNER JOIN item on item.item_id=review.item_id
+       INNER JOIN hotel on hotel.hotel_id=item.hotel_id
+       WHERE uid = $uid
+       ORDER BY review.review_date DESC";
+
+       $result = mysqli_query($con, $sql);
+       // Display reviews
+       if (mysqli_num_rows($result) > 0) {
+           while ($row = mysqli_fetch_assoc($result)) {
+               if ($imageNull == null) {
+                   $image="media/images/user.png";
                } else {
-               ?>
-          </div>
-     <?php
-          }
+                   $image = "media/images/user-image/" . $imageNull;
+               }
+               echo "
+               <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
+                   <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
+                       <img src=$image class='w-10 h-10 rounded-full bg-black'>
+                       <h1 class='text-lg font-poppy font-medium'>$username</h1>
+                       <h2 class='text-lg font-poppy font-medium'>$row[item_name]</h2>
+                       <h3 class='text-lg font-poppy font-medium'>$row[hotel_name]</h3>
+                   </div>  
+                   <div class='flex items-start flex-col justify-center'>
+                       <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
+                   </div>
+               </div>
+                       ";
+           }
+       } else {
+           echo "<h1 class='font-poppy text-center text-xl'>Oops no reviews found!</h1>";
+       }
      }
-     ?>
+       ?>
+
+          </div>
 
      </div>
 
