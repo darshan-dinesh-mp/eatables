@@ -33,14 +33,14 @@
                         <a href="login.php" class="text-5xl md:text-6xl font-colvet">
                             eatables.
                         </a>
-                        <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
+                        <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
                     </div>
-                    <form  method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
-    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" />
-    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autocomplete="off" />
-    <span class="error-message"><?php echo $_SESSION['password_error'] ?></span> <!-- Add error message span element -->
-    <input class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit" value="explore" />
-</form>
+                    <form action="login.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
+                        <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" />
+                        <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autocomplete="off" />
+                        <p>incorrect username or password!</p>
+                        <input class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit" value="explore" />
+                    </form>
                     <br>
                 </div>
                 <div class="flex md:flex-row flex-col items-center justify-center w-full">
@@ -59,6 +59,7 @@
         
         $username = $_POST["username"];
         $password = $_POST["password"];
+        $err = "";
         $sql = "select * from user where uname='$username'";
         $res = $con->query($sql);
         if ($res->num_rows > 0) {
@@ -70,31 +71,37 @@
                 $_SESSION['username'] = $row['uname'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['status'] = true;
-                $_SESSION['user_type'] = $row['user_type'];
                 $type = $row['user_type'];
                 if ($type != 0) {
-                    $_SESSION['username_error'] = "";
+                    $_SESSION['user_type'] = $row['user_type'];
                     header("Location: index.php");
-
                     exit;
                 } else {
-                    $_SESSION['username_error'] = "";
                     header("Location: admin.php");
                     exit();
                 }
             } else {
-                $_SESSION['password_error']="Incorrect password/username";
-                // header("Location:login.php");
+                $err = "Password incorrect";
+
+                // echo "<script>alert('Password incorrect.')</script>";
+                echo "<script>window.location.href='login.php'</script>";
             }
         } else {
-            $_SESSION['password_error']="Incorrect password/username";
-            // header("Location:login.php");
+            $err = "User not found";
+            // echo "<script>alert('User not found.')</script>";
+            echo "$err";
+            echo "<script>window.location.href='login.php'</script>";
         }
         
         
     }
     // include './components/footer.php';
+    if ($err) {
     ?>
+        <p><?php echo $err; ?></?php>
+        <?php
+    }
+        ?>
 </body>
 
 </html>

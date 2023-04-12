@@ -32,7 +32,7 @@
                     <a href="index.php" class="outline-none text-5xl md:text-6xl font-colvet">
                         eatables.
                     </a>
-                    <p class="font-poppy text-sm md:text-md">Find your next favorite.</p>
+                    <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
                 </div>
 
                 <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">

@@ -4,7 +4,7 @@ session_start();
 $user = $_SESSION['id'];
 
 $sql = "SELECT i.item_name, i.item_price, h.hotel_name
-FROM favorite f
+FROM favourite f
 INNER JOIN item i ON f.item_id = i.item_id
 INNER JOIN hotel h ON i.hotel_id = h.hotel_id
 WHERE f.uid = '$user'";
@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
         echo "Hotel Name: " . $row["hotel_name"] . "<br><br>";
     }
 } else {
-    echo "No favorites found.";
+    echo "No favourites found.";
 }
 ?>
 

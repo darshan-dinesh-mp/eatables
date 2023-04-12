@@ -56,62 +56,53 @@ $email = $_SESSION['email'];
                          ?>
                     </h2>
                </div>
-               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-center border-black">
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 py-3 text-dense">
+               <div class="my-5 font-poppy flex items-center justify-evenly w-1/5">
+                    <a href="#" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">Edit Profile</a>
+                    <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
+               </div>
+               <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-around border-black">
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
                     </button>
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 py-3 text-dense">
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
                     </button>
-
+                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                         <i class="fa-solid fa-image text-2xl"></i>
+                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Posts</h3>
+                    </button>
                </div>
                <hr class="h-[1px] bg-dense border-none w-3/4">
                </hr>
           </div>
-          <div>
-          <?php
 
-$user = $_SESSION['id'];
-
-$sql = "SELECT f.fav_id,i.item_name, i.item_price, h.hotel_name
-FROM favorite f
-INNER JOIN item i ON f.item_id = i.item_id
-INNER JOIN hotel h ON i.hotel_id = h.hotel_id
-WHERE f.uid = '$user'";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "Item Name: " . $row["item_name"] . "<br>";
-        echo "Item Price: " . $row["item_price"] . "<br>";
-        echo "Hotel Name: " . $row["hotel_name"] . "<br>";
-        echo"<a href='remove_favorite.php?id=" . $row["fav_id"] . "'>Remove</a></p> <br><br>";
-     
-    }
-} else {
-    echo "No favorites found.";
-}
-?>
-
-
-          </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 py-8 w-full md:w-11/12">
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
-               <button class="rounded-lg bg-img-food from-white-op to-black-op py-20 px-3 flex items-center justify-center hover:scale-[1.02] hover:shadow-xl duration-300"></button>
+               <?php
+               $user = $_SESSION['id'];
+               $sql = "SELECT f.fav_id,i.item_name, i.item_price, h.hotel_name
+               FROM favourite f
+               INNER JOIN item i ON f.item_id = i.item_id
+               INNER JOIN hotel h ON i.hotel_id = h.hotel_id
+               WHERE f.uid = '$user'";
+               $result = $con->query($sql);
+
+               if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                         echo "<a href='remove_favourite.php?id=" . $row["fav_id"] . "' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
+                                   <img src='media/images/eat-fav.png'/>
+                                   <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
+                              </a>";
+                    }
+               } else {
+                    echo "No favourites found.";
+               }
+               ?>
 
           </div>
      </div>
+
 </body>
 
 </html>
