@@ -41,16 +41,32 @@ if (!isset($_SESSION['id'])) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fullname = mysqli_real_escape_string($con, $_POST['fullname']);
         $email = mysqli_real_escape_string($con, $_POST['email']);
+        if (!empty($_FILES['img']['name'])) {
+            $image_name = $_FILES['img']['name'];
+            $image_tmp_name = $_FILES['img']['tmp_name'];
+            $image_error = $_FILES['img']['error'];
+            if ($image_error === UPLOAD_ERR_OK) {
+                echo "hello 2";
+                $target_dir = 'media/images/user-image/'; // specify the target directory where you want to move the image
+                $target_file = $target_dir . basename($image_name); // set the target file path
+                if (move_uploaded_file($image_tmp_name, $target_file)) {
+                    // Update user information in database
+                    $query = "UPDATE user SET fullname = '$fullname', email = '$email', img='$image_name' WHERE uid = $user_id";
+                    mysqli_query($con, $query);
+                    $_SESSION['fullname'] = $fullname;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['img'] = $target_file;
 
-        // Update user information in database
-        $query = "UPDATE user SET fullname = '$fullname', email = '$email' WHERE uid = $user_id";
-        mysqli_query($con, $query);
-        $_SESSION['fullname'] = $fullname;
-        $_SESSION['email'] = $email;
-
-        // Redirect to profile page
-        header("Location:userprofile.php");
-        exit();
+                    // Redirect to profile page
+                    header("Location:userprofile.php");
+                    exit();
+                } else {
+                    echo "Error moving image file";
+                }
+            } else {
+                echo "Error uploading image file";
+            }
+        }
     }
 
     // Display user information and edit form
@@ -65,12 +81,19 @@ if (!isset($_SESSION['id'])) {
             </a>
         </div>
 
-        <form method="POST" action="" class="grid place-items-center justify-center md:grid-rows-2 grid-cols-1 gap-3 mx-4 mt-52 md:mt-32">
+        <form method="POST" action="" enctype="multipart/form-data"
+            class="grid place-items-center justify-center md:grid-rows-2 grid-cols-1 gap-3 mx-4 mt-52 md:mt-32">
             <h1 class='font-poppy text-3xl'>Edit Profile</h1>
-            <input type=" text" name="fullname" class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl  px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $user['fullname']; ?>">
-            <input type="email" name="email" class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $user['email']; ?>">
-            <input type="file" name="img" class="font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
-            <input type="submit" value="update" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500">
+            <input type=" text" name="fullname"
+                class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl  px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                value="<?php echo $user['fullname']; ?>">
+            <input type="email" name="email"
+                class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                value="<?php echo $user['email']; ?>">
+            <input type="file" name="img"
+                class="font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
+            <input type="submit" value="update"
+                class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500">
         </form>
     </div>
     </div>

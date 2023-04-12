@@ -9,6 +9,10 @@ if (!$_SESSION['status']) {
 $fullName = $_SESSION['fullname'];
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
+$sql = "select * from user where uname='$username'";
+$res = $con->query($sql);
+$row = $res->fetch_assoc();
+$path = $_SESSION["img"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,16 +42,18 @@ $email = $_SESSION['email'];
                </form>
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
-               <img alt="user profile" src='https://www.delb.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FDB.6969481a.webp&w=1080&q=75' class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
+               <img src='<?php echo $path; ?>'
+                    class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-28 md:h-28 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
                     ?>
                </h1>
                <h1 class="font-poppy text-xl md:text-xl font-semibold pt-1s text-center">
-                    @<?php
-                         echo $username;
-                         ?>
+                    @
+                    <?php
+                    echo $username;
+                    ?>
                </h1>
                <div class="flex space-x-2">
                     <h2 class="font-poppy text-lg md:text-xl font-medium lowercase">
@@ -57,7 +63,9 @@ $email = $_SESSION['email'];
                     </h2>
                </div>
                <div class="my-5 font-poppy flex items-center justify-evenly w-full">
-                    <a href="edit_profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">Edit Profile</a>
+                    <a href="edit_profile.php"
+                         class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">Edit
+                         Profile</a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
                <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
