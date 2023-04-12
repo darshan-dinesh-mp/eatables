@@ -17,7 +17,7 @@ $email = $_SESSION['email'];
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>User Profile</title>
+     <title><?php echo $fullName; ?></title>
      <link rel="stylesheet" href="styles/input.css">
      <link rel="stylesheet" href="styles/style.css">
      <script src="https://cdn.tailwindcss.com"></script>
@@ -44,20 +44,23 @@ $email = $_SESSION['email'];
                     echo $fullName;
                     ?>
                </h1>
-               <h1 class="font-poppy text-xl md:text-xl font-semibold pt-1s text-center">
+               <h1 class="font-poppy text-lg font-medium text-center">
                     @<?php
                          echo $username;
                          ?>
                </h1>
                <div class="flex space-x-2">
-                    <h2 class="font-poppy text-lg md:text-xl font-medium lowercase">
+                    <h2 class="font-poppy text-md font-medium lowercase">
                          <?php
                          echo $email;
                          ?>
                     </h2>
                </div>
-               <div class="my-5 font-poppy flex items-center justify-evenly w-full">
-                    <a href="edit_profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">Edit Profile</a>
+               <div class="my-3 font-poppy flex items-center justify-evenly w-full">
+                    <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                         <i class="fa-solid fa-pen-to-square mr-1"></i>
+                         Edit Profile
+                    </a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
                <div class="flex items-center space-x-2 w-full md:space-x-16 border-b-2 justify-evenly border-black">
@@ -74,11 +77,11 @@ $email = $_SESSION['email'];
                          <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Posts</h3>
                     </button>
                </div>
-               <hr class="h-[1px] bg-dense border-none w-3/4">
+               <hr class="h-[1px] bg-dense border-none">
                </hr>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 py-8 w-full md:w-11/12">
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full">
                <?php
                $user = $_SESSION['id'];
                $sql = "SELECT f.fav_id,i.item_name, i.item_price, h.hotel_name
@@ -90,17 +93,21 @@ $email = $_SESSION['email'];
 
                if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                         echo "<a href='remove_favourite.php?id=" . $row["fav_id"] . "' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
+                         echo "<a href='remove-favourite.php?id=" . $row["fav_id"] . "' class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op pt-44 pb-4 px-6 flex items-start justify-center md:flex-col flex-wrap hover:scale-[1.01] hover:shadow-xl duration-300'>
                                    <img src='media/images/eat-fav.png'/>
                                    <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
                               </a>";
                     }
                } else {
-                    echo "No favourites found.";
-               }
                ?>
-
           </div>
+
+          <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
+
+     <?php
+               }
+     ?>
+
      </div>
 
 </body>
