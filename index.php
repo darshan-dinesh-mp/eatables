@@ -80,7 +80,7 @@ if (!$_SESSION['status']) {
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 							<?php
 
-							$sql = "SELECT h.hotel_name 
+							$sql = "SELECT h.hotel_name,h.hotel_id
 							FROM hotel h 
 							INNER JOIN location l ON h.loc_name = l.loc_name ";
 
@@ -88,14 +88,14 @@ if (!$_SESSION['status']) {
 
 							if (isset($_GET['search'])) {
 								$search = $_GET['search'];
-								$sql = "SELECT h.hotel_name 
+								$sql = "SELECT h.hotel_name,h.hotel_id
 								FROM hotel h 
 								INNER JOIN location l ON h.loc_name = l.loc_name 
 								WHERE l.loc_name LIKE '%$search%'";
 								$res = $con->query($sql);
 								if ($res->num_rows > 0) {
 									while ($row = $res->fetch_assoc()) {
-										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
+										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
 									}
 								} else {
 							?>
@@ -109,7 +109,7 @@ if (!$_SESSION['status']) {
 							} elseif ($res->num_rows > 0) { ?>
 						<?php
 								while ($row = $res->fetch_assoc()) {
-									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
+									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]'>$row[hotel_name]</a>";
 								}
 							}
 						}

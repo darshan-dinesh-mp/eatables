@@ -26,7 +26,8 @@ if (!$_SESSION['status']) {
 	if (mysqli_connect_error()) {
 		die("Not connected");
 	}
-	$hotel_name = $_GET['hotel_name'];
+	$hotel_id = $_GET['hotel_id'];
+	$hotel_name=$_GET['hotel_name'];
 	?>
 	<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 		<div class="flex items-center w-full justify-between md:pt-4">
@@ -58,62 +59,17 @@ if (!$_SESSION['status']) {
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full ">
 			<?php
-			$sql = "select * from hotel where hotel_name='$hotel_name'";
+			$sql = "select * from item where hotel_id='$hotel_id'";
 			$res = $con->query($sql);
+			$sql = "select links from hotel where hotel_id='$hotel_id'";
+			$row= $con->query($sql);
+			?>
+			<?php
 			if ($res->num_rows > 0) {
 				while ($row = $res->fetch_assoc()) {
 			?>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="<?php echo $row['links']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['links']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
-					</a>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="items.php?hotel_name=<?php echo $row['hotel_name']; ?>&hotel_id=<?php echo $row['hotel_id']; ?>">
-						<h4 class="text-lg  mb-2 "><?php echo $row['hotel_name']; ?></h4>
-						<p class="text-gray-700 hidden"><?php echo $row['description']; ?></p>
+					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-food duration-500" href="itempage.php?item_id=<?php echo $row['item_id']; ?>">	
+						<p class="text-white-700"><?php echo $row['item_name']; ?></p>
 					</a>
 
 				<?php
