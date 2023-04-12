@@ -79,8 +79,7 @@ if (!$_SESSION['status']) {
 							<i class="fa-sharp fa-solid fa-location-dot"></i>
 							nearby restaurants
 						</h1>
-						<div
-							class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
+						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 							<?php
 
 							$sql = "SELECT h.hotel_name,h.hotel_id
