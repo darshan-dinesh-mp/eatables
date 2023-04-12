@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
      header("Location: login.php");
      exit;
 }
-
+$uid=$_SESSION['id'];
 $fullName = $_SESSION['fullname'];
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
@@ -13,6 +13,11 @@ $sql = "select * from user where uname='$username'";
 $res = $con->query($sql);
 $row = $res->fetch_assoc();
 $imageNull = $row["img"];
+if (isset($_GET['review'])) {
+     $review_id = $_GET['review'];
+ } else {
+     $review_id = "";
+ }
 if (!isset($_SESSION["path"])) {
      $path = "media/images/user-image/" . $row["img"];
 } else {
@@ -54,7 +59,7 @@ if (!isset($_SESSION["path"])) {
                          } else {
                               echo "$path";
                          }
-                         ?> class="rounded-full border-black border-4 md:border-[6px] shadow-xl w-28 h-28 md:w-36 md:h-36 object-cover" />
+                         ?> class="rounded-full border-black border-4 md:border-[2px] shadow-xl w-28 h-28 md:w-36 md:h-36 object-cover" />
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
@@ -82,19 +87,23 @@ if (!isset($_SESSION["path"])) {
                <div class="flex items-center pt-4 space-x-2 w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</h3>
+                         <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</a>
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</h3>
+                         <a href="user-profile.php?review=2" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</a>
                     </button>
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <h3 class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</h3>
+                         <a href="user-profile.php?review=1" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</a>
                     </button>
                </div>
 
           </div>
+          <?php 
+          if($review_id==null){
+          ?>
+
 
           <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
                <?php
@@ -128,8 +137,59 @@ if (!isset($_SESSION["path"])) {
           <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
 
      <?php
-               }
+          }
+     }
+          elseif($review_id==1){
      ?>
+       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
+       <?php  
+       // Retrieve reviews from database
+       $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date
+       FROM review
+       INNER JOIN item on item.item_id=review.item_id
+       INNER JOIN hotel on hotel.hotel_id=item.hotel_id
+       WHERE uid = $uid
+       ORDER BY review.review_date DESC";
+
+       $result = mysqli_query($con, $sql);
+       // Display reviews
+       if (mysqli_num_rows($result) > 0) {
+           while ($row = mysqli_fetch_assoc($result)) {
+               if ($imageNull == null) {
+                   $image="media/images/user.png";
+               } else {
+                   $image = "media/images/user-image/" . $imageNull;
+               }
+               echo "
+               <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
+                   <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
+                       <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
+                       <h1 class='text-lg font-poppy font-medium'>$username</h1>
+                       <h2 class='text-lg font-poppy font-medium'>$row[item_name]</h2>
+                       <h3 class='text-lg font-poppy font-medium'>$row[hotel_name]</h3>
+                   </div>  
+                   <div class='flex items-start flex-col justify-center'>
+                       <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
+                   </div>
+               </div>
+                       ";
+           }
+       } else {
+           echo "<h1 class='font-poppy text-center text-xl'>Oops no reviews found!</h1>";
+       }
+     }
+     elseif($review_id==2){
+          ?>
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
+               <h1>SOMETHIG BIG IS COOKING</h1>
+     </div>
+
+
+     <?php
+     }
+       ?>
+
+          </div>
 
      </div>
 
