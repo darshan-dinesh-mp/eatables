@@ -34,15 +34,21 @@
                 </a>
                 <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
             </div>
-            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 mb-8 place-items-center">
+            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 place-items-center">
                 <input type="text" name="fullname" id="fullname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2" placeholder="fullname" autocomplete="on" />
                 <input type="text" name="username" id="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" />
                 <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" />
                 <input type="password" name="password" id="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" />
                 <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" />
-                <div class="w-full text-poppy text-center" id="error-div"></div>
                 <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
             </form>
+            <div class='error-div my-4'>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-all-cred"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-pwd"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-username"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-name"></p>
+            </div>
             <p class="text-sm text-center md:text-lg font-poppy">
                 have an account?
                 <a href="login.php" class="underline">
@@ -50,6 +56,7 @@
                 </a>
             </p>
         </div>
+
     </div>
     <?php
     include "dbconnect.php";
@@ -66,7 +73,7 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
         $confirm = $_POST["confirm"];
-        $error_cred="";
+        $error_cred = "";
 
         //generating unique userid
         $sql = "select max(uid) from user";
@@ -77,7 +84,6 @@
             $row = $res->fetch_assoc();
             $id = $row['max(uid)'] + 1;
         }
-
 
         //VALIDATION
         if (!empty($fullname) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm)) {
@@ -136,34 +142,47 @@
             $error_cred = true;
         }
         if ($errfullname) {
+            echo "<script>document.getElementById('error-name').innerHTML='Error in Full name!';</script>";
             echo "<script>document.getElementById('fullname').classList.add('error');</script>";
-            echo "<script>alert('FULL NAME CANT HAVE NUMBERS');</script>";
+            // echo "<script>alert('FULL NAME CANT HAVE NUMBERS');</script>";
         }
         if ($errusername) {
+            echo "<script>document.getElementById('error-username').innerHTML='Username must contain only Alphabets!';</script>";
             echo "<script>document.getElementById('username').classList.add('error');</script>";
-            echo "<script>alert('username cant have space or number');</script>";
+            // echo "<script>alert('username cant have space or number');</script>";
         }
         if ($erremail) {
+            echo "<script>document.getElementById('error-email').innerHTML='Incorrect email!';</script>";
             echo "<script>document.getElementById('email').classList.add('error');</script>";
-            echo "<script>alert('PLEASE ENTER A VALID EMAIL');</script>";
+            // echo "<script>alert('PLEASE ENTER A VALID EMAIL');</script>";
         }
         if ($errpassword) {
+            echo "<script>document.getElementById('error-pwd').innerHTML='Password does not match!';</script>";
             echo "<script>document.getElementById('password').classList.add('error');</script>";
-            echo "<script>alert('PASSWORD MUST CONTAIN 8 CHARACTER INCLUDING NUMBER AND CHARACTER');</script>";
+            // echo "<script>alert('PASSWORD MUST CONTAIN 8 CHARACTER INCLUDING NUMBER AND CHARACTER');</script>";
         }
         if ($errconfirm) {
-            echo "<script>document.getElementById('error-div').innerHTML='Password does not match!';</script>";
+            echo "<script>document.getElementById('error-pwd').innerHTML='Password does not match!';</script>";
             echo "<script>document.getElementById('confirm').classList.add('error');</script>";
-            echo "<script>alert('PASSWORD DIDNT MATCH');</script>";
+            // echo "<script>alert('PASSWORD DIDNT MATCH');</script>";
         }
         if ($error_cred) {
-            echo "<script>document.getElementById('error-').innerHTML='Fill all credentials!';</script>";
+            echo "<script>document.getElementById('error-all-cred').innerHTML='Fill all credentials!';</script>";
             echo "<script>document.getElementById('submit').classList.add('error');</script>";
-            echo "<script>alert('FILL ALL THE CREDENTIALS');</script>";
+            // echo "<script>alert('FILL ALL THE CREDENTIALS');</script>";
         }
     }
     // include './components/footer.php';
     ?>
+    <script>
+        // Get the error div element
+        const errorDiv = document.querySelector('.error-div');
+
+        // Set a timeout function to hide the div after 7 seconds
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 10000);
+    </script>
 </body>
 
 </html>
