@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 10:06 PM
+-- Generation Time: Apr 13, 2023 at 03:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,19 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `drops`
---
-
-CREATE TABLE `drops` (
-  `drop_id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `video` varchar(30) NOT NULL,
-  `blog_date` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `favourite`
 --
 
@@ -45,6 +32,13 @@ CREATE TABLE `favourite` (
   `uid` int(11) NOT NULL,
   `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `favourite`
+--
+
+INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
+(9, 2, 177);
 
 -- --------------------------------------------------------
 
@@ -156,155 +150,155 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rating`, `item_img`) VALUES
-(1, 1, 'BBQ Pizza', 210, NULL, NULL),
-(2, 1, 'Special Spicy Pizza', 220, NULL, NULL),
-(3, 1, 'Lions Appetite Pizza', 245, NULL, NULL),
-(4, 1, 'Paneer Ghee Roast Pizza', 240, NULL, NULL),
-(5, 1, 'Cheese N Cheese Pizza', 145, NULL, NULL),
-(6, 1, 'Pizza Box for One [Veg]', 299, NULL, NULL),
-(7, 1, 'Pizza Box for One [Non-Veg]', 325, NULL, NULL),
-(8, 1, 'Family pizza box [Veg]', 745, NULL, NULL),
-(9, 1, 'Family pizza box [Non-Veg]', 799, NULL, NULL),
-(10, 1, 'Pizza Party Box', 1050, NULL, NULL),
-(11, 1, 'Laziz Special Combo', 799, NULL, NULL),
-(12, 1, 'Margherita Pizza', 145, NULL, NULL),
-(13, 1, 'Cheese N Cheese Pizza', 145, NULL, NULL),
-(14, 1, 'Pomidor Pizza', 145, NULL, NULL),
-(15, 1, 'Laziz Desi Veg Pizza', 180, NULL, NULL),
-(16, 1, 'Corn Golden Pizza', 175, NULL, NULL),
-(17, 1, 'Vegetariana Pizza', 180, NULL, NULL),
-(18, 1, 'Garden Fresh Pizza', 190, NULL, NULL),
-(19, 1, 'Veg Paprika Pizza', 190, NULL, NULL),
-(20, 1, 'Paneer Tikka Pizza', 190, NULL, NULL),
-(21, 1, 'Fiery Paneer Pizza', 195, NULL, NULL),
-(22, 1, 'Mushroom Paprika Pizza', 195, NULL, NULL),
-(23, 1, 'Veg Schezwan Pizza', 190, NULL, NULL),
-(24, 1, 'Paneer Chilli Pizza', 195, NULL, NULL),
-(25, 1, 'Carnival Veg Pizza', 210, NULL, NULL),
-(26, 1, 'Mexican Veg Pizza', 215, NULL, NULL),
-(27, 1, 'Corn Exotica Pizza', 215, NULL, NULL),
-(28, 1, 'Veg Extra Delight Pizza', 215, NULL, NULL),
-(29, 1, 'Achari Veg Pizza', 210, NULL, NULL),
-(30, 1, 'Yum Dum Pizza', 210, NULL, NULL),
-(31, 1, 'Curry Veg Pizza', 210, NULL, NULL),
-(32, 1, 'Special Spicy Pizza', 220, NULL, NULL),
-(33, 1, 'Mushroom Garlic Delight Pizza', 215, NULL, NULL),
-(34, 1, 'Pepper Paneer Pizza', 215, NULL, NULL),
-(35, 1, 'Paneer Ghee Roast Pizza', 240, NULL, NULL),
-(36, 1, 'Jamaican Veg Pizza', 240, NULL, NULL),
-(37, 1, 'Veg Extraveganza Pizza', 250, NULL, NULL),
-(38, 1, 'Egg Scrambled Pizza', 230, NULL, NULL),
-(39, 1, 'Egg Hot and Spicy Pizza', 230, NULL, NULL),
-(40, 1, 'Peppy Egg Pizza', 230, NULL, NULL),
-(41, 1, 'Chicken Tikka Pizza', 195, NULL, NULL),
-(42, 1, 'Chicken Schezwan Pizza', 195, NULL, NULL),
-(43, 1, 'Chicken Seekh Kabab Pizza', 195, NULL, NULL),
-(44, 1, 'Tandoori Chicken Pizza', 195, NULL, NULL),
-(45, 1, 'Chicken Hawaiian Pizza', 190, NULL, NULL),
-(46, 1, 'Chicken Keema Pizza', 195, NULL, NULL),
-(47, 1, 'Mexican Chicken Pizza', 210, NULL, NULL),
-(48, 1, 'Carnival Chicken Pizza', 210, NULL, NULL),
-(49, 1, 'BBQ Pizza', 210, NULL, NULL),
-(50, 1, 'Butter Chicken Pizza', 210, NULL, NULL),
-(177, 2, 'Vanilla Milkshake', 63, NULL, NULL),
-(178, 2, 'Classic Veggie Salad', 76, NULL, NULL),
-(179, 2, 'Classic Chicken Salad', 89, NULL, NULL),
-(180, 2, 'Egg Chips Burger', 89, NULL, NULL),
-(181, 2, 'Omelette Cheese Burger', 97, NULL, NULL),
-(182, 2, 'Steak Chicken Burger', 110, NULL, NULL),
-(183, 2, 'Mughlai Chicken Burger', 115, NULL, NULL),
-(184, 2, 'OMG Chicken Burger', 150, NULL, NULL),
-(185, 2, 'Mexi Chicken Burger', 162, NULL, NULL),
-(186, 2, 'Ham Chicken Burger', 167, NULL, NULL),
-(187, 2, 'King of Chicken Burger', 175, NULL, NULL),
-(188, 2, 'Veggie Burger', 76, NULL, NULL),
-(189, 2, 'Veggie Cheese Burger', 84, NULL, NULL),
-(190, 2, 'Paneer Burger', 102, NULL, NULL),
-(191, 2, 'Mushroom Burger', 102, NULL, NULL),
-(192, 2, 'Paneer Cheese Burger', 115, NULL, NULL),
-(193, 2, 'Mushroom Cheese Burger', 115, NULL, NULL),
-(194, 2, 'Mixed Veggie Hot Dog    Burger', 141, NULL, NULL),
-(195, 2, 'Steak Club Sandwich', 167, NULL, NULL),
-(196, 2, 'Mughlai Club Sandwich', 175, NULL, NULL),
-(197, 2, 'Veg Sandwich', 76, NULL, NULL),
-(198, 2, 'Veg Cheese Sandwich', 84, NULL, NULL),
-(199, 2, 'Veggies Salad Sandwich', 89, NULL, NULL),
-(200, 2, 'Paneer Sandwich', 97, NULL, NULL),
-(201, 2, 'Mushroom Sandwich', 97, NULL, NULL),
-(202, 2, 'Veggie Club Sandwich', 136, NULL, NULL),
-(203, 2, 'Hamburg Mixed Veg Club    Sand', 175, NULL, NULL),
-(204, 2, 'Egg Sandwich', 76, NULL, NULL),
-(205, 2, 'Steak Chicken Sandwich', 97, NULL, NULL),
-(206, 2, 'Mughlai Chicken    Sandwich', 102, NULL, NULL),
-(207, 2, 'Veggie Chips Wrap', 39, NULL, NULL),
-(208, 2, 'Fried Parotta Wrap', 50, NULL, NULL),
-(209, 2, 'Mixed Veggie Chips Wrap', 63, NULL, NULL),
-(210, 2, 'Grilled Mix Veg Chips', 71, NULL, NULL),
-(211, 2, 'Paneer Parotta Wrap', 84, NULL, NULL),
-(212, 2, 'Mushroom Parotta Wrap', 84, NULL, NULL),
-(213, 2, 'Grilled Paneer Parotta', 97, NULL, NULL),
-(214, 2, 'Grilled Mushroom    Parotta', 97, NULL, NULL),
-(215, 2, 'French Fries', 76, NULL, NULL),
-(216, 2, 'Omelette Chips Wrap', 58, NULL, NULL),
-(217, 2, 'Steak Chicken Wrap', 84, NULL, NULL),
-(218, 2, 'Special Chicken Kothu    Parot', 89, NULL, NULL),
-(219, 2, 'Mughlai Chicken Wrap', 89, NULL, NULL),
-(220, 2, 'Mughlai Cheese Chicken    Wrap', 102, NULL, NULL),
-(221, 2, 'Kathi Grilled Parotta    Wrap', 110, NULL, NULL),
-(222, 2, 'Mumbai Wala Mixed Wrap', 113, NULL, NULL),
-(223, 2, 'Fatty Grilled Parotta', 115, NULL, NULL),
-(224, 2, 'Banana Milkshake', 63, NULL, NULL),
-(225, 2, 'Oreo Milkshake', 63, NULL, NULL),
-(493, 3, 'Chicken Biryani', 150, NULL, NULL),
-(494, 3, 'Bamboo Chicken Biryani', 330, NULL, NULL),
-(495, 3, 'Bamboo Tikka Biriyani', 380, NULL, NULL),
-(496, 3, 'Mutton Biriyani', 160, NULL, NULL),
-(497, 3, 'Drums Of Heaven', 280, NULL, NULL),
-(498, 3, 'Chicken Lollipop', 230, NULL, NULL),
-(499, 3, 'Alfaham Mandi', 480, NULL, NULL),
-(500, 3, 'Bamboo Mutton Biryani', 440, NULL, NULL),
-(501, 3, 'Mojito', 80, NULL, NULL),
-(502, 3, 'Boneless Butter Chicken', 310, NULL, NULL),
-(503, 3, 'Chicken Rara', 290, NULL, NULL),
-(504, 3, 'Dragon Chicken', 290, NULL, NULL),
-(505, 3, 'Chicken Pepper', 280, NULL, NULL),
-(506, 3, 'Chicken Tikka', 280, NULL, NULL),
-(507, 3, 'Chicken ManchurianGravy', 280, NULL, NULL),
-(508, 3, 'Paneer Butter Masala', 240, NULL, NULL),
-(509, 3, 'Chicken Fried Rice', 200, NULL, NULL),
-(510, 3, 'French Fries', 170, NULL, NULL),
-(511, 3, 'Lime Juice', 60, NULL, NULL),
-(512, 3, 'Lime Soda', 60, NULL, NULL),
-(513, 3, 'Fruit Salad', 110, NULL, NULL),
-(514, 3, 'Chicken Tikka [1 Piece]', 90, NULL, NULL),
-(515, 3, 'Grape Juice', 80, NULL, NULL),
-(516, 3, 'Butter Naan', 35, NULL, NULL),
-(517, 3, 'Lime Minit', 60, NULL, NULL),
-(518, 3, 'Lime With Mint + Ginger', 60, NULL, NULL),
-(519, 3, 'Butter Kulcha', 30, NULL, NULL),
-(520, 3, 'Ginger Lime', 60, NULL, NULL),
-(521, 3, 'Raita', 10, NULL, NULL),
-(522, 3, 'Tandoori Chicken', 230, NULL, NULL),
-(523, 3, 'Chicken Ghee Roast Dry', 320, NULL, NULL),
-(524, 3, 'Alfaham', 160, NULL, NULL),
-(525, 3, 'Chicken Hot And SourSoup', 120, NULL, NULL),
-(526, 3, 'Chicken Manchow Soup', 120, NULL, NULL),
-(527, 3, 'Coriander Lemon Soup', 100, NULL, NULL),
-(528, 3, 'Cream of Mushroom Soup', 120, NULL, NULL),
-(529, 3, 'Mutton Hot And Sour', 0, NULL, NULL),
-(530, 3, 'Mutton Manchow Soup', 140, NULL, NULL),
-(531, 3, 'Prawns Soup', 140, NULL, NULL),
-(532, 3, 'Veg Hot And Sour Soup', 100, NULL, NULL),
-(533, 3, 'Veg Manchow Soup', 100, NULL, NULL),
-(534, 3, 'Baby Corn ManchurianDry', 200, NULL, NULL),
-(535, 3, 'French Fries', 170, NULL, NULL),
-(536, 3, 'Gobi Manchurian Dry', 200, NULL, NULL),
-(537, 3, 'Mushroom 65', 220, NULL, NULL),
-(538, 3, 'Paneer Tikka 6 Pieces', 240, NULL, NULL),
-(539, 3, 'Paneer Manchurian', 220, NULL, NULL),
-(540, 3, 'Mushroom Manchurian', 220, NULL, NULL),
-(541, 3, 'Mushroom Pepper', 220, NULL, NULL),
-(542, 3, 'Baby Corn Pepper', 220, NULL, NULL);
+(1, 1, 'BBQ Pizza', 210, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(2, 1, 'Special Spicy Pizza', 220, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(3, 1, 'Lions Appetite Pizza', 245, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(4, 1, 'Paneer Ghee Roast Pizza', 240, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(5, 1, 'Cheese N Cheese Pizza', 145, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(6, 1, 'Pizza Box for One [Veg]', 299, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(7, 1, 'Pizza Box for One [Non-Veg]', 325, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(8, 1, 'Family pizza box [Veg]', 745, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(9, 1, 'Family pizza box [Non-Veg]', 799, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(10, 1, 'Pizza Party Box', 1050, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(11, 1, 'Laziz Special Combo', 799, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(12, 1, 'Margherita Pizza', 145, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(13, 1, 'Cheese N Cheese Pizza', 145, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(14, 1, 'Pomidor Pizza', 145, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(15, 1, 'Laziz Desi Veg Pizza', 180, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(16, 1, 'Corn Golden Pizza', 175, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(17, 1, 'Vegetariana Pizza', 180, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(18, 1, 'Garden Fresh Pizza', 190, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(19, 1, 'Veg Paprika Pizza', 190, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(20, 1, 'Paneer Tikka Pizza', 190, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(21, 1, 'Fiery Paneer Pizza', 195, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(22, 1, 'Mushroom Paprika Pizza', 195, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(23, 1, 'Veg Schezwan Pizza', 190, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(24, 1, 'Paneer Chilli Pizza', 195, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(25, 1, 'Carnival Veg Pizza', 210, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(26, 1, 'Mexican Veg Pizza', 215, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(27, 1, 'Corn Exotica Pizza', 215, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(28, 1, 'Veg Extra Delight Pizza', 215, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(29, 1, 'Achari Veg Pizza', 210, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(30, 1, 'Yum Dum Pizza', 210, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(31, 1, 'Curry Veg Pizza', 210, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(32, 1, 'Special Spicy Pizza', 220, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(33, 1, 'Mushroom Garlic Delight Pizza', 215, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(34, 1, 'Pepper Paneer Pizza', 215, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(35, 1, 'Paneer Ghee Roast Pizza', 240, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(36, 1, 'Jamaican Veg Pizza', 240, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(37, 1, 'Veg Extraveganza Pizza', 250, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(38, 1, 'Egg Scrambled Pizza', 230, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(39, 1, 'Egg Hot and Spicy Pizza', 230, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(40, 1, 'Peppy Egg Pizza', 230, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(41, 1, 'Chicken Tikka Pizza', 195, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(42, 1, 'Chicken Schezwan Pizza', 195, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(43, 1, 'Chicken Seekh Kabab Pizza', 195, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(44, 1, 'Tandoori Chicken Pizza', 195, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(45, 1, 'Chicken Hawaiian Pizza', 190, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(46, 1, 'Chicken Keema Pizza', 195, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(47, 1, 'Mexican Chicken Pizza', 210, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(48, 1, 'Carnival Chicken Pizza', 210, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(49, 1, 'BBQ Pizza', 210, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(50, 1, 'Butter Chicken Pizza', 210, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(177, 2, 'Vanilla Milkshake', 63, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(178, 2, 'Classic Veggie Salad', 76, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(179, 2, 'Classic Chicken Salad', 89, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(180, 2, 'Egg Chips Burger', 89, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(181, 2, 'Omelette Cheese Burger', 97, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(182, 2, 'Steak Chicken Burger', 110, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(183, 2, 'Mughlai Chicken Burger', 115, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(184, 2, 'OMG Chicken Burger', 150, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(185, 2, 'Mexi Chicken Burger', 162, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(186, 2, 'Ham Chicken Burger', 167, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(187, 2, 'King of Chicken Burger', 175, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(188, 2, 'Veggie Burger', 76, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(189, 2, 'Veggie Cheese Burger', 84, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(190, 2, 'Paneer Burger', 102, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(191, 2, 'Mushroom Burger', 102, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(192, 2, 'Paneer Cheese Burger', 115, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(193, 2, 'Mushroom Cheese Burger', 115, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(194, 2, 'Mixed Veggie Hot Dog    Burger', 141, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(195, 2, 'Steak Club Sandwich', 167, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(196, 2, 'Mughlai Club Sandwich', 175, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(197, 2, 'Veg Sandwich', 76, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(198, 2, 'Veg Cheese Sandwich', 84, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(199, 2, 'Veggies Salad Sandwich', 89, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(200, 2, 'Paneer Sandwich', 97, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(201, 2, 'Mushroom Sandwich', 97, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(202, 2, 'Veggie Club Sandwich', 136, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(203, 2, 'Hamburg Mixed Veg Club    Sand', 175, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(204, 2, 'Egg Sandwich', 76, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(205, 2, 'Steak Chicken Sandwich', 97, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(206, 2, 'Mughlai Chicken    Sandwich', 102, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(207, 2, 'Veggie Chips Wrap', 39, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(208, 2, 'Fried Parotta Wrap', 50, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(209, 2, 'Mixed Veggie Chips Wrap', 63, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(210, 2, 'Grilled Mix Veg Chips', 71, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(211, 2, 'Paneer Parotta Wrap', 84, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(212, 2, 'Mushroom Parotta Wrap', 84, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(213, 2, 'Grilled Paneer Parotta', 97, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(214, 2, 'Grilled Mushroom    Parotta', 97, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(215, 2, 'French Fries', 76, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(216, 2, 'Omelette Chips Wrap', 58, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(217, 2, 'Steak Chicken Wrap', 84, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(218, 2, 'Special Chicken Kothu    Parot', 89, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(219, 2, 'Mughlai Chicken Wrap', 89, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(220, 2, 'Mughlai Cheese Chicken    Wrap', 102, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(221, 2, 'Kathi Grilled Parotta    Wrap', 110, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(222, 2, 'Mumbai Wala Mixed Wrap', 113, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(223, 2, 'Fatty Grilled Parotta', 115, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(224, 2, 'Banana Milkshake', 63, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(225, 2, 'Oreo Milkshake', 63, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(493, 3, 'Chicken Biryani', 150, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(494, 3, 'Bamboo Chicken Biryani', 330, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(495, 3, 'Bamboo Tikka Biriyani', 380, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(496, 3, 'Mutton Biriyani', 160, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(497, 3, 'Drums Of Heaven', 280, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(498, 3, 'Chicken Lollipop', 230, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(499, 3, 'Alfaham Mandi', 480, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(500, 3, 'Bamboo Mutton Biryani', 440, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(501, 3, 'Mojito', 80, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(502, 3, 'Boneless Butter Chicken', 310, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(503, 3, 'Chicken Rara', 290, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(504, 3, 'Dragon Chicken', 290, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(505, 3, 'Chicken Pepper', 280, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(506, 3, 'Chicken Tikka', 280, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(507, 3, 'Chicken ManchurianGravy', 280, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(508, 3, 'Paneer Butter Masala', 240, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(509, 3, 'Chicken Fried Rice', 200, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(510, 3, 'French Fries', 170, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(511, 3, 'Lime Juice', 60, NULL, 'https://images.unsplash.com/photo-1606674727310-6d'),
+(512, 3, 'Lime Soda', 60, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(513, 3, 'Fruit Salad', 110, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(514, 3, 'Chicken Tikka [1 Piece]', 90, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(515, 3, 'Grape Juice', 80, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(516, 3, 'Butter Naan', 35, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(517, 3, 'Lime Minit', 60, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(518, 3, 'Lime With Mint + Ginger', 60, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(519, 3, 'Butter Kulcha', 30, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(520, 3, 'Ginger Lime', 60, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(521, 3, 'Raita', 10, NULL, 'https://images.unsplash.com/photo-1565299624946-b2'),
+(522, 3, 'Tandoori Chicken', 230, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(523, 3, 'Chicken Ghee Roast Dry', 320, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(524, 3, 'Alfaham', 160, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(525, 3, 'Chicken Hot And SourSoup', 120, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(526, 3, 'Chicken Manchow Soup', 120, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(527, 3, 'Coriander Lemon Soup', 100, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(528, 3, 'Cream of Mushroom Soup', 120, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(529, 3, 'Mutton Hot And Sour', 0, NULL, 'https://images.unsplash.com/photo-1600628421055-4d'),
+(530, 3, 'Mutton Manchow Soup', 140, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(531, 3, 'Prawns Soup', 140, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(532, 3, 'Veg Hot And Sour Soup', 100, NULL, 'https://images.unsplash.com/photo-1558138838-76294'),
+(533, 3, 'Veg Manchow Soup', 100, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(534, 3, 'Baby Corn ManchurianDry', 200, NULL, 'https://images.unsplash.com/photo-1525518392674-39'),
+(535, 3, 'French Fries', 170, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(536, 3, 'Gobi Manchurian Dry', 200, NULL, 'https://images.unsplash.com/photo-1571066811602-71'),
+(537, 3, 'Mushroom 65', 220, NULL, 'https://images.unsplash.com/photo-1590947132387-15'),
+(538, 3, 'Paneer Tikka 6 Pieces', 240, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(539, 3, 'Paneer Manchurian', 220, NULL, 'https://images.unsplash.com/photo-1573821663912-56'),
+(540, 3, 'Mushroom Manchurian', 220, NULL, 'https://images.unsplash.com/photo-1513104890138-7c'),
+(541, 3, 'Mushroom Pepper', 220, NULL, 'https://images.unsplash.com/photo-1615719413546-19'),
+(542, 3, 'Baby Corn Pepper', 220, NULL, 'https://images.unsplash.com/photo-1615719413546-19');
 
 -- --------------------------------------------------------
 
@@ -343,7 +337,8 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `uid`, `item_id`, `review_content`, `review_date`) VALUES
-(41, 2, 493, 'niceeee', '2023-04-12 21:40:38');
+(41, 2, 493, 'niceeee', '2023-04-12 21:40:38'),
+(42, 2, 177, 'must try item', '2023-04-13 00:35:11');
 
 -- --------------------------------------------------------
 
@@ -368,18 +363,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`, `reset_token`, `reset_expiration`, `img`) VALUES
-(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 1, NULL, NULL, NULL),
+(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 0, NULL, NULL, NULL),
 (2, 'user', 'user', 'ashwinkv.akv@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `drops`
---
-ALTER TABLE `drops`
-  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `favourite`
@@ -434,7 +423,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hotel`
@@ -458,17 +447,11 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `drops`
---
-ALTER TABLE `drops`
-  ADD CONSTRAINT `drops_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `favourite`
