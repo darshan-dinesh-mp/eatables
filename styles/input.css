@@ -93,6 +93,10 @@ input.incorrect {
     border-color: red;
 }
 
+.error-div {
+    margin: 20px 0;
+}
+
 .error {
     animation: shake 0.5s;
 }

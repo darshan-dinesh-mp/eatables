@@ -42,12 +42,12 @@
                 <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" />
                 <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
             </form>
-            <div class='error-div my-4'>
+            <div class='error-div'>
                 <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-all-cred"></p>
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-pwd"></p>
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-username"></p>
                 <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-name"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-username"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
+                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-pwd"></p>
             </div>
             <p class="text-sm text-center md:text-lg font-poppy">
                 have an account?

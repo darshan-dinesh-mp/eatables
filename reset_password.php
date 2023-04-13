@@ -36,11 +36,23 @@
 
       if ($user) {
   ?>
-        <form action="reset_password.php" method="post">
-          <input type="text" name="pass" id="pass">
-          <input type="text" name="cnfpass" id="cnfpass">
-          <input type="submit" name="submit">
-        </form>
+        <div class="bg-brand bg-img min-h-screen grid">
+          <div class="flex flex-col items-center justify-center">
+            <div class="flex flex-col items-center justify-center py-16 md:py-64 md:space-y-4 space-y-2">
+              <div class="flex flex-col items-center pb-2 md:pb-4">
+                <a href="login.php" class="text-5xl md:text-6xl font-colvet">
+                  eatables.
+                </a>
+                <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
+              </div>
+              <form action="reset_password.php" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4" method="post">
+                <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" name="pass" id="pass">
+                <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" name="cnfpass" id="cnfpass">
+                <input class="py-[0.50rem] md:py-[0.70rem] px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit">
+              </form>
+            </div>
+          </div>
+        </div>
 
   <?php
       } else {
