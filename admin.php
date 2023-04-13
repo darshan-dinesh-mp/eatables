@@ -44,11 +44,9 @@ if (!$_SESSION['status']) {
 	</div>
 	<div class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy text-white w-full pt-8 md:pt-12" id="links-container">
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i> ADD NEW RESTAURANT</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/edit.php'><i class="fa-solid fa-pen mr-2"></i>UPDATE RESTAURANT</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/delete_hotel.php'><i class="fa-sharp fa-solid fa-trash mr-2"></i>REMOVE RESTAURANT</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD ITEM</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-solid fa-pen mr-2"></i>UPDATE ITEM</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-trash mr-2"></i>REMOVE ITEM</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/manage_restaurant.php'><i class="fa-solid fa-pen mr-2"></i>MANAGE RESTAURANT</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_item.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD ITEM</a>
+
 	</div>
 
 	<div id="content-container" class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy w-full pt-8 md:pt-12"></div>
