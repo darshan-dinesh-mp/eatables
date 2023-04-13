@@ -38,7 +38,7 @@ if (!$_SESSION['status']) {
 			<form action="logout.php" method="post">
 				<button type="submit" name="logout" class="logout-btn">
 					<i class="fa-solid fa-right-from-bracket text-2xl"></i>
-				</button>
+				</button> 
 			</form>
 		</div>
 	</div>

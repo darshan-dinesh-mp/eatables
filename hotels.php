@@ -32,11 +32,12 @@ if (!$_SESSION['status']) {
 	$sql = "select * from item where hotel_id='$hotel_id'";
 	$res = $con->query($sql);
 
-	$sql = "select links from hotel where hotel_id='$hotel_id'";
+	$sql = "select * from hotel where hotel_id=$hotel_id";
 	$row = $con->query($sql);
-
+	$desc='';
 	while ($rowTwo = $row->fetch_assoc()) {
 		$links = $rowTwo['links'];
+		$desc=$rowTwo['disc'];
 	}
 	?>
 	<div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
@@ -69,7 +70,16 @@ if (!$_SESSION['status']) {
 									?>
 					</h1>
 				</div>
+				<?php
+				if(!isset($desc)){
+				?>
 				<p class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, incidunt deserunt optio pariatur dolorem natus est quod eos error, rem porro ut amet praesentium voluptas possimus quidem, laborum accusamus vero!</p>
+				<?php
+				}
+				else{
+					echo"<p class='font-poppy text-xl pt-2 text-justify'>'$desc'</p>";
+				}
+				?>
 				<div class="flex space-x-5 mt-4">
 					<a href='<?php echo $links; ?>'><img class="w-21 h-9 cursor-pointer" src='media/images/zomato.png' /></a>
 					<a href='https://www.swiggy.com'><img class="w-21 h-9 cursor-pointer" src='media/images/swiggy.png' /></a>
@@ -98,7 +108,7 @@ if (!$_SESSION['status']) {
 					$i++;
 					$img_links = $row['item_img'];
 			?>
-					<a class="text-white bg-black hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-duration-500" style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url(<?php echo $img_links; ?>); background-size:cover;" href="itempage.php?item_id=<?php echo $row['item_id']; ?>">
+					<a class="text-white hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center bg-img-duration-500" style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url(<?php echo $img_links; ?>); background-size:cover;" href="itempage.php?item_id=<?php echo $row['item_id']; ?>">
 						<p class="text-white-700 text-2xl"><?php echo $row['item_name']; ?></p>
 					</a>
 
