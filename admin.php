@@ -4,10 +4,9 @@ if (!$_SESSION['status']) {
 	header("Location: login.php");
 	exit;
 } elseif ($_SESSION['user_type'] != 0) {
-	
+
 	echo "<script>alert('engoottaaaaaa')</script>";
 	echo "<script>window.location.href='login.php'</script>";
-	
 }
 ?>
 <!DOCTYPE html>
@@ -44,15 +43,15 @@ if (!$_SESSION['status']) {
 		</div>
 	</div>
 	<div class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy text-white w-full pt-8 md:pt-12" id="links-container">
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i> ADD NEW RESTAURANT</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='update_hotel.php'><i class="fa-solid fa-pen mr-2"></i>UPDATE RESTAURANT</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='delete_hotel.php'><i class="fa-sharp fa-solid fa-trash mr-2"></i>REMOVE RESTAURANT</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD ITEM</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='add_hotel.php'><i class="fa-solid fa-pen mr-2"></i>UPDATE ITEM</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='add_hotel.php'><i class="fa-sharp fa-solid fa-trash mr-2"></i>REMOVE ITEM</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i> ADD NEW RESTAURANT</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/edit.php'><i class="fa-solid fa-pen mr-2"></i>UPDATE RESTAURANT</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/delete_hotel.php'><i class="fa-sharp fa-solid fa-trash mr-2"></i>REMOVE RESTAURANT</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD ITEM</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-solid fa-pen mr-2"></i>UPDATE ITEM</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-trash mr-2"></i>REMOVE ITEM</a>
 	</div>
 
-	<div id="content-container"></div>
+	<div id="content-container" class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy w-full pt-8 md:pt-12"></div>
 	<script>
 		var linksContainer = document.getElementById('links-container');
 		var contentContainer = document.getElementById('content-container');
