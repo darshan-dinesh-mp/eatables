@@ -134,7 +134,7 @@ if (!isset($_SESSION["path"])) {
                     } else {
                               ?>
                               </div>
-                              <p class=' font-poppy text-xl text-center md:text-center'>No favorites found.</p>
+                              <p class=' font-poppy font-medium text-xl text-center md:text-center'>No favorites found.</p>
                          <?php
                     }
                } elseif ($review_id == 1) {
@@ -172,12 +172,12 @@ if (!isset($_SESSION["path"])) {
                                    }
                               } else {
                                    echo "<h1 class='opacity-0 '></h1>";
-                                   echo "<h1 class='font-poppy text-xl font-bold text-center mt-28'>Oops no reviews found!</h1>";
+                                   echo "<h1 class='font-poppy text-xl font-medium text-center mt-28'>Oops no reviews found!</h1>";
                                    echo "<h1 class='opacity-0 '></h1>";
                               }
                          } elseif ($review_id == 2) {
                               ?>
-                              <h1 class='font-poppy text-xl font-bold text-center mt-28'>Something big is cooking!</h1>
+                              <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking!</h1>
                          <?php
                          }
                          ?>
