@@ -35,6 +35,7 @@
         </div>
         <?php
         session_start();
+        
         $con = new mysqli("localhost", "root", "", "eatables");
         if (mysqli_connect_error()) {
             die("Not connected");
@@ -59,23 +60,29 @@
                     while ($row = $res->fetch_assoc()) {
                         $img_link = $row['item_img'];
                         echo "
-                        <div style='background-image:linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)),url(" . $img_link . ")' class='h-full bg-cover rounded-xl w-full text-white pl-5 space-y-4 flex flex-col items-start justify-center my-4'>
+                        <div style='background-image:linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)),url(" . $img_link . ")' class='h-full bg-cover rounded-xl w-full text-white pl-5 py-10 space-y-4 flex flex-col items-start justify-center my-4'>
                             <div class=''>   
                                 <h2 class='text-4xl font-bold capitalize'>$row[item_name]</h2>
-                                <h1 class='text-2xl font-medium'>$row[hotel_name]</h1>
+                                <h1 class='text-2xl font-medium py-1'>$row[hotel_name]</h1>
                                 <h3><span class='text-2xl'>₹</span><span class='text-4xl font-medium'>" . $row["item_price"] . ".00</span></h3>
                             </div>";
                 ?>
-                        <div class="w-full">
+                        <div class="w-full flex space-x-2">
                             <form method="post" class="">
                                 <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-semibold bg-white/40 py-2 px-8 rounded-xl" name="add_favourite">
-                                    <i class="fa-solid fa-heart text-3xl text-red-600 group-hover:scale-[1.10] animate-pulse duration-500"></i>
-                                    <h1>Add to favorite.</h1>
+                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favourite">
+                                    <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
+                                    <h1>Add to favorite</h1>
+                                </button>
+                            </form>
+                            <form method="post" class="">
+                                <input type="hidden" name="item_id">
+                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
+                                    <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
+                                    <h1>Remove favorite</h1>
                                 </button>
                             </form>
                         </div>
-
             </div>
 
         </div>
