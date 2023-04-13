@@ -40,6 +40,7 @@
                 <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" />
                 <input type="password" name="password" id="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" />
                 <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" />
+                <div class="w-full text-poppy text-center" id="error-div"></div>
                 <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
             </form>
             <p class="text-sm text-center md:text-lg font-poppy">
@@ -57,6 +58,7 @@
     $erremail = false;
     $errpassword = false;
     $errconfirm = false;
+    $error_cred = false;
     $flag = 1;
     if (isset($_POST['submit'])) {
         $fullname = $_POST["fullname"];
@@ -150,10 +152,12 @@
             echo "<script>alert('PASSWORD MUST CONTAIN 8 CHARACTER INCLUDING NUMBER AND CHARACTER');</script>";
         }
         if ($errconfirm) {
+            echo "<script>document.getElementById('error-div').innerHTML='Password does not match!';</script>";
             echo "<script>document.getElementById('confirm').classList.add('error');</script>";
             echo "<script>alert('PASSWORD DIDNT MATCH');</script>";
         }
         if ($error_cred) {
+            echo "<script>document.getElementById('error-').innerHTML='Fill all credentials!';</script>";
             echo "<script>document.getElementById('submit').classList.add('error');</script>";
             echo "<script>alert('FILL ALL THE CREDENTIALS');</script>";
         }
