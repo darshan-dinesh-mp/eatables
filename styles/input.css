@@ -32,6 +32,7 @@
 .bg-img {
     background-image: url(../media/images/BgCover.png);
     background-size: cover;
+    background-attachment: fixed;
 }
 .bg-brand {
     background-color: #f9bb21;
@@ -93,7 +94,7 @@ input.incorrect {
 }
 
 .error {
-    animation: shake .5s;
+    animation: shake 0.5s;
 }
 
 .error::placeholder {

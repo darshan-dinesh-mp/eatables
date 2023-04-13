@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
      header("Location: login.php");
      exit;
 }
-$uid=$_SESSION['id'];
+$uid = $_SESSION['id'];
 $fullName = $_SESSION['fullname'];
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
@@ -15,9 +15,9 @@ $row = $res->fetch_assoc();
 $imageNull = $row["img"];
 if (isset($_GET['review'])) {
      $review_id = $_GET['review'];
- } else {
+} else {
      $review_id = "";
- }
+}
 if (!isset($_SESSION["path"])) {
      $path = "media/images/user-image/" . $row["img"];
 } else {
@@ -42,7 +42,7 @@ if (!isset($_SESSION["path"])) {
 </head>
 
 <body>
-     <div class="bg-brand min-h-screen bg-img w-full flex flex-col items-center p-4 md:py-0 md:px-16">
+     <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
                <a href="index.php" class="text-2xl md:text-4xl font-colvet">
                     eatables.
@@ -84,7 +84,7 @@ if (!isset($_SESSION["path"])) {
                     </a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
-               <div class="flex items-center pt-4 space-x-2 w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
+               <div class="flex items-center pt-4 space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</a>
@@ -100,25 +100,28 @@ if (!isset($_SESSION["path"])) {
                </div>
 
           </div>
-          <?php 
-          if($review_id==null){
+          <?php
+          if ($review_id == null) {
           ?>
 
 
-          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
-               <?php
-               $user = $_SESSION['id'];
-               $sql = "SELECT f.fav_id, i.item_id, i.item_name, i.item_price, h.hotel_name
-               FROM favourite f
-               INNER JOIN item i ON f.item_id = i.item_id
-               INNER JOIN hotel h ON i.hotel_id = h.hotel_id
-               WHERE f.uid = '$user'";
-               $result = $con->query($sql);
+               <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full md:w-4/6">
+                    <?php
+                    $user = $_SESSION['id'];
+                    $sql = "SELECT f.fav_id, i.item_id, i.item_name, i.item_price,i.item_img, h.hotel_name
+                    FROM favourite f
+                    INNER JOIN item i ON f.item_id = i.item_id
+                    INNER JOIN hotel h ON i.hotel_id = h.hotel_id
+                    WHERE f.uid = '$user'";
+                    $result = $con->query($sql);
 
-               if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                         echo "
-                         <div class='font-poppy rounded-2xl bg-img-food from-white-op to-black-op  pb-4 px-6 hover:scale-[1.01] hover:shadow-xl duration-500 flex flex-col items-end'>
+                    if ($result->num_rows > 0) {
+                         while ($row = $result->fetch_assoc()) {
+                              $img_links = $row['item_img'];
+                    ?>
+                              <div class='font-poppy rounded-2xl from-white-op to-black-op  pb-4 px-6 hover:scale-[1.01] hover:shadow-xl duration-500 flex flex-col items-end' style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url( <?php echo $img_links; ?>); background-size:cover;">
+                              <?php
+                              echo "
                               <a href='remove-favorite.php?item_id=$row[item_id]' class='hover:scale-[1.2] hover:rotate-[30deg] duration-500 mt-4'>
                                              <i class='fa-solid fa-xmark text-4xl text-red-500'></i>
                                </a>
@@ -129,68 +132,60 @@ if (!isset($_SESSION["path"])) {
                               </a>
                          </div>
                               ";
+                         }
+                    } else {
+                              ?>
+                              </div>
+                              <p class=' font-poppy text-xl text-center md:text-center'>No favorites found.</p>
+                         <?php
                     }
-               } else {
-               ?>
-          </div>
+               } elseif ($review_id == 1) {
+                         ?>
+                         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-5 place-content-evenly py-8 w-full md:w-4/6">
+                              <?php
+                              // Retrieve reviews from database
+                              $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date
+                    FROM review
+                    INNER JOIN item on item.item_id=review.item_id
+                    INNER JOIN hotel on hotel.hotel_id=item.hotel_id
+                    WHERE uid = $uid
+                    ORDER BY review.review_date DESC";
 
-          <p class='font-poppy text-xl text-center md:text-center'>No favorites found.</p>
-
-     <?php
-          }
-     }
-          elseif($review_id==1){
-     ?>
-       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
-       <?php  
-       // Retrieve reviews from database
-       $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date
-       FROM review
-       INNER JOIN item on item.item_id=review.item_id
-       INNER JOIN hotel on hotel.hotel_id=item.hotel_id
-       WHERE uid = $uid
-       ORDER BY review.review_date DESC";
-
-       $result = mysqli_query($con, $sql);
-       // Display reviews
-       if (mysqli_num_rows($result) > 0) {
-           while ($row = mysqli_fetch_assoc($result)) {
-               if ($imageNull == null) {
-                   $image="media/images/user.png";
-               } else {
-                   $image = "media/images/user-image/" . $imageNull;
-               }
-               echo "
-               <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
-                   <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
-                       <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
-                       <h1 class='text-lg font-poppy font-medium'>$username</h1>
-                       <h2 class='text-lg font-poppy font-medium'>$row[item_name]</h2>
-                       <h3 class='text-lg font-poppy font-medium'>$row[hotel_name]</h3>
-                   </div>  
-                   <div class='flex items-start flex-col justify-center'>
-                       <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
-                   </div>
-               </div>
+                              $result = mysqli_query($con, $sql);
+                              // Display reviews
+                              if (mysqli_num_rows($result) > 0) {
+                                   while ($row = mysqli_fetch_assoc($result)) {
+                                        if ($imageNull == null) {
+                                             $image = "media/images/user.png";
+                                        } else {
+                                             $image = "media/images/user-image/" . $imageNull;
+                                        }
+                                        echo "
+                                        <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white w-full odd:bg-white/20 odd:text-black'>
+                                             <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
+                                                  <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
+                                                  <h1 class='text-lg font-poppy font-medium'>$username</h1>
+                                             </div>  
+                                             <div class='flex items-start flex-col justify-center'>
+                                                  <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
+                                             </div>
+                                        </div>
                        ";
-           }
-       } else {
-           echo "<h1 class='font-poppy text-center text-xl'>Oops no reviews found!</h1>";
-       }
-     }
-     elseif($review_id==2){
-          ?>
-          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-4/6">
-               <h1>SOMETHIG BIG IS COOKING</h1>
-     </div>
+                                   }
+                              } else {
+                                   echo "<h1 class='opacity-0 '></h1>";
+                                   echo "<h1 class='font-poppy text-xl font-bold text-center mt-28'>Oops no reviews found!</h1>";
+                                   echo "<h1 class='opacity-0 '></h1>";
+                              }
+                         } elseif ($review_id == 2) {
+                              ?>
+                              <h1 class='font-poppy text-xl font-bold text-center mt-28'>Something big is cooking!</h1>
+                         <?php
+                         }
+                         ?>
 
+                         </div>
 
-     <?php
-     }
-       ?>
-
-          </div>
-
-     </div>
+               </div>
 
 </body>
