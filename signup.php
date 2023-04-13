@@ -142,7 +142,7 @@
             $error_cred = true;
         }
         if ($errfullname) {
-            echo "<script>document.getElementById('error-name').innerHTML='Error in Full name!';</script>";
+            echo "<script>document.getElementById('error-name').innerHTML='Error in full name!';</script>";
             echo "<script>document.getElementById('fullname').classList.add('error');</script>";
             // echo "<script>alert('FULL NAME CANT HAVE NUMBERS');</script>";
         }
