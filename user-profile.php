@@ -84,19 +84,19 @@ if (!isset($_SESSION["path"])) {
                     </a>
                     <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
-               <div class="flex items-center pt-4 space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+               <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
+                    <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <a href="user-profile.php" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Favourite</a>
-                    </button>
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                         <span class="font-poppy font-semibold">Favorite</span>
+                    </a>
+                    <a href="user-profile.php?review=1" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
-                         <a href="user-profile.php?review=2" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Drops</a>
-                    </button>
-                    <button class="flex items-center space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                         <span class="font-poppy font-semibold"> Drops</span>
+                    </a>
+                    <a href="user-profile.php?review=2" class="w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <a href="user-profile.php?review=1" class="font-poppy font-bold tracking-wider text-sm md:text-xl">Reviews</a>
-                    </button>
+                         <span class="font-poppy font-semibold"> Reviews</span>
+                    </a>
                </div>
 
           </div>
