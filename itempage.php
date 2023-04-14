@@ -17,7 +17,7 @@
 <body>
     <div class="bg-brand min-h-screen bg-img w-full flex flex-col items-center p-4 md:py-0 md:px-16">
         <div class="flex items-center w-full justify-between md:py-4">
-            <a href="index.php" class="text-2xl md:text-4xl font-colvet">
+            <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                 eatables.
             </a>
             <div class='flex items-center justify-between w-32'>

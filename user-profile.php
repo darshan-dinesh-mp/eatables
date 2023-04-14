@@ -44,7 +44,7 @@ if (!isset($_SESSION["path"])) {
 <body>
      <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
-               <a href="index.php" class="text-2xl md:text-4xl font-colvet">
+               <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                     eatables.
                </a>
                <form action="logout.php" method="post">
@@ -82,20 +82,19 @@ if (!isset($_SESSION["path"])) {
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <!-- <a href="#" class="bg-black py-2 rounded-md px-6 text-white">Edit Profile</a> -->
                </div>
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <span class="font-poppy font-semibold">Favorite</span>
+                         <span class="font-poppy font-semibold md:block hidden">Favorite</span>
                     </a>
                     <a href="user-profile.php?review=1" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
-                         <span class="font-poppy font-semibold"> Drops</span>
+                         <span class="font-poppy font-semibold md:block hidden"> Drops</span>
                     </a>
                     <a href="user-profile.php?review=2" class="w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
-                         <span class="font-poppy font-semibold"> Reviews</span>
+                         <span class="font-poppy font-semibold md:block hidden"> Reviews</span>
                     </a>
                </div>
 
