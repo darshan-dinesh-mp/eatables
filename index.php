@@ -57,10 +57,11 @@ if (!$_SESSION['status']) {
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<a href="user-profile.php">
+				<a href="user-profile.php" class="flex items-center justify-center space-x-3">
+					<!-- <h1 class="font-poppy"><?php echo $_SESSION['fullname']; ?></h1> -->
 					<img class="w-9 h-9 rounded-full border-2 shadow-sm border-black" src="media/images/user-image/<?php
-																		echo $user_img;
-																		?>" />
+																								echo $user_img;
+																								?>" />
 					<!-- <i class="fa-solid fa-user text-2xl"></i> -->
 				</a>
 			</div>

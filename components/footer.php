@@ -3,18 +3,19 @@
           <div>
                <h1 class="text-4xl md:text-5xl font-colvet text-brand">eatables.</h1>
                <p class="font-medium font-poppy text-xl py-4">
-                    Because every meal<br>
-                    should be an adventure.
+                    <!-- Because every meal<br>
+                    should be an adventure. -->
+                    Unlock the flavors of the world with Eatables:<br> Your ultimate food database.
                </p>
                <div class=" text-xl">
-                    <a class="text-brand-hover duration-300" href="https://twitter.com/youreatables">
-                         <i class="fa-brands fa-twitter"></i>
+                    <a class="text-brand-hover duration-300 text-white hover:text-[#fdbe21]" href="https://twitter.com/youreatables">
+                         <i class="fa-brands fa-twitter "></i>
                     </a>
                     <a class="text-brand-hover duration-300 px-4" href="https://www.instagram.com/youreatables">
-                         <i class="fa-brands fa-instagram"></i>
+                         <i class="fa-brands fa-instagram text-white hover:text-[#fdbe21]"></i>
                     </a>
                     <a class="text-brand-hover duration-300" href="https://twitter.com/youreatables">
-                         <i class="fa-brands fa-youtube"></i>
+                         <i class="fa-brands fa-youtube text-white hover:text-[#fdbe21]"></i>
                     </a>
                </div>
           </div>
