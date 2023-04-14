@@ -28,7 +28,7 @@
                     <a href="login.php" class="text-5xl md:text-6xl font-colvet">
                         eatables.
                     </a>
-                    <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
+                    <p class="font-poppy text-sm font-medium md:text-md">Find your next favorite.</p>
                 </div>
                 <form action="login.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
                     <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" required />
@@ -39,10 +39,10 @@
                 <br>
             </div>
             <div class="flex md:flex-row flex-col items-center justify-center w-full">
-                <a href="forgot.php" class="font-poppy md:text-lg underline hover:text-gray-700">
+                <a href="forgot.php" class="font-poppy md:text-lg font-medium underline hover:text-gray-700">
                     forgot password?
                 </a>
-                <a href="signup.php" class="font-poppy md:text-lg underline hover:text-slate-800">
+                <a href="signup.php" class="font-poppy md:text-lg font-medium underline hover:text-slate-800">
                     create account
                 </a>
             </div>

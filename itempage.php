@@ -35,7 +35,7 @@
         </div>
         <?php
         session_start();
-        
+
         $con = new mysqli("localhost", "root", "", "eatables");
         if (mysqli_connect_error()) {
             die("Not connected");
@@ -45,6 +45,16 @@
             $_SESSION['item_id'] = $item_id;
         } else {
             $item_id = $_SESSION['item_id'];
+        }
+
+        $hide = true;
+        if (isset($_POST['add_favorite'])) {
+            $item_id = $_POST['item_id'];
+            $user_id = $_SESSION['id'];
+            $sql = "INSERT INTO favourite (uid, item_id) VALUES ('$user_id','$item_id')";
+            if ($con->query($sql)) {
+                $hide = false; // update the value of $hide when the favorite is added
+            }
         }
 
         $sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name
@@ -65,70 +75,77 @@
                                 <h2 class='text-4xl font-bold capitalize'>$row[item_name]</h2>
                                 <h1 class='text-2xl font-medium py-1'>$row[hotel_name]</h1>
                                 <h3><span class='text-2xl'>₹</span><span class='text-4xl font-medium'>" . $row["item_price"] . ".00</span></h3>
-                            </div>";
-                ?>
-                        <div class="w-full flex space-x-2">
+                            </div>
+                            <div class='w-full flex space-x-2'>";
+
+                        if ($hide == true) : ?>
                             <form method="post" class="">
-                                <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favourite">
+                                <input type="hidden" name="item_id" value="<?php echo $item_id ?>">
+                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favorite">
                                     <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                     <h1>Add to favorite</h1>
                                 </button>
                             </form>
+                        <?php endif; ?>
+
+                        <!-- Remove favorite button -->
+                        <?php if ($hide == false) : ?>
                             <form method="post" class="">
-                                <input type="hidden" name="item_id">
+                                <input type="hidden" name="item_id" value="<?php echo $item_id ?>">
                                 <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
                                     <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                     <h1>Remove favorite</h1>
                                 </button>
                             </form>
-                        </div>
+                        <?php endif; ?>
+
             </div>
-
         </div>
-        <div class="w-full flex items-start flex-col my-4">
-            <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
-                <input type='text' maxlength="150" class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
-                <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
-                    <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
-                </button>
-            </form>
-        </div>
-
-    <?php
-                    }
-
-    ?>
 
     </div>
+    <div class="w-full flex items-start flex-col my-4">
+        <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
+            <input type='text' maxlength="150" class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
+            <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
+                <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
+            </button>
+        </form>
+    </div>
 
-    <h1 class="text-2xl pb-3 font-poppy font-semibold">Latest Reviews</h1>
+<?php
+                    }
+
+?>
+
+</div>
+
+<h1 class="text-2xl pb-3 font-poppy font-semibold">Latest Reviews</h1>
 <?php
                 }
                 //adding to favouirte
                 $user_id = $_SESSION["id"];
 
                 // Check if form was submitted
-                if (isset($_POST["add_favourite"])) {
+                if (isset($_POST["add_favorite"])) {
 
                     // Check if item is already in favourites
                     $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
                     $check_result = $con->query($check_sql);
                     if ($check_result->num_rows > 0) {
-                        // Item is already in favourites, show error message
-                        echo "<h1 class='font-poppy text-xl font-bold'>Item is already in favourites.</h1>";
-                    } else {
-                        // Item is not in favourites, add it
-                        $add_sql = "INSERT INTO favourite (uid, item_id) VALUES ($user_id, $item_id)";
-                        $add_result = $con->query($add_sql);
-                        if ($add_result) {
-                            // Item added to favourites, show success message
-                            echo "<h1 class='font-poppy text-xl font-bold'>Item added to favourite!</h1>";
-                        } else {
-                            // Error adding item to favourites, show error message
-                            echo "Error adding item to favourites.";
-                        }
+                        // echo "<h1 class='font-poppy text-xl font-bold'>Item is already in favourites.</h1>";
+                        $hide = true;
                     }
+                } else  if (isset($_POST["remove_favorite"])) {
+                    $sql = "DELETE FROM favourite WHERE item_id = $item_id AND uid = $user_id";
+                    $res = $con->query($sql);
+
+                    if ($res) {
+                        $hide = false;
+                    } else {
+                        $hide = true;
+                    }
+                } else {
+                    echo "";
                 }
                 // Check conection
                 if (!$con) {

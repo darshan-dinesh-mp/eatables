@@ -17,7 +17,7 @@
   <div class="bg-brand bg-img min-h-screen grid">
     <div class="flex flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center py-16 md:py-64 md:space-y-4 space-y-2">
-        <div class="flex flex-col items-center pb-2 md:pb-4">
+        <div class="flex flex-col items-center pb-2 md:pb-0">
           <a href="login.php" class="text-5xl md:text-6xl font-colvet">
             eatables.
           </a>

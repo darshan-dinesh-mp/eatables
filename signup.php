@@ -21,20 +21,20 @@
     $error = "";
     ?>
     <div class="bg-brand bg-img min-h-screen flex flex-col items-center py-4 px-4 md:px-16">
-        <div class="flex items-center w-full justify-between md:pt-4">
+        <div class="flex items-center w-full justify-between">
             <div class="flex items-center">
                 <i class="fa-solid fa-user text-2xl"></i>
                 <h2 class="pl-1 md:pl-2 font-poppy font-medium text-sm md:text-lg">create account</h2>
             </div>
         </div>
-        <div class="flex items-center justify-center flex-col h-[90vh] my-12 md:mt-0">
+        <div class="flex items-center justify-center flex-col h-[90vh] md:mt-0">
             <div class="flex flex-col items-center justify-center pb-2 md:pb-4">
                 <a href="index.php" class="outline-none text-5xl md:text-6xl font-colvet">
                     eatables.
                 </a>
                 <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
             </div>
-            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 place-items-center">
+            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
                 <input type="text" name="fullname" id="fullname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2" placeholder="fullname" autocomplete="on" />
                 <input type="text" name="username" id="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" />
                 <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" />
