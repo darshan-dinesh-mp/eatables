@@ -63,7 +63,7 @@ if (!isset($_SESSION['id'])) {
             }
         }
         // Update user information in database
-    
+
         // Redirect to profile page
         header("Location:user-profile.php");
         exit();
@@ -71,31 +71,30 @@ if (!isset($_SESSION['id'])) {
 
     // Display user information and edit form
     ?>
-    <div class="bg-brand min-h-screen bg-img w-full flex flex-col items-center justify-center p-4 md:py-0 md:px-16">
-        <div class="flex items-center w-full justify-between">
-            <a href="index.php" class="text-2xl md:text-4xl font-colvet">
+    <div class="bg-brand min-h-screen bg-img w-full flex flex-col items-center p-4 md:py-0 md:px-16">
+        <div class="flex items-center w-full justify-between md:mt-4">
+            <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                 eatables.
             </a>
-            <a href="user-profile.php">
-                <i class="fa-solid fa-xmark text-2xl"></i>
+            <a href="user-profile.php" class="text-2xl duration-500 hover:rotate-[90deg]">
+                <i class="fa-solid fa-xmark "></i>
             </a>
         </div>
-        <form method="POST" action="" enctype="multipart/form-data"
-            class="grid place-items-center justify-center md:grid-rows-2 grid-cols-1 gap-3 mx-4 mt-52 md:mt-32">
+        <form method="POST" action="" enctype="multipart/form-data" class="grid place-items-center justify-center md:grid-rows-2 grid-cols-1 gap-3 mx-4 mt-52 md:mt-32">
+            <i class="fa-solid fa-user-pen text-5xl"></i>
             <h1 class='font-poppy text-3xl'>Edit Profile</h1>
-            <input type="text" name="fullname"
-                class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl  px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                value="<?php echo $user['fullname']; ?>">
-            <input type="email" name="email"
-                class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                value="<?php echo $user['email']; ?>">
-            <input type="file" name="img"
-                class="font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
-            <input type="submit" value="update"
-                class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500">
+            <input type="text" name="fullname" class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl  px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $user['fullname']; ?>">
+            <input type="email" name="email" class="hover:border-brand outline-none opacity-90 border-0 w-full md:w-auto text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $user['email']; ?>">
+            <input type="file" name="img" class="font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
+            <input type="submit" value="update" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500">
         </form>
         <div class="my-24">
-            <a href="delete-account.php" class="font-poppy">Delete your account!</a>
+            <a href="delete-account.php" class="font-poppy">
+                <i class="fa-solid fa-trash"></i>
+                <span>
+                    Delete your account!
+                </span>
+            </a>
         </div>
     </div>
 </body>

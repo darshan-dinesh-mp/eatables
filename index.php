@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_img = $_SESSION['img'];
 if (!$_SESSION['status']) {
 	header("Location: login.php");
 	exit;
@@ -56,11 +57,12 @@ if (!$_SESSION['status']) {
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<form action="user-profile.php" method="post">
-					<button type="submit" name="logout" class="logout-btn">
-						<i class="fa-solid fa-user text-2xl"></i>
-					</button>
-				</form>
+				<a href="user-profile.php">
+					<img class="w-9 h-9 rounded-full border-2 shadow-sm border-black" src="media/images/user-image/<?php
+																		echo $user_img;
+																		?>" />
+					<!-- <i class="fa-solid fa-user text-2xl"></i> -->
+				</a>
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
 				<div class="flex items-center justify-around relative w-full md:w-2/4">
