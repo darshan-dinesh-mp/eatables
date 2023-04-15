@@ -116,11 +116,11 @@ if (!isset($_SESSION["path"])) {
                          while ($row = $result->fetch_assoc()) {
                               $img_links = $row['item_img'];
                     ?>
-                              <div class='font-poppy rounded-2xl from-white-op to-black-op  pb-4 px-6 hover:scale-[1.01] hover:shadow-xl duration-500 flex flex-col items-end' style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url( <?php echo $img_links; ?>); background-size:cover;">
-                                   <?php
-                                   echo "
+                              <div class='font-poppy rounded-2xl from-white-op to-black-op  pb-4 px-6 hover:scale-[1.01] hover:shadow-xl duration-500 flex flex-col items-end justify-between' style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url( <?php echo $img_links; ?>); background-size:cover;">
+                              <?php
+                              echo "
                                    <a href='remove-favorite.php?item_id=$row[item_id]' class='hover:rotate-[90deg] duration-500 mt-4 '>
-                                                  <i class='fa-solid fa-xmark text-4xl text-white'></i>
+                                                  <i class='fa-solid fa-xmark text-2xl text-white'></i>
                                    </a>
                                    <a href='itempage.php?item_id=$row[item_id]' class='pt-40 w-full'>
                                              <h1 class='text-white font-medium text-md'> " . $row['hotel_name'] . "</h1>

@@ -36,7 +36,7 @@
           <div class="font-poppy">
                <h1 class="text-white font-medium font-xl pt-4 pb-2">Helpful Links</h1>
                <nav class="flex flex-col space-y-2">
-                    <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
+                    <a class="text-sm text-brand-hover duration-300" href="add-restaurant.php">
                          Submit new restaurant
                     </a>
                     <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
@@ -50,13 +50,13 @@
           <div class="font-poppy">
                <h1 class="text-white font-medium font-xl pt-4 pb-2">Legals</h1>
                <nav class="flex flex-col space-y-2">
-                    <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
+                    <a class="text-sm text-brand-hover duration-300" href="docs/eat-docs.php">
                          Privacy Policy
                     </a>
-                    <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
+                    <a class="text-sm text-brand-hover duration-300" href="docs/eat-docs.php">
                          Terms & Conditions
                     </a>
-                    <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
+                    <a class="text-sm text-brand-hover duration-300" href="docs/eat-docs.php">
                          Report an issue!
                     </a>
                </nav>

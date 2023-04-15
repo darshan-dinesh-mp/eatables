@@ -41,10 +41,11 @@ if (!$_SESSION['status']) {
 	}
 	?>
 	<div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
-		<div class="flex items-center w-full justify-between md:pt-4">
-			<a href="index.php" class="text-4xl md:text-5xl font-colvet">
+		<div class="flex items-center w-full justify-between">
+			<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 				eatables.
 			</a>
+
 			<a href="index.php" class="text-3xl duration-500 hover:rotate-[90deg]">
 				<i class="fa-solid fa-xmark"></i>
 			</a>
@@ -53,6 +54,16 @@ if (!$_SESSION['status']) {
 			<div class='w-full md:w-3/6'>
 				<div class="flex flex-col">
 					<h1 class='font-poppy text-2xl md:text-3xl font-bold'><?php echo $hotel_name ?></h1>
+					<div class="flex space-x-5 my-1">
+						<p class="space-x-1">
+							<i class="fa-solid fa-phone"></i>
+							<span class="font-medium">9232387927</span>
+						</p>
+						<p class="space-x-1">
+							<i class="fa-solid fa-envelope"></i>
+							<span class="font-medium"> youreatable@gmail.com</span>
+						</p>
+					</div>
 					<h1 class="text-xl"><?php
 									if ($rating == '5') {
 										echo "⭐⭐⭐⭐⭐";
@@ -73,6 +84,7 @@ if (!$_SESSION['status']) {
 				<?php
 				if (!isset($desc)) {
 				?>
+
 					<p class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, incidunt deserunt optio pariatur dolorem natus est quod eos error, rem porro ut amet praesentium voluptas possimus quidem, laborum accusamus vero!</p>
 				<?php
 				} else {
@@ -86,7 +98,7 @@ if (!$_SESSION['status']) {
 			</div>
 			<div class='w-full md:w-2/6'>
 				<h1 class='font-poppy text-lg md:text-xl font-bold'><i class="fa-sharp fa-solid fa-location-dot mr-1 mb-2"></i>locate on map</h1>
-				<iframe class="w-full h-full" <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.572443735767!2d74.85496651482092!3d12.870868890922056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35b11eec783ed%3A0x2afa25d580156460!2sHAMBURG%20STREET%20FOOD%20CAFE!5e0!3m2!1sen!2sin!4v1681486468297!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+				<iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.572443735767!2d74.85496651482092!3d12.870868890922056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35b11eec783ed%3A0x2afa25d580156460!2sHAMBURG%20STREET%20FOOD%20CAFE!5e0!3m2!1sen!2sin!4v1681486468297!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
 		</div>
 		<?php
