@@ -88,11 +88,11 @@ if (!isset($_SESSION["path"])) {
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
                          <span class="font-poppy font-semibold md:block hidden">Favorite</span>
                     </a>
-                    <a href="user-profile.php?review=1" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                    <a href="user-profile.php?review=2" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
                          <span class="font-poppy font-semibold md:block hidden"> Drops</span>
                     </a>
-                    <a href="user-profile.php?review=2" class="w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
+                    <a href="user-profile.php?review=1" class="w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-image text-2xl"></i>
                          <span class="font-poppy font-semibold md:block hidden"> Reviews</span>
                     </a>
@@ -117,17 +117,16 @@ if (!isset($_SESSION["path"])) {
                               $img_links = $row['item_img'];
                     ?>
                               <div class='font-poppy rounded-2xl from-white-op to-black-op  pb-4 px-6 hover:scale-[1.01] hover:shadow-xl duration-500 flex flex-col items-end' style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url( <?php echo $img_links; ?>); background-size:cover;">
-                              <?php
-                              echo "
-                              <a href='remove-favorite.php?item_id=$row[item_id]' class='hover:rotate-[90deg] duration-500 mt-4'>
-                                             <i class='fa-solid fa-xmark text-4xl text-white'></i>
-                               </a>
-                              <a href='itempage.php?item_id=$row[item_id]' class='pt-40'>
-                                        <img src='media/images/eat-fav.png'/>
-                                        <h1 class='text-white font-medium text-2xl'>Chicken " . $row['item_name'] . "yani</h1>
-                                        
-                              </a>
-                         </div>
+                                   <?php
+                                   echo "
+                                   <a href='remove-favorite.php?item_id=$row[item_id]' class='hover:rotate-[90deg] duration-500 mt-4 '>
+                                                  <i class='fa-solid fa-xmark text-4xl text-white'></i>
+                                   </a>
+                                   <a href='itempage.php?item_id=$row[item_id]' class='pt-40 w-full'>
+                                             <h1 class='text-white font-medium text-md'> " . $row['hotel_name'] . "</h1>
+                                             <h1 class='text-white font-medium text-2xl'> " . $row['item_name'] . "</h1>
+                                   </a>
+                              </div>
                               ";
                          }
                     } else {
@@ -158,24 +157,40 @@ if (!isset($_SESSION["path"])) {
                                              $image = "media/images/user-image/" . $imageNull;
                                         }
                                         echo "
-                                        <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white w-full odd:bg-white/20 odd:text-black'>
-                                             <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
-                                                  <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
-                                                  <h1 class='text-lg font-poppy font-medium'>$username</h1>
-                                             </div>  
-                                             <div class='flex items-start flex-col justify-center'>
-                                                  <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
-                                             </div>
+                                        <div class='flex items-center py-5 justify-between bg-black/20 px-8 rounded-xl text-white w-full odd:bg-white/20 odd:text-black'>
+                                             <div class='flex items-start flex-col'>
+                                                  <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
+                                                       <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
+                                                      <div>
+                                                            <h1 class='text-lg font-poppy font-medium'>$username</h1>
+                                                            <div class='flex items-start flex-col justify-center'>
+                                                                 <p class='font-poppy text-sm space-x-2'>
+                                                                      <i class='fa-solid fa-utensils'></i>
+                                                                      $row[item_name] | 
+                                                                      $row[hotel_name]
+                                                                 </p>
+                                                            </div>
+                                                       </div>
+                                                       
+                                                   </div>  
+                                                       <div>
+                                                              <p class='font-poppy text-xl pt-2'> $row[review_content]</p>
+                                                       </div>
+                                             </div> 
+                                             <form action='remove-favorite.php' class='flex items-start flex-col justify-center'>
+                                                  <i class='fa-solid fa-trash text-xl'></i>
+                                             </form>
                                         </div>
                        ";
                                    }
                               } else {
                                    echo "<h1 class='opacity-0 '></h1>";
-                                   echo "<h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>";
+                                   echo "<h1 class='font-poppy text-xl font-medium text-center mt-28'>Uh-oh! No reviews found? <br> Time to dig in and discover new flavors with Eatables!</h1>";
                                    echo "<h1 class='opacity-0 '></h1>";
                               }
                          } elseif ($review_id == 2) {
-                              echo "<h1 class='font-poppy text-xl font-medium text-center mt-28'>Uh-oh! No reviews found? Time to dig in and discover new flavors with Eatables!</h1>";
+                              echo "<h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.
+                              </h1>";
                               ?>
                          <?php
                          }
@@ -184,5 +199,7 @@ if (!isset($_SESSION["path"])) {
                          </div>
 
                </div>
-
+               <?php
+               include './components/footer.php'
+               ?>
 </body>

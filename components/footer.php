@@ -37,13 +37,13 @@
                <h1 class="text-white font-medium font-xl pt-4 pb-2">Helpful Links</h1>
                <nav class="flex flex-col space-y-2">
                     <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
+                         Submit new restaurant
+                    </a>
+                    <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
                          Contact
                     </a>
                     <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
                          FAQ
-                    </a>
-                    <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
-                         eatables Care
                     </a>
                </nav>
           </div>
