@@ -58,11 +58,11 @@ if (!$_SESSION['status']) {
 					eatables.
 				</a>
 				<a href="user-profile.php" class="flex items-center justify-center space-x-3">
-					<!-- <h1 class="font-poppy"><?php echo $_SESSION['fullname']; ?></h1> -->
-					<img class="w-9 h-9 rounded-full border-2 shadow-sm border-black" src="media/images/user-image/<?php
-																								echo $user_img;
-																								?>" />
-					<!-- <i class="fa-solid fa-user text-2xl"></i> -->
+					<img class="<?php echo
+								$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
+								?>" src="<?php
+										echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
+										?>" />
 				</a>
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
