@@ -54,12 +54,13 @@ if (!isset($_SESSION["path"])) {
                </form>
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
-               <img src=<?php if ($imageNull == null) {
-                              echo 'media/images/user.png';
-                         } else {
-                              echo "$path";
-                         }
-                         ?> class="rounded-full border-black border-4 md:border-[5px] shadow-xl w-28 h-28 md:w-32 md:h-32 object-cover" />
+               <div class="relative">
+                    <a href="edit-profile.php" class="flex items-center justify-center absolute bottom-0 right-0 z-10 p-3 bg-black/80 hover:text-[#f9bb21] duration-300 w-8 h-8 text-white rounded-full">
+                         <i class="fa-solid fa-camera text-[12px]"></i>
+                    </a>
+                    <img src="<?php echo $imageNull == null ? 'media/images/user.png' : $path; ?>" class="rounded-full border-black border-4 md:border-5 shadow-xl w-28 h-28 md:w-32 md:h-32 object-cover" />
+               </div>
+
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
                     <?php
                     echo $fullName;
@@ -93,7 +94,7 @@ if (!isset($_SESSION["path"])) {
                          <span class="font-poppy font-semibold md:block hidden"> Drops</span>
                     </a>
                     <a href="user-profile.php?review=1" class="w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
-                         <i class="fa-solid fa-image text-2xl"></i>
+                         <i class="fa-solid fa-eye text-2xl"></i>
                          <span class="font-poppy font-semibold md:block hidden"> Reviews</span>
                     </a>
                </div>
@@ -189,8 +190,13 @@ if (!isset($_SESSION["path"])) {
                                    echo "<h1 class='opacity-0 '></h1>";
                               }
                          } elseif ($review_id == 2) {
-                              echo "<h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.
-                              </h1>";
+                              echo "
+                              <div class='flex items-center justify-center flex-col'>
+                                   <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>
+                                   <a href='#' class='bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300 flex font-poppy items-center justify-center space-x-2 mt-3'><i class='fa-solid fa-droplet'></i><p>Upload</p></a>
+                              </div>
+                              
+                              ";
                               ?>
                          <?php
                          }

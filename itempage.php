@@ -102,7 +102,7 @@
 
     </div>
 
-    <h1 class="text-2xl pb-3 font-poppy font-semibold">Latest Reviews</h1>
+    <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
 <?php
                 }
                 //adding to favouirte
