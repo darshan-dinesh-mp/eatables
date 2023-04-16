@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
 	header("Location: login.php");
 	exit;
 } else {
-	include "dbconnect.php";
+	include "dbconnect.php"; 
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
