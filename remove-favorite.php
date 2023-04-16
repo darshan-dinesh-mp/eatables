@@ -11,3 +11,4 @@ if ($res) {
 } else {
     header("Location: user-profile.php");
 }
+?>

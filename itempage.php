@@ -66,54 +66,71 @@
                                 <h1 class='text-2xl font-medium py-1'>$row[hotel_name]</h1>
                                 <h3><span class='text-2xl'>₹</span><span class='text-4xl font-medium'>" . $row["item_price"] . ".00</span></h3>
                             </div>";
-                ?>
+
+                        ?>
                         <div class="w-full flex space-x-2">
-                            <form method="post" class="">
-                                <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favourite">
-                                    <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
-                                    <h1>Add to favorite</h1>
-                                </button>
-                            </form>
-                            <form method="post" class="">
-                                <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
-                                    <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
-                                    <h1>Remove favorite</h1>
-                                </button>
-                            </form>
+                            <?php
+                            $user_id = $_SESSION["id"];
+                            //adding to favouirte
+                            // Check if item is already in favourites
+                            $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
+                            $check_result = $con->query($check_sql);
+                            if ($check_result->num_rows > 0) {
+                                ?>
+                                <form method="post" class="">
+                                    <input type="hidden" name="item_id">
+                                    <button type="submit"
+                                        class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl"
+                                        name="remove_favorite">
+                                        <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
+                                        <h1>Remove favorite</h1>
+                                    </button>
+                                </form>
+                                <?php
+                            } else {
+                                ?>
+                                <form method="post" class="">
+                                    <input type="hidden" name="item_id">
+                                    <button type="submit"
+                                        class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl"
+                                        name="add_favourite">
+                                        <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
+                                        <h1>Add to favorite</h1>
+                                    </button>
+                                </form>
+                                <?php
+                            }
+                            ?>
                         </div>
-            </div>
+                    </div>
 
-        </div>
-        <div class="w-full flex items-start flex-col my-4">
-            <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
-                <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
-                <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
-                    <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
-                </button>
-            </form>
-        </div>
+                </div>
+                <div class="w-full flex items-start flex-col my-4">
+                    <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
+                        <input type='text' maxlength="256"
+                            class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]"
+                            placeholder="write your review here." name="review" id="review" />
+                        <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg"
+                            name="submit">
+                            <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
+                        </button>
+                    </form>
+                </div>
 
-    <?php
+                <?php
                     }
 
-    ?>
+                    ?>
 
-    </div>
+        </div>
 
-    <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
-<?php
+        <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
+        <?php
                 }
-                //adding to favouirte
-                $user_id = $_SESSION["id"];
 
                 // Check if form was submitted
                 if (isset($_POST["add_favourite"])) {
 
-                    // Check if item is already in favourites
-                    $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
-                    $check_result = $con->query($check_sql);
                     if ($check_result->num_rows > 0) {
                         // Item is already in favourites, show error message
                         echo "<h1 class='font-poppy text-xl font-bold'>Item is already in favourites.</h1>";
@@ -123,13 +140,32 @@
                         $add_result = $con->query($add_sql);
                         if ($add_result) {
                             // Item added to favourites, show success message
-                            echo "<h1 class='font-poppy text-xl font-bold'>Item added to favourite!</h1>";
+                            // echo "<h1 class='font-poppy text-xl font-bold'>Item added to favourite!</h1>";
+                            echo "<script>window.location.href='itempage.php?item_id=$item_id'</script>";
                         } else {
                             // Error adding item to favourites, show error message
                             echo "Error adding item to favourites.";
                         }
                     }
                 }
+
+                // Check if form was submitted
+                if (isset($_POST["remove_favorite"])) {
+
+                    if ($check_result->num_rows > 0) {
+                        $remove_sql = "DELETE FROM favourite WHERE item_id = $item_id AND uid = $user_id";
+                        $remove_result = $con->query($remove_sql);
+                        if ($remove_result) {
+                            // Item removed from favourites, show success message
+                            // echo "<h1 class='font-poppy text-xl font-bold'>Item removed from favourites!</h1>";
+                            echo "<script>window.location.href='itempage.php?item_id=$item_id'</script>";
+                        } else {
+                            // Error adding item to favourites, show error message
+                            echo "Error removing item from favourites.";
+                        }
+                    }
+                }
+
                 // Check conection
                 if (!$con) {
                     die("conection failed");
@@ -164,24 +200,6 @@
                 // Display reviews
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-
-                        $review_date = strtotime($row['review_date']);
-                        $current_date = strtotime(date('Y-m-d H:i:s'));
-                        $diff = $current_date - $review_date;
-                        $age = '';
-
-                        if ($diff < 60) {
-                            $age = 'Just now';
-                        } elseif ($diff < 3600) {
-                            $age = floor($diff / 60) . ' minutes ago';
-                        } elseif ($diff < 86400) {
-                            $age = floor($diff / 3600) . ' hours ago';
-                        } elseif ($diff < 172800) {
-                            $age = 'yesterday';
-                        } else {
-                            $age = floor($diff / 86400) . ' days ago';
-                        }
-
                         if ($row["img"] == null) {
                             $image = "media/images/user.png";
                         } else {
@@ -195,7 +213,7 @@
                                         <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
                                     </div>  
                                     <div>  
-                                        <h2 class='font-poppy text-sm'>$age</h2>
+                                        <h2 class='font-poppy text-sm'>Just now</h2>
                                     </div>  
                                 </div>  
                                 <div class='flex items-start flex-col justify-center'>
@@ -207,8 +225,8 @@
                 } else {
                     echo "<h1 class='font-poppy text-xl font-bold'>Oops no reviews found!</h1>";
                 }
-?>
-</div>
+                ?>
+    </div>
 </body>
 
 </html>
