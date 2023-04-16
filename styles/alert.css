@@ -1,16 +1,17 @@
-        .alert {
-            width: 100%;
-            padding: 20px;
-            background-color: rgba(3, 205, 3, 0.700);
-            /* red background color */
-            color: white;
-            /* text color */
-            position: absolute;
-            /* relative position for sliding animation */
-            top: -100px;
-            /* initial position above the viewport */
-            opacity: 1;
-            /* initial opacity set to 0 for fade-in effect */
-            transition: top 1s, opacity 1s;
-            /* transition effect for sliding and fading */
-        }
+.alert {
+    font-family: "Poppins";
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(3, 205, 3, 0.7);
+    /* red background color */
+    color: white;
+    /* text color */
+    position: absolute;
+    /* relative position for sliding animation */
+    top: -100px;
+    /* initial position above the viewport */
+    opacity: 1;
+    /* initial opacity set to 0 for fade-in effect */
+    transition: top 1s, opacity 1s;
+    /* transition effect for sliding and fading */
+}

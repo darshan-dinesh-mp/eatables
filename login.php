@@ -21,7 +21,7 @@
     include "dbconnect.php";
     if (isset($_GET["signupstatus"])) {
         echo '<div id="myAlert" class="alert">
-                <strong>Account created successfully.</strong> Login to conitinue.
+                <h1>Account created successfully. Login to conitinue.</h1>
               </div>';
     }
     ?>
@@ -29,21 +29,21 @@
         // Call this function to slide down the alert box
         function showSlidingAlert() {
             var alertBox = document.getElementById("myAlert");
-            setTimeout(function () {
+            setTimeout(function() {
                 alertBox.style.top = "0"; // set top position to above the viewport
             }, 50); // set top position to 0 for sliding down effect
         }
 
         function closeAlert() {
             var alertBox = document.getElementById("myAlert");
-            setTimeout(function () {
+            setTimeout(function() {
                 alertBox.style.top = "-100px"; // set top position to above the viewport
             }, 1000); // delay of 500ms to allow fade-out effect to complete
         }
         showSlidingAlert();
-        setTimeout(function () {
+        setTimeout(function() {
             closeAlert();
-            }, 3000);
+        }, 3000);
     </script>
     <div class="bg-brand bg-img min-h-screen grid">
         <div class="flex flex-col items-center justify-center">
@@ -54,18 +54,11 @@
                     </a>
                     <p class="font-poppy text-sm font-medium md:text-md">Find your next favorite.</p>
                 </div>
-                <form action="login.php" method="post"
-                    class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
-                    <input
-                        class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                        placeholder="username" type="text" name="username" autocomplete="off" required />
-                    <input
-                        class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                        placeholder="password" type="password" name="password" autocomplete="off" required />
+                <form action="login.php" method="post" class="grid place-items-center md:grid-rows-2 grid-cols-1 gap-3 mx-4">
+                    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" type="text" name="username" autocomplete="off" required />
+                    <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" type="password" name="password" autocomplete="off" required />
                     <p id="err" class="font-poppy"></p>
-                    <input
-                        class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500"
-                        type="submit" name="submit" value="explore" />
+                    <input class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" type="submit" name="submit" value="explore" />
                 </form>
                 <br>
             </div>
@@ -115,11 +108,11 @@
         }
     }
     if ($err) {
-        ?>
+    ?>
         <script>
             document.getElementById("err").innerHTML = "<?php echo "$err"; ?>";
         </script>
-        <?php
+    <?php
     }
     ?>
     <script>

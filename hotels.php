@@ -57,11 +57,11 @@ if (!$_SESSION['status']) {
 					<div class="flex space-x-5 my-1">
 						<p class="space-x-1">
 							<i class="fa-solid fa-phone"></i>
-							<span class="font-medium">9232387927</span>
+							<a href="tel:9539361202" class="font-medium">9232387927</a>
 						</p>
 						<p class="space-x-1">
 							<i class="fa-solid fa-envelope"></i>
-							<span class="font-medium"> youreatable@gmail.com</span>
+							<a href="mailto:youreatables@gmail.com" class="font-medium"> youreatable@gmail.com</a>
 						</p>
 					</div>
 					<h1 class="text-xl"><?php
@@ -84,7 +84,6 @@ if (!$_SESSION['status']) {
 				<?php
 				if (!isset($desc)) {
 				?>
-
 					<p class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, incidunt deserunt optio pariatur dolorem natus est quod eos error, rem porro ut amet praesentium voluptas possimus quidem, laborum accusamus vero!</p>
 				<?php
 				} else {

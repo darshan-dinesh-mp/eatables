@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+$con = new mysqli("localhost", "root", "", "eatables");
+if (mysqli_connect_error()) {
+    die("Not connected");
+}
+if (isset($_GET['item_id'])) {
+    $item_id = $_GET['item_id'];
+    $_SESSION['item_id'] = $item_id;
+} else {
+    $item_id = $_SESSION['item_id'];
+}
+
+$sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name
+                FROM item
+                INNER JOIN hotel
+                ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
+$res = $con->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +26,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eatables App - Search</title>
+    <title>Eatables App</title>
     <link rel="stylesheet" href="styles/input.css">
     <link rel="stylesheet" href="styles/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,25 +54,7 @@
                 </form>
             </div>
         </div>
-        <?php
-        session_start();
 
-        $con = new mysqli("localhost", "root", "", "eatables");
-        if (mysqli_connect_error()) {
-            die("Not connected");
-        }
-        if (isset($_GET['item_id'])) {
-            $item_id = $_GET['item_id'];
-            $_SESSION['item_id'] = $item_id;
-        } else {
-            $item_id = $_SESSION['item_id'];
-        }
-
-        $sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name
-                FROM item
-                INNER JOIN hotel
-                ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
-        $res = $con->query($sql); ?>
         <div class="w-full font-poppy">
             <div class="flex items-center justify-around relative w-full flex-col h-[40vh]">
 
@@ -65,12 +68,13 @@
                                 <h2 class='text-4xl font-bold capitalize'>$row[item_name]</h2>
                                 <h1 class='text-2xl font-medium py-1'>$row[hotel_name]</h1>
                                 <h3><span class='text-2xl'>₹</span><span class='text-4xl font-medium'>" . $row["item_price"] . ".00</span></h3>
-                            </div>";
+                            </div>
+                            ";
                 ?>
                         <div class="w-full flex space-x-2">
                             <form method="post" class="">
                                 <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favourite">
+                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favorite">
                                     <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                     <h1>Add to favorite</h1>
                                 </button>
@@ -105,34 +109,33 @@
     <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
 <?php
                 }
-                //adding to favouirte
+                //adding to favorites
                 $user_id = $_SESSION["id"];
 
                 // Check if form was submitted
-                if (isset($_POST["add_favourite"])) {
-
-                    // Check if item is already in favourites
+                if (isset($_POST["add_favorite"])) {
+                    // Check if item is already in favorites
                     $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
                     $check_result = $con->query($check_sql);
                     if ($check_result->num_rows > 0) {
-                        // Item is already in favourites, show error message
-                        echo "<h1 class='font-poppy text-xl font-bold'>Item is already in favourites.</h1>";
+                        // Item is already in favorites, show error message
+                        echo "<h1 class='font-poppy text-xl font-bold'>Item is already in favorites.</h1>";
                     } else {
-                        // Item is not in favourites, add it
+                        // Item is not in favorites, add it
                         $add_sql = "INSERT INTO favourite (uid, item_id) VALUES ($user_id, $item_id)";
                         $add_result = $con->query($add_sql);
                         if ($add_result) {
-                            // Item added to favourites, show success message
-                            echo "<h1 class='font-poppy text-xl font-bold'>Item added to favourite!</h1>";
+                            // Item added to favorites, show success message
+                            echo "<h1 class='font-poppy text-xl font-bold'>Item added to favorite!</h1>";
                         } else {
-                            // Error adding item to favourites, show error message
-                            echo "Error adding item to favourites.";
+                            // Error adding item to favorites, show error message
+                            echo "Error adding item to favorites.";
                         }
                     }
                 }
-                // Check conection
+                // Check connection
                 if (!$con) {
-                    die("conection failed");
+                    die("connection failed");
                 }
 
                 // If form is submitted
