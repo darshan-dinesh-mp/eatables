@@ -1,7 +1,7 @@
 <footer class="bg-black p-4 lg:py-12 py-8 md:px-24 font-poppy">
      <div class='mb-8 flex justify-between'>
           <div class='text-white text-xl'>
-               Found a new restaurant thats not on our list?
+               Add a missing restaurant.
           </div>
           <div>
                <a href="add-restaurant.php" class='py-2 rounded-md px-6 border-2 border-[#F9BB21] hover:text-[#f9bb21] text-black  hover:bg-black bg-[#F9BB21] duration-300 ' href="#">Submit restaurant</a>
@@ -45,7 +45,7 @@
                <h1 class="text-white font-medium font-xl pt-4 pb-2">Helpful Links</h1>
                <nav class="flex flex-col space-y-2">
                     <a class="text-sm text-brand-hover duration-300">
-                        Eatables care
+                         Eatables care
                     </a>
                     <a class="text-sm text-brand-hover duration-300" href="https://www.delb.in">
                          Contact
