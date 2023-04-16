@@ -190,7 +190,7 @@ if (!isset($_SESSION["path"])) {
                                                   <i class='fa-solid fa-trash text-xl cursor-pointer hover:text-red-700'></i>
                                               </a>
                                         </div>
-                       ";
+                                         ";
                                    }
                               } else {
                                    echo "<h1 class='opacity-0 '></h1>";
@@ -198,22 +198,27 @@ if (!isset($_SESSION["path"])) {
                                    echo "<h1 class='opacity-0 '></h1>";
                               }
                          } elseif ($review_id == 2) {
-                              echo "
-                              <div class='flex items-center justify-center flex-col'>
-                                   <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>
-                                   <a href='#' class='bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300 flex font-poppy items-center justify-center space-x-2 mt-3'><i class='fa-solid fa-droplet'></i><p>Upload</p></a>
-                              </div>
-                              
-                              ";
-                              ?>
+                              include('drops/view.php');
+                              if (isset($_GET['error'])) { 
+                                   ?>
+                                   <p><?=$_GET['error']?></p>
+                              <?php } ?>
+                              <form action='drops/upload.php'
+                                   method="post"
+                                   enctype="multipart/form-data">
+
+                                   <input type="file"
+                                        name="my_video">
+
+                                   <input type="submit"
+                                        name="submit" 
+                                        value="Upload">
+                              </form>
                          <?php
                          }
-                         ?>
-
-                         </div>
-
-               </div>
-               <?php
+                 ?>   
+</div>
+              <?php
                include './components/footer.php'
                ?>
 </body>
