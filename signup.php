@@ -59,7 +59,6 @@
 
     </div>
     <?php
-    include "dbconnect.php";
     $errfullname = false;
     $errusername = false;
     $erremail = false;
@@ -131,7 +130,7 @@
                     $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
-                        header("Location: login.php");
+                        echo "<script>window.location.href='login.php?signupstatus=true'</script>";
                         exit();
                     } else {
                         echo "Error registering. Try again.";
