@@ -42,6 +42,7 @@ $res = $con->query($sql);
                 eatables.
             </a>
             <div class='flex items-center justify-between w-32'>
+                <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
                 <form action="user-profile.php" method="post">
                     <button type="submit" name="logout" class="logout-btn">
                         <i class="fa-solid fa-user text-2xl"></i>
@@ -204,7 +205,7 @@ $res = $con->query($sql);
                                 <div class='flex items-start flex-col justify-center'>
                                     <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
                                 </div>
-                            </div>
+                              </div>
                                     ";
                     }
                 } else {

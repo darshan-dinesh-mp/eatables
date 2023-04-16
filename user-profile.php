@@ -108,6 +108,7 @@ if (!isset($_SESSION["path"])) {
 
           </div>
           <?php
+
           if ($review_id == null) {
           ?>
                <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full md:w-4/6">
@@ -148,7 +149,7 @@ if (!isset($_SESSION["path"])) {
                          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-5 place-content-evenly py-8 w-full md:w-4/6">
                               <?php
                               // Retrieve reviews from database
-                              $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date
+                              $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date, review.review_id
                               FROM review
                               INNER JOIN item on item.item_id=review.item_id
                               INNER JOIN hotel on hotel.hotel_id=item.hotel_id
@@ -185,9 +186,9 @@ if (!isset($_SESSION["path"])) {
                                                               <p class='font-poppy text-xl pt-2'> $row[review_content]</p>
                                                        </div>
                                              </div> 
-                                             <form action='remove-favorite.php' class='flex items-start flex-col justify-center'>
-                                                  <i class='fa-solid fa-trash text-xl'></i>
-                                             </form>
+                                             <a href='remove-review.php?review_id=$row[review_id]'>
+                                                  <i class='fa-solid fa-trash text-xl cursor-pointer hover:text-red-700'></i>
+                                              </a>
                                         </div>
                        ";
                                    }
