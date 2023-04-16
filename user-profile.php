@@ -62,9 +62,12 @@ if (!isset($_SESSION["path"])) {
                </div>
 
                <h1 class="font-poppy text-1xl md:text-2xl font-semibold pt-2 text-center">
-                    <?php
-                    echo $fullName;
-                    ?>
+                    <span>
+                         <?php
+                         echo $fullName;
+                         ?>
+                    </span>
+                    <i class="fa-solid fa-circle-check text-[10px] md:text-[16px]"></i>
                </h1>
                <h1 class="font-poppy text-lg font-medium text-center">
                     @<?php

@@ -35,7 +35,7 @@
         </div>
         <?php
         session_start();
-        
+
         $con = new mysqli("localhost", "root", "", "eatables");
         if (mysqli_connect_error()) {
             die("Not connected");
@@ -88,7 +88,7 @@
         </div>
         <div class="w-full flex items-start flex-col my-4">
             <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
-                <input type='text' maxlength="150" class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
+                <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
                 <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
                     <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
                 </button>
@@ -171,9 +171,14 @@
                         }
                         echo "
                             <div class='flex items-start flex-col py-5 bg-black/20 px-8 rounded-xl text-white mb-4 w-full odd:bg-white/20 odd:text-black'>
-                                <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
-                                    <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
-                                    <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
+                                <div class='w-full flex items-center justify-between'>    
+                                    <div class='flex items-center space-x-3 flex-row justify-center mr-3'>
+                                        <img src=$image class='w-10 h-10 rounded-full  object-cover border-black border-1 md:border-[2px]'>
+                                        <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
+                                    </div>  
+                                    <div>  
+                                        <h2 class='font-poppy text-sm'>Just now</h2>
+                                    </div>  
                                 </div>  
                                 <div class='flex items-start flex-col justify-center'>
                                     <p class='font-poppy text-xl pt-3'>$row[review_content]</p>
