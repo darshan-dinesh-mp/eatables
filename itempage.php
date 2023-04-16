@@ -164,6 +164,24 @@
                 // Display reviews
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+
+                        $review_date = strtotime($row['review_date']);
+                        $current_date = strtotime(date('Y-m-d H:i:s'));
+                        $diff = $current_date - $review_date;
+                        $age = '';
+
+                        if ($diff < 60) {
+                            $age = 'Just now';
+                        } elseif ($diff < 3600) {
+                            $age = floor($diff / 60) . ' minutes ago';
+                        } elseif ($diff < 86400) {
+                            $age = floor($diff / 3600) . ' hours ago';
+                        } elseif ($diff < 172800) {
+                            $age = 'yesterday';
+                        } else {
+                            $age = floor($diff / 86400) . ' days ago';
+                        }
+
                         if ($row["img"] == null) {
                             $image = "media/images/user.png";
                         } else {
@@ -177,7 +195,7 @@
                                         <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
                                     </div>  
                                     <div>  
-                                        <h2 class='font-poppy text-sm'>Just now</h2>
+                                        <h2 class='font-poppy text-sm'>$age</h2>
                                     </div>  
                                 </div>  
                                 <div class='flex items-start flex-col justify-center'>
