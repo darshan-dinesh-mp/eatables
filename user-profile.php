@@ -87,7 +87,7 @@ if (!isset($_SESSION["path"])) {
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
                          <i class="fa-sharp fa-solid fa-heart text-2xl"></i>
-                         <span class="font-poppy font-semibold md:block hidden">Favorite</span>
+                         <span class="font-poppy font-semibold md:block hidden">Favorites</span>
                     </a>
                     <a href="user-profile.php?review=2" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
                          <i class="fa-solid fa-droplet text-2xl"></i>
