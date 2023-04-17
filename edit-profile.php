@@ -1,9 +1,6 @@
 <?php
 session_start();
-$con = new mysqli("localhost", "root", "", "eatables");
-if ($con->connect_errno) {
-    die("Not connected");
-}
+include "dbconnect.php";
 
 // Check if user is logged in
 if (!isset($_SESSION['id'])) {
