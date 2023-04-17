@@ -28,7 +28,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
 			header("Location: ../user-profile.php?review=2");
 			}
 			else{
-				session_destroy();
+				
 				header("Location: view.php");
 			}
 		}
@@ -38,7 +38,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
     		header("Location: ../user-profile.php?review=2&error=$em");
 				}
 				else{
-					session_destroy();
+					
 					$em = "You can't upload files of this type";
     		header("Location: view.php?error=$em");
 				}
@@ -52,7 +52,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
 		header("Location: ../user-profile.php?review=2");
 		}
 		else{
-			session_destroy();
+			
 			header("Location: view.php");
 		}
 }
