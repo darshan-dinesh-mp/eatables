@@ -1,24 +1,3 @@
-<?php
-session_start();
-
-$con = new mysqli("localhost", "root", "", "eatables");
-if (mysqli_connect_error()) {
-    die("Not connected");
-}
-if (isset($_GET['item_id'])) {
-    $item_id = $_GET['item_id'];
-    $_SESSION['item_id'] = $item_id;
-} else {
-    $item_id = $_SESSION['item_id'];
-}
-
-$sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name
-                FROM item
-                INNER JOIN hotel
-                ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
-$res = $con->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +21,6 @@ $res = $con->query($sql);
                 eatables.
             </a>
             <div class='flex items-center justify-between w-32'>
-                <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
                 <form action="user-profile.php" method="post">
                     <button type="submit" name="logout" class="logout-btn">
                         <i class="fa-solid fa-user text-2xl"></i>
@@ -55,6 +33,32 @@ $res = $con->query($sql);
                 </form>
             </div>
         </div>
+
+        <?php
+        session_start();
+
+        $con = new mysqli("localhost", "root", "", "eatables");
+        if (mysqli_connect_error()) {
+            die("Not connected");
+        }
+        if (isset($_GET['item_id'])) {
+            $item_id = $_GET['item_id'];
+            $_SESSION['item_id'] = $item_id;
+        } else {
+            $item_id = $_SESSION['item_id'];
+        }
+
+        $sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name
+        FROM item
+        INNER JOIN hotel
+        ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
+        $res = $con->query($sql);
+
+        $user_id = $_SESSION["id"];
+        $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
+        $check_result = $con->query($check_sql);
+        $item_in_fav = ($check_result->num_rows > 0);
+        ?>
 
         <div class="w-full font-poppy">
             <div class="flex items-center justify-around relative w-full flex-col h-[40vh]">
@@ -73,20 +77,29 @@ $res = $con->query($sql);
                             ";
                 ?>
                         <div class="w-full flex space-x-2">
-                            <form method="post" class="">
-                                <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favorite">
-                                    <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
-                                    <h1>Add to favorite</h1>
-                                </button>
-                            </form>
-                            <form method="post" class="">
-                                <input type="hidden" name="item_id">
-                                <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
-                                    <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
-                                    <h1>Remove favorite</h1>
-                                </button>
-                            </form>
+                            <?php
+                            if ($item_in_fav == 0) {
+                            ?>
+                                <form method="post" class="">
+                                    <input type="hidden" name="item_id">
+                                    <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favorite">
+                                        <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
+                                        <h1>Add to favorite</h1>
+                                    </button>
+                                </form>
+                            <?php
+                            }
+                            if ($item_in_fav == 1) {
+                            ?>
+                                <form method="post" class="">
+                                    <input type="hidden" name="item_id">
+                                    <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
+                                        <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
+                                        <h1>Remove favorite</h1>
+                                    </button>
+                                </form> <?php
+                                    }
+                                        ?>
                         </div>
             </div>
 
@@ -126,13 +139,18 @@ $res = $con->query($sql);
                         $add_sql = "INSERT INTO favourite (uid, item_id) VALUES ($user_id, $item_id)";
                         $add_result = $con->query($add_sql);
                         if ($add_result) {
-                            // Item added to favorites, show success message
+                            // Item added to favorites, show success message 
+                            echo "<script>window.location.href='itempage.php';</script>";
                             echo "<h1 class='font-poppy text-xl font-bold'>Item added to favorite!</h1>";
                         } else {
                             // Error adding item to favorites, show error message
                             echo "Error adding item to favorites.";
                         }
                     }
+                } else if (isset($_POST["remove_favorite"])) {
+                    $sql = "DELETE FROM favourite WHERE item_id = $item_id AND uid = $user_id";
+                    $res = $con->query($sql);
+                    
                 }
                 // Check connection
                 if (!$con) {

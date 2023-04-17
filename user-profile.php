@@ -199,26 +199,21 @@ if (!isset($_SESSION["path"])) {
                               }
                          } elseif ($review_id == 2) {
                               include('drops/view.php');
-                              if (isset($_GET['error'])) { 
-                                   ?>
-                                   <p><?=$_GET['error']?></p>
+                              if (isset($_GET['error'])) {
+                              ?>
+                                   <p><?= $_GET['error'] ?></p>
                               <?php } ?>
-                              <form action='drops/upload.php'
-                                   method="post"
-                                   enctype="multipart/form-data">
-
-                                   <input type="file"
-                                        name="my_video">
-
-                                   <input type="submit"
-                                        name="submit" 
-                                        value="Upload">
+                              <form action='drops/upload.php' method="post" enctype="multipart/form-data" class="flex">
+                                   <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
+                                   <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
                               </form>
                          <?php
                          }
-                 ?>   
-</div>
-              <?php
-               include './components/footer.php'
-               ?>
+                         ?>
+                         </div>
+               </div>
+     </div>
+     <?php
+     include './components/footer.php'
+     ?>
 </body>
