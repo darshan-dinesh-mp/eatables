@@ -37,10 +37,8 @@
         <?php
         session_start();
 
-        $con = new mysqli("localhost", "root", "", "eatables");
-        if (mysqli_connect_error()) {
-            die("Not connected");
-        }
+        include "dbconnect.php";
+
         if (isset($_GET['item_id'])) {
             $item_id = $_GET['item_id'];
             $_SESSION['item_id'] = $item_id;

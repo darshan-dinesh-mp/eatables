@@ -22,10 +22,8 @@ if (!$_SESSION['status']) {
 
 <body>
 	<?php
-	$con = new mysqli("localhost", "root", "", "eatables");
-	if (mysqli_connect_error()) {
-		die("Not connected");
-	}
+	include "dbconnect.php";
+
 	$hotel_id = $_GET['hotel_id'];
 	$hotel_name = $_GET['hotel_name'];
 	$rating = $_GET['rating'];
