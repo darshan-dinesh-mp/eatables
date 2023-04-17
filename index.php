@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
 	header("Location: login.php");
 	exit;
 } else {
-	include "dbconnect.php"; 
+	include "dbconnect.php";
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -51,6 +51,31 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
+
+		<script>
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(position => {
+					let place = document.getElementById('place-name');
+					const lat = position.coords.latitude;
+					const lng = position.coords.longitude;
+					const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+
+					fetch(url)
+						.then(response => response.json())
+						.then(data => {
+							const placeName = data.display_name;
+							console.log(placeName);
+							place.innerText = placeName;
+						})
+						.catch(error => console.error(error));
+				}, error => {
+					console.error(error.message);
+				});
+			} else {
+				console.log("Geolocation is not supported by this browser.");
+			}
+		</script>
+
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
@@ -70,6 +95,9 @@ if (!$_SESSION['status']) {
 						<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-medium text-center">
 							Find your next favorite.
 						</h1>
+						<h2 id='place-name'>
+
+						</h2>
 						<form action="" method="get">
 							<input id="search-bar" name="search" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="Futopia, Mars" type="text" />
 						</form>
