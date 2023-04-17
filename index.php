@@ -100,7 +100,7 @@ if (!$_SESSION['status']) {
 							Find your next favorite.
 						</h1>
 						<form action="" method="get">
-							<input id="search-bar" name="search" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="Futopia, Mars" type="text" />
+							<input id="search-bar" name="search" class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="Futopia, Mars" type="text" />
 						</form>
 						<div id="search-results" class="font-poppy text-xl p-4 ">
 						</div>
