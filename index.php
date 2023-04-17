@@ -94,7 +94,7 @@ if (!$_SESSION['status']) {
 				<!-- </div> -->
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
-				<div class="flex items-center justify-around relative w-full md:w-2/4">
+				<div class="flex items-center justify-around relative w-full md:w-3/4">
 					<div class="flex items-center justify-center flex-col w-full">
 						<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-medium text-center">
 							Find your next favorite.
