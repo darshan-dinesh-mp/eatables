@@ -83,7 +83,7 @@ if (!$_SESSION['status']) {
 					eatables.
 				</a>
 				<div class='flex items-center justify-between w-32'>
-					<i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i>
+					<a href="drops/view.php"><i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i></a>
 					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
 						<img class="<?php echo
 									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
