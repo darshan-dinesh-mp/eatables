@@ -27,53 +27,63 @@
         }
     }
     function validateUsername() {
-        const usernameInput = document.getElementById('fullname');
-        const errorUsername = document.getElementById('error-fullname');
+        const usernameInput = document.getElementById('username');
+        const errorUsername = document.getElementById('error-username');
 
-        if (fullnameInput.value === '') {
+        if (usernameInput.value === '') {
             errorUsername.textContent = 'Please enter the Username';
-        } else if (!ctype_alpha($username)) {
-            errorUsername.textContent = 'Username can only contain alphabets';
-        } else {
+        } else if (!/^[a-z]+$/.test(usernameInput.value)) {
+            errorUsername.textContent = 'Username can only contain smallcase alphabets';
+        } else if (!/^[a-z]{4,15}$/.test(usernameInput.value)) {
+            errorUsername.textContent = 'Username should contain between 4 - 15 characters';
+        }
+        else {
             errorUsername.textContent = '';
         }
     }
     function validateEmail() {
-        const fullnameInput = document.getElementById('fullname');
-        const errorEmail = document.getElementById('error-fullname');
+    const emailInput = document.getElementById('email');
+    const errorEmail = document.getElementById('error-email');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (fullnameInput.value === '') {
-            errorEmail.textContent = 'Please enter your fullname';
-        } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
-            errorEmail.textContent = 'Fullname can only contain letters and spaces';
-        } else {
-            errorEmail.textContent = '';
-        }
+    if (emailInput.value === '') {
+        errorEmail.textContent = 'Please enter your email address';
+    } else if (!emailRegex.test(emailInput.value)) {
+        errorEmail.textContent = 'Invalid email format';
+    } else {
+        errorEmail.textContent = '';
     }
-    function validatePassword() {
-        const fullnameInput = document.getElementById('fullname');
-        const errorPass = document.getElementById('error-fullname');
+}
 
-        if (fullnameInput.value === '') {
-            errorPass.textContent = 'Please enter your fullname';
-        } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
-            errorPass.textContent = 'Fullname can only contain letters and spaces';
-        } else {
-            errorPass.textContent = '';
-        }
-    }
-    function validateConfirm() {
-        const fullnameInput = document.getElementById('fullname');
-        const errorconf = document.getElementById('error-fullname');
+function validatePassword() {
+    const passwordInput = document.getElementById('password');
+    const errorPassword = document.getElementById('error-password');
 
-        if (fullnameInput.value === '') {
-            errorconf.textContent = 'Please enter your fullname';
-        } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
-            errorconf.textContent = 'Fullname can only contain letters and spaces';
-        } else {
-            errorconf.textContent = '';
-        }
+    if (passwordInput.value === '') {
+        errorPassword.textContent = 'Please enter a password';
+    } else if (passwordInput.value.length < 8) {
+        errorPassword.textContent = 'Password must be at least 8 characters long';
+    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(passwordInput.value)) {
+        errorPassword.textContent = 'Password must contain at least one letter and one number';
+    } else {
+        errorPassword.textContent = '';
     }
+}
+
+function validateConfirm() {
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirm');
+  const errorConfirmPassword = document.getElementById('error-confirm');
+
+  if (confirmPasswordInput.value === '') {
+    errorConfirmPassword.textContent = 'Please confirm your password';
+  } else if (passwordInput.value !== confirmPasswordInput.value) {
+    errorConfirmPassword.textContent = 'Passwords do not match';
+  } else {
+    errorConfirmPassword.textContent = '';
+  }
+}
+
 </script>
 </head>
 
@@ -206,6 +216,11 @@
             }
         } else {
             $error_cred = true;
+        }
+        if ($errfullname) {
+            echo "<script>document.getElementById('error-name').innerHTML='Error in full name!';</script>";
+            echo "<script>document.getElementById('fullname').classList.add('error');</script>";
+            // echo "<script>alert('FULL NAME CANT HAVE NUMBERS');</script>";
         }
         if ($errusername) {
             echo "<script>document.getElementById('error-username').innerHTML='Username must contain only Alphabets!';</script>";
