@@ -49,8 +49,7 @@
           $mail->Port       = 465;
 
           // Include database connection code
-          $con = new mysqli("localhost", "root", "", "eatables");
-
+          include "dbconnect.php";
 
           // Get email address entered by user
           $email = $_POST['email'];
