@@ -101,30 +101,27 @@
                                     }
                                         ?>
                         </div>
-                    </div>
-
-                </div>
-                <div class="w-full flex items-start flex-col my-4">
-                    <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
-                        <input type='text' maxlength="256"
-                            class="hover:border-brand outline-none rounded-s-lg border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]"
-                            placeholder="write your review here." name="review" id="review" />
-                        <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.55rem] px-[0.90rem] rounded-e-lg"
-                            name="submit">
-                            <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <?php
-                    }
-
-                    ?>
+            </div>
 
         </div>
+        <div class="w-full flex items-start flex-col my-4">
+            <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
+                <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" />
+                <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.42rem]  md:py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
+                    <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
+                </button>
+            </form>
+        </div>
 
-        <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
-        <?php
+    <?php
+                    }
+
+    ?>
+
+    </div>
+
+    <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
+<?php
                 }
                 //adding to favorites
                 $user_id = $_SESSION["id"];
@@ -191,6 +188,22 @@
                 // Display reviews
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $review_date = strtotime($row['review_date']);
+                        $current_date = strtotime(date('Y-m-d H:i:s'));
+                        $diff = $current_date - $review_date;
+                        $age = '';
+
+                        if ($diff < 60) {
+                            $age = 'Just now';
+                        } elseif ($diff < 3600) {
+                            $age = floor($diff / 60) . ' minutes ago';
+                        } elseif ($diff < 86400) {
+                            $age = floor($diff / 3600) . ' hours ago';
+                        } elseif ($diff < 172800) {
+                            $age = 'yesterday';
+                        } else {
+                            $age = floor($diff / 86400) . ' days ago';
+                        }
                         if ($row["img"] == null) {
                             $image = "media/images/user.png";
                         } else {
@@ -204,7 +217,7 @@
                                         <h1 class='text-lg font-poppy font-medium'>$row[uname]</h1>
                                     </div>  
                                     <div>  
-                                        <h2 class='font-poppy text-sm'>Just now</h2>
+                                    <h2 class='font-poppy text-sm'>$age</h2>
                                     </div>  
                                 </div>  
                                 <div class='flex items-start flex-col justify-center'>
@@ -216,8 +229,8 @@
                 } else {
                     echo "<h1 class='font-poppy text-xl font-bold'>Oops no reviews found!</h1>";
                 }
-                ?>
-    </div>
+?>
+</div>
 </body>
 
 </html>
