@@ -150,7 +150,9 @@
                 } else if (isset($_POST["remove_favorite"])) {
                     $sql = "DELETE FROM favourite WHERE item_id = $item_id AND uid = $user_id";
                     $res = $con->query($sql);
-                    
+                    if ($res) {
+                        echo "<script>window.location.href='itempage.php?item_id=$item_id'</script>";
+                    }
                 }
                 // Check connection
                 if (!$con) {
