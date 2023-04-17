@@ -119,7 +119,7 @@ if (!$_SESSION['status']) {
 					$img_links = $row['item_img'];
 			?>
 					<a class="text-white hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center duration-500" style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url('<?php echo $img_links; ?>'); background-size:cover;" href="itempage.php?item_id=<?php echo $row['item_id']; ?>">
-						<p class="text-white-700 text-2xl"><?php echo $row['item_name']; ?><?php echo $img_links; ?></p>
+						<p class="text-white-700 text-2xl"><?php echo $row['item_name']; ?></p>
 					</a>
 
 				<?php

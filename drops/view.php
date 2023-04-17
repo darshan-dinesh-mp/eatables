@@ -29,16 +29,20 @@
                     $res = mysqli_query($con, $sql);
                     if (mysqli_num_rows($res) > 0) {
                         while ($video = mysqli_fetch_assoc($res)) {
-                ?>
+                            ?>
                             <div class="w-[30rem] h-[100vh] shadow-xl relative ">
-                                <h1 class="w-full pl-5 pt-3 h-20 text-3xl md:text-4xl font-colvet text-white absolute bg-gradient-to-b from-black">
+                                <h1
+                                    class="w-full pl-5 pt-3 h-20 text-3xl md:text-4xl font-colvet text-white absolute bg-gradient-to-b from-black">
                                     eatables.
                                 </h1>
-                                <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video " data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
-                                <div class="w-full h-32 px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
+                                <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video "
+                                    data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
+                                <div
+                                    class="w-full h-32 px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
                                     <div class="flex flex-col w-3/4">
                                         <div class="flex items-center my-2 space-x-2">
-                                            <img class="w-10 h-10 rounded-full" src="http://localhost/eatables/media/images/user-image/DB.webp" />
+                                            <img class="w-10 h-10 rounded-full"
+                                                src="http://localhost/eatables/media/images/user-image/DB.webp" />
                                             <h1 class=' text-xl text-white'>delbingeorge</h1>
                                         </div>
                                         <p> Omelette Cheese Burger | Hamburg Street Food Cafe</p>
@@ -49,7 +53,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php
+                            <?php
                         }
                     }
                 } else {
@@ -58,14 +62,15 @@
                     $res = mysqli_query($con, $sql);
                     if (mysqli_num_rows($res) > 0) {
                         while ($video = mysqli_fetch_assoc($res)) {
-                        ?>
+                            ?>
                             <div class="w-[420px] h-[780px] shadow-xl relative bg-gradient-to-r from-cyan-500 to-blue-500 ">
                                 <h1 class="text-3xl md:text-4xl font-colvet text-white absolute ml-3">
                                     eatables.
                                 </h1>
-                                <video controls="hidden" id="video-<?= $video['drop_id'] ?>" class="re playable-video" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
+                                <video controls="hidden" id="video-<?= $video['drop_id'] ?>" class="re playable-video"
+                                    data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
                             </div>
-                <?php
+                            <?php
                         }
                     } else {
                         echo "<h1>Empty</h1>";
@@ -76,14 +81,16 @@
             <?php
             if (!isset($_GET['review'])) {
                 if (isset($_GET['error'])) {
-            ?>
-                    <p><?= $_GET['error'] ?></p>
+                    ?>
+                    <p>
+                        <?= $_GET['error'] ?>
+                    </p>
                 <?php } ?>
                 <!-- <form action='upload.php' method="post" enctype="multipart/form-data" class="flex">
                     <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
                     <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
                 </form> -->
-            <?php
+                <?php
             }
             ?>
         </div>
