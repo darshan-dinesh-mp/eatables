@@ -62,7 +62,7 @@
                             <h1 class="text-3xl md:text-4xl font-colvet text-white absolute ml-3">
                                 eatables.
                             </h1>
-                            <video controls="hidden" id="video-<?= $video['drop_id'] ?>" class="re playable-video" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
+                            <video controls="hidden" id="video-<?= $video['drop_id'] ?>" class="re playable-video" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
                         </div>
             <?php
                     }
