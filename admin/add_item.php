@@ -27,7 +27,7 @@ if (!isset($_POST["submit"])) {
     $sql = "INSERT INTO `item` (`hotel_id`, `item_name`, `item_price`) VALUES ('$hid', '$item', '$price')";
     $res = $con->query($sql);
     if ($res) {
-        echo "<script>alert('item $hname added successfully.')</script>";
+        echo "<script>alert('item $item added successfully.')</script>";
         echo "<script>window.location.href='admin.php'</script>";
     }
 }
