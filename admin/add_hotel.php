@@ -5,7 +5,7 @@ if (!isset($_POST["submit"])) {
     $res=$con->query($sql);
 
     ?>
-    <form action="add_hotel.php" method="post">
+    <form action="admin/add_hotel.php" method="post">
         Hotel name : <input type="text" name="hname" /><br>
         Location: <select name="lname"> 
                                 <?php
@@ -35,7 +35,7 @@ if (!isset($_POST["submit"])) {
     $res = $con->query($sql);
     if ($res) {
         echo "<script>alert('Hotel $hname added successfully.')</script>";
-        echo "<script>window.location.href='manage_restaurant.php'</script>";
+        echo "<script>window.location.href='admin.php'</script>";
     }
 }
 ?>
