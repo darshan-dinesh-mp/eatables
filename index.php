@@ -82,16 +82,16 @@ if (!$_SESSION['status']) {
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<!-- <div class='flex items-center justify-between w-32'> -->
-				<!-- <a href="drops/view.php"><i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i></a> -->
-				<a href="user-profile.php" class="flex items-center justify-center space-x-3">
-					<img class="<?php echo
-								$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
-								?>" src="<?php
+				<div class='flex items-center justify-between w-32'>
+					<a href="drops/view.php"><i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i></a>
+					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
+						<img class="<?php echo
+									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
+									?>" src="<?php
 										echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
 										?>" />
-				</a>
-				<!-- </div> -->
+					</a>
+				</div>
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
 				<div class="flex items-center justify-around relative w-full md:w-3/4">
