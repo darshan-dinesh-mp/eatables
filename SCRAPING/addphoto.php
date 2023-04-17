@@ -1,16 +1,7 @@
 <?php
 
 // Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "eatables";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include "../admin/dbconnect.php";
 // Select all rows from the item table
 $sql = "SELECT * FROM item";
 $result = $conn->query($sql);
