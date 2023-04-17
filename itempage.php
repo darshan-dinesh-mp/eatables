@@ -200,10 +200,17 @@
                         } elseif ($diff < 86400) {
                             $age = floor($diff / 3600) . ' hours ago';
                         } elseif ($diff < 172800) {
-                            $age = 'yesterday';
-                        } else {
+                            $age = 'Yesterday';
+                        } elseif ($diff < 31536000) {
                             $age = floor($diff / 86400) . ' days ago';
+                        } elseif ($diff < 63072000) {
+                            $age = floor($diff / 31536000) . ' year ago';
+                        } elseif ($diff < 94608000) {
+                            $age = '2 years ago';
+                        } else {
+                            $age = date('F j, Y', $review_date);
                         }
+
                         if ($row["img"] == null) {
                             $image = "media/images/user.png";
                         } else {
