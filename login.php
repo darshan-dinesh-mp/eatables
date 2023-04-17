@@ -17,8 +17,8 @@
 <body>
     <?php
     session_start();
-    $err = false;
     include "dbconnect.php";
+    $err = false;
     if (isset($_GET["signupstatus"])) {
         echo '<div id="myAlert" class="alert">
                 <h1>Account created successfully. Login to conitinue.</h1>
@@ -30,15 +30,15 @@
         function showSlidingAlert() {
             var alertBox = document.getElementById("myAlert");
             setTimeout(function() {
-                alertBox.style.top = "0"; // set top position to above the viewport
-            }, 50); // set top position to 0 for sliding down effect
+                alertBox.style.top = "0";
+            }, 50);
         }
 
         function closeAlert() {
             var alertBox = document.getElementById("myAlert");
             setTimeout(function() {
-                alertBox.style.top = "-100px"; // set top position to above the viewport
-            }, 1000); // delay of 500ms to allow fade-out effect to complete
+                alertBox.style.top = "-100px";
+            }, 1000);
         }
         showSlidingAlert();
         setTimeout(function() {

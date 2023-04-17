@@ -17,7 +17,7 @@
 
   <?php
   session_start();
-  $con = new mysqli("localhost", "root", "", "eatables");
+  include "dbconnect.php";
   if (!isset($_POST['submit'])) {
 
     $_SESSION['token'] = $_GET['token'];
