@@ -82,16 +82,16 @@ if (!$_SESSION['status']) {
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<div class='flex items-center justify-between w-32'>
-					<i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i>
-					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
-						<img class="<?php echo
-									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
-									?>" src="<?php
-											echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
-											?>" />
-					</a>
-				</div>
+				<!-- <div class='flex items-center justify-between w-32'> -->
+				<!-- <i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i> -->
+				<a href="user-profile.php" class="flex items-center justify-center space-x-3">
+					<img class="<?php echo
+								$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
+								?>" src="<?php
+										echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
+										?>" />
+				</a>
+				<!-- </div> -->
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
 				<div class="flex items-center justify-around relative w-full md:w-2/4">
@@ -104,9 +104,11 @@ if (!$_SESSION['status']) {
 						</form>
 						<div id="search-results" class="font-poppy text-xl p-4 ">
 						</div>
-						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex space-x-1 items-center justify-center'>
-							<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
-							<p>restaurants near</p>
+						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
+							<div class="flex items-center justify-center space-x-1">
+								<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
+								<p>restaurants near</p>
+							</div>
 							<p class="font-semibold" id='place-name'></p>
 						</a>
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
