@@ -5,7 +5,7 @@ if (!$_SESSION['status']) {
 	header("Location: login.php");
 	exit;
 } else {
-	include "dbconnect.php"; 
+	include "dbconnect.php";
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -51,18 +51,47 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
+
+		<script>
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(position => {
+					let place = document.getElementById('place-name');
+					const lat = position.coords.latitude;
+					const lng = position.coords.longitude;
+					const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+
+					fetch(url)
+						.then(response => response.json())
+						.then(data => {
+							const placeName = data.display_name;
+							console.log(placeName);
+							const currentPlace = placeName.split(",")[0];
+							place.innerText = currentPlace;
+						})
+						.catch(error => console.error(error));
+				}, error => {
+					console.error(error.message);
+				});
+			} else {
+				console.log("Geolocation is not supported by this browser.");
+			}
+		</script>
+
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<a href="user-profile.php" class="flex items-center justify-center space-x-3">
-					<img class="<?php echo
-								$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
-								?>" src="<?php
-										echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
-										?>" />
-				</a>
+				<div class='flex items-center justify-between w-32'>
+					<i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i>
+					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
+						<img class="<?php echo
+									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
+									?>" src="<?php
+											echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
+											?>" />
+					</a>
+				</div>
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
 				<div class="flex items-center justify-around relative w-full md:w-2/4">
@@ -73,11 +102,12 @@ if (!$_SESSION['status']) {
 						<form action="" method="get">
 							<input id="search-bar" name="search" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="Futopia, Mars" type="text" />
 						</form>
-						<div id="search-results" class="font-poppy text-xl pt-4 ">
+						<div id="search-results" class="font-poppy text-xl p-4 ">
 						</div>
-						<a href="index.php" class='text-left font-poppy font-medium text-[1.40rem] py-2'>
+						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex space-x-1 items-center justify-center'>
 							<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
-							restaurants near you
+							<p>restaurants near</p>
+							<p class="font-semibold" id='place-name'></p>
 						</a>
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 							<?php

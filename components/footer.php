@@ -1,4 +1,4 @@
-<footer class="bg-black p-4 lg:py-12 py-8 md:px-24 font-poppy">
+<footer class="bg-black p-4 lg:py-12 py-8 md:px-24 w-full font-poppy">
      <div class='mb-8 flex justify-between'>
           <div class='text-white text-xl'>
                Add a missing restaurant.

@@ -67,7 +67,11 @@ if (!isset($_SESSION["path"])) {
                          echo $fullName;
                          ?>
                     </span>
-                    <i class="fa-solid fa-circle-check text-[10px] md:text-[16px]"></i>
+                    <?php if ($row['verified']) {
+                         echo "<i class='fa-solid fa-circle-check text-[10px] md:text-[16px]'></i>";
+                    } else {
+                         echo "";
+                    } ?>
                </h1>
                <h1 class="font-poppy text-lg font-medium text-center">
                     @<?php
@@ -104,6 +108,7 @@ if (!isset($_SESSION["path"])) {
 
           </div>
           <?php
+
           if ($review_id == null) {
           ?>
                <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5 place-content-evenly py-8 w-full md:w-4/6">
@@ -144,7 +149,7 @@ if (!isset($_SESSION["path"])) {
                          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-5 place-content-evenly py-8 w-full md:w-4/6">
                               <?php
                               // Retrieve reviews from database
-                              $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date
+                              $sql = "SELECT item.item_name,hotel.hotel_name,review.review_content, review.review_date, review.review_id
                               FROM review
                               INNER JOIN item on item.item_id=review.item_id
                               INNER JOIN hotel on hotel.hotel_id=item.hotel_id
@@ -181,11 +186,11 @@ if (!isset($_SESSION["path"])) {
                                                               <p class='font-poppy text-xl pt-2'> $row[review_content]</p>
                                                        </div>
                                              </div> 
-                                             <form action='remove-favorite.php' class='flex items-start flex-col justify-center'>
-                                                  <i class='fa-solid fa-trash text-xl'></i>
-                                             </form>
+                                             <a href='remove-review.php?review_id=$row[review_id]'>
+                                                  <i class='fa-solid fa-trash text-xl cursor-pointer hover:text-red-700'></i>
+                                              </a>
                                         </div>
-                       ";
+                                         ";
                                    }
                               } else {
                                    echo "<h1 class='opacity-0 '></h1>";
@@ -193,22 +198,22 @@ if (!isset($_SESSION["path"])) {
                                    echo "<h1 class='opacity-0 '></h1>";
                               }
                          } elseif ($review_id == 2) {
-                              echo "
-                              <div class='flex items-center justify-center flex-col'>
-                                   <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>
-                                   <a href='#' class='bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300 flex font-poppy items-center justify-center space-x-2 mt-3'><i class='fa-solid fa-droplet'></i><p>Upload</p></a>
-                              </div>
-                              
-                              ";
+                              include('drops/view.php');
+                              if (isset($_GET['error'])) {
                               ?>
+                                   <p><?= $_GET['error'] ?></p>
+                              <?php } ?>
+                              <form action='drops/upload.php' method="post" enctype="multipart/form-data" class="flex">
+                                   <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
+                                   <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
+                              </form>
                          <?php
                          }
                          ?>
-
                          </div>
-
                </div>
-               <?php
-               include './components/footer.php'
-               ?>
+     </div>
+     <?php
+     include './components/footer.php'
+     ?>
 </body>
