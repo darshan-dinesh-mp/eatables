@@ -15,22 +15,44 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
     	if (in_array($video_ex_lc, $allowed_exs)) {
     		
     		$new_video_name = uniqid("video-", true). '.'.$video_ex_lc;
-    		$video_upload_path = 'drops/uploads/'.$new_video_name;
-    		move_uploaded_file($tmp_name, $video_upload_path);
+    		$video_upload_path = '../drops/uploads/'.$new_video_name;
+    		if(move_uploaded_file($tmp_name, $video_upload_path))
+			{	
 			$uid=$_SESSION['id'];
 			$date=date('d-m-y h:i:s');
-    		// Now let's Insert the video path into database
+    		// Insert the video path into database
             $sql = "INSERT INTO drops(uid,video_url,drop_date) 
                    VALUES($uid,'$new_video_name','$date')";
             mysqli_query($con, $sql);
+			if(isset($_GET['review'])){
 			header("Location: ../user-profile.php?review=2");
+			}
+			else{
+				session_destroy();
+				header("Location: view.php");
+			}
+		}
     	}else {
-    		$em = "You can't upload files of this type";
+			if(isset($_GET['review'])){
+				$em = "You can't upload files of this type";
     		header("Location: ../user-profile.php?review=2&error=$em");
+				}
+				else{
+					session_destroy();
+					$em = "You can't upload files of this type";
+    		header("Location: view.php?error=$em");
+				}
+    		
     	}
     }
 
 
 }else{
-	header("Location: ../user-profile.php?review=2");
+	if(isset($_GET['review'])){
+		header("Location: ../user-profile.php?review=2");
+		}
+		else{
+			session_destroy();
+			header("Location: view.php");
+		}
 }
