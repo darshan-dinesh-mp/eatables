@@ -48,46 +48,49 @@
                                 </div>
                             </div>
                         </div>
-                    <?php
+        </div>
+    </div>
+
+<?php
                     }
                 }
             } else {
+?>
+<div class="flex flex-row items-center w-3/4 justify-evenly md:pt-4">
+    <?php
                 $uid = $_SESSION['id'];
                 $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_id DESC";
                 $res = mysqli_query($con, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($video = mysqli_fetch_assoc($res)) {
-                    ?>
-                        <div class="w-[420px] h-[780px] shadow-xl relative ">
-                            <h1 class="text-3xl md:text-4xl font-colvet text-white absolute ml-3">
-                                eatables.
-                            </h1>
-                            <video controls="hidden" id="video-<?= $video['drop_id'] ?>" class="re playable-video" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
-                        </div>
-            <?php
+    ?>
+            <div class="shadow-2xl relative ">
+                <a href="index.php" class="w-full pl-5 pt-3 h-20 z-20 text-xl font-colvet text-white absolute">
+                    eatables.
+                </a>
+
+                <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem]" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
+            </div>
+<?php
                     }
                 } else {
                     echo "<h1>Empty</h1>";
                 }
             }
-            ?>
-            <?php
-            if (!isset($_GET['review'])) {
-                if (isset($_GET['error'])) {
-                    ?>
-                    <p>
-                        <?= $_GET['error'] ?>
-                    </p>
-                <?php } ?>
-                <!-- <form action='upload.php' method="post" enctype="multipart/form-data" class="flex">
-                    <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
-                    <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
-                </form> -->
-                <?php
-            }
-            ?>
-        </div>
-    </div>
+?>
+</div>
+<?php
+if (!isset($_GET['review'])) {
+    if (isset($_GET['error'])) {
+?>
+        <p>
+            <?= $_GET['error'] ?>
+        </p>
+    <?php } ?>
+
+<?php
+}
+?>
 
 </body>
 
