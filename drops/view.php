@@ -64,7 +64,7 @@
                 }
             } else {
 ?>
-<div class="flex flex-row items-center w-3/4 justify-evenly md:pt-4 ">
+<div class="flex flex-row items-center w-3/4 justify-center flex-wrap md:pt-4 ">
     <?php
                 $uid = $_SESSION['id'];
                 $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_id DESC";
@@ -72,21 +72,21 @@
                 if (mysqli_num_rows($res) > 0) {
                     while ($video = mysqli_fetch_assoc($res)) {
     ?>
-            <div class="shadow-2xl">
-                <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem]" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
+            <div class="shadow-2xl m-2 relative flex items-center justify-center cursor-pointer">
+                <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] " data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
+                <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-eye mr-1"></i>19K</h1>
             </div>
 <?php
                     }
                 } else {
                     echo "<div class='flex flex-col items-center justify-center font-poppy space-y-2'>
                             <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>
-                            <button id='upload-btn-one' class='bg-black text-white py-2 px-8 rounded-lg' >Upload</button>
-                          </div>
+                            </div>
                             ";
                 }
             }
 ?>
-
+<!-- <button id='upload-btn-one' class='bg-black text-white py-2 px-8 rounded-lg' >Upload</button> -->
 </div>
 <?php
 if (!isset($_GET['review'])) {

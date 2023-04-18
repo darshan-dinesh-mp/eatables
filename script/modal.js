@@ -11,6 +11,10 @@ btnOne.onclick = function () {
     modal.style.display = "block";
 };
 
+btnTwo.onclick = function () {
+    modal.style.display = "block";
+};
+
 span.onclick = function () {
     modal.style.display = "none";
 };

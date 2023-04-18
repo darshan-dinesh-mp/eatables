@@ -95,7 +95,7 @@ if (!isset($_SESSION["path"])) {
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <a id="upload-btn" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <a id="upload-btn-one" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-video mr-1"></i>
                          Upload
                     </a>
