@@ -71,7 +71,8 @@ if (!isset($_SESSION["path"])) {
                          echo $fullName;
                          ?>
                     </span>
-                    <?php if ($row['verified']) {
+                    <?php 
+                    if ($row['verified']==1) {
                          echo "<i class='fa-solid fa-circle-check text-[10px] md:text-[16px]'></i>";
                     } else {
                          echo "";
