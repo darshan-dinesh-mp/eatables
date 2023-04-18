@@ -34,7 +34,7 @@
             if (usernameInput.value === '') {
                 errorUsername.textContent = 'Please enter a username.';
             } else if (!/^[a-z]+$/.test(usernameInput.value)) {
-                errorUsername.textContent = 'Only use lowercase letters.';
+                errorUsername.textContent = 'Only lowercase letters are allowed.';
             } else if (!/^[a-z]{4,15}$/.test(usernameInput.value)) {
                 errorUsername.textContent = 'Username requires 4-15 characters.';
             } else {

@@ -51,7 +51,6 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
-
 		<script>
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(position => {
@@ -102,7 +101,7 @@ if (!$_SESSION['status']) {
 						<form action="" method="get">
 							<input id="search-bar" name="search" class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="Futopia, Mars" type="text" />
 						</form>
-						<div id="search-results" class="font-poppy text-xl p-4 ">
+						<div id="search-results" class="font-poppy text-xl pt-3 search-suggestions">
 						</div>
 						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
 							<div class="flex items-center justify-center space-x-1">
