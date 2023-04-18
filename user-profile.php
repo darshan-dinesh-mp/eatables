@@ -71,8 +71,8 @@ if (!isset($_SESSION["path"])) {
                          echo $fullName;
                          ?>
                     </span>
-                    <?php 
-                    if ($row['verified']==1) {
+                    <?php
+                    if ($row['verified'] == 1) {
                          echo "<i class='fa-solid fa-circle-check text-[10px] md:text-[16px]'></i>";
                     } else {
                          echo "";
@@ -210,28 +210,21 @@ if (!isset($_SESSION["path"])) {
                     }
                ?>
           </div>
-          <?php
+     <?php
                } elseif ($review_id == 2) {
-                    echo '  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-5 place-content-evenly py-8 w-full md:w-4/6">';
+     ?>
+          <?php
                     include('drops/view.php');
-                    echo "</div>";
                     if (isset($_GET['error'])) {
           ?>
                <p>
                     <?= $_GET['error'] ?>
                </p>
           <?php } ?>
-          <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex">
-               <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
-               <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
-          </form>
      <?php
                }
      ?>
-     </div>
-     </div>
-     </div>
-     <?php
-     include './components/footer.php'
+     <?php     
+     // include './components/footer.php'
      ?>
 </body>
