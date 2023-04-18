@@ -10,13 +10,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/08ae7c27bc.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../public/eatables.png" type="image/x-icon">
-    <style>
 
-    </style>
 </head>
 
 <body>
-    <div class="bg-brand bg-img bg-fixed w-full flex flex-col items-center">
+    <div class="bg-brand overflow-hidden bg-img bg-fixed w-full flex flex-col items-center">
 
         <div class="flex flex-col items-center justify-center w-full">
 
@@ -29,21 +27,21 @@
                 if (mysqli_num_rows($res) > 0) {
                     while ($video = mysqli_fetch_assoc($res)) {
             ?>
-                        <div class="md:w-[30rem] md:h-[100vh] shadow-2xl relative ">
+                        <div class="md:w-[30rem] md:h-[100vh] h-full shadow-2xl relative ">
                             <div class="w-full px-5 pt-1 h-20 z-20 absolute bg-gradient-to-b from-black flex items-center justify-between">
-                                <a href="../index.php" class="text-3xl md:text-4xl font-colvet text-white ">
+                                <a href="../user-profile.php" class="text-3xl md:text-4xl font-colvet text-white ">
                                     eatables.
                                 </a>
                                 <div class="w-1/4 flex items-center justify-between">
-                                    <a href="../index.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
+                                    <a href="../user-profile.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
                                         <i class="fa-solid fa-user "></i>
                                     </a>
-                                    <a href="../user-profile.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
+                                    <a href="../index.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
                                         <i class="fa-solid fa-house "></i>
                                     </a>
                                 </div>
                             </div>
-                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video " data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
+                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
                             <div class="w-full h-36 px-2 md:px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
                                 <div class="flex flex-col w-3/4">
                                     <div class="flex items-center my-2 space-x-2">
@@ -57,16 +55,16 @@
                                     <i class="fa-regular fa-bookmark text-3xl cursor-pointer"></i>
                                 </div>
                             </div>
-                            </w-full>
                         </div>
         </div>
+    </div>
 
 <?php
                     }
                 }
             } else {
 ?>
-<div class="flex flex-row items-center w-3/4 justify-evenly md:pt-4">
+<div class="flex flex-row items-center w-3/4 justify-evenly md:pt-4 ">
     <?php
                 $uid = $_SESSION['id'];
                 $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_id DESC";
@@ -74,11 +72,7 @@
                 if (mysqli_num_rows($res) > 0) {
                     while ($video = mysqli_fetch_assoc($res)) {
     ?>
-            <div class="shadow-2xl relative ">
-                <a href="index.php" class="w-full pl-5 pt-3 h-20 z-20 text-xl font-colvet text-white absolute">
-                    eatables.
-                </a>
-
+            <div class="shadow-2xl">
                 <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem]" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
             </div>
 <?php

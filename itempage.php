@@ -15,11 +15,44 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+
+    include "dbconnect.php";
+
+    if (isset($_GET['item_id'])) {
+        $item_id = $_GET['item_id'];
+        $_SESSION['item_id'] = $item_id;
+    } else {
+        $item_id = $_SESSION['item_id'];
+    }
+
+    $sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name, hotel.hotel_id, hotel.ratings
+        FROM item
+        INNER JOIN hotel
+        ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
+    $res = $con->query($sql);
+    $sqlone = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name, hotel.hotel_id, hotel.ratings
+        FROM item
+        INNER JOIN hotel
+        ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
+    $resone = $con->query($sqlone);
+    $rowone = $resone->fetch_assoc();
+    $user_id = $_SESSION["id"];
+    $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
+    $check_result = $con->query($check_sql);
+    $item_in_fav = ($check_result->num_rows > 0);
+    ?>
     <div class="bg-brand min-h-screen bg-img w-full flex flex-col items-center p-4 md:py-0 md:px-16">
         <div class="flex items-center w-full justify-between md:py-4">
-            <a href="index.php" class="text-3xl md:text-4xl font-colvet">
-                eatables.
-            </a>
+            <div>
+                <a href="hotels.php?hotel_id=<?php echo $rowone["hotel_id"]; ?>&hotel_name=<?php echo $rowone["hotel_name"]; ?>&rating=<?php echo $rowone["ratings"]; ?>" class="text-3xl md:text-4xl font-colvet">
+                    <i class="fa-solid fa-chevron-left text-2xl"></i>
+                </a>
+                <a href="index.php" class="text-3xl md:text-4xl font-colvet">
+                    eatables.
+                </a>
+            </div>
             <div class='flex items-center justify-between w-32'>
                 <form action="user-profile.php" method="post">
                     <button type="submit" name="logout" class="logout-btn">
@@ -33,30 +66,6 @@
                 </form>
             </div>
         </div>
-
-        <?php
-        session_start();
-
-        include "dbconnect.php";
-
-        if (isset($_GET['item_id'])) {
-            $item_id = $_GET['item_id'];
-            $_SESSION['item_id'] = $item_id;
-        } else {
-            $item_id = $_SESSION['item_id'];
-        }
-
-        $sql = "SELECT item.item_name,item.item_price,item.item_rating,item.item_img, hotel.hotel_name
-        FROM item
-        INNER JOIN hotel
-        ON item.hotel_id = hotel.hotel_id where item_id=$item_id";
-        $res = $con->query($sql);
-
-        $user_id = $_SESSION["id"];
-        $check_sql = "SELECT * FROM favourite WHERE uid = $user_id AND item_id = $item_id";
-        $check_result = $con->query($check_sql);
-        $item_in_fav = ($check_result->num_rows > 0);
-        ?>
 
         <div class="w-full font-poppy">
             <div class="flex items-center justify-around relative w-full flex-col h-[40vh]">
@@ -104,7 +113,7 @@
         </div>
         <div class="w-full flex items-start flex-col my-4">
             <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
-                <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" required/>
+                <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" required />
                 <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.42rem]  md:py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
                     <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
                 </button>

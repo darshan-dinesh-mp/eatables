@@ -47,11 +47,11 @@ if (!isset($_SESSION["path"])) {
                <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                     eatables.
                </a>
-               <form action="logout.php" method="post" 
-               class='flex items-center justify-between '>
-                    <!-- <a href="edit-profile.php">
-                         <i class="fa-solid fa-video text-2xl"></i>
-                    </a> -->
+               <form action="logout.php" method="post" class='flex items-center justify-between w-36 md:w-40'>
+                    <a href="drops/view.php"><i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i></a>
+                    <a id="upload-btn">
+                         <i class="fa-solid fa-video text-2xl cursor-pointer"></i>
+                    </a>
                     <button type="submit" name="logout" class="logout-btn">
                          <i class="fa-solid fa-right-from-bracket text-2xl"></i>
                     </button>
@@ -59,7 +59,7 @@ if (!isset($_SESSION["path"])) {
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
                <div class="relative">
-                    <a href="edit-profile.php" class="flex items-center justify-center absolute bottom-0 right-0 z-10 p-3 bg-black/80 hover:text-[#f9bb21] duration-300 w-8 h-8 text-white rounded-full">
+                    <a href="edit-profile.php" class="flex items-center justify-center absolute bottom-0 right-0 z-5 p-3 bg-black/80 hover:text-[#f9bb21] duration-300 w-8 h-8 text-white rounded-full">
                          <i class="fa-solid fa-camera text-[12px]"></i>
                     </a>
                     <img src="<?php echo $imageNull == null ? 'media/images/user.png' : $path; ?>" class="rounded-full border-black border-4 md:border-5 shadow-xl w-28 h-28 md:w-32 md:h-32 object-cover" />
@@ -95,10 +95,10 @@ if (!isset($_SESSION["path"])) {
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <a id="upload-btn" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <!-- <a id="upload-btn" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-video mr-1"></i>
                          Upload
-                    </a>
+                    </a> -->
                </div>
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
@@ -106,7 +106,8 @@ if (!isset($_SESSION["path"])) {
                          <span class="font-poppy font-semibold md:block hidden">Favorites</span>
                     </a>
                     <a href="user-profile.php?review=2" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
-                         <i class="fa-solid fa-droplet text-2xl"></i>
+                         <!-- <i class="fa-solid fa-droplet text-2xl"></i> -->
+                         <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
                          <span class="font-poppy font-semibold md:block hidden"> Drops</span>
                     </a>
                     <a href="user-profile.php?review=1" class="w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">

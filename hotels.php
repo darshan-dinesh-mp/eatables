@@ -40,10 +40,14 @@ if (!$_SESSION['status']) {
 	?>
 	<div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
 		<div class="flex items-center w-full justify-between">
-			<a href="index.php" class="text-3xl md:text-4xl font-colvet">
-				eatables.
-			</a>
-
+			<div>
+				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
+					<i class="fa-solid fa-chevron-left text-2xl"></i>
+				</a>
+				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
+					eatables.
+				</a>
+			</div>
 			<a href="index.php" class="text-3xl duration-500 hover:rotate-[90deg]">
 				<i class="fa-solid fa-xmark"></i>
 			</a>
