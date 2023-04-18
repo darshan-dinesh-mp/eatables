@@ -21,7 +21,7 @@
             if (fullnameInput.value === '') {
                 errorFullname.textContent = 'Enter your fullname.';
             } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
-                errorFullname.textContent = 'Alphabets & spaces are only allowed!';
+                errorFullname.textContent = 'Only alphabets & spaces are allowed!';
             } else {
                 errorFullname.textContent = '';
             }
