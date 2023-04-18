@@ -30,10 +30,20 @@
                     while ($video = mysqli_fetch_assoc($res)) {
             ?>
                         <div class="md:w-[30rem] md:h-[100vh] shadow-2xl relative ">
-                            <a href="../index.php" class="w-full pl-5 pt-3 h-20 z-20 text-3xl md:text-4xl font-colvet text-white absolute bg-gradient-to-b from-black">
-                                eatables.
-                            </a>
-                            <video autoplay controls id="video-<?= $video['drop_id'] ?>" class="re playable-video " data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
+                            <div class="w-full px-5 pt-1 h-20 z-20 absolute bg-gradient-to-b from-black flex items-center justify-between">
+                                <a href="../index.php" class="text-3xl md:text-4xl font-colvet text-white ">
+                                    eatables.
+                                </a>
+                                <div class="w-1/4 flex items-center justify-between">
+                                    <a href="../index.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
+                                        <i class="fa-solid fa-user "></i>
+                                    </a>
+                                    <a href="../user-profile.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
+                                        <i class="fa-solid fa-house "></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video " data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
                             <div class="w-full h-36 px-2 md:px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
                                 <div class="flex flex-col w-3/4">
                                     <div class="flex items-center my-2 space-x-2">
@@ -47,9 +57,9 @@
                                     <i class="fa-regular fa-bookmark text-3xl cursor-pointer"></i>
                                 </div>
                             </div>
+                            </w-full>
                         </div>
         </div>
-    </div>
 
 <?php
                     }
@@ -74,10 +84,15 @@
 <?php
                     }
                 } else {
-                    echo "<h1>Empty</h1>";
+                    echo "<div class='flex flex-col items-center justify-center font-poppy space-y-2'>
+                            <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>
+                            <button id='upload-btn-one' class='bg-black text-white py-2 px-8 rounded-lg' >Upload</button>
+                          </div>
+                            ";
                 }
             }
 ?>
+
 </div>
 <?php
 if (!isset($_GET['review'])) {
@@ -91,7 +106,16 @@ if (!isset($_GET['review'])) {
 <?php
 }
 ?>
-
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex">
+            <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
+            <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
+            <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500 close">Close</button>
+        </form>
+    </div>
+</div>
+<script src="../script/modal.js"></script>
 </body>
 
 </html>

@@ -47,14 +47,14 @@ if (!isset($_SESSION["path"])) {
                <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                     eatables.
                </a>
-               <form action="logout.php" method="post" class='flex items-center justify-between w-32'>
-                    <a href="edit-profile.php">
+               <form action="logout.php" method="post" 
+               class='flex items-center justify-between '>
+                    <!-- <a href="edit-profile.php">
                          <i class="fa-solid fa-video text-2xl"></i>
-                    </a>
+                    </a> -->
                     <button type="submit" name="logout" class="logout-btn">
                          <i class="fa-solid fa-right-from-bracket text-2xl"></i>
                     </button>
-
                </form>
           </div>
           <div class="flex flex-col items-center justify-center w-full pt-8 md:pt-12">
@@ -90,12 +90,12 @@ if (!isset($_SESSION["path"])) {
                          ?>
                     </h2>
                </div>
-               <div class="my-3 font-poppy flex items-center justify-evenly w-1/4">
+               <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/4">
                     <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <a href="drops/upload.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <a id="upload-btn" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-video mr-1"></i>
                          Upload
                     </a>
@@ -224,7 +224,16 @@ if (!isset($_SESSION["path"])) {
      <?php
                }
      ?>
-     <?php     
-     // include './components/footer.php'
-     ?>
+     <div id="modal" class="modal">
+          <div class="modal-content">
+               <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex">
+                    <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
+                    <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
+                    <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500 close">Close</button>
+               </form>
+          </div>
+     </div>
+     <script src="script/modal.js"></script>
 </body>
+
+</html>
