@@ -13,78 +13,78 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
     <title>Eatables - Register</title>
 
-<script>
-    function validateFullname() {
-        const fullnameInput = document.getElementById('fullname');
-        const errorFullname = document.getElementById('error-fullname');
+    <script>
+        function validateFullname() {
+            const fullnameInput = document.getElementById('fullname');
+            const errorFullname = document.getElementById('error-fullname');
 
-        if (fullnameInput.value === '') {
-            errorFullname.textContent = 'Please enter your fullname';
-        } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
-            errorFullname.textContent = 'Fullname can only contain letters and spaces';
-        } else {
-            errorFullname.textContent = '';
+            if (fullnameInput.value === '') {
+                errorFullname.textContent = 'Enter your fullname.';
+            } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
+                errorFullname.textContent = 'Alphabets & spaces are only allowed!';
+            } else {
+                errorFullname.textContent = '';
+            }
         }
-    }
-    function validateUsername() {
-        const usernameInput = document.getElementById('username');
-        const errorUsername = document.getElementById('error-username');
 
-        if (usernameInput.value === '') {
-            errorUsername.textContent = 'Please enter the Username';
-        } else if (!/^[a-z]+$/.test(usernameInput.value)) {
-            errorUsername.textContent = 'Username can only contain smallcase alphabets';
-        } else if (!/^[a-z]{4,15}$/.test(usernameInput.value)) {
-            errorUsername.textContent = 'Username should contain between 4 - 15 characters';
+        function validateUsername() {
+            const usernameInput = document.getElementById('username');
+            const errorUsername = document.getElementById('error-username');
+
+            if (usernameInput.value === '') {
+                errorUsername.textContent = 'Please enter a username.';
+            } else if (!/^[a-z]+$/.test(usernameInput.value)) {
+                errorUsername.textContent = 'Only use lowercase letters.';
+            } else if (!/^[a-z]{4,15}$/.test(usernameInput.value)) {
+                errorUsername.textContent = 'Username requires 4-15 characters.';
+            } else {
+                errorUsername.textContent = '';
+            }
         }
-        else {
-            errorUsername.textContent = '';
+
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const errorEmail = document.getElementById('error-email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailInput.value === '') {
+                errorEmail.textContent = 'Please enter your email address.';
+            } else if (!emailRegex.test(emailInput.value)) {
+                errorEmail.textContent = 'Invalid email format!';
+            } else {
+                errorEmail.textContent = '';
+            }
         }
-    }
-    function validateEmail() {
-    const emailInput = document.getElementById('email');
-    const errorEmail = document.getElementById('error-email');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (emailInput.value === '') {
-        errorEmail.textContent = 'Please enter your email address';
-    } else if (!emailRegex.test(emailInput.value)) {
-        errorEmail.textContent = 'Invalid email format';
-    } else {
-        errorEmail.textContent = '';
-    }
-}
+        function validatePassword() {
+            const passwordInput = document.getElementById('password');
+            const errorPassword = document.getElementById('error-password');
 
-function validatePassword() {
-    const passwordInput = document.getElementById('password');
-    const errorPassword = document.getElementById('error-password');
+            if (passwordInput.value === '') {
+                errorPassword.textContent = 'Please enter a password.';
+            } else if (passwordInput.value.length < 8) {
+                errorPassword.textContent = 'Minimum 8 characters required.';
+            } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(passwordInput.value)) {
+                errorPassword.textContent = 'Include a number or letter.';
+            } else {
+                errorPassword.textContent = '';
+            }
+        }
 
-    if (passwordInput.value === '') {
-        errorPassword.textContent = 'Please enter a password';
-    } else if (passwordInput.value.length < 8) {
-        errorPassword.textContent = 'Password must be at least 8 characters long';
-    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(passwordInput.value)) {
-        errorPassword.textContent = 'Password must contain at least one letter and one number';
-    } else {
-        errorPassword.textContent = '';
-    }
-}
+        function validateConfirm() {
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm');
+            const errorConfirmPassword = document.getElementById('error-confirm');
 
-function validateConfirm() {
-  const passwordInput = document.getElementById('password');
-  const confirmPasswordInput = document.getElementById('confirm');
-  const errorConfirmPassword = document.getElementById('error-confirm');
-
-  if (confirmPasswordInput.value === '') {
-    errorConfirmPassword.textContent = 'Please confirm your password';
-  } else if (passwordInput.value !== confirmPasswordInput.value) {
-    errorConfirmPassword.textContent = 'Passwords do not match';
-  } else {
-    errorConfirmPassword.textContent = '';
-  }
-}
-
-</script>
+            if (confirmPasswordInput.value === '') {
+                errorConfirmPassword.textContent = 'Please confirm your password.';
+            } else if (passwordInput.value !== confirmPasswordInput.value) {
+                errorConfirmPassword.textContent = 'Password entered does not match.';
+            } else {
+                errorConfirmPassword.textContent = '';
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -106,17 +106,27 @@ function validateConfirm() {
                 </a>
                 <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
             </div>
-            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
-                <input type="text" name="fullname" id="fullname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] md:col-span-2" placeholder="fullname" autocomplete="on" oninput="validateFullname()" />
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-fullname"></p>              
-                <input type="text" name="username" id="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" oninput="validateUsername()" />
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-username"></p>
-                <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" oninput="validateEmail()"/>
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
-                <input type="password" name="password" id="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" oninput="validatePassword()" />
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-password"></p>
-                <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" oninput="validateConfirm()"/>
-                <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-confirm"></p>
+            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 place-items-center">
+                <div class="w-full md:col-span-2">
+                    <input type="text" name="fullname" id="fullname" class="w-full border-none outline-none  text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="fullname" autocomplete="on" oninput="validateFullname()" />
+                    <p class="font-poppy text-red-500 text-2xl text-center w-full" id="error-fullname"></p>
+                </div>
+                <div class="md:w-2/4">
+                    <input type="text" name="username" id="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" oninput="validateUsername()" />
+                    <p class="font-poppy text-red-500 text-2xl text-center" id="error-username"></p>
+                </div>
+                <div class="md:w-2/4">
+                    <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" oninput="validateEmail()" />
+                    <p class="font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
+                </div>
+                <div class="md:w-2/4">
+                    <input type="password" name="password" id="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" oninput="validatePassword()" />
+                    <p class="font-poppy text-red-500 text-2xl text-center" id="error-password"></p>
+                </div>
+                <div class="md:w-2/4">
+                    <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" oninput="validateConfirm()" />
+                    <p class="font-poppy text-red-500 text-2xl text-center" id="error-confirm"></p>
+                </div>
                 <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
             </form>
             <div class='error-div'>
@@ -126,7 +136,7 @@ function validateConfirm() {
                 <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
                 <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-pwd"></p>
             </div>
-            <p class="text-sm text-center md:text-lg font-poppy">
+            <p class="text-sm text-center md:text-lg font-poppy mt-[10px]">
                 have an account?
                 <a href="login.php" class="underline">
                     login

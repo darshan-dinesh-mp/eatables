@@ -94,7 +94,7 @@ input.incorrect {
 }
 
 .error-div {
-    margin: 20px 0;
+    margin: 10px 0 0 0;
 }
 
 .error {
@@ -138,4 +138,8 @@ input.incorrect {
     top: -100px;
     opacity: 1;
     transition: top 1s, opacity 1s;
+}
+
+.text-red-500 {
+    color: red;
 }
