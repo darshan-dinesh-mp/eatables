@@ -24,10 +24,10 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
                    VALUES($uid,'$new_video_name','$date')";
 				mysqli_query($con, $sql);
 
-				$sqldemo = "select count(uid) as count from drops where uid=$uid";
-				$resultt = $con->query($sqldemo);
-				$rowww = $resultt->fetch_assoc();
-				if($rowww["count"]>2){
+				$count_drops = "select count(uid) as count from drops where uid=$uid";
+				$count_result = $con->query($count_drops);
+				$count_row = $count_result->fetch_assoc();
+				if($count_row["count"]>2){
 					$update_verify="update user set verified=1 where uid=$uid";
 					$update_verify_result=$con->query($update_verify);
 				}

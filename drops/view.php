@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="bg-brand pb-16 bg-img bg-fixed w-full flex flex-col items-center">
+    <div class="bg-brand bg-img bg-fixed w-full flex flex-col items-center">
 
         <div class="flex flex-col items-center justify-center w-full">
 
@@ -53,7 +53,7 @@
                                     <p class="md:text-lg text-sm"> Omelette Cheese Burger | Hamburg Street Food Cafe</p>
                                 </div>
                                 <div class="flex flex-col items-center justify-evenly space-y-3">
-                                    <i class="fa-regular  fa-heart text-3xl cursor-pointer hover:text-red-500"></i>
+                                    <i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i>
                                     <i class="fa-regular fa-bookmark text-3xl cursor-pointer"></i>
                                 </div>
                             </div>
