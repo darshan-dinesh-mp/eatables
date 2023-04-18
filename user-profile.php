@@ -90,15 +90,15 @@ if (!isset($_SESSION["path"])) {
                          ?>
                     </h2>
                </div>
-               <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/4">
+               <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/4 space-y-2 md:space-y-0">
                     <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <!-- <a id="upload-btn" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <a id="upload-btn" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-video mr-1"></i>
                          Upload
-                    </a> -->
+                    </a>
                </div>
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
@@ -227,10 +227,10 @@ if (!isset($_SESSION["path"])) {
      ?>
      <div id="modal" class="modal">
           <div class="modal-content">
-               <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex">
-                    <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand w-full">
-                    <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Upload">
-                    <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500 close">Close</button>
+               <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col md:flex-row space-x-2 space-y-3 md:space-y-0">
+                    <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-3/4">
+                    <button type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i></button>
+                    <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
                </form>
           </div>
      </div>

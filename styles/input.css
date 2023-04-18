@@ -154,7 +154,7 @@ input.incorrect {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 999; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -168,7 +168,7 @@ input.incorrect {
     border-radius: 15px;
     background-color: #fefefe;
     margin: 20% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 5px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
 }
@@ -186,4 +186,11 @@ input.incorrect {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-content {
+        margin: 70% auto; /* 15% from the top and centered */
+        padding: 5px;
+    }
 }
