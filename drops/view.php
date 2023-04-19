@@ -100,7 +100,7 @@ if (!isset($_GET['review'])) {
 <?php
 }
 ?>
-    </div>
+   </div>
     <div id="modal" class="modal">
         <div class="modal-content">
             <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col md:flex-row space-x-2 space-y-3 md:space-y-0">
