@@ -38,11 +38,11 @@ if (!$_SESSION['status']) {
 	$sql = "SELECT * FROM item WHERE hotel_id='$hotel_id' LIMIT $offset, 12";
 	$res = $con->query($sql);
 
-// Count the total number of items
-$total_items = mysqli_num_rows(mysqli_query($con, "SELECT * FROM item WHERE hotel_id='$hotel_id'"));
+	// Count the total number of items
+	$total_items = mysqli_num_rows(mysqli_query($con, "SELECT * FROM item WHERE hotel_id='$hotel_id'"));
 
-// Calculate the total number of pages based on the number of items and the items per page
-$total_pages = ceil($total_items / 12);
+	// Calculate the total number of pages based on the number of items and the items per page
+	$total_pages = ceil($total_items / 12);
 	$sql = "select * from hotel where hotel_id=$hotel_id";
 	$row = $con->query($sql);
 	$desc = '';
@@ -135,20 +135,23 @@ $total_pages = ceil($total_items / 12);
 					<a class="text-white hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center duration-500" style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url('<?php echo $img_links; ?>'); background-size:cover;" href="itempage.php?item_id=<?php echo $row['item_id']; ?>">
 						<p class="text-white-700 text-2xl"><?php echo $row['item_name']; ?></p>
 					</a>
-					
+
 
 
 				<?php
-				}?>
-				<br>
-				<div class="pagination">
-    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-        <a href="?hotel_id=<?php echo $hotel_id ?>&hotel_name=<?php echo $hotel_name ?>&rating=<?php echo $rating ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php echo $i ?></a>
-    <?php endfor; ?>
-</div><?php
+				} ?>
+		</div>
+		<div class="pagination w-full flex items-center justify-center space-x-3 pt-8">
+			<?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+				<a class="font-poppy" href="?hotel_id=<?php echo $hotel_id ?>&hotel_name=<?php echo $hotel_name ?>&rating=<?php echo $rating ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
+																																													echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+																																												} else {
+																																													echo "<span class='font text-lg bold hover:bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+																																												} ?></a>
+			<?php endfor; ?>
+		</div><?php
 			} else {
 				?>
-		</div>
 		<div class="flex items-center justify-center h-[60vh] flex-col">
 			<i class="fa-regular fa-face-sad-tear text-3xl mb-1"></i>
 			<p class=" md:grid-cols-1 text-center font-poppy text-xl">Looks like this town is so small, the hotels are playing hide-and-seek!</p>

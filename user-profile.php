@@ -50,7 +50,7 @@ if (!isset($_SESSION["path"])) {
                     eatables.
                </a>
                <form action="logout.php" method="post" class='flex items-center justify-between w-36 md:w-40'>
-                    <a href="drops/view.php"><i class="fa-solid fa-wand-magic-sparkles text-2xl cursor-pointer "></i></a>
+                    <a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
                     <a id="upload-btn">
                          <i class="fa-solid fa-video text-2xl cursor-pointer"></i>
                     </a>
