@@ -133,7 +133,7 @@ if (!$_SESSION['status']) {
 
 									while ($row = $res->fetch_assoc()) {
 										$ratings = $row['ratings'];
-										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings'>$row[hotel_name]</a>";
+										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 									}
 								} else {
 							?>
@@ -149,7 +149,7 @@ if (!$_SESSION['status']) {
 								while (($row = $res->fetch_assoc()) && $i <= 10) {
 									$ratings = $row['ratings'];
 									$i++;
-									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings'>$row[hotel_name]</a>";
+									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 								}
 							}
 						}
