@@ -27,9 +27,22 @@ if (!$_SESSION['status']) {
 	$hotel_id = $_GET['hotel_id'];
 	$hotel_name = $_GET['hotel_name'];
 	$rating = $_GET['rating'];
-	$sql = "select * from item where hotel_id='$hotel_id'";
+	$sql = "select count(*) as total from item where hotel_id='$hotel_id'";
+	$res1 = $con->query($sql);
+	$row1 = $res1->fetch_assoc();
+	$total_pages = ceil($row1['total'] / 10);
+	$page = isset($_GET['page']) ? $_GET['page'] : 1;
+	$offset = ($page - 1) * 10;
+
+	// Query the database to get the items for the current page
+	$sql = "SELECT * FROM item WHERE hotel_id='$hotel_id' LIMIT $offset, 12";
 	$res = $con->query($sql);
 
+// Count the total number of items
+$total_items = mysqli_num_rows(mysqli_query($con, "SELECT * FROM item WHERE hotel_id='$hotel_id'"));
+
+// Calculate the total number of pages based on the number of items and the items per page
+$total_pages = ceil($total_items / 12);
 	$sql = "select * from hotel where hotel_id=$hotel_id";
 	$row = $con->query($sql);
 	$desc = '';
@@ -114,18 +127,25 @@ if (!$_SESSION['status']) {
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full ">
 
 			<?php
-			$i = 0;
 			if ($res->num_rows > 0) {
-				while (($row = $res->fetch_assoc()) && $i < 16) {
-					$i++;
+				while (($row = $res->fetch_assoc())) {
+
 					$img_links = $row['item_img'];
 			?>
 					<a class="text-white hover:scale-[1.01] rounded-lg shadow-lg px-4 py-24 hover:shadow-xl transition-all font-poppy font-semibold text-center duration-500" style="background-image:linear-gradient(to top, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.155)), url('<?php echo $img_links; ?>'); background-size:cover;" href="itempage.php?item_id=<?php echo $row['item_id']; ?>">
 						<p class="text-white-700 text-2xl"><?php echo $row['item_name']; ?></p>
 					</a>
+					
+
 
 				<?php
-				}
+				}?>
+				<br>
+				<div class="pagination">
+    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+        <a href="?hotel_id=<?php echo $hotel_id ?>&hotel_name=<?php echo $hotel_name ?>&rating=<?php echo $rating ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php echo $i ?></a>
+    <?php endfor; ?>
+</div><?php
 			} else {
 				?>
 		</div>
