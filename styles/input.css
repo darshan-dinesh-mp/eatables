@@ -17,11 +17,11 @@
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #f9bb21;
+    background-color: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #000000;
+    background-color: #f9bb21;
 }
 
 ::selection {

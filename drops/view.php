@@ -14,7 +14,24 @@
 </head>
 
 <body>
-    <div class="bg-brand overflow-hidden bg-img bg-fixed w-full flex flex-col items-center">
+    <button id="upload-btn" class="bg-[#f9bb21] w-16 h-16 rounded-full fixed z-[9999] bottom-8 right-8">
+        <i class="fa-solid fa-video text-2xl text-black"></i>
+    </button>
+
+    <div class="w-full px-5 h-20 z-50 bg-gradient-to-b fixed top-0 from-black flex items-center justify-between">
+        <a href="../user-profile.php" class="text-3xl w-3/4 md:text-4xl font-colvet text-white ">
+            eatables.
+        </a>
+        <div class="w-28 flex items-center justify-between">
+            <a href="../user-profile.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
+                <i class="fa-solid fa-user "></i>
+            </a>
+            <a href="../index.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
+                <i class="fa-solid fa-house "></i>
+            </a>
+        </div>
+    </div>
+    <div class="bg-black overflow-hidden bg-fixed w-full flex flex-col items-center">
 
         <div class="flex flex-col items-center justify-center w-full">
 
@@ -28,19 +45,6 @@
                     while ($video = mysqli_fetch_assoc($res)) {
             ?>
                         <div class="md:w-[30rem] md:h-[100vh] h-full shadow-2xl relative ">
-                            <div class="w-full px-5 pt-1 h-20 z-20 absolute bg-gradient-to-b from-black flex items-center justify-between">
-                                <a href="../user-profile.php" class="text-3xl md:text-4xl font-colvet text-white ">
-                                    eatables.
-                                </a>
-                                <div class="w-1/4 flex items-center justify-between">
-                                    <a href="../user-profile.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
-                                        <i class="fa-solid fa-user "></i>
-                                    </a>
-                                    <a href="../index.php" class="text-xl md:text-2xl text-white duration-500 hover:text-[#f9bb21]">
-                                        <i class="fa-solid fa-house "></i>
-                                    </a>
-                                </div>
-                            </div>
                             <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
                             <div class="w-full h-36 px-2 md:px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
                                 <div class="flex flex-col w-3/4">
@@ -68,7 +72,7 @@
         <div class="flex flex-row items-center w-3/4 justify-center flex-wrap md:pt-4 ">
             <?php
                 $uid = $_SESSION['id'];
-                $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_id DESC";
+                $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_date DESC";
                 $res = mysqli_query($con, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($video = mysqli_fetch_assoc($res)) {
@@ -105,6 +109,7 @@
         <div id="modal" class="modal">
             <div class="modal-content">
                 <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col md:flex-row space-x-2 space-y-3 md:space-y-0">
+                    <input type="text" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-3/4">
                     <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-3/4">
                     <button type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i></button>
                     <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
