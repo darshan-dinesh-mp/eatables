@@ -42,6 +42,8 @@ if (!isset($_SESSION["path"])) {
 </head>
 
 <body>
+
+
      <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
                <a href="index.php" class="text-3xl md:text-4xl font-colvet">
@@ -84,21 +86,23 @@ if (!isset($_SESSION["path"])) {
                          ?>
                </h1>
                <div class="flex space-x-2">
-                    <h2 class="font-poppy text-md font-medium lowercase">
+                    <a href="mailto:<?php
+                                        echo $email;
+                                        ?>" class="font-poppy text-md font-medium lowercase">
                          <?php
                          echo $email;
                          ?>
-                    </h2>
+                    </a>
                </div>
                <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/4 space-y-2 md:space-y-0">
                     <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <a id="upload-btn-one" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+                    <!-- <a id="upload-btn-one" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-video mr-1"></i>
                          Upload
-                    </a>
+                    </a> -->
                </div>
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
@@ -106,7 +110,6 @@ if (!isset($_SESSION["path"])) {
                          <span class="font-poppy font-semibold md:block hidden">Favorites</span>
                     </a>
                     <a href="user-profile.php?review=2" class=" w-1/4 flex justify-center items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense">
-                         <!-- <i class="fa-solid fa-droplet text-2xl"></i> -->
                          <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
                          <span class="font-poppy font-semibold md:block hidden"> Drops</span>
                     </a>

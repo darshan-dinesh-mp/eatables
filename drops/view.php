@@ -56,61 +56,62 @@
                                 </div>
                             </div>
                         </div>
-        </div>
 
 
-<?php
+                <?php
                     }
                 }
             } else {
-?>
-<div class="flex flex-row items-center w-3/4 justify-center flex-wrap md:pt-4 ">
-    <?php
+                ?>
+        </div>
+
+        <div class="flex flex-row items-center w-3/4 justify-center flex-wrap md:pt-4 ">
+            <?php
                 $uid = $_SESSION['id'];
                 $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_id DESC";
                 $res = mysqli_query($con, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($video = mysqli_fetch_assoc($res)) {
-    ?>
-            <div class="shadow-2xl m-2 relative flex items-center justify-center cursor-pointer">
-                <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] " data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
-                <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-eye mr-1"></i>19K</h1>
-            </div>
-<?php
+            ?>
+                    <div class="shadow-2xl m-2 relative flex items-center justify-center cursor-pointer">
+                        <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] " data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
+                        <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-eye mr-1"></i>19K</h1>
+                    </div>
+        <?php
                     }
                 } else {
                     echo "<div class='flex flex-col items-center justify-center font-poppy space-y-2'>
                             <h1 class='font-poppy text-xl font-medium text-center mt-28'>Something big is cooking at Eatables! <br> Join us as we explore the world of food and discover new flavors.</h1>
-                            </div>
+                          </div>
                             ";
                 }
             }
-?>
-<!-- <button id='upload-btn-one' class='bg-black text-white py-2 px-8 rounded-lg' >Upload</button> -->
-</div>
-<?php
-if (!isset($_GET['review'])) {
-    if (isset($_GET['error'])) {
-?>
-        <p>
-            <?= $_GET['error'] ?>
-        </p>
-    <?php } ?>
+        ?>
 
-<?php
-}
-?>
-   </div>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col md:flex-row space-x-2 space-y-3 md:space-y-0">
-                <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-3/4">
-                <button type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i></button>
-                <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
-            </form>
+
+        <?php
+        if (!isset($_GET['review'])) {
+            if (isset($_GET['error'])) {
+        ?>
+                <p>
+                    <?= $_GET['error'] ?>
+                </p>
+            <?php } ?>
+
+        <?php
+        }
+        ?>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col md:flex-row space-x-2 space-y-3 md:space-y-0">
+                    <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-3/4">
+                    <button type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i></button>
+                    <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </form>
+            </div>
         </div>
-    </div>
-    <script src="../script/modal.js"></script>
+        <script src="../script/modal.js"></script>
 </body>
 
 </html>

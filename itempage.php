@@ -87,23 +87,25 @@
                             <?php
                             if ($item_in_fav == 0) {
                             ?>
-                                <form method="post" class="">
+                                <form method="post" class="flex items-center justify-center">
                                     <input type="hidden" name="item_id">
                                     <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favorite">
                                         <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                         <h1>Add to favorite</h1>
                                     </button>
+                                    <button><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
                                 </form>
                             <?php
                             }
                             if ($item_in_fav == 1) {
                             ?>
-                                <form method="post" class="">
+                                <form method="post" class="flex items-center justify-center">
                                     <input type="hidden" name="item_id">
                                     <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
                                         <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                         <h1>Remove favorite</h1>
                                     </button>
+                                    <button><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
                                 </form> <?php
                                     }
                                         ?>
@@ -111,13 +113,20 @@
             </div>
 
         </div>
-        <div class="w-full flex items-start flex-col my-4">
+        <div class="w-full flex items-start flex-row justify-between my-4">
             <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
                 <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" required />
                 <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.42rem]  md:py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
                     <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
                 </button>
             </form>
+            <select class="hover:border-brand outline-none rounded-lg border-0 text-xl md:text-2xl py-[0.80rem] md:py-[0.70rem] px-8 text-left placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]">
+                <option class="text-yellow-400">⭐⭐⭐⭐⭐</option>
+                <option class="text-yellow-400">⭐⭐⭐⭐</option>
+                <option class="text-yellow-400">⭐⭐⭐</option>
+                <option class="text-yellow-400">⭐⭐</option>
+                <option class="text-yellow-400">⭐</option>
+            </select>
         </div>
 
     <?php
