@@ -1,5 +1,0 @@
-LOAD DATA INFILE 'C:/xampp/htdocs/Eatables/hamburg.csv' 
-INTO TABLE item
-FIELDS TERMINATED BY ',' ENCLOSED BY '"' 
-LINES TERMINATED BY '\n' 
-(hotel_id,item_name,item_price)
