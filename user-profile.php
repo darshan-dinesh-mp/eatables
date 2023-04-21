@@ -257,6 +257,9 @@ if (!isset($_SESSION["path"])) {
                     </form>
                </div>
           </div>
+          <?php
+          include "components/footer.php";
+          ?>
           <script src="script/modal.js"></script>
 </body>
 

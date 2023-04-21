@@ -65,7 +65,7 @@
             } else if (passwordInput.value.length < 8) {
                 errorPassword.textContent = 'Minimum 8 characters required.';
             } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(passwordInput.value)) {
-                errorPassword.textContent = 'Include a number or letter.';
+                errorPassword.textContent = 'Must be combination of number and alphabet.';
             } else {
                 errorPassword.textContent = '';
             }
