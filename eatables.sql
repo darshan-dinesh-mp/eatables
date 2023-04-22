@@ -71,7 +71,7 @@ INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
 CREATE TABLE `hotel` (
   `hotel_id` int(11) NOT NULL,
   `hotel_name` varchar(30) NOT NULL,
-  `hotel_loc` varchar(50) DEFAULT NULL COMMENT 'lat and long',
+  `hotel_loc` varchar(100) DEFAULT NULL COMMENT 'lat and long',
   `loc_name` varchar(30) NOT NULL,
   `ratings` varchar(10) DEFAULT NULL,
   `links` varchar(300) DEFAULT NULL,
