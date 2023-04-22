@@ -83,7 +83,7 @@ if (!$_SESSION['status']) {
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
 					eatables.
 				</a>
-				<div class='flex items-center justify-between w-32'>
+				<div class='flex items-center justify-between w-20'>
 					<a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
 					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
 						<img class="<?php echo

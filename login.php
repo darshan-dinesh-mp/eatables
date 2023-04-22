@@ -97,7 +97,7 @@
                     header("Location: index.php");
                     exit;
                 } else {
-                    header("Location: admin.php");
+                    header("Location: user-profile.php");
                     exit();
                 }
             } else {

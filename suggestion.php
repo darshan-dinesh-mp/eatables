@@ -8,18 +8,22 @@
 </head>
 <body>
     <?php
+    session_start();
+    $uname=$_SESSION["fullname"];
     include "dbconnect.php";
 if($_POST["suggest"]){
-    $name=$_POST["name"];
-    $resname=$_POST["resname"];
-    $place=$_POST["place"];
-    $contact=$_POST["contact"];
-    $state=$_POST["state"];
-    $zip=$_POST["zip"];
-
-    $sql="insert into suggestion (uname,rname,place,contact,state,zip) values('$name','$resname','$place','$contact','$state',$zip)";
-    $res=$con->query($sql);
-    echo "<script>window.location.href='user-profile.php'</script>";
+    $hname = $_POST["hname"];
+    $lname = $_POST["lname"];
+    $lat = $_POST["lat"];
+    $rate=$_POST["rate"];
+    $link=$_POST["link"];
+    $desc=$_POST["disc"];
+    $sql = "INSERT INTO `suggestion` (`hotel_id`,`uname`,`hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL,'$uname', '$hname', '$lat', '$lname','$rate','$link','$desc')";
+    $res = $con->query($sql);
+    if ($res) {
+        echo "<script>alert('Hotel $hname added successfully.')</script>";
+        // echo "<script>window.location.href='user-profile.php'</script>";
+    }
 }
     ?>
 </body>

@@ -31,7 +31,7 @@ if (!isset($_POST["submit"])) {
     $rate=$_POST["rate"];
     $link=$_POST["link"];
     $desc=$_POST["disc"];
-    $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`disc`) VALUES (NULL, '$hname', '$lat', '$lname','$rate','$link','desc')";
+    $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL, '$hname', '$lat', '$lname','$rate','$link','$desc')";
     $res = $con->query($sql);
     if ($res) {
         echo "<script>alert('Hotel $hname added successfully.')</script>";
