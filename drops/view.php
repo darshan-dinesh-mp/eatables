@@ -14,7 +14,9 @@
 </head>
 
 <body>
-
+    <button id="upload-btn" class="bg-[#f9bb21] w-16 h-16 rounded-full fixed z-[9999] bottom-8 right-8">
+        <i class="fa-solid fa-video text-2xl text-black"></i>
+    </button>
     <?php
     if (!isset($_SESSION['id'])) {
         session_start();
@@ -22,11 +24,9 @@
         $sql = "SELECT * FROM drops ORDER BY drop_id DESC";
         $res = mysqli_query($con, $sql);
         if (mysqli_num_rows($res) > 0) {
+
             while ($video = mysqli_fetch_assoc($res)) {
     ?>
-                <button id="upload-btn" class="bg-[#f9bb21] w-16 h-16 rounded-full fixed z-[9999] bottom-8 right-8">
-                    <i class="fa-solid fa-video text-2xl text-black"></i>
-                </button>
 
                 <div class="w-full px-5 h-20 z-50 bg-gradient-to-b fixed top-0 from-black flex items-center justify-between">
                     <a href="../user-profile.php" class="text-3xl w-3/4 md:text-4xl font-colvet text-white ">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="bg-black overflow-hidden bg-fixed w-full flex flex-col items-center">
 
-                    < class="flex flex-col items-center justify-center w-full">
+                    <div class="flex flex-col items-center justify-center w-full">
 
                         <div class="md:w-[30rem] md:h-[100vh] h-full shadow-2xl relative ">
                             <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
