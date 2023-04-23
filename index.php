@@ -76,17 +76,17 @@ if (!$_SESSION['status']) {
 			} else {
 				console.log("Geolocation is not supported by this browser.");
 			}
-		</script>
+			</script>
 
-		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
-			<div class="flex items-center w-full justify-between margin-one">
-				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
-					eatables.
-				</a>
-				<div class='flex items-center justify-between w-20'>
-					<a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
-					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
-						<img class="<?php echo
+<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
+	<div class="flex items-center w-full justify-between margin-one">
+		<a href="index.php" class="text-3xl md:text-4xl font-colvet">
+			eatables.
+		</a>
+		<div class='flex items-center justify-between w-20'>
+			<a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
+			<a href="user-profile.php" class="flex items-center justify-center space-x-3">
+				<img class="<?php echo
 									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
 									?>" src="<?php
 												echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
@@ -119,7 +119,7 @@ if (!$_SESSION['status']) {
 							FROM hotel h 
 							INNER JOIN location l ON h.loc_name = l.loc_name ";
 
-							$res = $con->query($sql);
+$res = $con->query($sql);
 
 							if (isset($_GET['search'])) {
 								$search = $_GET['search'];
@@ -142,7 +142,7 @@ if (!$_SESSION['status']) {
 										<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
 									</div>
 
-						<?php
+									<?php
 								}
 							} elseif ($res->num_rows > 0) {
 								$i = 1;
@@ -157,11 +157,14 @@ if (!$_SESSION['status']) {
 						</div>
 					</div>
 				</div>
+			<?php
+			require('bot/index.php');
+				?>
 			</div>
 		</div>
 		<?php
 		include "./components/footer.php";
 		?>
 	</body>
-
+	
 	</html>
