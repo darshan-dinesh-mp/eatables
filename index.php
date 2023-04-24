@@ -119,7 +119,7 @@ if (!$_SESSION['status']) {
 							FROM hotel h 
 							INNER JOIN location l ON h.loc_name = l.loc_name ";
 
-$res = $con->query($sql);
+							$res = $con->query($sql);
 
 							if (isset($_GET['search'])) {
 								$search = $_GET['search'];

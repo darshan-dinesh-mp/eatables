@@ -12,20 +12,29 @@
 
 <body>
     <div class="wrapper">
-        <div class="title">Simple Online Chatbot</div>
+        <div class="title">Chatbot</div>
 
         <div class="form">
-
-            <!--  -->
-
-            <!--  --> 
-
+            <div class="bot-inbox inbox">
+                <div class="icon">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="msg-header">
+                    <p>Hello, how can I help you?</p>
+                </div>
+            </div>
         </div>
 
         <div class="typing-field">
-            <div class="input-data">
-                <input type="text" id="data" placeholder="Type something here..." required>
-                <button id="send-btn">Send</button>
+            <div class="input-data options-wrapper">
+                <?php
+                include "dbconnect.php";
+                $check_data = "SELECT option_text FROM bot where is_default=1";
+                $res = mysqli_query($con, $check_data) or die("error in finding");
+                while ($row = $res->fetch_assoc()) {
+                    echo '          <button class="option-btn" data-value="' . $row['option_text'] . '">' . $row['option_text'] . '</button>            ';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -33,32 +42,30 @@
     <script>
         $(document).ready(() => {
 
-            $('#send-btn').on('click', () => {
-                let value = $('#data').val();
-                $msg = ` <div class="user-inbox inbox"><div class="msg-header"><p>${value}</p></div></div>`;
-                $('.form').append($msg);
-                $('#data').val('');
+            $(document).ready(() => {
 
-                // start ajax code
-                $.ajax({
-                    url: 'bot/message.php',
-                    type: 'POST',
-                    data: 'text=' + value,
-                    success: (result) => {
-                        $reply = `<div class="bot-inbox inbox">
-                                               <div class="icon">
-                                                
-                                               </div>
-                                               <div class="msg-header">
-                                                  <p>${result}</p>
-                                                </div>
-                                           </div>`;
-                        $('.form').append($reply);
-                        $('.form').scrollTop($('.form')[0].scrollHeight);
-                    }
+                // Attach event listener to parent element and delegate to child element
+                $('.input-data').on('click', '.option-btn', (event) => {
+                    let value = $(event.target).data('value');
+                    $msg = ` <div class="user-inbox inbox"><div class="msg-header"><p>${value}</p></div></div>`;
+                    $('.form').append($msg);
+                    $('.options-wrapper').empty();
+                    // start ajax code
+                    $.ajax({
+                        url: 'bot/message.php',
+                        type: 'POST',
+                        data: 'text=' + value,
+                        success: (result) => {
+                            $reply = `${result}`
+                            $('.input-data').append($reply);
+                            $('.input-data').scrollTop($('.input-data')[0].scrollHeight);
+                        }
+                    });
                 });
+
             });
-         
+
+
         });
     </script>
 
