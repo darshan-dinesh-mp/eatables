@@ -217,6 +217,7 @@ if (!isset($_SESSION["path"])) {
                          echo "<h1 class='opacity-0 '></h1>";
                     }
                ?>
+               </div>
           <?php
                } elseif ($review_id == 2) {
           ?>
@@ -260,6 +261,7 @@ if (!isset($_SESSION["path"])) {
                          <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
                     </form>
                </div>
+          </div>
           </div>
           <?php
           include "components/footer.php";
