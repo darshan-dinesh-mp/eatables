@@ -157,10 +157,10 @@ if (!$_SESSION['status']) {
 						</div>
 					</div>
 				</div>
-			<?php
-			require('bot/index.php');
-				?>
 			</div>
+			<?php
+			include 'bot/index.php';
+				?>
 		</div>
 		<?php
 		include "./components/footer.php";

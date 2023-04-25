@@ -53,10 +53,10 @@
                                    ?>
                               </select><br>
 
-                              Location (Gmap location link)*: <input type="text" name="lat" /><br>
+                              Location (Gmap location link)*: <input type="text" name="lat" required /><br>
                               Rating(1-5): <input type="text" name="rate" /><br>
                               link (zomato link): <input type="text" name="link" /><br>
-                              description: <input type="text" name="disc" /><br>
+                              description: <input type="text" name="desc" /><br>
                               <input class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300" type="submit" name="suggest" value="Add">
                          </form>
                     </div>

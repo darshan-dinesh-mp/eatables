@@ -17,12 +17,12 @@ if($_POST["suggest"]){
     $lat = $_POST["lat"];
     $rate=$_POST["rate"];
     $link=$_POST["link"];
-    $desc=$_POST["disc"];
+    $desc=$_POST["desc"];
     $sql = "INSERT INTO `suggestion` (`hotel_id`,`uname`,`hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL,'$uname', '$hname', '$lat', '$lname','$rate','$link','$desc')";
     $res = $con->query($sql);
     if ($res) {
         echo "<script>alert('Hotel $hname added successfully.')</script>";
-        // echo "<script>window.location.href='user-profile.php'</script>";
+        echo "<script>window.location.href='user-profile.php'</script>";
     }
 }
     ?>
