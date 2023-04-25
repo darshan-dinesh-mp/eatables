@@ -156,11 +156,11 @@ if (!$_SESSION['status']) {
 						?>
 						</div>
 					</div>
-				</div>
-			</div>
 			<?php
 			include 'bot/index.php';
 				?>
+				</div>
+			</div>
 		</div>
 		<?php
 		include "./components/footer.php";
