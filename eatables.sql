@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bot`
+--
+
+CREATE TABLE `bot` (
+  `is_default` int(11) DEFAULT NULL,
+  `option_text` varchar(50) DEFAULT NULL,
+  `prev_option_text` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bot`
+--
+
+INSERT INTO `bot` (`is_default`, `option_text`, `prev_option_text`) VALUES
+(1, 'yes', NULL),
+(1, 'no', NULL),
+(NULL, 'right', 'yes'),
+(NULL, 'left', 'yes'),
+(NULL, 'right', 'yes'),
+(NULL, 'left', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drops`
+--
 -- Table structure for table `drops`
 --
 
