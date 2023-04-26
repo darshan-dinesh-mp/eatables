@@ -92,15 +92,26 @@ if (!isset($_SESSION["path"])) {
                          ?>
                     </a>
                </div>
-               <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/4 space-y-2 md:space-y-0">
-                    <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+               <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/10 space-y-2 md:space-y-0">
+                
+               <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
+<<<<<<< HEAD
                     <a id="upload-btn-one" class="bg-black cursor-pointer py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-video mr-1"></i>
                          Upload
                     </a>
+=======
+                    <?php if($_SESSION['user_type']==0) {?>
+                    <a href="admin.php" class="bg-black cursor-pointer mx-2 py-2 rounded-md px-4 text-white hover:text-[#F9BB21] duration-300">
+                         <i class="fa-solid fa-video mr-1"></i>
+                         Manage eatable
+                    </a>
+                    <?php
+                    }?>
+>>>>>>> d08ec2c80f2be1326a839ff0e1b1d09466048007
                </div>
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
@@ -211,6 +222,7 @@ if (!isset($_SESSION["path"])) {
                          echo "<h1 class='opacity-0 '></h1>";
                     }
                ?>
+               </div>
           <?php
                } elseif ($review_id == 2) {
           ?>
@@ -255,6 +267,10 @@ if (!isset($_SESSION["path"])) {
                     </form>
                </div>
           </div>
+          </div>
+          <?php
+          include "components/footer.php";
+          ?>
           <script src="script/modal.js"></script>
 </body>
 

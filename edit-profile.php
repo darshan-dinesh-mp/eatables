@@ -47,7 +47,7 @@ if (!isset($_SESSION['id'])) {
                 $target_dir = 'media/images/user-image/'; // specify the target directory where you want to move the image
                 $target_file = $target_dir . basename($image_name); // set the target file path
                 if (move_uploaded_file($image_tmp_name, $target_file)) {
-                    $query = "update user set fullname='$fullname', email='$email', img='$image_name' where uid=$user_id";
+                    $query = "update user set img='$image_name' where uid=$user_id";
                     mysqli_query($con, $query);
                     $_SESSION['fullname'] = $fullname;
                     $_SESSION['email'] = $email;
@@ -59,6 +59,12 @@ if (!isset($_SESSION['id'])) {
                 echo "Error uploading image file";
             }
         }
+        $fullname = mysqli_real_escape_string($con, $_POST['fullname']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
+        $query = "update user set fullname='$fullname', email='$email' where uid=$user_id";
+        $_SESSION['fullname'] = $fullname;
+        $_SESSION['email'] = $email;
+        mysqli_query($con, $query);
         // Update user information in database
 
         // Redirect to profile page

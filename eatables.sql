@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2023 at 02:12 PM
+-- Generation Time: Apr 22, 2023 at 03:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bot`
+--
+
+CREATE TABLE `bot` (
+  `is_default` int(11) DEFAULT NULL,
+  `option_text` varchar(50) DEFAULT NULL,
+  `prev_option_text` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bot`
+--
+
+INSERT INTO `bot` (`is_default`, `option_text`, `prev_option_text`) VALUES
+(1, 'yes', NULL),
+(1, 'no', NULL),
+(NULL, 'right', 'yes'),
+(NULL, 'left', 'yes'),
+(NULL, 'right', 'yes'),
+(NULL, 'left', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drops`
+--
 -- Table structure for table `drops`
 --
 
@@ -39,10 +65,8 @@ CREATE TABLE `drops` (
 --
 
 INSERT INTO `drops` (`drop_id`, `uid`, `video_url`, `drop_date`) VALUES
-(31, 2, 'video-643d232edee7e1.19283209.mp4', '17-04-23 12:45:02'),
-(32, 2, 'video-643d233983ddd2.93554927.mp4', '17-04-23 12:45:13'),
-(33, 1, 'video-643d32f39793b4.43898325.mp4', '17-04-23 01:52:19'),
-(34, 1, 'video-643d348df0bec9.67793101.mp4', '17-04-23 01:59:09');
+(35, 2, 'video-64417e548beab5.08709150.mp4', '20-04-23 08:03:00'),
+(36, 2, 'video-64417ee0bbc314.51034682.mp4', '20-04-23 08:05:20');
 
 -- --------------------------------------------------------
 
@@ -61,7 +85,8 @@ CREATE TABLE `favourite` (
 --
 
 INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
-(16, 2, 1);
+(18, 2, 2),
+(19, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -72,7 +97,7 @@ INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
 CREATE TABLE `hotel` (
   `hotel_id` int(11) NOT NULL,
   `hotel_name` varchar(30) NOT NULL,
-  `hotel_loc` varchar(50) DEFAULT NULL COMMENT 'lat and long',
+  `hotel_loc` varchar(100) DEFAULT NULL COMMENT 'lat and long',
   `loc_name` varchar(30) NOT NULL,
   `ratings` varchar(10) DEFAULT NULL,
   `links` varchar(300) DEFAULT NULL,
@@ -109,7 +134,7 @@ INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings
 (24, 'Burger Shack', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/burger-shack-bendoor/order', NULL),
 (25, 'Wine And Dine', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/wine-and-dine-thokottu/order', NULL),
 (26, 'Frozen Scoops', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/frozen-scoops-1-hampankatta/order', NULL),
-(27, 'Sizzler\'s Ranch', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sizzlers-ranch-hampankatta/order', NULL),
+(27, 'Sizzlers Ranch', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sizzlers-ranch-hampankatta/order', NULL),
 (28, 'The Good Bowl', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/the-good-bowl-hampankatta/order', NULL),
 (29, 'Sri Durga Lunch Home', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sri-durga-lunch-home-attavar/order', NULL),
 (30, 'Pure Veg Meals By LunchBox', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/pure-veg-meals-by-lunchbox-hampankatta/order', NULL),
@@ -123,9 +148,9 @@ INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings
 (40, 'Crave Desserts & Bakes', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/crave-desserts-bakes-balmatta/order', NULL),
 (41, 'Raslaffan Ice Cream Parlour', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/raslaffan-ice-cream-parlour-pumpwell/order', NULL),
 (42, 'New Kudla', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/new-kudla-ashok-nagar/order', NULL),
-(43, 'Rathna\'s Wine Gate', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/rathnas-wine-gate-kodailbail/order', NULL),
+(43, 'Rathna s Wine Gate', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/rathnas-wine-gate-kodailbail/order', NULL),
 (44, 'Machali', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/machali-kodailbail/order', NULL),
-(45, 'G Food \'N\' Fun', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/g-food-n-fun-bendoor/order', NULL),
+(45, 'G Food Fun', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/g-food-n-fun-bendoor/order', NULL),
 (46, 'Ideal Cafe', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/ideal-cafe-hampankatta/order', NULL),
 (47, 'Chandus Biryani Spot', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/chandus-biryani-spot-kavoor/order', NULL),
 (48, 'Meisterwurst', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/meisterwurst-kodailbail/order', NULL),
@@ -136,12 +161,12 @@ INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings
 (53, 'The Juice Dude', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-juice-dude-kankanady/order', NULL),
 (54, 'Nomou - Vegan Gelato', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/nomou-vegan-gelato-attavar/order', NULL),
 (56, 'Kling Krishna Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kling-krishna-cafe-hampankatta/order', NULL),
-(57, 'Jumbo\'s Kitchen', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/jumbos-kitchen-kodailbail/order', NULL),
+(57, 'Jumbos Kitchen', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/jumbos-kitchen-kodailbail/order', NULL),
 (58, 'Taj Mahal Restaurant', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/taj-mahal-restaurant-hampankatta/order', NULL),
-(59, 'Kottara\'s 70 Surprise', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kottaras-70-surprise-kottara/order', NULL),
+(59, 'Kottara 70 Surprise', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kottaras-70-surprise-kottara/order', NULL),
 (60, 'Cafe Margarita', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/cafe-margarita-lalbagh/order', NULL),
 (61, 'The Grand Kitchen By AJ Grand ', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-grand-kitchen-by-aj-grand-hotel-balmatta/order', NULL),
-(63, 'Bapama\'s Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/bapamas-cafe-kadri/order', NULL),
+(63, 'Bapama s Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/bapamas-cafe-kadri/order', NULL),
 (64, 'Ferns & Martins', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/ferns-martins-kavoor/order', NULL),
 (65, 'The Waffle Man - House of Cook', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-waffle-man-house-of-cookie-man-attavar/order', NULL),
 (66, 'Frankie Delight', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/frankie-delight-kottara/order', NULL),
@@ -354,11 +379,28 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `uid`, `item_id`, `review_content`, `review_date`) VALUES
-(41, 2, 493, 'niceeee', '2023-04-12 21:40:38'),
 (43, 2, 178, 'nice', '2023-04-13 06:56:30'),
 (44, 2, 1, 'kiehrg', '2023-04-16 18:04:31'),
 (45, 2, 1, 'huh', '2023-04-16 18:04:35'),
-(46, 2, 15, 'ljdgb', '2023-04-17 12:06:27');
+(46, 2, 15, 'ljdgb', '2023-04-17 12:06:27'),
+(48, 2, 1, 'very good', '2023-04-22 11:48:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suggestion`
+--
+
+CREATE TABLE `suggestion` (
+  `hotel_id` int(11) NOT NULL,
+  `uname` varchar(30) NOT NULL,
+  `hotel_name` varchar(30) NOT NULL,
+  `hotel_loc` varchar(100) DEFAULT NULL COMMENT 'lat and long',
+  `loc_name` varchar(30) NOT NULL,
+  `ratings` varchar(10) DEFAULT NULL,
+  `links` varchar(300) DEFAULT NULL,
+  `desc` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -375,16 +417,18 @@ CREATE TABLE `user` (
   `user_type` int(11) NOT NULL DEFAULT 1,
   `reset_token` varchar(100) DEFAULT NULL,
   `reset_expiration` varchar(30) DEFAULT NULL,
-  `img` varchar(100) DEFAULT NULL
+  `img` varchar(100) DEFAULT NULL,
+  `verified` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`, `reset_token`, `reset_expiration`, `img`) VALUES
-(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 0, NULL, NULL, NULL),
-(2, 'user', 'user', 'ashwinkv.akv@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, '1614569589279_180317301.jpg');
+INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`, `reset_token`, `reset_expiration`, `img`, `verified`) VALUES
+(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 0, NULL, NULL, 'asd.jpg', NULL),
+(2, 'richu', 'user', 'ebinwaynad@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, 'DB.webp', NULL),
+(3, 'ashwin kv', 'ashwin', 'assg@gmail.com', '$2y$10$4iAZ1/RYHI2c7xCK6iRDL.K/dTcenNkchF7ZMsWx6wf20tNHPz2aS', 1, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -436,6 +480,12 @@ ALTER TABLE `review`
   ADD KEY `review_ibfk_1` (`item_id`);
 
 --
+-- Indexes for table `suggestion`
+--
+ALTER TABLE `suggestion`
+  ADD PRIMARY KEY (`hotel_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -450,13 +500,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `drops`
 --
 ALTER TABLE `drops`
-  MODIFY `drop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `drop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `hotel`
@@ -480,7 +530,13 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `suggestion`
+--
+ALTER TABLE `suggestion`
+  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

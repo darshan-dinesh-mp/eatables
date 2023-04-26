@@ -46,6 +46,8 @@ if (!$_SESSION['status']) {
 	$sql = "select * from hotel where hotel_id=$hotel_id";
 	$row = $con->query($sql);
 	$desc = '';
+
+
 	while ($rowTwo = $row->fetch_assoc()) {
 		$links = $rowTwo['links'];
 		$desc = $rowTwo['disc'];
@@ -99,7 +101,7 @@ if (!$_SESSION['status']) {
 				<?php
 				if (!isset($desc)) {
 				?>
-					<p class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, incidunt deserunt optio pariatur dolorem natus est quod eos error, rem porro ut amet praesentium voluptas possimus quidem, laborum accusamus vero!</p>
+					<p id="" class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis ratione modi consectetur veritatis temporibus repellendus! Quas amet sit sunt eos neque eum tenetur, maxime possimus dolorum deleniti delectus doloribus.</p>
 				<?php
 				} else {
 					echo "<p class='font-poppy text-xl pt-2 text-justify'>'$desc'</p>";
@@ -112,7 +114,9 @@ if (!$_SESSION['status']) {
 			</div>
 			<div class='w-full md:w-2/6'>
 				<h1 class='font-poppy text-lg md:text-xl font-bold'><i class="fa-sharp fa-solid fa-location-dot mr-1 mb-2"></i>locate on map</h1>
-				<iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.572443735767!2d74.85496651482092!3d12.870868890922056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35b11eec783ed%3A0x2afa25d580156460!2sHAMBURG%20STREET%20FOOD%20CAFE!5e0!3m2!1sen!2sin!4v1681486468297!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<iframe class="w-full h-full" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD1VnYC6EugmolDY9RjsZ77TeXstyj0288&q=New+Bangalore+Iyengar+Bakery,+25-7-399,+Valencia,+Kankanady,+Mangaluru,+Karnataka+575002&zoom=17" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					
+
 			</div>
 		</div>
 		<?php

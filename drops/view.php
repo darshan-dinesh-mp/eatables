@@ -24,8 +24,13 @@
         $sql = "SELECT * FROM drops ORDER BY drop_id DESC";
         $res = mysqli_query($con, $sql);
         if (mysqli_num_rows($res) > 0) {
+
             while ($video = mysqli_fetch_assoc($res)) {
     ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d08ec2c80f2be1326a839ff0e1b1d09466048007
                 <div class="w-full px-5 h-20 z-50 bg-gradient-to-b fixed top-0 from-black flex items-center justify-between">
                     <a href="../user-profile.php" class="text-3xl w-3/4 md:text-4xl font-colvet text-white ">
                         eatables.
@@ -41,7 +46,7 @@
                 </div>
                 <div class="bg-black overflow-hidden bg-fixed w-full flex flex-col items-center">
 
-                    < class="flex flex-col items-center justify-center w-full">
+                    <div class="flex flex-col items-center justify-center w-full">
 
                         <div class="md:w-[30rem] md:h-[100vh] h-full shadow-2xl relative ">
                             <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
