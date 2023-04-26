@@ -77,7 +77,7 @@
 
           // Store token in database with expiration time
           //have to check the expiry
-          $stmt = $con->prepare('UPDATE user SET reset_token = ?, reset_expiration = DATE_ADD(NOW(), INTERVAL 30 minute) WHERE email = ? and uname= ?');
+          $stmt = $con->prepare('UPDATE user SET reset_token = ?, reset_expiration = DATE_ADD(NOW(), INTERVAL 10 minute) WHERE email = ? and uname= ?');
           $stmt->execute([$token, $email, $name]);
 
           // Send email with reset password link
