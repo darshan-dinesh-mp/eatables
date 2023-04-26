@@ -21,7 +21,8 @@
     if (!isset($_SESSION['id'])) {
         session_start();
         include "../dbconnect.php";
-        $sql = "SELECT * FROM drops ORDER BY drop_id DESC";
+        $sql = "SELECT 
+        ORDER BY drop_id DESC";
         $res = mysqli_query($con, $sql);
         if (mysqli_num_rows($res) > 0) {
 
