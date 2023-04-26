@@ -17,8 +17,8 @@
      <?php
      session_start();
      include "dbconnect.php";
-    $sql = "select * from  location ";
-    $res=$con->query($sql);
+     $sql = "select * from  location ";
+     $res = $con->query($sql);
      if (!$_SESSION['status']) {
           header("Location: login.php");
           exit;
@@ -31,7 +31,7 @@
                          eatables.
                     </a>
                </div>
-               <div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-24 space-y-0 place-items-center font-poppy">
+               <div class="grid gap-3 grid-cols-1 w-full mt-16 space-y-0 place-items-center font-poppy">
                     <div class="flex flex-col items-center justify-center pb-2 md:pb-4">
                          <h1 class="outline-none text-xl md:text-2xl font-poppy">
                               Found a restaurant that's not on our list?
@@ -41,23 +41,52 @@
                          </h1>
                     </div>
                     <div class="flex items-center justify-around relative w-full md:w-2/4">
-                         <form action="suggestion.php" method="post">
-                              Hotel name* : <input type="text" name="hname" required /><br>
-                              Location* : <select name="lname">
-                                   <?php
-                                   while ($row = $res->fetch_assoc()) {
-                                   ?>
-                                        <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name'] ?></option>
-                                   <?php
-                                   }
-                                   ?>
-                              </select><br>
-
-                              Location (Gmap location link)*: <input type="text" name="lat" required /><br>
-                              Rating(1-5): <input type="text" name="rate" /><br>
-                              link (zomato link): <input type="text" name="link" /><br>
-                              description: <input type="text" name="desc" /><br>
-                              <input class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300" type="submit" name="suggest" value="Add">
+                         <form action="suggestion.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
+                              <div class="w-full">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                        Restaurant Name* :
+                                   </label>
+                                   <input class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" id="grid-first-name" name="hname" required type="text">
+                              </div>
+                              <div class="w-full">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                        Location* :
+                                   </label>
+                                   <select name="lname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]">
+                                        <?php
+                                        while ($row = $res->fetch_assoc()) {
+                                        ?>
+                                             <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name'] ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                   </select>
+                              </div>
+                              <div class="w-full md:col-span-2">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                        Location (Gmap location link)* :
+                                   </label>
+                                   <input name="lat" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
+                              </div>
+                              <div class="w-full md:col-span-2">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                        Rating(1-5):
+                                   </label>
+                                   <input name="rate" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
+                              </div>
+                              <div class="w-full md:col-span-2">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                        link (zomato link):
+                                   </label>
+                                   <input name="link" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
+                              </div>
+                              <div class="w-full md:col-span-2">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                        description:
+                                   </label>
+                                   <input name="desc" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
+                              </div>
+                              <input class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" type="submit" name="suggest" value="Add">
                          </form>
                     </div>
                     *required
@@ -68,6 +97,7 @@
           echo "<script>window.location.href='login.php'</script>";
      }
      ?>
+
 </body>
 
 </html>
