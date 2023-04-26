@@ -18,7 +18,7 @@ if (!isset($_POST["submit"])) {
                                     </select><br>
                                 
         Location (lat and long): <input type="text" name="lat" /><br>
-        Rating(1-5): <input type="text" name="rate" /><br>
+        Rating(1-5): <input type="text" name="rate" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"/><br>
         link (zomato link): <input type="text" name="link" /><br>
         description: <input type="text" name="disc" /><br>
         <input type="submit" name="submit" value="Add">
