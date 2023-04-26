@@ -21,7 +21,7 @@
     $err = false;
     if ($_SESSION["signupstatus"]) {
         echo '<div id="myAlert" class="alert">
-                <h1>Account created successfully. Login to conitinue.</h1>
+                <h1>Account created successfully. Login to continue.</h1>
               </div>';
               $_SESSION["signupstatus"]=false;
     }
