@@ -21,12 +21,21 @@
     if (!isset($_SESSION['id'])) {
         session_start();
         include "../dbconnect.php";
-        $sql = "SELECT 
+        $sql = "SELECT drops.drop_id, drops.video_url , drops.hotel_name ,user.uid, user.fullname, user.img
+        FROM drops
+        INNER JOIN user
+        ON drops.uid = user.uid
         ORDER BY drop_id DESC";
         $res = mysqli_query($con, $sql);
         if (mysqli_num_rows($res) > 0) {
 
             while ($video = mysqli_fetch_assoc($res)) {
+                $imageNull=$video["img"];
+                if ($imageNull == null) {
+                    $image = "../media/images/user.png";
+               } else {
+                    $image = "../media/images/user-image/" . $imageNull;
+               }
     ?>
                 <div class="w-full px-5 h-20 z-50 bg-gradient-to-b fixed top-0 flex items-center justify-between">
                     <a href="../user-profile.php" class="text-3xl w-3/4 md:text-4xl font-colvet text-white ">
@@ -46,14 +55,14 @@
                     <div class="flex flex-col items-center justify-center w-full">
 
                         <div class="md:w-[30rem] md:h-[100vh] h-full shadow-2xl relative ">
-                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?= $video['video_url'] ?>"></video>
+                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?php echo $video["video_url"];?>"></video>
                             <div class="w-full h-36 px-2 md:px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
                                 <div class="flex flex-col w-3/4">
                                     <div class="flex items-center my-2 space-x-2">
-                                        <img class="w-8 md:w-10 h-8 md:h-10 rounded-full" src="https://www.delb.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FDB.6969481a.webp&w=1080&q=75" />
-                                        <h1 class=' text-sm md:text-xl text-white'>delbingeorge</h1>
+                                        <img class="w-8 md:w-10 h-8 md:h-10 rounded-full" src="<?php echo $image?>" />
+                                        <h1 class=' text-sm md:text-xl text-white'><?php echo $video["fullname"];?></h1>
                                     </div>
-                                    <p class="md:text-lg text-sm"> Omelette Cheese Burger | Hamburg Street Food Cafe</p>
+                                    <p class="md:text-lg text-sm"><?php echo $video["hotel_name"]?></p>
                                 </div>
                                 <div class="flex flex-col items-center justify-evenly space-y-3">
                                     <i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i>

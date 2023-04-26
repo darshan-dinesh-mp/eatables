@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2023 at 03:37 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 26, 2023 at 05:40 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `bot` (
   `is_default` int(11) DEFAULT NULL,
   `option_text` varchar(50) DEFAULT NULL,
   `prev_option_text` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bot`
@@ -50,23 +50,22 @@ INSERT INTO `bot` (`is_default`, `option_text`, `prev_option_text`) VALUES
 --
 -- Table structure for table `drops`
 --
--- Table structure for table `drops`
---
 
 CREATE TABLE `drops` (
   `drop_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `video_url` varchar(150) NOT NULL,
+  `hotel_name` varchar(100) NOT NULL,
   `drop_date` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `drops`
 --
 
-INSERT INTO `drops` (`drop_id`, `uid`, `video_url`, `drop_date`) VALUES
-(35, 2, 'video-64417e548beab5.08709150.mp4', '20-04-23 08:03:00'),
-(36, 2, 'video-64417ee0bbc314.51034682.mp4', '20-04-23 08:05:20');
+INSERT INTO `drops` (`drop_id`, `uid`, `video_url`, `hotel_name`, `drop_date`) VALUES
+(35, 2, 'video-644929e72dcbc5.96383174.mp4', 'Laziz Pizza', '20-04-23 08:03:00'),
+(36, 2, 'video-6449297623a7a5.88147750.mp4', 'Hamburg Street Food Cafe', '20-04-23 08:05:20');
 
 -- --------------------------------------------------------
 
@@ -78,7 +77,7 @@ CREATE TABLE `favourite` (
   `fav_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `item_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `favourite`
@@ -102,7 +101,7 @@ CREATE TABLE `hotel` (
   `ratings` varchar(10) DEFAULT NULL,
   `links` varchar(300) DEFAULT NULL,
   `disc` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hotel`
@@ -125,7 +124,7 @@ INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings
 (14, 'Sharaabi Bar & Family Restaura', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/sharaabi-bar-family-restaurant-kadri/order', NULL),
 (15, 'Taste of Parika', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/taste-of-parika-kapikad/order', NULL),
 (16, 'Urban House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/urban-house-bendoor/order', NULL),
-(17, 'Pavman', 'tfh', 'Manglore', '4', 'https://www.zomato.com/mangalore/pavman-mallikatte/order', 'khk'),
+(17, 'Pavman', NULL, 'Manglore', '4', 'https://www.zomato.com/mangalore/pavman-mallikatte/order', 'khk'),
 (18, 'Andhra House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/andhra-house-kadri/order', NULL),
 (19, 'Wholesome Kitchen', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/wholesome-kitchen-mallikatte/order', NULL),
 (20, 'Mangala', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/mangala-bendoor/order', NULL),
@@ -185,7 +184,7 @@ CREATE TABLE `item` (
   `item_price` int(11) NOT NULL,
   `item_rating` int(11) DEFAULT NULL,
   `item_img` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `item`
@@ -351,7 +350,7 @@ INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rati
 CREATE TABLE `location` (
   `loc_id` int(11) NOT NULL,
   `loc_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `location`
@@ -372,7 +371,7 @@ CREATE TABLE `review` (
   `item_id` int(11) DEFAULT NULL,
   `review_content` varchar(150) NOT NULL,
   `review_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `review`
@@ -400,7 +399,7 @@ CREATE TABLE `suggestion` (
   `ratings` varchar(10) DEFAULT NULL,
   `links` varchar(300) DEFAULT NULL,
   `desc` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -419,15 +418,15 @@ CREATE TABLE `user` (
   `reset_expiration` varchar(30) DEFAULT NULL,
   `img` varchar(100) DEFAULT NULL,
   `verified` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`, `reset_token`, `reset_expiration`, `img`, `verified`) VALUES
-(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 0, NULL, NULL, 'asd.jpg', NULL),
-(2, 'richu', 'user', 'ebinwaynad@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, 'DB.webp', NULL),
+(1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 0, NULL, NULL, 'eatables.png', NULL),
+(2, 'richu', 'user', 'ebinwaynad@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, NULL, NULL),
 (3, 'ashwin kv', 'ashwin', 'assg@gmail.com', '$2y$10$4iAZ1/RYHI2c7xCK6iRDL.K/dTcenNkchF7ZMsWx6wf20tNHPz2aS', 1, NULL, NULL, NULL, NULL);
 
 --
@@ -500,7 +499,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `drops`
 --
 ALTER TABLE `drops`
-  MODIFY `drop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `drop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `favourite`
