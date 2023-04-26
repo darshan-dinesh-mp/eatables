@@ -89,6 +89,7 @@
 
 <body>
     <?php
+    session_start();
     include "dbconnect.php";
     $error = "";
     ?>
@@ -217,7 +218,8 @@
                     $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
-                        echo "<script>window.location.href='login.php?signupstatus=true'</script>";
+                        $_SESSION["signupstatus"]=true;
+                        echo "<script>window.location.href='login.php'</script>";
                         exit();
                     } else {
                         echo "Error registering. Try again.";

@@ -44,7 +44,7 @@
           $mail->Host       = 'smtp.gmail.com;';
           $mail->SMTPAuth   = true;
           $mail->Username   = 'eatables.bitdrag@gmail.com';
-          $mail->Password   = 'xssowdrsebvdsrjz';
+          $mail->Password   = 'smpiqtfxvqlnmybg';
           $mail->SMTPSecure = 'ssl';
           $mail->Port       = 465;
 

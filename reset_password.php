@@ -49,10 +49,10 @@
                 method="post">
                 <input
                   class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                  type="text" name="pass" id="pass">
+                  type="text" name="pass" id="pass" placeholder="New password" required>
                 <input
                   class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
-                  type="text" name="cnfpass" id="cnfpass">
+                  type="text" name="cnfpass" id="cnfpass" placeholder="Confirm password" required>
                 <input class="py-[0.50rem] md:py-[0.70rem] px-9 md:px-12 text-xl font-poppy rounded-md duration-500"
                   type="submit" name="submit">
               </form>
