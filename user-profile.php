@@ -42,8 +42,6 @@ if (!isset($_SESSION["path"])) {
 </head>
 
 <body>
-
-
      <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
                <a href="index.php" class="text-3xl md:text-4xl font-colvet">
@@ -95,18 +93,18 @@ if (!isset($_SESSION["path"])) {
                     </a>
                </div>
                <div class="my-3 font-poppy flex items-center flex-col md:flex-row flex-wrap justify-evenly md:w-1/10 space-y-2 md:space-y-0">
-                
-               <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
+
+                    <a href="edit-profile.php" class="bg-black py-2 rounded-md px-6 text-white hover:text-[#F9BB21] duration-300">
                          <i class="fa-solid fa-pen-to-square mr-1"></i>
                          Edit Profile
                     </a>
-                    <?php if($_SESSION['user_type']==0) {?>
-                    <a href="admin.php" class="bg-black cursor-pointer mx-2 py-2 rounded-md px-4 text-white hover:text-[#F9BB21] duration-300">
-                         <i class="fa-solid fa-video mr-1"></i>
-                         Manage eatable
-                    </a>
+                    <?php if ($_SESSION['user_type'] == 0) { ?>
+                         <a href="admin.php" class="bg-black cursor-pointer mx-2 py-2 rounded-md px-4 text-white hover:text-[#F9BB21] duration-300">
+                              <i class="fa-solid fa-gear mr-1"></i>
+                              Manage eatable
+                         </a>
                     <?php
-                    }?>
+                    } ?>
                </div>
                <div class="flex items-center space-x-2 w-full md:w-4/6 md:space-x-16 border-b-[2px] justify-evenly border-black">
                     <a href="user-profile.php" class="w-1/4 justify-center flex items-center hover:bg-black/10 py-3 px-8 duration-500 space-x-2 md:space-x-3 text-xl md:my-0 pb-3 text-dense ">
@@ -217,23 +215,23 @@ if (!isset($_SESSION["path"])) {
                          echo "<h1 class='opacity-0 '></h1>";
                     }
                ?>
-               </div>
-          <?php
+          </div>
+     <?php
                } elseif ($review_id == 2) {
-          ?>
-               <div class="flex flex-row items-center w-3/4 justify-center flex-wrap md:pt-4 ">
-                    <?php
+     ?>
+          <div class="flex flex-row items-center w-3/4 justify-center flex-wrap md:pt-4 ">
+               <?php
                     $uid = $_SESSION['id'];
                     $sql = "SELECT * FROM drops where uid=$uid ORDER BY drop_date DESC";
                     $res = mysqli_query($con, $sql);
                     if (mysqli_num_rows($res) > 0) {
                          while ($video = mysqli_fetch_assoc($res)) {
-                    ?>
-                              <div class="shadow-2xl m-2 relative flex items-center justify-center cursor-pointer">
-                                   <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] " data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
-                                   <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-eye mr-1"></i>19K</h1>
-                              </div>
-                    <?php
+               ?>
+                         <div class="hover:scale-[1.01] duration-500 m-2 relative flex items-center justify-center cursor-pointer">
+                              <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] rounded-md" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
+                              <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 hover:rounded-md bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-eye mr-1"></i>19K</h1>
+                         </div>
+               <?php
                          }
                     } else {
                          echo "<div class='flex flex-col items-center justify-center font-poppy space-y-2'>
@@ -241,32 +239,32 @@ if (!isset($_SESSION["path"])) {
                  </div>
                  ";
                     } ?>
-               </div>
-               <?php
-                    if (isset($_GET['error'])) {
-               ?>
-                    <p>
-                         <?= $_GET['error'] ?>
-                    </p>
-          <?php }
-               }
-          ?>
-          </div>
-          <div id="modal" class="modal">
-               <div class="modal-content">
-                    <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col items-center justify-center space-x-2 space-y-3 md:space-y-4 px-4 py-8">
-                         <input type="text" name="hotel-name" class="rounded-lg hover:border-brand outline-none opacity-90 border-2 border-black text-xl md:text-2xl px-10 py-2 md:px-16 w-full placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="Hotel name" required>
-                         <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-full">
-                         <button type="submit" class="py-[0.50rem] md:py-[0.70rem] space-x-2 tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i><span>Upload</span></button>
-                         <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
-                    </form>
-               </div>
-          </div>
           </div>
           <?php
-          include "components/footer.php";
+                    if (isset($_GET['error'])) {
           ?>
-          <script src="script/modal.js"></script>
+               <p>
+                    <?= $_GET['error'] ?>
+               </p>
+     <?php }
+               }
+     ?>
+     </div>
+     <div id="modal" class="modal">
+          <div class="modal-content">
+               <form action='drops/upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col items-center justify-center space-x-2 space-y-3 md:space-y-4 px-4 py-8">
+                    <input type="text" name="hotel-name" class="rounded-lg hover:border-brand outline-none opacity-90 border-2 border-black text-xl md:text-2xl px-10 py-2 md:px-16 w-full placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="Hotel name">
+                    <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-full">
+                    <button type="submit" class="py-[0.50rem] md:py-[0.70rem] space-x-2 tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i><span>Upload</span></button>
+                    <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
+               </form>
+          </div>
+     </div>
+     </div>
+     <?php
+     include "components/footer.php";
+     ?>
+     <script src="script/modal.js"></script>
 </body>
 
 </html>
