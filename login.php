@@ -19,11 +19,11 @@
     session_start();
     include "dbconnect.php";
     $err = false;
-    if ($_SESSION["signupstatus"]) {
+    if (isset($_SESSION["signupstatus"])) {
         echo '<div id="myAlert" class="alert">
                 <h1>Account created successfully. Login to continue.</h1>
               </div>';
-              $_SESSION["signupstatus"]=false;
+              $_SESSION["signupstatus"]=null;
     }
     ?>
     <script>

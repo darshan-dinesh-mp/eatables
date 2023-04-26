@@ -77,7 +77,7 @@
 
           // Store token in database with expiration time
           //have to check the expiry
-          $stmt = $con->prepare('UPDATE user SET reset_token = ?, reset_expiration = DATE_ADD(NOW(), INTERVAL 30 minute) WHERE email = ? and uname= ?');
+          $stmt = $con->prepare('UPDATE user SET reset_token = ?, reset_expiration = DATE_ADD(NOW(), INTERVAL 10 minute) WHERE email = ? and uname= ?');
           $stmt->execute([$token, $email, $name]);
 
           // Send email with reset password link
@@ -89,7 +89,7 @@
           $mail->Subject = 'PASSWORD RESET LINK';
           $mail->Body = "
          <div style='text-align: center;'>
-              <img src='media/images/email.jpeg' alt='Image with text'>
+           
             <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
               <p>Click the link below to reset your password:</p>
               <a href='" . $reset_link . "'>RESETLINK</a>
