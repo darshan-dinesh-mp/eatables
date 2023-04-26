@@ -195,3 +195,8 @@ input.incorrect {
         padding: 5px;
     }
 }
+
+.bg-black {
+    background-image: url(../media/images/BwBgCover.png);
+    background-size: cover;
+}
