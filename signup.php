@@ -19,7 +19,7 @@
             const errorFullname = document.getElementById('error-fullname');
 
             if (fullnameInput.value === '') {
-                errorFullname.textContent = 'Enter your fullname.';
+                errorFullname.textContent = 'please Enter your fullname.';
             } else if (!/^[A-Za-z\s]+$/.test(fullnameInput.value)) {
                 errorFullname.textContent = 'Only alphabets & spaces are allowed!';
             } else {
@@ -65,7 +65,7 @@
             } else if (passwordInput.value.length < 8) {
                 errorPassword.textContent = 'Minimum 8 characters required.';
             } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(passwordInput.value)) {
-                errorPassword.textContent = 'Number and alphabet required.';
+                errorPassword.textContent = 'combination of Number and alphabet required.';
             } else {
                 errorPassword.textContent = '';
             }
@@ -124,7 +124,7 @@
                     <p class="font-poppy text-red-500 text-2xl text-center" id="error-password"></p>
                 </div>
                 <div class="md:w-2/4">
-                    <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm" autocomplete="on" oninput="validateConfirm()" />
+                    <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm-password" autocomplete="on" oninput="validateConfirm()" />
                     <p class="font-poppy text-red-500 text-2xl text-center" id="error-confirm"></p>
                 </div>
                 <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
@@ -178,7 +178,7 @@
                 $flag = 0;
                 // echo "<script>document.getElementById('fullname').classList.add('error');</script>";
             }
-            if (!ctype_alpha($username)) {
+            if (!preg_match("/^[a-z]*$/",$username)) {
                 $errusername = true;
                 $flag = 0;
                 // echo "<script>document.getElementById('username').classList.add('error');</script>";
@@ -205,6 +205,7 @@
                 $res = $con->query($sql);
                 $sql1 = "select * from user where email='$email'";
                 $res1 = $con->query($sql1);
+
                 if ($res->num_rows > 0) {
                     echo "<script>alert('user name already taken')</script>";
                     echo "<script>window.location.href='signup.php'</script>";
