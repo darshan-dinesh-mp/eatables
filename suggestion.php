@@ -21,7 +21,7 @@ if($_POST["suggest"]){
     $sql = "INSERT INTO `suggestion` (`hotel_id`,`uname`,`hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL,'$uname', '$hname', '$lat', '$lname','$rate','$link','$desc')";
     $res = $con->query($sql);
     if ($res) {
-        echo "<script>alert('Hotel $hname added successfully.')</script>";
+        echo "<script>alert('Suggestion submitted successfully.')</script>";
         echo "<script>window.location.href='user-profile.php'</script>";
     }
 }
