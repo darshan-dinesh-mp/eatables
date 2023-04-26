@@ -107,6 +107,7 @@ if (!$_SESSION['status']) {
 						</div>
 						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
 							<div class="flex items-center justify-center space-x-1">
+								<?php if(!isset($_GET['search'])){?>
 								<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
 								<p>restaurants near</p>
 							</div>
@@ -114,6 +115,7 @@ if (!$_SESSION['status']) {
 						</a>
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 							<?php
+								}
 
 							$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 							FROM hotel h 
@@ -125,8 +127,7 @@ if (!$_SESSION['status']) {
 								$search = $_GET['search'];
 								$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 								FROM hotel h 
-								INNER JOIN location l ON h.loc_name = l.loc_name 
-								WHERE l.loc_name LIKE '%$search%'";
+								WHERE hotel_name LIKE '%$search%'";
 								$res = $con->query($sql);
 
 								if ($res->num_rows > 0) {
