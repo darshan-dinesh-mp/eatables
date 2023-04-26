@@ -2,6 +2,7 @@
 session_start();
 include "../dbconnect.php";
 if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
+	$hotel_name=$_POST["hotel_name"];
 	$video_name = $_FILES['my_video']['name'];
 	$tmp_name = $_FILES['my_video']['tmp_name'];
 	$error = $_FILES['my_video']['error'];
@@ -25,8 +26,8 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
 				$uid = $_SESSION['id'];
 				$date = date('d-m-y h:i:s');
 				// Insert the video path into database
-				$sql = "INSERT INTO drops(uid,video_url,drop_date) 
-                   VALUES($uid,'$new_video_name','$date')";
+				$sql = "INSERT INTO drops(uid,video_url,hotel_name,drop_date) 
+                   VALUES($uid,'$new_video_name','$hotel_name','$date')";
 				mysqli_query($con, $sql);
 
 				$count_drops = "select count(uid) as count from drops where uid=$uid";
