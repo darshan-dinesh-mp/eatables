@@ -44,7 +44,7 @@
           $mail->Host       = 'smtp.gmail.com;';
           $mail->SMTPAuth   = true;
           $mail->Username   = 'eatables.bitdrag@gmail.com';
-          $mail->Password   = '';
+          $mail->Password   = 'snpiqtfxvqlnmybg';
           $mail->SMTPSecure = 'ssl';
           $mail->Port       = 465;
 
@@ -87,7 +87,16 @@
           $reset_link = 'https://localhost/eatables/reset_password.php?token=' . $token;
           $mail->isHTML(true);
           $mail->Subject = 'PASSWORD RESET LINK';
-          $mail->Body    = "Click the link below to reset your password:<a href='" . $reset_link ."'>RESETLINK</a>";
+          $mail->Body = "
+         <div style='text-align: center;'>
+              <img src='media/images/email.jpeg' alt='Image with text'>
+            <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
+              <p>Click the link below to reset your password:</p>
+              <a href='" . $reset_link . "'>RESETLINK</a>
+          </div>
+        </div>
+          ";
+          // $mail->Body    = "Click the link below to reset your password:<a href='" . $reset_link ."'>RESETLINK</a>";
           $mail->AltBody = 'nill';
           if ($mail->send()) {
             echo "Mail has been sent successfully!";
