@@ -1,12 +1,12 @@
 <?php
 include "dbconnect.php";
-$uname=null;
-$hotel_name=null;
-$hotel_loc=null;
-$loc_name=null;
-$ratings=null;
-$links=null;
-$desc=null;
+$uname = null;
+$hotel_name = null;
+$hotel_loc = null;
+$loc_name = null;
+$ratings = null;
+$links = null;
+$desc = null;
 if (isset($_GET["uname"]) || isset($_GET["hotel_name"]) || isset($_GET["hotel_loc"]) || isset($_GET["loc_name"]) || isset($_GET["ratings"]) || isset($_GET["links"]) || isset($_GET["desc"])) {
     $uname = $_GET["uname"];
     $hotel_name = $_GET["hotel_name"];
@@ -20,26 +20,26 @@ if (!isset($_POST["submit"])) {
     $sql = "select * from  location ";
     $res = $con->query($sql);
 
-    ?>
-    <form action="admin/add_hotel.php" method="post">
-        Hotel name : <input type="text" name="hname" value="<?php echo $hotel_name?>" /><br>
+?>
+    <form action="admin/add_hotel.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
+        Hotel name : <input type="text" name="hname" value="<?php echo $hotel_name ?>" /><br>
         Location: <select name="lname">
             <?php
             while ($row = $res->fetch_assoc()) {
-                ?>
+            ?>
                 <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name'] ?></option>
-                <?php
+            <?php
             }
             ?>
-        </select><br>
+        </select>
 
-        Location (Gmap location link): <input type="text" name="lat" value="<?php echo $hotel_loc?>" /><br>
-        Rating(1-5): <input type="text" name="rate" value="<?php echo $ratings?>" /><br>
-        link (zomato link): <input type="text" name="link" value="<?php echo $links?>" /><br>
-        description: <input type="text" name="desc" value="<?php echo $desc?>" /><br>
-        <input type="submit" name="submit" value="Add">
+        Location (Gmap location link): <input type="text" name="lat" value="<?php echo $hotel_loc ?>" /><br>
+        Rating(1-5): <input type="text" name="rate" value="<?php echo $ratings ?>" /><br>
+        link (zomato link): <input type="text" name="link" value="<?php echo $links ?>" /><br>
+        description: <input type="text" name="desc" value="<?php echo $desc ?>" /><br>
+        <input type="submit" name="submit" value="Add" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500">
     </form>
-    <?php
+<?php
 } else {
     $hname = $_POST["hname"];
     $lname = $_POST["lname"];
