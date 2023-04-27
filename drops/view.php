@@ -64,7 +64,7 @@
                                     </div>
                                     <p class="md:text-lg text-sm"><?php echo $video["hotel_name"] ?></p>
                                 </div>
-                                <div class="flex flex-col items-center justify-evenly space-y-3">
+                                <div class="flex flex-col items-center justify-center">
                                     <?php
                                     $sqllike = "select * from likes where u_id=$_SESSION[id] and drop_id=$video[drop_id]";
                                     $resultlike = $con->query($sqllike);
@@ -73,53 +73,48 @@
                                     if ($resultlike->num_rows > 0) {
                                         if (isset($rowlike["likes"])) {
                                             if ($rowlike["likes"]) {
-                                                ?>
-                                                <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i
-                                                        class="fa-solid fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                                <?php
+                                    ?>
+                                                <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i class="fa-solid fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                            <?php
                                             } else {
-                                                ?>
-                                                <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i
-                                                        class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                                <?php
+                                            ?>
+                                                <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                            <?php
                                             }
                                         } else {
                                             ?>
-                                            <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?php echo $rowlike["likes"] ?>"><i
-                                                    class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                            <?php
+                                            <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?php echo $rowlike["likes"] ?>"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                        <?php
                                         }
                                     } else {
                                         ?>
-                                        <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=0"><i
-                                                class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                        <?php
+                                        <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=0"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                    <?php
                                     }
                                     echo $video["likes"];
                                     ?>
-                                    <i class="fa-regular fa-bookmark text-3xl cursor-pointer"></i>
                                 </div>
                             </div>
                         </div>
 
 
-                        <?php
+                    <?php
+                }
+            } else {
+                include '../404.php';
             }
-        } else {
-            include '../404.php';
         }
-    }
-    if (!isset($_GET['review'])) {
-        if (isset($_GET['error'])) {
-            ?>
+        if (!isset($_GET['review'])) {
+            if (isset($_GET['error'])) {
+                    ?>
                     <p>
                         <?= $_GET['error'] ?>
                     </p>
                 <?php } ?>
 
-                <?php
-    }
-    ?>
+            <?php
+        }
+            ?>
 
             <div id="modal" class="modal">
                 <div class="modal-content">

@@ -120,13 +120,6 @@
                     <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
                 </button>
             </form>
-            <select class="hover:border-brand outline-none rounded-lg border-0 text-xl md:text-2xl py-[0.80rem] md:py-[0.70rem] px-8 text-left placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]">
-                <option class="text-yellow-400">⭐⭐⭐⭐⭐</option>
-                <option class="text-yellow-400">⭐⭐⭐⭐</option>
-                <option class="text-yellow-400">⭐⭐⭐</option>
-                <option class="text-yellow-400">⭐⭐</option>
-                <option class="text-yellow-400">⭐</option>
-            </select>
         </div>
 
     <?php
