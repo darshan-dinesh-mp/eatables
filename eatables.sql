@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2023 at 05:40 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Apr 27, 2023 at 08:41 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,20 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `bot` (
   `is_default` int(11) DEFAULT NULL,
   `option_text` varchar(50) DEFAULT NULL,
-  `prev_option_text` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `prev_option_text` varchar(50) DEFAULT NULL,
+  `qid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bot`
 --
 
-INSERT INTO `bot` (`is_default`, `option_text`, `prev_option_text`) VALUES
-(1, 'yes', NULL),
-(1, 'no', NULL),
-(NULL, 'right', 'yes'),
-(NULL, 'left', 'yes'),
-(NULL, 'right', 'yes'),
-(NULL, 'left', 'yes');
+INSERT INTO `bot` (`is_default`, `option_text`, `prev_option_text`, `qid`) VALUES
+(1, 'yes', NULL, 1),
+(1, 'no', NULL, 2),
+(NULL, 'price', 'yes', 3),
+(NULL, 'type', 'yes', 4);
 
 -- --------------------------------------------------------
 
@@ -57,7 +56,7 @@ CREATE TABLE `drops` (
   `video_url` varchar(150) NOT NULL,
   `hotel_name` varchar(100) NOT NULL,
   `drop_date` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `drops`
@@ -77,7 +76,7 @@ CREATE TABLE `favourite` (
   `fav_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `item_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `favourite`
@@ -85,7 +84,8 @@ CREATE TABLE `favourite` (
 
 INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
 (18, 2, 2),
-(19, 2, 1);
+(19, 2, 1),
+(20, 2, 493);
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `hotel` (
   `ratings` varchar(10) DEFAULT NULL,
   `links` varchar(300) DEFAULT NULL,
   `disc` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hotel`
@@ -184,7 +184,7 @@ CREATE TABLE `item` (
   `item_price` int(11) NOT NULL,
   `item_rating` int(11) DEFAULT NULL,
   `item_img` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `item`
@@ -350,7 +350,7 @@ INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rati
 CREATE TABLE `location` (
   `loc_id` int(11) NOT NULL,
   `loc_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `location`
@@ -371,7 +371,7 @@ CREATE TABLE `review` (
   `item_id` int(11) DEFAULT NULL,
   `review_content` varchar(150) NOT NULL,
   `review_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `review`
@@ -382,7 +382,9 @@ INSERT INTO `review` (`review_id`, `uid`, `item_id`, `review_content`, `review_d
 (44, 2, 1, 'kiehrg', '2023-04-16 18:04:31'),
 (45, 2, 1, 'huh', '2023-04-16 18:04:35'),
 (46, 2, 15, 'ljdgb', '2023-04-17 12:06:27'),
-(48, 2, 1, 'very good', '2023-04-22 11:48:43');
+(48, 2, 1, 'very good', '2023-04-22 11:48:43'),
+(49, 2, 1, 'not nice', '2023-04-26 17:50:09'),
+(50, 2, 493, 'nice food', '2023-04-26 19:07:05');
 
 -- --------------------------------------------------------
 
@@ -399,7 +401,7 @@ CREATE TABLE `suggestion` (
   `ratings` varchar(10) DEFAULT NULL,
   `links` varchar(300) DEFAULT NULL,
   `desc` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -418,7 +420,7 @@ CREATE TABLE `user` (
   `reset_expiration` varchar(30) DEFAULT NULL,
   `img` varchar(100) DEFAULT NULL,
   `verified` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -426,12 +428,17 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`uid`, `fullname`, `uname`, `email`, `password`, `user_type`, `reset_token`, `reset_expiration`, `img`, `verified`) VALUES
 (1, 'admin', 'admin', 'dreamographer.akv@gmail.com', '$2y$10$foY4R1/RA1y5CH2G8CnCOuvgLaRxqdCj1Dz/fhMt3.Ao6N8aSHVNW', 0, NULL, NULL, 'eatables.png', NULL),
-(2, 'richu', 'user', 'ebinwaynad@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, NULL, NULL),
-(3, 'ashwin kv', 'ashwin', 'assg@gmail.com', '$2y$10$4iAZ1/RYHI2c7xCK6iRDL.K/dTcenNkchF7ZMsWx6wf20tNHPz2aS', 1, NULL, NULL, NULL, NULL);
+(2, 'richu', 'user', 'ebinwaynad@gmail.com', '$2y$10$uTvZAPkwl7TJ4gyiDkmWx.lsh0pDDFVqUMMwDKomOrWNGw/eomuc.', 1, NULL, NULL, NULL, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bot`
+--
+ALTER TABLE `bot`
+  ADD PRIMARY KEY (`qid`);
 
 --
 -- Indexes for table `drops`
@@ -496,16 +503,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `bot`
+--
+ALTER TABLE `bot`
+  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `drops`
 --
 ALTER TABLE `drops`
-  MODIFY `drop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `drop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `hotel`
@@ -529,7 +542,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `suggestion`
