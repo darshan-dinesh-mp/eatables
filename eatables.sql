@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2023 at 05:40 PM
+-- Generation Time: Apr 27, 2023 at 09:14 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -56,16 +56,17 @@ CREATE TABLE `drops` (
   `uid` int(11) NOT NULL,
   `video_url` varchar(150) NOT NULL,
   `hotel_name` varchar(100) NOT NULL,
-  `drop_date` varchar(20) DEFAULT NULL
+  `drop_date` varchar(20) DEFAULT NULL,
+  `likes` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `drops`
 --
 
-INSERT INTO `drops` (`drop_id`, `uid`, `video_url`, `hotel_name`, `drop_date`) VALUES
-(35, 2, 'video-644929e72dcbc5.96383174.mp4', 'Laziz Pizza', '20-04-23 08:03:00'),
-(36, 2, 'video-6449297623a7a5.88147750.mp4', 'Hamburg Street Food Cafe', '20-04-23 08:05:20');
+INSERT INTO `drops` (`drop_id`, `uid`, `video_url`, `hotel_name`, `drop_date`, `likes`) VALUES
+(35, 2, 'video-644929e72dcbc5.96383174.mp4', 'Laziz Pizza', '20-04-23 08:03:00', 0),
+(36, 2, 'video-6449297623a7a5.88147750.mp4', 'Hamburg Street Food Cafe', '20-04-23 08:05:20', 2);
 
 -- --------------------------------------------------------
 
@@ -344,6 +345,27 @@ INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rati
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `like_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `drop_id` int(11) NOT NULL,
+  `likes` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`like_id`, `u_id`, `drop_id`, `likes`) VALUES
+(4, 1, 36, 1),
+(5, 2, 36, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `location`
 --
 
@@ -463,6 +485,12 @@ ALTER TABLE `item`
   ADD KEY `hotel_id` (`hotel_id`);
 
 --
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`like_id`);
+
+--
 -- Indexes for table `location`
 --
 ALTER TABLE `location`
@@ -518,6 +546,12 @@ ALTER TABLE `hotel`
 --
 ALTER TABLE `item`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=543;
+
+--
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `location`
