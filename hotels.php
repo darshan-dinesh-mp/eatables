@@ -115,7 +115,7 @@ if (!$_SESSION['status']) {
 			<div class='w-full md:w-2/6'>
 				<h1 class='font-poppy text-lg md:text-xl font-bold'><i class="fa-sharp fa-solid fa-location-dot mr-1 mb-2"></i>locate on map</h1>
 				<iframe class="w-full h-full" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD1VnYC6EugmolDY9RjsZ77TeXstyj0288&q=New+Bangalore+Iyengar+Bakery,+25-7-399,+Valencia,+Kankanady,+Mangaluru,+Karnataka+575002&zoom=17" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-					
+
 
 			</div>
 		</div>
@@ -150,9 +150,10 @@ if (!$_SESSION['status']) {
 																																													echo "<span class='font text-lg bold hover:bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
 																																												} ?></a>
 			<?php endfor; ?>
-		</div><?php
+		</div>
+	<?php
 			} else {
-				?>
+	?>
 		<div class="flex items-center justify-center h-[60vh] flex-col">
 			<i class="fa-regular fa-face-sad-tear text-3xl mb-1"></i>
 			<p class=" md:grid-cols-1 text-center font-poppy text-xl">Looks like this town is so small, the hotels are playing hide-and-seek!</p>
