@@ -2,7 +2,7 @@
 session_start();
 include "../dbconnect.php";
 if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
-	$hotel_name=$_POST["hotel_name"];
+	$hotel_name=$_POST["hotel-name"];
 	$video_name = $_FILES['my_video']['name'];
 	$tmp_name = $_FILES['my_video']['tmp_name'];
 	$error = $_FILES['my_video']['error'];

@@ -21,7 +21,7 @@
     if (!isset($_SESSION['id'])) {
         session_start();
         include "../dbconnect.php";
-        $sql = "SELECT drops.drop_id, drops.video_url , drops.hotel_name ,user.uid, user.fullname, user.img
+        $sql = "SELECT drops.drop_id, drops.video_url , drops.hotel_name, drops.likes, user.uid, user.fullname, user.img
         FROM drops
         INNER JOIN user
         ON drops.uid = user.uid
@@ -30,12 +30,12 @@
         if (mysqli_num_rows($res) > 0) {
 
             while ($video = mysqli_fetch_assoc($res)) {
-                $imageNull=$video["img"];
+                $imageNull = $video["img"];
                 if ($imageNull == null) {
                     $image = "../media/images/user.png";
-               } else {
+                } else {
                     $image = "../media/images/user-image/" . $imageNull;
-               }
+                }
     ?>
                 <div class="w-full px-5 h-20 z-50 bg-gradient-to-b fixed top-0 flex items-center justify-between">
                     <a href="../user-profile.php" class="text-3xl w-3/4 md:text-4xl font-colvet text-white ">
@@ -55,51 +55,93 @@
                     <div class="flex flex-col items-center justify-center w-full">
 
                         <div class="md:w-[30rem] md:h-[100vh] h-full shadow-2xl relative ">
-                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?php echo $video["video_url"];?>"></video>
+                            <video controls id="video-<?= $video['drop_id'] ?>" class="re playable-video md:w-[30rem] md:h-[100vh] object-cover" data-no-fullscreen="true" src="../drops/uploads/<?php echo $video["video_url"]; ?>"></video>
                             <div class="w-full h-36 px-2 md:px-5 flex justify-between absolute z-50 bottom-0 font-poppy bg-gradient-to-t from-black text-white">
                                 <div class="flex flex-col w-3/4">
                                     <div class="flex items-center my-2 space-x-2">
-                                        <img class="w-8 md:w-10 h-8 md:h-10 rounded-full" src="<?php echo $image?>" />
-                                        <h1 class=' text-sm md:text-xl text-white'><?php echo $video["fullname"];?></h1>
+                                        <img class="w-8 md:w-10 h-8 md:h-10 rounded-full" src="<?php echo $image ?>" />
+                                        <h1 class=' text-sm md:text-xl text-white'><?php echo $video["fullname"]; ?></h1>
                                     </div>
-                                    <p class="md:text-lg text-sm"><?php echo $video["hotel_name"]?></p>
+                                    <p class="md:text-lg text-sm"><?php echo $video["hotel_name"] ?></p>
                                 </div>
                                 <div class="flex flex-col items-center justify-evenly space-y-3">
-                                    <i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i>
+                                    <?php
+                                    $sqllike = "select * from likes where u_id=$_SESSION[id] and drop_id=$video[drop_id]";
+                                    $resultlike = $con->query($sqllike);
+                                    $rowlike = $resultlike->fetch_assoc();
+
+                                    if ($resultlike->num_rows > 0) {
+                                        if (isset($rowlike["likes"])) {
+                                            if ($rowlike["likes"]) {
+                                                ?>
+                                                <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i
+                                                        class="fa-solid fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i
+                                                        class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?php echo $rowlike["likes"] ?>"><i
+                                                    class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=0"><i
+                                                class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                        <?php
+                                    }
+                                    echo $video["likes"];
+                                    ?>
                                     <i class="fa-regular fa-bookmark text-3xl cursor-pointer"></i>
                                 </div>
                             </div>
                         </div>
 
 
-                    <?php
-                }
-            } else {
-                include '../404.php';
+                        <?php
             }
+        } else {
+            include '../404.php';
         }
-        if (!isset($_GET['review'])) {
-            if (isset($_GET['error'])) {
-                    ?>
+    }
+    if (!isset($_GET['review'])) {
+        if (isset($_GET['error'])) {
+            ?>
                     <p>
                         <?= $_GET['error'] ?>
                     </p>
                 <?php } ?>
 
-            <?php
-        }
-            ?>
+                <?php
+    }
+    ?>
 
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <form action='upload.php?review=2' method="post" enctype="multipart/form-data" class="flex flex-col items-center justify-center space-x-2 space-y-3 md:space-y-4 px-4 py-8">
                         <input type="text" name="hotel-name" class="rounded-lg hover:border-brand outline-none opacity-90 border-2 border-black text-xl md:text-2xl px-10 py-2 md:px-16 w-full placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="Hotel name" required>
-                        <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-full">
+                        <input type="file" name="my_video" class="hover:cursor-pointer font-poppy file:py-3 text-center file:border-0 file:px-6 bg-off-brand rounded-xl w-full" required>
                         <button type="submit" class="py-[0.50rem] md:py-[0.70rem] space-x-2 tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 hover:bg-black/30 rounded-xl" name="submit" value="Upload"><i class="fa-solid fa-arrow-up-from-bracket text-xl"></i><span>Upload</span></button>
-                        <button class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl"><i class="fa-solid fa-xmark text-xl"></i></button>
+                        <button type='button' id="close" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy duration-500 close hover:bg-black/30 rounded-xl" onclick="closess();"><i class="fa-solid fa-xmark text-xl"></i></button>
                     </form>
                 </div>
             </div>
+            <script>
+                function closess() {
+                    var modal = document.getElementById("modal");
+                    if (modal.style.display == "none") {
+                        modal.style.display = "block";
+                    } else {
+                        modal.style.display = "none"
+                    }
+
+                }
+            </script>
             <script src="../script/modal.js"></script>
 </body>
 
