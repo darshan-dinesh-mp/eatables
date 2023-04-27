@@ -89,7 +89,7 @@
           $mail->Subject = 'PASSWORD RESET LINK';
           $mail->Body = "
          <div style='text-align: center;'>
-              <img src='media/images/email.jpeg' alt='Image with text'>
+           
             <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
               <p>Click the link below to reset your password:</p>
               <a href='" . $reset_link . "'>RESETLINK</a>
