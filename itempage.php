@@ -105,7 +105,7 @@
                                         <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                         <h1>Remove favorite</h1>
                                     </button>
-                                    <button><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
+                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
                                 </form> <?php
                                     }
                                         ?>
@@ -253,7 +253,34 @@
                     echo "<h1 class='font-poppy text-xl font-bold'>Oops no reviews found!</h1>";
                 }
 ?>
+<p class="absolute hidden py-2 bottom-5 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium" id='share-btn'>Link Copied!</p>
+
 </div>
+<script>
+    function copyPageUrlToClipboard() {
+        // Get the current page URL
+        const pageUrl = window.location.href;
+
+        // Create a temporary input element to hold the URL
+        const tempInput = document.createElement('input');
+        tempInput.setAttribute('value', pageUrl);
+        document.body.appendChild(tempInput);
+
+        // Select the contents of the input element
+        tempInput.select();
+
+        // Copy the selected contents to the clipboard
+        document.execCommand('copy');
+
+        // Remove the temporary input element
+        document.body.removeChild(tempInput);
+
+        // Show a message to the user
+        const shareBtn = document.getElementById('share-btn');
+        shareBtn.classList.remove('hidden');
+    }
+</script>
+
 </body>
 
 </html>
