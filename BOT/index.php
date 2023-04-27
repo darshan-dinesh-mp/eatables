@@ -63,7 +63,7 @@
                             $('.input-data').scrollTop($('.input-data')[0].scrollHeight);
                         }
                     });
-                    window.location.href = 'bot/filtered_results.php?price=' + priceRange;
+                    window.location.href = 'bot/filtered_results.php?page=1&price=' + priceRange;
                 });
                 // Attach event listener to parent element and delegate to child element
                 $('.input-data').on('click', '.option-btn', (event) => {
