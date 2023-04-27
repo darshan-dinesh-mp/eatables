@@ -40,10 +40,31 @@
     </div>
     <script src="bot/jquery.js"></script>
     <script>
+        // Get all filter buttons
+    </script>
+
+    <script>
         $(document).ready(() => {
+          
 
             $(document).ready(() => {
-
+                $('.input-data').on('click', '.filter-button', (event) => {
+                    let priceRange = $(event.target).data('value');
+                    $msg = ` <div class="user-inbox inbox"><div class="msg-header"><p>${priceRange}</p></div></div>`;
+                    $('.form').append($msg);
+                    $('.options-wrapper').empty();
+                    $.ajax({
+                        url: 'bot/filter.php',
+                        type: 'POST',
+                        data: 'price=' + priceRange,
+                        success: (result) => {
+                            $reply = `${result}`
+                            $('.input-data').append($reply);
+                            $('.input-data').scrollTop($('.input-data')[0].scrollHeight);
+                        }
+                    });
+                    window.location.href = 'bot/filtered_results.php?price=' + priceRange;
+                });
                 // Attach event listener to parent element and delegate to child element
                 $('.input-data').on('click', '.option-btn', (event) => {
                     let value = $(event.target).data('value');
