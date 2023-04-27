@@ -20,7 +20,7 @@
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <div class="msg-header">
-                    <p>Hello, how can I help you?</p>
+                    <p>Want to have filtered result ?</p>
                 </div>
             </div>
         </div>
