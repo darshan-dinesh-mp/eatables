@@ -107,9 +107,9 @@ if (!$_SESSION['status']) {
 						</div>
 						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
 							<div class="flex items-center justify-center space-x-1">
-								<?php if(!isset($_GET['search'])){?>
-								<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
-								<p>restaurants near</p>
+								<?php if (!isset($_GET['search'])) { ?>
+									<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
+									<p>restaurants near</p>
 							</div>
 							<p class="font-semibold" id='place-name'></p>
 						</a>
@@ -117,44 +117,44 @@ if (!$_SESSION['status']) {
 							<?php
 								}
 
-							$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
+								$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 							FROM hotel h 
 							INNER JOIN location l ON h.loc_name = l.loc_name ";
 
-							$res = $con->query($sql);
-
-							if (isset($_GET['search'])) {
-								$search = $_GET['search'];
-								$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
-								FROM hotel h 
-								WHERE hotel_name LIKE '%$search%'";
 								$res = $con->query($sql);
 
-								if ($res->num_rows > 0) {
+								if (isset($_GET['search'])) {
+									$search = $_GET['search'];
+									$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
+								FROM hotel h 
+								WHERE hotel_name LIKE '%$search%'";
+									$res = $con->query($sql);
 
-									while ($row = $res->fetch_assoc()) {
+									if ($res->num_rows > 0) {
+
+										while ($row = $res->fetch_assoc()) {
+											$ratings = $row['ratings'];
+											echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
+										}
+									} else {
+							?>
+								<div class='flex items-center justify-center h-[60vh] flex-col'>
+									<i class='fa-regular fa-face-sad-tear text-3xl mb-1'></i>
+									<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
+								</div>
+
+					<?php
+									}
+								} elseif ($res->num_rows > 0) {
+									$i = 1;
+									while (($row = $res->fetch_assoc()) && $i <= 10) {
 										$ratings = $row['ratings'];
+										$i++;
 										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 									}
-								} else {
-							?>
-									<div class='flex items-center justify-center h-[60vh] flex-col'>
-										<i class='fa-regular fa-face-sad-tear text-3xl mb-1'></i>
-										<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
-									</div>
-
-						<?php
-								}
-							} elseif ($res->num_rows > 0) {
-								$i = 1;
-								while (($row = $res->fetch_assoc()) && $i <= 10) {
-									$ratings = $row['ratings'];
-									$i++;
-									echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 								}
 							}
-						}
-						?>
+					?>
 						</div>
 					</div>
 					<div>
