@@ -93,7 +93,7 @@
                                         <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                         <h1>Add to favorite</h1>
                                     </button>
-                                    <button><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
+                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
                                 </form>
                             <?php
                             }
@@ -135,7 +135,7 @@
     ?>
 
     </div>
-
+    <p class="absolute py-2 bottom-5 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium hidden" id='share-btn'>Link copied!</p>
     <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
 <?php
                 }
@@ -253,8 +253,6 @@
                     echo "<h1 class='font-poppy text-xl font-bold'>Oops no reviews found!</h1>";
                 }
 ?>
-<p class="absolute hidden py-2 bottom-5 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium" id='share-btn'>Link Copied!</p>
-
 </div>
 <script>
     function copyPageUrlToClipboard() {
@@ -280,7 +278,6 @@
         shareBtn.classList.remove('hidden');
     }
 </script>
-
 </body>
 
 </html>
