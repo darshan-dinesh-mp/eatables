@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="styles/alert.css">
     <title>Eatables - Login</title>
     <link rel="shortcut icon" href="public/eatables.png" type="image/x-icon">
-    <!-- <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         echo '<div id="myAlert" class="alert">
                 <h1>Account created successfully. Login to continue.</h1>
               </div>';
-              $_SESSION["signupstatus"]=null;
+        $_SESSION["signupstatus"] = null;
     }
     ?>
     <script>
@@ -124,7 +124,9 @@
             }
         }, 7000);
     </script>
-
+    <?php
+    include "components/footer.php";
+    ?>
 </body>
 
 </html>
