@@ -27,7 +27,7 @@ include "../dbconnect.php";
   </div>
   <div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full ">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-24 w-full ">
     here is your result
       <?php
       // Retrieve the selected price range from the query parameter
