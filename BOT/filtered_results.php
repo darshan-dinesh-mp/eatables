@@ -13,8 +13,18 @@ include "../dbconnect.php";
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="shortcut icon" href="../public/eatables.png" type="image/x-icon">
 </head>
-
+<style>
+  .avatar{
+    position: absolute;
+    width: 300px;
+    top: -5px;
+    height: 100px;
+  }
+</style>
 <body>
+  <div class="avatar">
+    <img src="../media/images/funny-3d-illustration-cartoon-teenage-girl.png" alt="img">
+  </div>
   <div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full ">
