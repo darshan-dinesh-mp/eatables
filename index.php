@@ -66,7 +66,7 @@ if (!$_SESSION['status']) {
 							const placeName = data.display_name;
 							console.log(placeName);
 							const currentPlace = placeName.split(",")[0];
-							place.innerText = currentPlace;
+							place.innerText = currentPlace + ", Mangalore";
 						})
 						.catch(error => console.error(error));
 				}, error => {
@@ -90,8 +90,8 @@ if (!$_SESSION['status']) {
 						<img class="<?php echo
 									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
 									?>" src="<?php
-												echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
-												?>" />
+											echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
+											?>" />
 					</a>
 				</div>
 			</div>
