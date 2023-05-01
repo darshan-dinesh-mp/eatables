@@ -66,7 +66,8 @@ if (!$_SESSION['status']) {
 							const placeName = data.display_name;
 							console.log(placeName);
 							const currentPlace = placeName.split(",")[0];
-							place.innerText = currentPlace + ", Mangalore";
+							const mainPlace = placeName.split(",")[1];
+							place.innerText = currentPlace + "," + mainPlace;
 						})
 						.catch(error => console.error(error));
 				}, error => {

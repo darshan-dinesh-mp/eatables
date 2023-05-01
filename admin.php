@@ -25,8 +25,8 @@ if (!$_SESSION['status']) {
 </head>
 
 <body class="min-h-screen w-full bg-slate-200">
-	<div class="flex flex-col items-center p-4 md:py-0 md:px-16">
-		<div class="flex items-center w-full justify-between md:pt-4">
+	<div class="flex flex-col items-center md:py-4 md:px-16">
+		<div class="flex items-center w-full justify-between">
 			<a href="index.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
 				<img src="media/images/admin.png" class="w-10 h-8" alt="">
 				<h1>
@@ -40,7 +40,7 @@ if (!$_SESSION['status']) {
 			</form>
 		</div>
 	</div>
-	<div class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy text-white w-full pt-8 md:pt-12" id="links-container">
+	<div class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy text-white w-full pt-8 md:py-12" id="links-container">
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD NEW RESTAURANT</a>
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/manage_restaurant.php'><i class="fa-solid fa-pen mr-2"></i>MANAGE RESTAURANT</a>
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_item.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD ITEM</a>
@@ -49,6 +49,9 @@ if (!$_SESSION['status']) {
 	</div>
 
 	<div id="content-container" class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy w-full pt-8 md:pt-12">
+		<?php
+		include_once 'admin/displaysuggestion.php';
+		?>
 	</div>
 	<script>
 		var linksContainer = document.getElementById('links-container');
