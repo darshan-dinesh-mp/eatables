@@ -64,7 +64,7 @@
                                     </div>
                                     <p class="md:text-lg text-sm"><?php echo $video["hotel_name"] ?></p>
                                 </div>
-                                <div class="flex flex-col items-center justify-center">
+                                <a href="drops.php/view.php" class="flex flex-col items-center justify-center">
                                     <?php
                                     $sqllike = "select * from likes where u_id=$_SESSION[id] and drop_id=$video[drop_id]";
                                     $resultlike = $con->query($sqllike);
@@ -92,12 +92,12 @@
                                     <?php
                                     }
                                     echo $video["likes"];
+
                                     ?>
-                                </div>
+                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl mt-2"></i></button>
+                                </a>
                             </div>
                         </div>
-
-
                     <?php
                 }
             } else {
@@ -137,6 +137,31 @@
 
                 }
             </script>
+            <script>
+                function copyPageUrlToClipboard() {
+                    // Get the current page URL
+                    const pageUrl = window.location.href;
+
+                    // Create a temporary input element to hold the URL
+                    const tempInput = document.createElement('input');
+                    tempInput.setAttribute('value', pageUrl);
+                    document.body.appendChild(tempInput);
+
+                    // Select the contents of the input element
+                    tempInput.select();
+
+                    // Copy the selected contents to the clipboard
+                    document.execCommand('copy');
+
+                    // Remove the temporary input element
+                    document.body.removeChild(tempInput);
+
+                    // Show a message to the user
+                    const shareBtn = document.getElementById('share-btn');
+                    shareBtn.classList.remove('hidden');
+                }
+            </script>
+
             <script src="../script/modal.js"></script>
 </body>
 
