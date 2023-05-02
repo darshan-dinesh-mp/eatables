@@ -128,7 +128,7 @@
     ?>
 
     </div>
-    <p class="absolute py-2 bottom-5 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium hidden" id='share-btn'>Link copied!</p>
+    <p class="absolute py-2 bottom-5 duration-900 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium hidden" id='share-btn'>Link copied!</p>
     <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
 <?php
                 }
