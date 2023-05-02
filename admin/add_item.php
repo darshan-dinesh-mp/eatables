@@ -22,14 +22,12 @@ if (!isset($_POST["submit"])) {
     </form>
 <?php
 } else {
-    echo "hai";
     $hid = $_POST["hid"];
     $item = $_POST["item"];
     $price = $_POST["price"];
     $sql = "INSERT INTO `item` (`hotel_id`, `item_name`, `item_price`) VALUES ($hid, '$item', '$price')";
     $res = $con->query($sql);
     if ($res) {
-        echo "haiii";
         echo "<script>alert('item $item added successfully.')</script>";
         echo "<script>window.location.href='../admin.php'</script>";
     }
