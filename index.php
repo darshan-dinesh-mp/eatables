@@ -67,7 +67,8 @@ if (!$_SESSION['status']) {
 							console.log(placeName);
 							const currentPlace = placeName.split(",")[0];
 							const mainPlace = placeName.split(",")[1];
-							place.innerText = currentPlace + "," + mainPlace;
+							const main2Place = placeName.split(",")[2];
+							place.innerText = mainPlace + "," + main2Place;
 						})
 						.catch(error => console.error(error));
 				}, error => {
@@ -79,7 +80,6 @@ if (!$_SESSION['status']) {
 				console.log("Geolocation is not supported by this browser.");
 			}
 		</script>
-
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
@@ -103,7 +103,7 @@ if (!$_SESSION['status']) {
 							Find your next favorite.
 						</h1>
 						<form action="" method="get">
-							<input id="search-bar" name="search" class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] blind " placeholder="Search Hotels" type="text" />
+							<input id="search-bar" name="search" class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] blind " placeholder="Search Restaurants" type="text" />
 						</form>
 						<div id="search-results" class="font-poppy text-xl pt-3 search-suggestions">
 						</div>

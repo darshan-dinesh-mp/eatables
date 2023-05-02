@@ -115,6 +115,8 @@ if (!$_SESSION['status']) {
 			<div class='w-full md:w-2/6'>
 				<h1 class='font-poppy text-lg md:text-xl font-bold'><i class="fa-sharp fa-solid fa-location-dot mr-1 mb-2"></i>locate on map</h1>
 				<iframe class="w-full h-full" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD1VnYC6EugmolDY9RjsZ77TeXstyj0288&q=New+Bangalore+Iyengar+Bakery,+25-7-399,+Valencia,+Kankanady,+Mangaluru,+Karnataka+575002&zoom=17" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
 			</div>
 		</div>
 		<?php
