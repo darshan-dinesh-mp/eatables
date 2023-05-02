@@ -114,7 +114,7 @@
 
         </div>
         <div class="w-full flex items-start flex-row justify-between my-4">
-            <form action="itempage.php" class="flex items-center justify-center shadow-sm" method="post">
+            <form action="itempage.php" class="flex items-center justify-center shadow-sm w-full" method="post">
                 <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" required />
                 <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.42rem]  md:py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
                     <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>

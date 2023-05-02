@@ -7,18 +7,20 @@
             opacity: 1;
         }
 
+        .card.hidden {
+            opacity: 0;
+        }
+
         .dummy {
             position: absolute;
             bottom: 0;
             width: 220px;
-            animation: moveUpDown 3s infinite cubic-bezier(0.4, 0.1, 0.6, 0.9);
+            /* animation: moveUpDown 3s infinite cubic-bezier(0.4, 0.1, 0.6, 0.9); */
             left: 120px;
             padding: 10px 10px 10px 0;
             margin: 0 auto;
-
-            top: 241px;
-            left: -107px;
-
+            top: 279px;
+            left: 0;
         }
 
         .dummy.hidden {
@@ -29,14 +31,14 @@
             display: none;
             position: absolute;
             left: 0;
-            bottom: 0;
+            top: 550px;
+            background-color: #ffd770;
             opacity: 0;
             padding: 10px 10px 10px 0;
             transition: opacity 0.5s ease;
             width: 220px;
             margin: 0 auto;
-            background-color: #ffffff5c;
-            border-radius: 8px;
+            border-radius: 5px;
             z-index: 1;
         }
 
@@ -76,17 +78,12 @@
             padding-left: 10px;
         }
 
-        .reply {
-            text-align: right;
-        }
-
         .card.visible {
             display: block;
             left: 0;
             opacity: 1;
         }
-    </style>
-    <style>
+
         .circle {
             display: flex;
             align-items: center;
@@ -122,42 +119,41 @@
                 transform: translateY(-15px);
             }
         }
+
+        .avatar2 {
+            position: relative;
+            left: -300px;
+            animation-name: slideRight;
+            animation-duration: 2s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes slideRight {
+            to {
+                left: 0;
+            }
+        }
     </style>
 
 </head>
 <script>
-    // Delay the visibility of the card by 5 seconds (5000 milliseconds)
-    // setTimeout(function() {
-    //     document.getElementById("cardContainer").classList.add("visible");
-    // }, 1000);
     document.addEventListener('DOMContentLoaded', function() {
         const avatar = document.querySelector('.avatar2');
         const cardContent = document.querySelector('.card');
         const dummy = document.querySelector('.dummy');
         avatar.addEventListener('click', function() {
             cardContent.classList.add('visible');
-            dummy.classList.add('hidden');
+            // dummy.classList.add('hidden');
         });
     });
 </script>
 
 <body>
-    <div class="dummy">
+    <div class="dummy hover:cursor-pointer">
         <img class='avatar2' class='image-assistant' src="media/images/avatar.png" width=300px alt="img">
     </div>
     <div class="card" id="cardContainer">
-        <div class="tools">
-            <div class="circle">
-                <span class="red box"></span>
-            </div>
-            <div class="circle">
-                <span class="yellow box"></span>
-            </div>
-            <div class="circle ">
-                <span class="green box"></span>
-            </div>
-        </div>
-        <img class='avatar' class='image-assistant' src="media/images/avatar.png" width=300px alt="img">
         <div class="card__content">
             <div class="wrapper">
                 <div class="font-bold">
@@ -172,19 +168,18 @@
                             <p>Want to have filtered result?</p>
                         </div>
                         <div class="reply">
-                            <p class=""></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="typing-field">
-                    <div class="input-data options-wrapper">
+                    <div class="input-data options-wrapper flex items-center justify-evenly ">
                         <?php
                         include "dbconnect.php";
                         $check_data = "SELECT option_text FROM bot where is_default=1";
                         $res = mysqli_query($con, $check_data) or die("error in finding");
                         while ($row = $res->fetch_assoc()) {
-                            echo '          <button class="option-btn bg-brand py-1 px-7 hover:bg-black hover:text-[#F9BB21] duration-300 rounded-md" data-value="' . $row['option_text'] . '">' . $row['option_text'] . '</button>            ';
+                            echo '<button class="option-btn bg-brand my-2 py-1 px-7 hover:bg-black hover:text-[#F9BB21] duration-300 rounded-md" data-value="' . $row['option_text'] . '">' . $row['option_text'] . '</button>';
                         }
                         ?>
                     </div>
@@ -220,7 +215,11 @@
                         // Attach event listener to parent element and delegate to child element
                         $('.input-data').on('click', '.option-btn', (event) => {
                             let value = $(event.target).data('value');
-                            $msg = ` <div class="user-inbox inbox"><div class="reply"><p>${value}</p></div></div>`;
+                            $msg = ` <div class="user-inbox inbox">
+                                        <div class="reply flex items-end justify-end">
+                                            <p class='w-16 py-1 text-center rounded-md mb-2 bg-brand'>${value}</p>
+                                        </div>
+                                    </div>`;
                             $('.form').append($msg);
                             $('.options-wrapper').empty();
                             // start ajax code

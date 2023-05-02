@@ -9,12 +9,14 @@
 </head>
 
 <body>
-
     <?php
     include "dbconnect.php";
     $sql = "select * from suggestion";
     $res = $con->query($sql);
     if ($res->num_rows > 0) {
+    ?>
+        <h1 class="font-poppy text-2xl font-bold pb-4">New hotel suggestions.</h1>
+        <?php
         echo "<table class='w-full text-center'>";
         echo "<tr class='w-full bg-gray-300 h-14 text-xl'>
                 <th class=''>Hotel Name</th>
@@ -33,13 +35,16 @@
             echo "<td class=''>
         <div id='links-container'>
         <a href='admin/add_hotel.php?uname=$row[uname]&hotel_name=$row[hotel_name]&hotel_loc=$row[hotel_loc]&loc_name=$row[loc_name]&ratings=$row[ratings]&links=$row[links]&desc=$row[desc]&'><i class='fa-solid fa-circle-check text-3xl text-green-500'></i></a>
-        <a class='bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md' href='admin/add_hotel.php'><i class='fa-sharp fa-solid fa-plus mr-2'></i>ADD NEW RESTAURANT</a>
-        <a href='admin/add_hotel.php?uname=$row[uname]&hotel_name=$row[hotel_name]&hotel_loc=$row[hotel_loc]&loc_name=$row[loc_name]&ratings=$row[ratings]&links=$row[links]&desc=$row[desc]&'><i class='fa-sharp fa-solid fa-circle-xmark text-3xl text-red-500'></i></a>
-        </div>
+        <a href='admin/deletesuggestion.php?hid=$row[hotel_id]'><i class='fa-sharp fa-solid fa-circle-xmark text-3xl text-red-500'></i></a>
+        </div
         </td>";
             echo "</tr>";
         }
         echo "</table>";
+    } else {
+        ?>
+        <h1 class="font-poppy text-2xl font-bold pb-4">No suggestions yet.</h1>
+    <?php
     }
     ?>
     <div id="content-container" class="flex flex-row flex-wrap px-6 items-center justify-center font-poppy w-full pt-8 md:pt-12">
