@@ -70,7 +70,7 @@
                               </div>
                               <div class="w-full md:col-span-2">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                                        Rating(1-5):
+                                        Rating(1-5)*:
                                    </label>
                                    <input name="rate" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
                               </div>

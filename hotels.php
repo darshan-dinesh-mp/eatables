@@ -50,7 +50,7 @@ if (!$_SESSION['status']) {
 
 	while ($rowTwo = $row->fetch_assoc()) {
 		$links = $rowTwo['links'];
-		$desc = $rowTwo['disc'];
+		$desc = $rowTwo['desc'];
 	}
 	?>
 	<div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
