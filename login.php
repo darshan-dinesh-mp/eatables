@@ -63,7 +63,7 @@
                 </form>
                 <br>
             </div>
-            <div class="flex md:flex-row flex-col items-center justify-center w-full">
+            <div class="flex flex-col items-center justify-center w-full">
                 <a href="forgot.php" class="font-poppy md:text-lg font-medium underline hover:text-gray-700">
                     forgot password?
                 </a>

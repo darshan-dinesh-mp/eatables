@@ -12,47 +12,49 @@
     <script src="https://kit.fontawesome.com/08ae7c27bc.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="public/eatables.png" type="image/x-icon">
 </head>
+<?php if (isset($_GET["uname"]) || isset($_GET["hotel_name"]) || isset($_GET["hotel_loc"]) || isset($_GET["loc_name"]) || isset($_GET["ratings"]) || isset($_GET["links"]) || isset($_GET["desc"])) { ?>
 
-<body class="min-h-screen w-full bg-slate-200">
-    <div class="flex flex-col items-center md:py-4 md:px-16">
-        <div class="flex items-center w-full justify-between">
-            <a href="index.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
-                <img src="../media/images/admin.png" class="w-10 h-8" alt="">
-                <h1>
-                    admin
-                </h1>
-            </a>
-            <form action="logout.php" method="post">
-                <button type="submit" name="logout" class="logout-btn">
-                    <i class="fa-solid fa-right-from-bracket text-2xl"></i>
-                </button>
-            </form>
+    <body class="min-h-screen w-full bg-slate-200">
+        <div class="flex flex-col items-center md:py-4 md:px-16">
+            <div class="flex items-center w-full justify-between">
+                <a href="index.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
+                    <img src="../media/images/admin.png" class="w-10 h-8" alt="">
+                    <h1>
+                        admin
+                    </h1>
+                </a>
+                <form action="logout.php" method="post">
+                    <button type="submit" name="logout" class="logout-btn">
+                        <i class="fa-solid fa-right-from-bracket text-2xl"></i>
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
     <?php
-    include "dbconnect.php";
-    $uname = null;
-    $hotel_name = null;
-    $hotel_loc = null;
-    $loc_name = null;
-    $ratings = null;
-    $links = null;
-    $desc = null;
-    if (isset($_GET["uname"]) || isset($_GET["hotel_name"]) || isset($_GET["hotel_loc"]) || isset($_GET["loc_name"]) || isset($_GET["ratings"]) || isset($_GET["links"]) || isset($_GET["desc"])) {
-        $uname = $_GET["uname"];
-        $hotel_name = $_GET["hotel_name"];
-        $hotel_loc = $_GET["hotel_loc"];
-        $loc_name = $_GET["loc_name"];
-        $ratings = $_GET["ratings"];
-        $links = $_GET["links"];
-        $desc = $_GET["desc"];
-    }
-    if (!isset($_POST["submit"])) {
-        $sql = "select * from  location ";
-        $res = $con->query($sql);
+}
+include "dbconnect.php";
+$uname = null;
+$hotel_name = null;
+$hotel_loc = null;
+$loc_name = null;
+$ratings = null;
+$links = null;
+$desc = null;
+if (isset($_GET["uname"]) || isset($_GET["hotel_name"]) || isset($_GET["hotel_loc"]) || isset($_GET["loc_name"]) || isset($_GET["ratings"]) || isset($_GET["links"]) || isset($_GET["desc"])) {
+    $uname = $_GET["uname"];
+    $hotel_name = $_GET["hotel_name"];
+    $hotel_loc = $_GET["hotel_loc"];
+    $loc_name = $_GET["loc_name"];
+    $ratings = $_GET["ratings"];
+    $links = $_GET["links"];
+    $desc = $_GET["desc"];
+}
+if (!isset($_POST["submit"])) {
+    $sql = "select * from  location ";
+    $res = $con->query($sql);
 
     ?>
-        <form action="admin/add_hotel.php" method="post" class="grid md:grid-cols-1 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
+        <form action="add_hotel.php" method="post" class="grid md:grid-cols-1 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     Hotel name :
@@ -100,21 +102,25 @@
             <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Add" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500">
         </form>
     <?php
-    } else {
-        $hname = $_POST["hname"];
-        $lname = $_POST["lname"];
-        $lat = $_POST["lat"];
-        $rate = $_POST["rate"];
-        $link = $_POST["link"];
-        $desc = $_POST["desc"];
-        $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL, '$hname', '$lat', '$lname','$rate','$link','$desc')";
-        $res = $con->query($sql);
-        if ($res) {
-            echo "<script>alert('Hotel $hname added successfully.')</script>";
-            echo "<script>window.location.href='admin.php'</script>";
-        }
+} else {
+    $hname = $_POST["hname"];
+    $lname = $_POST["lname"];
+    $lat = $_POST["lat"];
+    $rate = $_POST["rate"];
+    $link = $_POST["link"];
+    $desc = $_POST["desc"];
+    $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL, '$hname', '$lat', '$lname','$rate','$link','$desc')";
+    $res = $con->query($sql);
+    $sql = "select max(hotel_id) as hotel_id from suggestion";
+    $res = $con->query($sql);
+    $row = $res->fetch_assoc();
+    if ($res) {
+        echo "<script>alert('Hotel $hname added successfully.')</script>";
+        echo "<script>window.location.href='deletesuggestion.php?hid=$row[hotel_id]'</script>";
+        echo "<script>window.location.href='admin.php'</script>";
     }
+}
     ?>
-</body>
+    </body>
 
 </html>
