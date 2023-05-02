@@ -77,8 +77,8 @@ $res1 = $con->query($sql1);
 
         $res = $con->query($sql);
         if ($res) {
-            echo "<script>alert('Hotel $hname  succupdated sessfully.')</script>";
-            echo "<script>window.location.href='manage_restaurant.php'</script>";
+            echo "<script>alert('Hotel $hname updated successfully.')</script>";
+            echo "<script>window.location.href='../admin.php'</script>";
         }
     }
     ?>
