@@ -54,12 +54,12 @@ if (!isset($_POST["submit"])) {
     $res = $con->query($sql);
 
     ?>
-        <form action="add_hotel.php" method="post" class="grid md:grid-cols-1 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
+        <form action="admin/add_hotel.php" method="post" class="grid md:grid-cols-1 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     Hotel name :
                 </span>
-                <input type="text" name="hname" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $hotel_name ?>" />
+                <input type="text" name="hname" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $hotel_name ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
@@ -79,25 +79,25 @@ if (!isset($_POST["submit"])) {
                 <span class="font-poppy font-bold">
                     Location (Gmap location link):
                 </span>
-                <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" name="lat" value="<?php echo $hotel_loc ?>" />
+                <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" name="lat" value="<?php echo $hotel_loc ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     Rating(1-5):
                 </span>
-                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="rate" value="<?php echo $ratings ?>" />
+                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="rate" value="<?php echo $ratings ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     link (zomato link):
                 </span>
-                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="link" value="<?php echo $links ?>" />
+                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="link" value="<?php echo $links ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     description:
                 </span>
-                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="desc" value="<?php echo $desc ?>" />
+                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="desc" value="<?php echo $desc ?>" required />
             </div>
             <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Add" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500">
         </form>
@@ -116,8 +116,12 @@ if (!isset($_POST["submit"])) {
     $row = $res->fetch_assoc();
     if ($res) {
         echo "<script>alert('Hotel $hname added successfully.')</script>";
-        echo "<script>window.location.href='deletesuggestion.php?hid=$row[hotel_id]'</script>";
-        echo "<script>window.location.href='admin.php'</script>";
+        $sql = "select * from suggestion";
+        $res = $con->query($sql);
+        if ($res->num_rows > 0){
+            echo "<script>window.location.href='deletesuggestion.php?hid=$row[hotel_id]'</script>";
+        }
+        echo "<script>window.location.href='../admin.php'</script>";
     }
 }
     ?>
