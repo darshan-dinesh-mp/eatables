@@ -27,7 +27,7 @@ if (!$_SESSION['status']) {
 <body class="min-h-screen w-full bg-slate-200">
 	<div class="flex flex-col items-center md:py-4 md:px-16">
 		<div class="flex items-center w-full justify-between">
-			<a href="index.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
+			<a href="user-profile.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
 				<img src="media/images/admin.png" class="w-10 h-8" alt="">
 				<h1>
 					admin

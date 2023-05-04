@@ -6,7 +6,7 @@ if (!isset($_POST["submit"])) {
 
 ?>
     <form action="admin/add_item.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
-        HOTEL: <select name="hid">
+        HOTEL: <select required name="hid">
             <?php
             while ($row = $res->fetch_assoc()) {
             ?>
@@ -16,8 +16,8 @@ if (!isset($_POST["submit"])) {
             ?>
         </select><br>
 
-        item name : <input type="text" name="item" /><br>
-        item price : <input type="text" name="price" /><br>
+        item name : <input type="text" required name="item" /><br>
+        item price : <input type="text" required name="price" /><br>
         <input type="submit" name="submit" value="Add" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
     </form>
 <?php
