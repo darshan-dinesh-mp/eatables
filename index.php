@@ -36,11 +36,11 @@ if (!$_SESSION['status']) {
 								$('#search-results').html(data);
 							}
 						});
-						$('#search-results').on('click', 'a', function(e) {
-							e.preventDefault();
-							var query = $(this).text();
-							window.location.href = 'index.php?search=' + query;
-						});
+						// $('#search-results').on('click', 'a', function(e) {
+						// 	e.preventDefault();
+						// 	var query = $(this).text();
+						// 	window.location.href = 'hotels.php?hotel_id=' + query;
+						// });
 					} else {
 						$('#search-results').html('');
 					}
