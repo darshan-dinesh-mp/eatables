@@ -44,9 +44,17 @@ if (!isset($_SESSION["path"])) {
 <body>
      <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
-               <a href="index.php" class="text-3xl md:text-4xl font-colvet">
+          <?php if ($_SESSION['user_type'] == 0) { ?>
+               <a href="loading.php" class="text-3xl md:text-4xl font-colvet">
                     eatables.
                </a>
+               <?php
+                    } else{?>
+                    <a href="index.php" class="text-3xl md:text-4xl font-colvet">
+                    eatables.
+               </a>
+               <?php
+                    } ?>
                <form action="logout.php" method="post" class='flex items-center justify-between w-36 md:w-40'>
                     <a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
                     <a id="upload-btn">

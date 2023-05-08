@@ -22,6 +22,32 @@ if (!$_SESSION['status']) {
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="shortcut icon" href="public/eatables.png" type="image/x-icon">
 		<script>
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(position => {
+					let place = document.getElementById('place-name');
+					const lat = position.coords.latitude;
+					const lng = position.coords.longitude;
+					const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+
+					fetch(url)
+						.then(response => response.json())
+						.then(data => {
+							const placeName = data.display_name;
+							console.log(placeName);
+							const currentPlace = placeName.split(",")[0];
+							const mainPlace = placeName.split(",")[1];
+							const main2Place = placeName.split(",")[2];
+							place.innerText = mainPlace + "," + main2Place;
+						})
+						.catch(error => console.error(error));
+				}, error => {
+					console.error(error.message);
+				}, {
+					enableHighAccuracy: true
+				});
+			} else {
+				console.log("Geolocation is not supported by this browser.");
+			}
 			$(document).ready(function() {
 				$('#search-bar').keyup(function() {
 					var query = $(this).val();
@@ -53,32 +79,7 @@ if (!$_SESSION['status']) {
 
 	<body>
 		<script>
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(position => {
-					let place = document.getElementById('place-name');
-					const lat = position.coords.latitude;
-					const lng = position.coords.longitude;
-					const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
-
-					fetch(url)
-						.then(response => response.json())
-						.then(data => {
-							const placeName = data.display_name;
-							console.log(placeName);
-							const currentPlace = placeName.split(",")[0];
-							const mainPlace = placeName.split(",")[1];
-							const main2Place = placeName.split(",")[2];
-							place.innerText = mainPlace + "," + main2Place;
-						})
-						.catch(error => console.error(error));
-				}, error => {
-					console.error(error.message);
-				}, {
-					enableHighAccuracy: true
-				});
-			} else {
-				console.log("Geolocation is not supported by this browser.");
-			}
+			
 		</script>
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
@@ -91,14 +92,26 @@ if (!$_SESSION['status']) {
 						<img class="<?php echo
 									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
 									?>" src="<?php
-											echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
-											?>" />
+												echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
+												?>" />
 					</a>
 				</div>
 			</div>
 			<div class="grid gap-3 grid-cols-1 w-full mt-16 md:mt-40 space-y-0 place-items-center">
 				<div class="flex items-center justify-around flex-col relative w-full md:w-3/4">
 					<div class="flex items-center justify-center flex-col w-full">
+						<?php 
+						// Retrieve data from location table
+						$query = "SELECT * FROM location";
+						$result = mysqli_query($con, $query);
+
+// Check if the value of loc_name column matches $_SESSION['loc'] while ignoring case
+						while ($row = mysqli_fetch_assoc($result)) {
+							$loc1=str_replace(' ', '', strtolower($row['loc_name']));
+							$loc2=str_replace(' ', '', strtolower($_SESSION['loc']));
+  						if ($loc1== $loc2) {
+
+						?>
 						<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-medium text-center">
 							Find your next favorite.
 						</h1>
@@ -109,22 +122,20 @@ if (!$_SESSION['status']) {
 						</div>
 						<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
 							<div class="flex items-center justify-center space-x-1">
-								<?php if (!isset($_GET['search'])) { ?>
-									<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
-									<p>restaurants near</p>
+							<?php if (!isset($_GET['search'])) { ?>
+							<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
+							<p>restaurants near</p>
 							</div>
 							<p class="font-semibold" id='place-name'></p>
 						</a>
+						
 						<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
 							<?php
 								}
-
 								$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 							FROM hotel h 
 							INNER JOIN location l ON h.loc_name = l.loc_name ";
-
 								$res = $con->query($sql);
-
 								if (isset($_GET['search'])) {
 									$search = $_GET['search'];
 									$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
@@ -155,13 +166,16 @@ if (!$_SESSION['status']) {
 										echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 									}
 								}
-							}
 					?>
-
 						</div>
-
 					</div>
-
+				<?php 
+				}else{
+					echo "SERVICE NOT AVAILABLE IN YOUR LOCATION";
+				}
+			}
+			}
+				?>
 
 				</div>
 			</div>

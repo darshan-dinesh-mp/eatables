@@ -95,7 +95,7 @@
                 $_SESSION['user_type'] = $row['user_type'];
                 $type = $row['user_type'];
                 if ($type != 0) {
-                    header("Location: index.php");
+                    header("Location: loading.php");
                     exit;
                 } else {
                     header("Location: user-profile.php");
