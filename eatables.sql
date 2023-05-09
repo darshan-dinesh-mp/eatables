@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2023 at 09:14 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 09, 2023 at 11:50 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,15 +57,15 @@ CREATE TABLE `drops` (
   `hotel_name` varchar(100) NOT NULL,
   `drop_date` varchar(20) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `drops`
 --
 
 INSERT INTO `drops` (`drop_id`, `uid`, `video_url`, `hotel_name`, `drop_date`, `likes`) VALUES
-(35, 2, 'video-644929e72dcbc5.96383174.mp4', 'Laziz Pizza', '20-04-23 08:03:00', 0),
-(36, 2, 'video-6449297623a7a5.88147750.mp4', 'Hamburg Street Food Cafe', '20-04-23 08:05:20', 2);
+(35, 2, 'video-644929e72dcbc5.96383174.mp4', 'Laziz Pizza', '20-04-23 08:03:00', 1),
+(36, 2, 'video-6449297623a7a5.88147750.mp4', 'Hamburg Street Food Cafe', '20-04-23 08:05:20', 1);
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,8 @@ CREATE TABLE `favourite` (
 INSERT INTO `favourite` (`fav_id`, `uid`, `item_id`) VALUES
 (18, 2, 2),
 (19, 2, 1),
-(20, 2, 493);
+(20, 2, 493),
+(21, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -109,68 +110,68 @@ CREATE TABLE `hotel` (
 --
 
 INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings`, `links`, `disc`) VALUES
-(1, 'Laziz Pizza', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/laziz-pizza-attavar/order', NULL),
-(2, 'Hamburg Street Food Cafe', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hamburg-street-food-cafe-kankanady/order', NULL),
-(3, 'Bamboo Restaurant', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/bamboo-restaurant-kankanady/order', NULL),
-(4, 'CKK Kitchens Of Maharaja', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/ckk-kitchens-of-maharaja-lalbagh/order', NULL),
-(5, 'Hotel Sai Palace', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hotel-sai-palace-hampankatta/order', NULL),
-(6, 'Grameen Kulfi', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/grameen-kulfi-kottara/order', NULL),
-(7, 'Momos Hut', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/momos-hut-kankanady/order', NULL),
-(8, 'Keventers - Milkshakes & Desse', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/keventers-milkshakes-desserts-balmatta/order', NULL),
-(9, 'Danish Bamboo House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/danish-bamboo-house-kankanady/order', NULL),
-(10, 'Aladdin Shawarma', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/aladdin-shawarma-kankanady/order', NULL),
-(11, 'Hotel Sai Tudar', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/hotel-sai-tudar-lalbagh/order', NULL),
-(12, 'Baskin Robbins', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/baskin-robbins-hampankatta/order', NULL),
-(13, 'BT Devrali', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/bt-devrali-kankanady/order', NULL),
-(14, 'Sharaabi Bar & Family Restaura', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/sharaabi-bar-family-restaurant-kadri/order', NULL),
-(15, 'Taste of Parika', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/taste-of-parika-kapikad/order', NULL),
-(16, 'Urban House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/urban-house-bendoor/order', NULL),
-(17, 'Pavman', NULL, 'Manglore', '4', 'https://www.zomato.com/mangalore/pavman-mallikatte/order', 'khk'),
-(18, 'Andhra House', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/andhra-house-kadri/order', NULL),
-(19, 'Wholesome Kitchen', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/wholesome-kitchen-mallikatte/order', NULL),
-(20, 'Mangala', '', 'Manglore', '4', 'https://www.zomato.com/mangalore/mangala-bendoor/order', NULL),
-(22, 'Taco Street', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/taco-street-kodailbail/order', NULL),
-(23, 'Kaati Zone Rolls And Wraps', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/kaati-zone-rolls-and-wraps-kodailbail/order', NULL),
-(24, 'Burger Shack', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/burger-shack-bendoor/order', NULL),
-(25, 'Wine And Dine', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/wine-and-dine-thokottu/order', NULL),
-(26, 'Frozen Scoops', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/frozen-scoops-1-hampankatta/order', NULL),
-(27, 'Sizzlers Ranch', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sizzlers-ranch-hampankatta/order', NULL),
-(28, 'The Good Bowl', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/the-good-bowl-hampankatta/order', NULL),
-(29, 'Sri Durga Lunch Home', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/sri-durga-lunch-home-attavar/order', NULL),
-(30, 'Pure Veg Meals By LunchBox', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/pure-veg-meals-by-lunchbox-hampankatta/order', NULL),
-(32, 'Gajalee Sea Food', '', 'Manglore', '4.1', 'https://www.zomato.com/mangalore/gajalee-sea-food-kadri/order', NULL),
-(33, 'Hao Ming', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/hao-ming-balmatta/order', NULL),
-(34, 'WarmOven Cake & Desserts', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/warmoven-cake-desserts-kodailbail/order', NULL),
-(35, 'Behrouz Biryani', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/behrouz-biryani-hampankatta/order', NULL),
-(37, 'Sundae Everyday Ice Creams', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/sundae-everyday-ice-creams-kodailbail/order', NULL),
-(38, 'Gauji Gammath', '', 'Manglore', '4.2', 'https://www.zomato.com/mangalore/gauji-gammath-hampankatta/order', NULL),
-(39, 'Olive Street Food Cafe', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/olive-street-food-cafe-kodailbail/order', NULL),
-(40, 'Crave Desserts & Bakes', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/crave-desserts-bakes-balmatta/order', NULL),
-(41, 'Raslaffan Ice Cream Parlour', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/raslaffan-ice-cream-parlour-pumpwell/order', NULL),
-(42, 'New Kudla', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/new-kudla-ashok-nagar/order', NULL),
-(43, 'Rathna s Wine Gate', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/rathnas-wine-gate-kodailbail/order', NULL),
-(44, 'Machali', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/machali-kodailbail/order', NULL),
-(45, 'G Food Fun', '', 'Manglore', '4.3', 'https://www.zomato.com/mangalore/g-food-n-fun-bendoor/order', NULL),
-(46, 'Ideal Cafe', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/ideal-cafe-hampankatta/order', NULL),
-(47, 'Chandus Biryani Spot', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/chandus-biryani-spot-kavoor/order', NULL),
-(48, 'Meisterwurst', '', 'Manglore', '4.4', 'https://www.zomato.com/mangalore/meisterwurst-kodailbail/order', NULL),
-(49, 'Pabbas', '', 'Manglore', '4.5', 'https://www.zomato.com/mangalore/pabbas-lalbagh/order', NULL),
-(50, 'Drood Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/drood-cafe-kankanady/order', NULL),
-(51, 'Biryani Express', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/biryani-express-kavoor/order', NULL),
-(52, 'Parika Bakes', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/parika-bakes-marnamikatte/order', NULL),
-(53, 'The Juice Dude', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-juice-dude-kankanady/order', NULL),
-(54, 'Nomou - Vegan Gelato', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/nomou-vegan-gelato-attavar/order', NULL),
-(56, 'Kling Krishna Cafe', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kling-krishna-cafe-hampankatta/order', NULL),
-(57, 'Jumbos Kitchen', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/jumbos-kitchen-kodailbail/order', NULL),
-(58, 'Taj Mahal Restaurant', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/taj-mahal-restaurant-hampankatta/order', NULL),
-(59, 'Kottara 70 Surprise', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/kottaras-70-surprise-kottara/order', NULL),
-(60, 'Cafe Margarita', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/cafe-margarita-lalbagh/order', NULL),
-(61, 'The Grand Kitchen By AJ Grand ', '', 'Manglore', '-', 'https://www.zomato.com/mangalore/the-grand-kitchen-by-aj-grand-hotel-balmatta/order', NULL),
-(63, 'Bapama s Cafe', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/bapamas-cafe-kadri/order', NULL),
-(64, 'Ferns & Martins', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/ferns-martins-kavoor/order', NULL),
-(65, 'The Waffle Man - House of Cook', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-waffle-man-house-of-cookie-man-attavar/order', NULL),
-(66, 'Frankie Delight', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/frankie-delight-kottara/order', NULL),
-(68, 'The Hungry Birds', '', 'Manglore', 'New', 'https://www.zomato.com/mangalore/the-hungry-birds-hampankatta/order', NULL);
+(1, 'Laziz Pizza', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/laziz-pizza-attavar/order', NULL),
+(2, 'Hamburg Street Food Cafe', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/hamburg-street-food-cafe-kankanady/order', NULL),
+(3, 'Bamboo Restaurant', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/bamboo-restaurant-kankanady/order', NULL),
+(4, 'CKK Kitchens Of Maharaja', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/ckk-kitchens-of-maharaja-lalbagh/order', NULL),
+(5, 'Hotel Sai Palace', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/hotel-sai-palace-hampankatta/order', NULL),
+(6, 'Grameen Kulfi', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/grameen-kulfi-kottara/order', NULL),
+(7, 'Momos Hut', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/momos-hut-kankanady/order', NULL),
+(8, 'Keventers - Milkshakes & Desse', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/keventers-milkshakes-desserts-balmatta/order', NULL),
+(9, 'Danish Bamboo House', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/danish-bamboo-house-kankanady/order', NULL),
+(10, 'Aladdin Shawarma', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/aladdin-shawarma-kankanady/order', NULL),
+(11, 'Hotel Sai Tudar', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/hotel-sai-tudar-lalbagh/order', NULL),
+(12, 'Baskin Robbins', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/baskin-robbins-hampankatta/order', NULL),
+(13, 'BT Devrali', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/bt-devrali-kankanady/order', NULL),
+(14, 'Sharaabi Bar & Family Restaura', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/sharaabi-bar-family-restaurant-kadri/order', NULL),
+(15, 'Taste of Parika', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/taste-of-parika-kapikad/order', NULL),
+(16, 'Urban House', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/urban-house-bendoor/order', NULL),
+(17, 'Pavman', NULL, 'mangaluru', '4', 'https://www.zomato.com/mangalore/pavman-mallikatte/order', 'khk'),
+(18, 'Andhra House', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/andhra-house-kadri/order', NULL),
+(19, 'Wholesome Kitchen', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/wholesome-kitchen-mallikatte/order', NULL),
+(20, 'Mangala', '', 'mangaluru', '4', 'https://www.zomato.com/mangalore/mangala-bendoor/order', NULL),
+(22, 'Taco Street', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/taco-street-kodailbail/order', NULL),
+(23, 'Kaati Zone Rolls And Wraps', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/kaati-zone-rolls-and-wraps-kodailbail/order', NULL),
+(24, 'Burger Shack', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/burger-shack-bendoor/order', NULL),
+(25, 'Wine And Dine', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/wine-and-dine-thokottu/order', NULL),
+(26, 'Frozen Scoops', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/frozen-scoops-1-hampankatta/order', NULL),
+(27, 'Sizzlers Ranch', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/sizzlers-ranch-hampankatta/order', NULL),
+(28, 'The Good Bowl', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/the-good-bowl-hampankatta/order', NULL),
+(29, 'Sri Durga Lunch Home', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/sri-durga-lunch-home-attavar/order', NULL),
+(30, 'Pure Veg Meals By LunchBox', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/pure-veg-meals-by-lunchbox-hampankatta/order', NULL),
+(32, 'Gajalee Sea Food', '', 'mangaluru', '4.1', 'https://www.zomato.com/mangalore/gajalee-sea-food-kadri/order', NULL),
+(33, 'Hao Ming', '', 'mangaluru', '4.2', 'https://www.zomato.com/mangalore/hao-ming-balmatta/order', NULL),
+(34, 'WarmOven Cake & Desserts', '', 'mangaluru', '4.2', 'https://www.zomato.com/mangalore/warmoven-cake-desserts-kodailbail/order', NULL),
+(35, 'Behrouz Biryani', '', 'mangaluru', '4.2', 'https://www.zomato.com/mangalore/behrouz-biryani-hampankatta/order', NULL),
+(37, 'Sundae Everyday Ice Creams', '', 'mangaluru', '4.2', 'https://www.zomato.com/mangalore/sundae-everyday-ice-creams-kodailbail/order', NULL),
+(38, 'Gauji Gammath', '', 'mangaluru', '4.2', 'https://www.zomato.com/mangalore/gauji-gammath-hampankatta/order', NULL),
+(39, 'Olive Street Food Cafe', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/olive-street-food-cafe-kodailbail/order', NULL),
+(40, 'Crave Desserts & Bakes', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/crave-desserts-bakes-balmatta/order', NULL),
+(41, 'Raslaffan Ice Cream Parlour', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/raslaffan-ice-cream-parlour-pumpwell/order', NULL),
+(42, 'New Kudla', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/new-kudla-ashok-nagar/order', NULL),
+(43, 'Rathna s Wine Gate', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/rathnas-wine-gate-kodailbail/order', NULL),
+(44, 'Machali', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/machali-kodailbail/order', NULL),
+(45, 'G Food Fun', '', 'mangaluru', '4.3', 'https://www.zomato.com/mangalore/g-food-n-fun-bendoor/order', NULL),
+(46, 'Ideal Cafe', '', 'mangaluru', '4.4', 'https://www.zomato.com/mangalore/ideal-cafe-hampankatta/order', NULL),
+(47, 'Chandus Biryani Spot', '', 'mangaluru', '4.4', 'https://www.zomato.com/mangalore/chandus-biryani-spot-kavoor/order', NULL),
+(48, 'Meisterwurst', '', 'mangaluru', '4.4', 'https://www.zomato.com/mangalore/meisterwurst-kodailbail/order', NULL),
+(49, 'Pabbas', '', 'mangaluru', '4.5', 'https://www.zomato.com/mangalore/pabbas-lalbagh/order', NULL),
+(50, 'Drood Cafe', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/drood-cafe-kankanady/order', NULL),
+(51, 'Biryani Express', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/biryani-express-kavoor/order', NULL),
+(52, 'Parika Bakes', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/parika-bakes-marnamikatte/order', NULL),
+(53, 'The Juice Dude', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/the-juice-dude-kankanady/order', NULL),
+(54, 'Nomou - Vegan Gelato', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/nomou-vegan-gelato-attavar/order', NULL),
+(56, 'Kling Krishna Cafe', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/kling-krishna-cafe-hampankatta/order', NULL),
+(57, 'Jumbos Kitchen', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/jumbos-kitchen-kodailbail/order', NULL),
+(58, 'Taj Mahal Restaurant', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/taj-mahal-restaurant-hampankatta/order', NULL),
+(59, 'Kottara 70 Surprise', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/kottaras-70-surprise-kottara/order', NULL),
+(60, 'Cafe Margarita', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/cafe-margarita-lalbagh/order', NULL),
+(61, 'The Grand Kitchen By AJ Grand ', '', 'mangaluru', '-', 'https://www.zomato.com/mangalore/the-grand-kitchen-by-aj-grand-hotel-balmatta/order', NULL),
+(63, 'Bapama s Cafe', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/bapamas-cafe-kadri/order', NULL),
+(64, 'Ferns & Martins', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/ferns-martins-kavoor/order', NULL),
+(65, 'The Waffle Man - House of Cook', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/the-waffle-man-house-of-cookie-man-attavar/order', NULL),
+(66, 'Frankie Delight', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/frankie-delight-kottara/order', NULL),
+(68, 'The Hungry Birds', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/the-hungry-birds-hampankatta/order', NULL);
 
 -- --------------------------------------------------------
 
@@ -353,15 +354,17 @@ CREATE TABLE `likes` (
   `u_id` int(11) NOT NULL,
   `drop_id` int(11) NOT NULL,
   `likes` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `likes`
 --
 
 INSERT INTO `likes` (`like_id`, `u_id`, `drop_id`, `likes`) VALUES
-(4, 1, 36, 1),
-(5, 2, 36, 1);
+(4, 1, 36, 0),
+(5, 2, 36, 1),
+(6, 2, 35, 1),
+(7, 1, 35, 0);
 
 -- --------------------------------------------------------
 
@@ -379,7 +382,7 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`loc_id`, `loc_name`) VALUES
-(6, 'Manglore');
+(6, 'mangaluru');
 
 -- --------------------------------------------------------
 
@@ -406,7 +409,8 @@ INSERT INTO `review` (`review_id`, `uid`, `item_id`, `review_content`, `review_d
 (46, 2, 15, 'ljdgb', '2023-04-17 12:06:27'),
 (48, 2, 1, 'very good', '2023-04-22 11:48:43'),
 (49, 2, 1, 'not nice', '2023-04-26 17:50:09'),
-(50, 2, 493, 'nice food', '2023-04-26 19:07:05');
+(50, 2, 493, 'nice food', '2023-04-26 19:07:05'),
+(51, 1, 15, 'jk', '2023-05-04 09:57:30');
 
 -- --------------------------------------------------------
 
@@ -546,7 +550,7 @@ ALTER TABLE `drops`
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `hotel`
@@ -564,7 +568,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `location`
@@ -576,13 +580,13 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `suggestion`
 --
 ALTER TABLE `suggestion`
-  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -605,7 +609,7 @@ ALTER TABLE `favourite`
 -- Constraints for table `hotel`
 --
 ALTER TABLE `hotel`
-  ADD CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`loc_name`) REFERENCES `location` (`loc_name`);
+  ADD CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`loc_name`) REFERENCES `location` (`loc_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `item`
