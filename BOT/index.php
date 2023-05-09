@@ -29,7 +29,7 @@
 
         .card {
             display: none;
-            position: absolute;
+            position:sticky;
             left: 0;
             top: 550px;
             background-color: #ffd770;
@@ -37,7 +37,7 @@
             padding: 10px 10px 10px 0;
             transition: opacity 0.5s ease;
             width: 220px;
-            margin: 0 auto;
+            margin:0;
             border-radius: 5px;
             z-index: 1;
         }
@@ -80,7 +80,7 @@
 
         .card.visible {
             display: block;
-            left: 0;
+            margin-left: -1500px;
             opacity: 1;
         }
 

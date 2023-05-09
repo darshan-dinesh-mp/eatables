@@ -27,6 +27,7 @@ if (!$_SESSION['status']) {
 					let place = document.getElementById('place-name');
 					const lat = position.coords.latitude;
 					const lng = position.coords.longitude;
+					console.log(lat,lng);
 					const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
 
 					fetch(url)
@@ -105,11 +106,12 @@ if (!$_SESSION['status']) {
 						$query = "SELECT * FROM location";
 						$result = mysqli_query($con, $query);
 
-// Check if the value of loc_name column matches $_SESSION['loc'] while ignoring case
+					// Check if the value of loc_name column matches $_SESSION['loc'] while ignoring case
 						while ($row = mysqli_fetch_assoc($result)) {
 							$loc1=str_replace(' ', '', strtolower($row['loc_name']));
 							$loc2=str_replace(' ', '', strtolower($_SESSION['loc']));
-  						if ($loc1== $loc2) {
+							//change to != for viewing the o/p in other locations
+  						if ($loc1 == $loc2) {
 
 						?>
 						<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-medium text-center">
@@ -169,13 +171,6 @@ if (!$_SESSION['status']) {
 					?>
 						</div>
 					</div>
-				<?php 
-				}else{
-					echo "SERVICE NOT AVAILABLE IN YOUR LOCATION";
-				}
-			}
-			}
-				?>
 
 				</div>
 			</div>
@@ -185,6 +180,13 @@ if (!$_SESSION['status']) {
 		</div>
 		<?php
 		include 'components/footer.php'; ?>
+		<?php 
+		}else{
+			require('noservice.php');
+		}
+	}
+	}
+		?>
 	</body>
 
 	</html>

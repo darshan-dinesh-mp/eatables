@@ -16,7 +16,7 @@ include "../dbconnect.php";
 
 <body>
   <div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
-    <div class="flex items-center justify-evenly absolute top-[-5px] h-[100px] w-full">
+    <div class="flex items-center justify-evenly absolute top-[-5px] h-[100px] w-full ml-[-312px]">
       <img class='mt-32 w-[300px]' src="../media/images/funny-3d-illustration-cartoon-teenage-girl.png" alt="img" />
       <h1 class='font-poppy font-bold text-2xl'>Personalized Result</h1>
     </div>

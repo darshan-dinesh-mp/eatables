@@ -38,42 +38,47 @@ if (!$_SESSION['status']) {
 							const mainPlace = placeName.split(",")[1];
 							const main2Place = placeName.split(",")[2];
 							place.innerText = mainPlace + "," + main2Place;
-							
-							$.ajax({
-								url: "livelocation.php",
-								type: "POST",
-								data: {
-									value: mainPlace
-								},
-								success: function(response) {
-									console.log(response);
-									if(response !== 'error'){
-										// Redirect to another page
-										window.location.href = 'index.php';
+
+							setTimeout(function() {
+								// Redirect to another page after 5 seconds
+								
+								$.ajax({
+									url: "livelocation.php",
+									type: "POST",
+									data: {
+										value: mainPlace
+									},
+									success: function(response) {
+										console.log(response);
+										if (response !== 'error') {
+											// Redirect to another page
+											window.location.href = 'index.php';
+										}
 									}
-								}
-							});
-						})
+								});
+							}, 5000);
+							})
 						.catch(error => console.error(error));
 				}, error => {
 					console.error(error.message);
+
 				}, {
 					enableHighAccuracy: true
 				});
 			} else {
 				console.log("Geolocation is not supported by this browser.");
 			}
-			
 		</script>
 
 	</head>
 
 	<body>
-							<p class="font-semibold" id='place-name'></p>
-						</a>
-						<?php 
-						} ?>
-					
+		<p class="font-semibold" id='place-name'></p>
+		DESIGN THIS PAGE AS LODING SCREEN LIKE "FINDING YOUR LOCATION"
+		</a>
+	<?php
+} ?>
+
 	</body>
 
 	</html>
