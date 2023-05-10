@@ -79,9 +79,6 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
-		<script>
-			
-		</script>
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
