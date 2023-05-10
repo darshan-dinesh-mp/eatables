@@ -93,17 +93,15 @@
                                         } else {
                                                 ?>
                                                 <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=0"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                                 </div>
-                                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl mt-2"></i></button>
-                                                </div>
-                                            <?php
+                                                <?php
                                         }
                                         if($video["likes"] !=0)
-                                            echo $video["likes"];
-                                            echo" </div>
-                                            <button  onclick='copyPageUrlToClipboard()'><i class='fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl mt-2'></i></button>
-                                        </div>";
-                                            ?>
+                                        echo $video["likes"];
+                                        
+                                        ?>
+                                        </div>
+                                           <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl mt-2"></i></button>
+                                       </div>
                                 </a>
                             </div>
                         </div>
@@ -160,7 +158,6 @@
 
                         // Select the contents of the input element
                         tempInput.select();
-
                         // Copy the selected contents to the clipboard
                         document.execCommand('copy');
 
