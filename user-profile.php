@@ -239,10 +239,11 @@ if (!isset($_SESSION["path"])) {
                               $resultlike = $con->query($sqllike);
                               $rowlike = $resultlike->fetch_assoc();
                ?>
-                         <div class="hover:scale-[1.01] duration-500 m-2 relative flex items-center justify-center cursor-pointer">
+                         <a href="drops/view.php"><div class="hover:scale-[1.01] duration-500 m-2 relative flex items-center justify-center cursor-pointer">
                               <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] rounded-md" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
                               <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 hover:rounded-md bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-heart mr-1"></i><?php echo $video["likes"]; ?></h1>
                          </div>
+                         </a>
                <?php
                          }
                     } else {
