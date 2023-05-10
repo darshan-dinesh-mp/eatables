@@ -184,7 +184,7 @@ if (!$_SESSION['status']) {
 		}
 	}
 }else{
-	require('noservice.php');
+	echo"<script>window.location.href = 'loading.php';</script>";
 }
 	}
 		?>

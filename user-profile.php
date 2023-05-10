@@ -45,7 +45,7 @@ if (!isset($_SESSION["path"])) {
      <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
           <?php if ($_SESSION['user_type'] == 0) { ?>
-               <a href="loading.php" class="text-3xl md:text-4xl font-colvet">
+               <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                     eatables.
                </a>
                <?php
