@@ -79,9 +79,6 @@ if (!$_SESSION['status']) {
 	</head>
 
 	<body>
-		<script>
-			
-		</script>
 		<div class="bg-brand bg-img min-h-screen flex flex-col items-center p-4 md:px-16">
 			<div class="flex items-center w-full justify-between margin-one">
 				<a href="index.php" class="text-3xl md:text-4xl font-colvet">
@@ -107,6 +104,7 @@ if (!$_SESSION['status']) {
 						$result = mysqli_query($con, $query);
 
 					// Check if the value of loc_name column matches $_SESSION['loc'] while ignoring case
+					if(isset($_SESSION["loc"])){
 						while ($row = mysqli_fetch_assoc($result)) {
 							$loc1=str_replace(' ', '', strtolower($row['loc_name']));
 							$loc2=str_replace(' ', '', strtolower($_SESSION['loc']));
@@ -185,6 +183,9 @@ if (!$_SESSION['status']) {
 			require('noservice.php');
 		}
 	}
+}else{
+	require('noservice.php');
+}
 	}
 		?>
 	</body>
