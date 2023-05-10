@@ -143,7 +143,10 @@ if (!$_SESSION['status']) {
 				} ?>
 		</div>
 		<div class="pagination w-full flex items-center justify-center space-x-3 pt-8">
-			<?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+			<?php if(!isset($_GET['page'])){
+				$_GET['page']=1;
+			}
+			for ($i = 1; $i <= $total_pages; $i++) : ?>
 				<a class="font-poppy" href="?hotel_id=<?php echo $hotel_id ?>&hotel_name=<?php echo $hotel_name ?>&rating=<?php echo $rating ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
 																																													echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
 																																												} else {
