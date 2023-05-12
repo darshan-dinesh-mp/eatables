@@ -1,4 +1,4 @@
-LOAD DATA INFILE 'C:/xampp/htdocs/Eatables/hamburg.csv' 
+LOAD DATA INFILE 'C:/xampp/htdocs/Eatables/scraping/hamburg.csv' 
 INTO TABLE item
 FIELDS TERMINATED BY ',' ENCLOSED BY '"' 
 LINES TERMINATED BY '\n' 
