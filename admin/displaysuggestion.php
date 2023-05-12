@@ -34,7 +34,7 @@
             echo "<td class=''>$row[desc]</td>";
             echo "<td class=''>
         <div id='links-container'>
-        <a href='admin/add_hotel.php?uname=$row[uname]&hotel_name=$row[hotel_name]&hotel_loc=$row[hotel_loc]&loc_name=$row[loc_name]&ratings=$row[ratings]&links=$row[links]&desc=$row[desc]&'><i class='fa-solid fa-circle-check text-3xl text-green-500'></i></a>
+        <a href='admin/add_hotel.php?uname=$row[uname]&hotel_name=$row[hotel_name]&hotel_loc=$row[hotel_loc]&loc_name=$row[loc_name]&ratings=$row[ratings]&links=$row[links]&desc=$row[desc]&contact=$row[contact]'><i class='fa-solid fa-circle-check text-3xl text-green-500'></i></a>
         <a href='admin/deletesuggestion.php?hid=$row[hotel_id]'><i class='fa-sharp fa-solid fa-circle-xmark text-3xl text-red-500'></i></a>
         </div
         </td>";

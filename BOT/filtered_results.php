@@ -24,14 +24,14 @@ include "../dbconnect.php";
     // Retrieve the selected price range from the query parameter
     $priceRange = $_GET['price'];
     if ($priceRange == 'low') {
-      $minPrice = 0;
-      $maxPrice = 10;
-    } elseif ($priceRange == 'medium') {
-      $minPrice = 11;
-      $maxPrice = 50;
-    } elseif ($priceRange == 'high') {
-      $minPrice = 51;
+      $minPrice = 10;
       $maxPrice = 100;
+    } elseif ($priceRange == 'medium') {
+      $minPrice = 101;
+      $maxPrice = 500;
+    } elseif ($priceRange == 'high') {
+      $minPrice = 501;
+      $maxPrice = 999;
     }
     $sql1 = "SELECT count(*) as total from item where item_price >= $minPrice AND item_price <= $maxPrice";
     $res1 = $con->query($sql1);
