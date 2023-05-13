@@ -17,10 +17,11 @@
         $hname = $_POST["hname"];
         $lname = $_POST["lname"];
         $lat = $_POST["lat"];
+        $contact= $_POST["contact"];
         $rate = $_POST["rate"];
         $link = $_POST["link"];
         $desc = $_POST["desc"];
-        $sql = "INSERT INTO `suggestion` (`hotel_id`,`uname`,`hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL,'$uname', '$hname', '$lat', '$lname','$rate','$link','$desc')";
+        $sql = "INSERT INTO `suggestion` (`hotel_id`,`uname`,`hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`,`contact`) VALUES (NULL,'$uname', '$hname', '$lat', '$lname','$rate','$link','$desc','$contact')";
         $res = $con->query($sql);
         if ($res) {
             echo "<script>alert('Suggestion submitted successfully.')</script>";

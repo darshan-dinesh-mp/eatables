@@ -17,7 +17,8 @@
     <body class="min-h-screen w-full bg-slate-200">
         <div class="flex flex-col items-center md:py-4 md:px-16">
             <div class="flex items-center w-full justify-between">
-                <a href="index.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
+                <a href="index.php"
+                    class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
                     <img src="../media/images/admin.png" class="w-10 h-8" alt="">
                     <h1>
                         admin
@@ -30,19 +31,21 @@
                 </form>
             </div>
         </div>
-    <?php
+        <?php
 }
 include "dbconnect.php";
 $uname = null;
 $hotel_name = null;
+$contact = null;
 $hotel_loc = null;
 $loc_name = null;
 $ratings = null;
 $links = null;
 $desc = null;
-if (isset($_GET["uname"]) || isset($_GET["hotel_name"]) || isset($_GET["hotel_loc"]) || isset($_GET["loc_name"]) || isset($_GET["ratings"]) || isset($_GET["links"]) || isset($_GET["desc"])) {
+if (isset($_GET["uname"]) || isset($_GET["hotel_name"]) || isset($_GET["hotel_loc"]) || isset($_GET["loc_name"]) || isset($_GET["ratings"]) || isset($_GET["links"]) || isset($_GET["desc"]) || isset($_GET["contact"])) {
     $uname = $_GET["uname"];
     $hotel_name = $_GET["hotel_name"];
+    $contact = $_GET["contact"];
     $hotel_loc = $_GET["hotel_loc"];
     $loc_name = $_GET["loc_name"];
     $ratings = $_GET["ratings"];
@@ -54,62 +57,86 @@ if (!isset($_POST["submit"])) {
     $res = $con->query($sql);
 
     ?>
-        <form action="admin/add_hotel.php" method="post" class="grid md:grid-cols-1 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
+        <form action="add_hotel.php" method="post"
+            class="grid md:grid-cols-1 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     Hotel name :
                 </span>
-                <input type="text" name="hname" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" value="<?php echo $hotel_name ?>" required />
+                <input type="text" name="hname"
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                    value="<?php echo $hotel_name ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     Location:
                 </span>
-                <select name="lname" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]">
+                <select name="lname"
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]">
                     <?php
                     while ($row = $res->fetch_assoc()) {
-                    ?>
+                        ?>
                         <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name'] ?></option>
-                    <?php
+                        <?php
                     }
                     ?>
                 </select>
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
+                    Contact:
+                </span>
+                <input
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                    type="text" name="contact" value="<?php echo $contact ?>" required />
+            </div>
+            <div class="flex flex-col">
+                <span class="font-poppy font-bold">
                     Location (Gmap location link):
                 </span>
-                <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" name="lat" value="<?php echo $hotel_loc ?>" required />
+                <input
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                    type="text" name="lat" value="<?php echo $hotel_loc ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     Rating(1-5):
                 </span>
-                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="rate" value="<?php echo $ratings ?>" required />
+                <input type="text"
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                    name="rate" value="<?php echo $ratings ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     link (zomato link):
                 </span>
-                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="link" value="<?php echo $links ?>" required />
+                <input type="text"
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                    name="link" value="<?php echo $links ?>" required />
             </div>
             <div class="flex flex-col">
                 <span class="font-poppy font-bold">
                     description:
                 </span>
-                <input type="text" class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" name="desc" value="<?php echo $desc ?>" required />
+                <input type="text"
+                    class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 md:px-16 md:py-2 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                    name="desc" value="<?php echo $desc ?>" required />
             </div>
-            <input type="submit" class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500" name="submit" value="Add" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500">
+            <input type="submit"
+                class="py-[0.50rem] md:py-[0.70rem] tracking-wider px-9 md:px-12 text-xl font-poppy rounded-md duration-500"
+                name="submit" value="Add"
+                class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500">
         </form>
-    <?php
+        <?php
 } else {
     $hname = $_POST["hname"];
     $lname = $_POST["lname"];
+    $contact = $_POST["contact"];
     $lat = $_POST["lat"];
     $rate = $_POST["rate"];
     $link = $_POST["link"];
     $desc = $_POST["desc"];
-    $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`) VALUES (NULL, '$hname', '$lat', '$lname','$rate','$link','$desc')";
+    $sql = "INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`,`ratings`,`links`,`desc`,`contact`) VALUES (NULL, '$hname', '$lat', '$lname','$rate','$link','$desc','$contact')";
     $res = $con->query($sql);
     $sql = "select max(hotel_id) as hotel_id from suggestion";
     $res = $con->query($sql);
@@ -118,13 +145,13 @@ if (!isset($_POST["submit"])) {
         echo "<script>alert('Hotel $hname added successfully.')</script>";
         $sql = "select * from suggestion";
         $res = $con->query($sql);
-        if ($res->num_rows > 0){
+        if ($res->num_rows > 0) {
             echo "<script>window.location.href='deletesuggestion.php?hid=$row[hotel_id]'</script>";
         }
         echo "<script>window.location.href='../admin.php'</script>";
     }
 }
-    ?>
-    </body>
+?>
+</body>
 
 </html>
