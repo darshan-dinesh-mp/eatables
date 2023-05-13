@@ -108,7 +108,7 @@ if (!$_SESSION['status']) {
 						while ($row = mysqli_fetch_assoc($result)) {
 							$loc1=str_replace(' ', '', strtolower($row['loc_name']));
 							$loc2=str_replace(' ', '', strtolower($_SESSION['loc']));
-							//change to != for viewing the o/p in other locations
+							//change to != for viewing the o/p from other locations
   						if ($loc1 != $loc2) {
 
 						?>
