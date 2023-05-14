@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2023 at 06:57 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 14, 2023 at 09:59 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `bot` (
   `option_text` varchar(50) DEFAULT NULL,
   `prev_option_text` varchar(50) DEFAULT NULL,
   `qid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bot`
@@ -57,7 +57,7 @@ CREATE TABLE `drops` (
   `hotel_name` varchar(100) NOT NULL,
   `drop_date` varchar(20) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `drops`
@@ -77,7 +77,7 @@ CREATE TABLE `favourite` (
   `fav_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `item_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `favourite`
@@ -104,7 +104,7 @@ CREATE TABLE `hotel` (
   `links` varchar(300) DEFAULT NULL,
   `desc` varchar(500) DEFAULT NULL,
   `contact` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hotel`
@@ -172,7 +172,9 @@ INSERT INTO `hotel` (`hotel_id`, `hotel_name`, `hotel_loc`, `loc_name`, `ratings
 (65, 'The Waffle Man - House of Cook', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/the-waffle-man-house-of-cookie-man-attavar/order', NULL, ''),
 (66, 'Frankie Delight', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/frankie-delight-kottara/order', NULL, ''),
 (68, 'The Hungry Birds', '', 'mangaluru', 'New', 'https://www.zomato.com/mangalore/the-hungry-birds-hampankatta/order', NULL, ''),
-(402, 'Chicken hut', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.652920696616!2d74.85620347499088!3d12.865679687440007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35bccce033b3d%3A0x35fdffaa9921e9b2!2sHotel%20Chicken%20Hut!5e0!3m2!1sen!2sin!4v1683926408334!5m2!1sen!2sin', 'mangaluru', '3.8', 'https://www.zomato.com/mangalore/hotel-chicken-hut-marnamikatte/menu', 'Variety of delicious dishes. Services: Home delivery, Indoor seating', '08242430404');
+(402, 'Chicken hut', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.652920696616!2d74.85620347499088!3d12.865679687440007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35bccce033b3d%3A0x35fdffaa9921e9b2!2sHotel%20Chicken%20Hut!5e0!3m2!1sen!2sin!4v1683926408334!5m2!1sen!2sin', 'mangaluru', '3.8', 'https://www.zomato.com/mangalore/hotel-chicken-hut-marnamikatte/menu', 'Variety of delicious dishes. Services: Home delivery, Indoor seating', '08242430404'),
+(403, 'Hotel Chicken Hut', 'akjhivhlsdkvnanajk', 'mangaluru', '4', 'https//:www.google.com', 'ahghdfvbslb', '9483768372'),
+(404, 'Hotel Chicken Hut', 'akjhivhlsdkvnanajk', 'mangaluru', '4', 'https//:www.google.com', 'ahghdfvbslb', '9483768372');
 
 -- --------------------------------------------------------
 
@@ -187,7 +189,7 @@ CREATE TABLE `item` (
   `item_price` int(11) NOT NULL,
   `item_rating` int(11) DEFAULT NULL,
   `item_img` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `item`
@@ -1143,6 +1145,20 @@ INSERT INTO `item` (`item_id`, `hotel_id`, `item_name`, `item_price`, `item_rati
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `item_suggestion`
+--
+
+CREATE TABLE `item_suggestion` (
+  `s_id` int(11) NOT NULL,
+  `uname` varchar(50) NOT NULL,
+  `hotel_id` int(11) NOT NULL,
+  `item_name` varchar(100) NOT NULL,
+  `item_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `likes`
 --
 
@@ -1151,7 +1167,7 @@ CREATE TABLE `likes` (
   `u_id` int(11) NOT NULL,
   `drop_id` int(11) NOT NULL,
   `likes` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `likes`
@@ -1172,7 +1188,7 @@ INSERT INTO `likes` (`like_id`, `u_id`, `drop_id`, `likes`) VALUES
 CREATE TABLE `location` (
   `loc_id` int(11) NOT NULL,
   `loc_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `location`
@@ -1193,7 +1209,7 @@ CREATE TABLE `review` (
   `item_id` int(11) DEFAULT NULL,
   `review_content` varchar(150) NOT NULL,
   `review_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `review`
@@ -1225,7 +1241,7 @@ CREATE TABLE `suggestion` (
   `links` varchar(300) DEFAULT NULL,
   `desc` varchar(150) DEFAULT NULL,
   `contact` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1244,7 +1260,7 @@ CREATE TABLE `user` (
   `reset_expiration` varchar(30) DEFAULT NULL,
   `img` varchar(100) DEFAULT NULL,
   `verified` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -1292,6 +1308,12 @@ ALTER TABLE `hotel`
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`),
   ADD KEY `hotel_id` (`hotel_id`);
+
+--
+-- Indexes for table `item_suggestion`
+--
+ALTER TABLE `item_suggestion`
+  ADD PRIMARY KEY (`s_id`);
 
 --
 -- Indexes for table `likes`
@@ -1354,13 +1376,19 @@ ALTER TABLE `favourite`
 -- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=403;
+  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1562;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1566;
+
+--
+-- AUTO_INCREMENT for table `item_suggestion`
+--
+ALTER TABLE `item_suggestion`
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -1384,7 +1412,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `suggestion`
 --
 ALTER TABLE `suggestion`
-  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

@@ -6,7 +6,7 @@ if (!$_SESSION['status']) {
 	exit;
 } else {
 	include "dbconnect.php";
-	?>
+?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -49,8 +49,8 @@ if (!$_SESSION['status']) {
 			} else {
 				console.log("Geolocation is not supported by this browser.");
 			}
-			$(document).ready(function () {
-				$('#search-bar').keyup(function () {
+			$(document).ready(function() {
+				$('#search-bar').keyup(function() {
 					var query = $(this).val();
 					if (query !== '') {
 						$.ajax({
@@ -59,7 +59,7 @@ if (!$_SESSION['status']) {
 							data: {
 								query: query
 							},
-							success: function (data) {
+							success: function(data) {
 								$('#search-results').html(data);
 							}
 						});
@@ -88,10 +88,10 @@ if (!$_SESSION['status']) {
 					<a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
 					<a href="user-profile.php" class="flex items-center justify-center space-x-3">
 						<img class="<?php echo
-							$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
-							?>" src="<?php
-						echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
-						?>" />
+									$_SESSION['img'] == null ? "w-6 h-6" : "w-9 h-9 rounded-full border-2 shadow-sm border-black"
+									?>" src="<?php
+									echo $_SESSION['img'] == null ? 'media/images/user.png' : 'media/images/user-image/' . $user_img;
+									?>" />
 					</a>
 				</div>
 			</div>
@@ -109,31 +109,27 @@ if (!$_SESSION['status']) {
 								$loc1 = str_replace(' ', '', strtolower($row['loc_name']));
 								$loc2 = str_replace(' ', '', strtolower($_SESSION['loc']));
 								//change to != for viewing the o/p in other locations
-								if ($loc1 != $loc2) {
+								if ($loc1 == $loc2) {
 									?>
 									<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-medium text-center">
 										Find your next favorite.
 									</h1>
 									<form action="" method="get">
-										<input id="search-bar" name="search"
-											class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] blind "
-											placeholder="Search Restaurants" type="text" />
+										<input id="search-bar" name="search" class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] blind " placeholder="Search Restaurants" type="text" />
 									</form>
 									<div id="search-results" class="font-poppy text-xl pt-3 search-suggestions">
 									</div>
-									<a href="index.php"
-										class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
+									<a href="index.php" class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>
 										<div class="flex items-center justify-center space-x-1">
 											<?php if (!isset($_GET['search'])) { ?>
 												<i class="fa-sharp fa-solid fa-location-dot text-[1.40rem]"></i>
 												<p>restaurants near</p>
-											</div>
-											<p class="font-semibold" id='place-name'></p>
-										</a>
+										</div>
+										<p class="font-semibold" id='place-name'></p>
+									</a>
 
-										<div
-											class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
-											<?php
+									<div class="flex flex-wrap items-center justify-center md:space-x-3 md:space-y-0 space-y-3 flex-col md:flex-row">
+										<?php
 											}
 											$sql = "SELECT h.hotel_name,h.hotel_id,h.ratings
 							FROM hotel h 
@@ -153,13 +149,13 @@ if (!$_SESSION['status']) {
 														echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 													}
 												} else {
-													?>
-												<div class='flex items-center justify-center h-[60vh] flex-col'>
-													<i class='fa-regular fa-face-sad-tear text-3xl mb-1'></i>
-													<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
-												</div>
+										?>
+											<div class='flex items-center justify-center h-[60vh] flex-col'>
+												<i class='fa-regular fa-face-sad-tear text-3xl mb-1'></i>
+												<p class='md:grid-cols-1 text-center font-poppy text-xl'>It seems like you are on Mars!</p>
+											</div>
 
-												<?php
+									<?php
 												}
 											} elseif ($res->num_rows > 0) {
 												$i = 1;
@@ -169,19 +165,19 @@ if (!$_SESSION['status']) {
 													echo "<br class='md:block hidden'><br class='md:block hidden'><a class='py-2 md:my-4 my-1 mx-2 px-4 bg-black/75 capitalize font-poppy text-center text-white rounded-md hover:bg-black duration-300' href='hotels.php?hotel_id=$row[hotel_id]&hotel_name=$row[hotel_name]&rating=$ratings&page=1'>$row[hotel_name]</a>";
 												}
 											}
-											?>
+									?>
 									</div>
-								</div>
-
-							</div>
-						</div>
-						<?php
-						include("bot/index.php");
-						?>
 					</div>
-					<?php
-					include 'components/footer.php'; ?>
-				<?php
+
+				</div>
+			</div>
+			<?php
+									include("bot/index.php");
+			?>
+		</div>
+		<?php
+									include 'components/footer.php'; ?>
+<?php
 								} else {
 									require('noservice.php');
 								}
@@ -189,8 +185,8 @@ if (!$_SESSION['status']) {
 						} else {
 							echo "<script>window.location.href = 'loading.php';</script>";
 						}
-}
+					}
 ?>
-</body>
+	</body>
 
-</html>
+	</html>
