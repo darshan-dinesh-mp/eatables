@@ -33,14 +33,14 @@ include "../dbconnect.php";
       // Retrieve the selected price range from the query parameter
       $priceRange = $_GET['price'];
       if ($priceRange == 'low') {
-        $minPrice = 0;
-        $maxPrice = 10;
-      } elseif ($priceRange == 'medium') {
-        $minPrice = 11;
-        $maxPrice = 50;
-      } elseif ($priceRange == 'high') {
-        $minPrice = 51;
+        $minPrice = 10;
         $maxPrice = 100;
+      } elseif ($priceRange == 'medium') {
+        $minPrice = 101;
+        $maxPrice = 500;
+      } elseif ($priceRange == 'high') {
+        $minPrice = 501;
+        $maxPrice = 999;
       }
       ?>
     </div>
@@ -65,6 +65,7 @@ include "../dbconnect.php";
 
 <?php
   while (($row = $res->fetch_assoc())) {
+    
 
     $img_links = $row['item_img'];
 ?>

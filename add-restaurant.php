@@ -44,13 +44,13 @@
                          <form action="suggestion.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
                               <div class="w-full">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                        Restaurant Name* :
+                                        Restaurant Name*:
                                    </label>
                                    <input class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" id="grid-first-name" name="hname" required type="text">
                               </div>
                               <div class="w-full">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                        Location* :
+                                        Location*:
                                    </label>
                                    <select name="lname" class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]">
                                         <?php
@@ -64,9 +64,15 @@
                               </div>
                               <div class="w-full md:col-span-2">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                                        Location (Gmap location link)* :
+                                        Location (Gmap location link)*:
                                    </label>
                                    <input name="lat" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
+                              </div>
+                              <div class="w-full md:col-span-2">
+                                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                        Contact*:
+                                   </label>
+                                   <input name="contact" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
                               </div>
                               <div class="w-full md:col-span-2">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -76,13 +82,13 @@
                               </div>
                               <div class="w-full md:col-span-2">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                                        link (zomato link):
+                                        link (zomato link)*:
                                    </label>
                                    <input name="link" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
                               </div>
                               <div class="w-full md:col-span-2">
                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                                        description:
+                                        description*:
                                    </label>
                                    <input name="desc" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
                               </div>

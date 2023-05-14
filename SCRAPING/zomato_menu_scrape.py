@@ -35,4 +35,4 @@ for i in all_menu:
 column_names = ['res_name','Cuisine_name', 'price']
 df = pd.DataFrame(combining, columns=column_names)
 print(df.shape)
-df.to_csv('Zomato_menu_list.csv')
+df.to_csv(r'C:\xampp\htdocs\eatables\scraping\SaiTudar.csv')

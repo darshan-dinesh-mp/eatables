@@ -16,7 +16,7 @@ include "../dbconnect.php";
 
 <body>
   <div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
-    <div class="flex items-center justify-evenly absolute top-[-5px] h-[100px] w-full">
+    <div class="flex items-center justify-evenly absolute top-[-5px] h-[100px] w-full ml-[-312px]">
       <img class='mt-32 w-[300px]' src="../media/images/funny-3d-illustration-cartoon-teenage-girl.png" alt="img" />
       <h1 class='font-poppy font-bold text-2xl'>Personalized Result</h1>
     </div>
@@ -24,14 +24,14 @@ include "../dbconnect.php";
     // Retrieve the selected price range from the query parameter
     $priceRange = $_GET['price'];
     if ($priceRange == 'low') {
-      $minPrice = 0;
-      $maxPrice = 10;
-    } elseif ($priceRange == 'medium') {
-      $minPrice = 11;
-      $maxPrice = 50;
-    } elseif ($priceRange == 'high') {
-      $minPrice = 51;
+      $minPrice = 10;
       $maxPrice = 100;
+    } elseif ($priceRange == 'medium') {
+      $minPrice = 101;
+      $maxPrice = 500;
+    } elseif ($priceRange == 'high') {
+      $minPrice = 501;
+      $maxPrice = 999;
     }
     $sql1 = "SELECT count(*) as total from item where item_price >= $minPrice AND item_price <= $maxPrice";
     $res1 = $con->query($sql1);
@@ -65,6 +65,15 @@ include "../dbconnect.php";
       <?php
         }
       } ?>
+      <div class="pagination w-full flex items-center justify-center space-x-3 pt-8">
+			<?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+				<a class="font-poppy" href="?price=<?php echo $priceRange  ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
+																																													echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+																																												} else {
+																																													echo "<span class='font text-lg bold hover:bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+																																												} ?></a>
+			<?php endfor; ?>
+		</div>
     </div>
   </div>
 </body>

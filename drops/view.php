@@ -69,16 +69,17 @@
                                     $sqllike = "select * from likes where u_id=$_SESSION[id] and drop_id=$video[drop_id]";
                                     $resultlike = $con->query($sqllike);
                                     $rowlike = $resultlike->fetch_assoc();
-
+                                    
                                     if ($resultlike->num_rows > 0) {
                                         if (isset($rowlike["likes"])) {
                                             if ($rowlike["likes"]) {
-                                    ?>
+                                                ?>
                                                 <div class="flex flex-col items-center">
                                                     <div class="flex flex-col items-center">
-
+                                                        
                                                         <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i class="fa-solid fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                                    <?php
+                                                
+                                                        <?php
                                                 } else {
                                                     ?>
                                                         <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?= $rowlike["likes"] ?>"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
@@ -86,19 +87,21 @@
                                                 }
                                             } else {
                                                     ?>
-                                                    <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?php echo $rowlike["likes"] ?>"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
+                                                    <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=<?php $rowlike["likes"] ?>"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
                                                 <?php
                                             }
                                         } else {
                                                 ?>
                                                 <a href="like.php?drop_id=<?= $video['drop_id'] ?>&likestatus=0"><i class="fa-regular fa-heart text-3xl cursor-pointer hover:text-red-500"></i></a>
-                                            <?php
+                                                <?php
                                         }
+                                        if($video["likes"] !=0)
                                         echo $video["likes"];
-                                            ?>
-                                                    </div>
-                                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl mt-2"></i></button>
-                                                </div>
+                                        
+                                        ?>
+                                        </div>
+                                           <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl mt-2"></i></button>
+                                       </div>
                                 </a>
                             </div>
                         </div>
@@ -155,7 +158,6 @@
 
                         // Select the contents of the input element
                         tempInput.select();
-
                         // Copy the selected contents to the clipboard
                         document.execCommand('copy');
 

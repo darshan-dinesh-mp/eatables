@@ -44,9 +44,17 @@ if (!isset($_SESSION["path"])) {
 <body>
      <div class="bg-brand min-h-screen bg-img bg-fixed w-full flex flex-col items-center p-4 md:py-0 md:px-16">
           <div class="flex items-center w-full justify-between md:pt-4">
+          <?php if ($_SESSION['user_type'] == 0) { ?>
                <a href="index.php" class="text-3xl md:text-4xl font-colvet">
                     eatables.
                </a>
+               <?php
+                    } else{?>
+                    <a href="index.php" class="text-3xl md:text-4xl font-colvet">
+                    eatables.
+               </a>
+               <?php
+                    } ?>
                <form action="logout.php" method="post" class='flex items-center justify-between w-36 md:w-40'>
                     <a href="drops/view.php"><i class="fa-solid fa-droplet text-2xl cursor-pointer "></i></a>
                     <a id="upload-btn">
@@ -231,10 +239,11 @@ if (!isset($_SESSION["path"])) {
                               $resultlike = $con->query($sqllike);
                               $rowlike = $resultlike->fetch_assoc();
                ?>
-                         <div class="hover:scale-[1.01] duration-500 m-2 relative flex items-center justify-center cursor-pointer">
+                         <a href="drops/view.php"><div class="hover:scale-[1.01] duration-500 m-2 relative flex items-center justify-center cursor-pointer">
                               <video id="video-<?= $video['drop_id'] ?>" class="re playable-video h-[30rem] rounded-md" data-no-fullscreen="true" src="drops/uploads/<?= $video['video_url'] ?>"></video>
                               <h1 class="absolute z-50 text-white font-poppy text-bold w-full h-full hover:bg-black/80 hover:rounded-md bg-black/0 flex items-center justify-center duration-500"><i class="fa-solid fa-heart mr-1"></i><?php echo $video["likes"]; ?></h1>
                          </div>
+                         </a>
                <?php
                          }
                     } else {

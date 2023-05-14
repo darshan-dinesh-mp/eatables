@@ -50,7 +50,9 @@ if (!$_SESSION['status']) {
 
 	while ($rowTwo = $row->fetch_assoc()) {
 		$links = $rowTwo['links'];
-		$desc = $rowTwo['disc'];
+		$contact = $rowTwo['contact'];
+		$desc = $rowTwo['desc'];
+		$gmap= $rowTwo['hotel_loc'];
 	}
 	?>
 	<div class="bg-brand bg-img bg-fixed min-h-screen flex flex-col items-center p-4 md:px-16">
@@ -74,11 +76,7 @@ if (!$_SESSION['status']) {
 					<div class="flex space-x-5 my-1">
 						<p class="space-x-1">
 							<i class="fa-solid fa-phone"></i>
-							<a href="tel:9539361202" class="font-medium">9232387927</a>
-						</p>
-						<p class="space-x-1">
-							<i class="fa-solid fa-envelope"></i>
-							<a href="mailto:youreatables@gmail.com" class="font-medium"> youreatable@gmail.com</a>
+							<a href="tel:9539361202" class="font-medium"><?php echo $contact ?></a>
 						</p>
 					</div>
 					<h1 class="text-xl"><?php
@@ -101,10 +99,10 @@ if (!$_SESSION['status']) {
 				<?php
 				if (!isset($desc)) {
 				?>
-					<p id="" class='font-poppy text-xl pt-2 text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis ratione modi consectetur veritatis temporibus repellendus! Quas amet sit sunt eos neque eum tenetur, maxime possimus dolorum deleniti delectus doloribus.</p>
+					<p id="" class='font-poppy text-xl pt-2 text-justify'>No info.</p>
 				<?php
 				} else {
-					echo "<p class='font-poppy text-xl pt-2 text-justify'>'$desc'</p>";
+					echo "<p class='font-poppy text-xl pt-2 text-justify'>$desc</p>";
 				}
 				?>
 				<div class="flex space-x-5 mt-4">
@@ -114,7 +112,7 @@ if (!$_SESSION['status']) {
 			</div>
 			<div class='w-full md:w-2/6'>
 				<h1 class='font-poppy text-lg md:text-xl font-bold'><i class="fa-sharp fa-solid fa-location-dot mr-1 mb-2"></i>locate on map</h1>
-				<iframe class="w-full h-full" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD1VnYC6EugmolDY9RjsZ77TeXstyj0288&q=New+Bangalore+Iyengar+Bakery,+25-7-399,+Valencia,+Kankanady,+Mangaluru,+Karnataka+575002&zoom=17" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<iframe class="w-full h-full" src="<?php echo $gmap ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
 			</div>
@@ -143,7 +141,10 @@ if (!$_SESSION['status']) {
 				} ?>
 		</div>
 		<div class="pagination w-full flex items-center justify-center space-x-3 pt-8">
-			<?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+			<?php if(!isset($_GET['page'])){
+				$_GET['page']=1;
+			}
+			for ($i = 1; $i <= $total_pages; $i++) : ?>
 				<a class="font-poppy" href="?hotel_id=<?php echo $hotel_id ?>&hotel_name=<?php echo $hotel_name ?>&rating=<?php echo $rating ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
 																																													echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
 																																												} else {

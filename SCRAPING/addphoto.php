@@ -1,10 +1,10 @@
 <?php
 
 // Connect to the database
-include "../admin/dbconnect.php";
+include "../dbconnect.php";
 // Select all rows from the item table
 $sql = "SELECT * FROM item";
-$result = $conn->query($sql);
+$result = $con->query($sql);
 
 // Loop through each row and update the item_img column with a random food image
 while($row = $result->fetch_assoc()) {
@@ -23,10 +23,10 @@ while($row = $result->fetch_assoc()) {
     $random_image = $food_images[array_rand($food_images)];
     $item_id = $row['item_id'];
     $sql_update = "UPDATE item SET item_img='$random_image' WHERE item_id=$item_id";
-    $conn->query($sql_update);
+    $con->query($sql_update);
 }
 
 // Close the database connection
-$conn->close();
+$con->close();
 
 ?>
