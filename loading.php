@@ -45,7 +45,7 @@ if (!$_SESSION['status']) {
 									url: "livelocation.php",
 									type: "POST",
 									data: {
-										value: mainPlace.includes("managlore") || mainPlace.includes("mangaluru")
+										value: mainPlace
 									},
 									success: function(response) {
 										console.log(response);
