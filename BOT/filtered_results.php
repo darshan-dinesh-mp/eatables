@@ -47,7 +47,7 @@ include "../dbconnect.php";
     $total_items = mysqli_num_rows(mysqli_query($con, "SELECT * FROM item WHERE  item_price >= $minPrice AND item_price <= $maxPrice"));
 
     // Calculate the total number of pages based on the number of items and the items per page
-    $total_pages = ceil($total_items / 12);
+    $total_pages = ceil($total_items / 35);
     ?>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-[10.5rem] w-full ">
@@ -65,15 +65,15 @@ include "../dbconnect.php";
       <?php
         }
       } ?>
-      <div class="pagination w-full flex items-center justify-center space-x-3 pt-8">
-			<?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-				<a class="font-poppy" href="?price=<?php echo $priceRange  ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
-																																													echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
-																																												} else {
-																																													echo "<span class='font text-lg bold hover:bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
-																																												} ?></a>
-			<?php endfor; ?>
-		</div>
+    </div>
+    <div class="pagination w-3/4 overflow-x-scroll h-32 flex items-center justify-center space-x-3 pt-8">
+      <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+        <a class="font-poppy" href="?price=<?php echo $priceRange  ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
+                                                                                                                                                echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+                                                                                                                                              } else {
+                                                                                                                                                echo "<span class='font text-lg bold hover:bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+                                                                                                                                              } ?></a>
+      <?php endfor; ?>
     </div>
   </div>
 </body>
