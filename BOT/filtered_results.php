@@ -65,6 +65,15 @@ include "../dbconnect.php";
       <?php
         }
       } ?>
+      <div class="pagination w-full flex items-center justify-center space-x-3 pt-8">
+			<?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+				<a class="font-poppy" href="?price=<?php echo $priceRange  ?>&page=<?php echo $i ?>" class="<?php if ($i == $page) echo 'active' ?>"><?php if ($_GET['page'] == $i) {
+																																													echo "<span class='font-bold text-lg bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+																																												} else {
+																																													echo "<span class='font text-lg bold hover:bg-black/30 px-4 py-2 rounded-lg'>$i</span>";
+																																												} ?></a>
+			<?php endfor; ?>
+		</div>
     </div>
   </div>
 </body>

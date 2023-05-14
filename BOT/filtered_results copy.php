@@ -65,6 +65,7 @@ include "../dbconnect.php";
 
 <?php
   while (($row = $res->fetch_assoc())) {
+    
 
     $img_links = $row['item_img'];
 ?>
