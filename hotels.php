@@ -120,7 +120,7 @@ if (!$_SESSION['status']) {
 		<?php
 		echo "<div class='flex w-full items-center justify-between'>
 				<div class='flex space-x-2 border-b-2 pb-2 border-black'>
-					<i class='fa-sharp fa-solid fa-magnifying-glass text-xl md:text-2xl'></i>		
+					<i class='fa-sharp fa-solid fa-utensils text-xl md:text-2xl'></i>		
 					<h3 class='font-poppy text-md md:text-xl'>top dishes for you at <span class='font-bold text-xl md:text-2xl capitalize'> $hotel_name</span></h3>
 				</div>		
 			</div>";

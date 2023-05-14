@@ -30,7 +30,7 @@ include "../dbconnect.php";
       $minPrice = 101;
       $maxPrice = 500;
     } elseif ($priceRange == 'high') {
-      $minPrice = 501;
+      $minPrice = 501; 
       $maxPrice = 999;
     }
     $sql1 = "SELECT count(*) as total from item where item_price >= $minPrice AND item_price <= $maxPrice";
