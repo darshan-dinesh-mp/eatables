@@ -7,6 +7,14 @@
                <a href="add-restaurant.php" class='py-2 rounded-md px-6 border-2 border-[#F9BB21] hover:text-[#f9bb21] text-black  hover:bg-black bg-[#F9BB21] duration-300 ' href="#">Submit restaurant</a>
           </div>
      </div>
+     <div class='mb-8 flex justify-between flex-col md:flex-row w-full'>
+          <div class='text-white text-xl w-full md:w-2/4 h-16 md:h-0'>
+               Add a missing item.
+          </div>
+          <div>
+               <a href="add-item.php" class='py-2 rounded-md px-12 border-2 border-[#F9BB21] hover:text-[#f9bb21] text-black  hover:bg-black bg-[#F9BB21] duration-300 ' href="#">Submit item</a>
+          </div>
+     </div>
      <div class="text-white flex md:items-center justify-between flex-col md:flex-row">
           <div>
                <h1 class="text-4xl md:text-5xl font-colvet text-brand">eatables.</h1>

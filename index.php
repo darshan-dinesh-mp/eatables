@@ -109,7 +109,7 @@ if (!$_SESSION['status']) {
 								$loc1 = str_replace(' ', '', strtolower($row['loc_name']));
 								$loc2 = str_replace(' ', '', strtolower($_SESSION['loc']));
 								//change to != for viewing the o/p in other locations
-								if ($loc1 != $loc2) {
+								if ($loc1 == $loc2) {
 									?>
 									<h1 class="font-poppy text-2xl md:text-3xl pb-3 font-medium text-center">
 										Find your next favorite.
