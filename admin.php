@@ -44,7 +44,7 @@ if (!$_SESSION['status']) {
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_hotel.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD NEW RESTAURANT</a>
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/manage_restaurant.php'><i class="fa-solid fa-pen mr-2"></i>MANAGE RESTAURANT</a>
 		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/add_item.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>ADD ITEM</a>
-		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/displaysuggestion.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>User suggestions</a>
+		<a class="bg-brand hover:shadow-md duration-500 py-3 px-5 m-4 rounded-md" href='admin/displaysuggestion.php'><i class="fa-sharp fa-solid fa-plus mr-2"></i>USER SUGGESTIONS</a>
 
 	</div>
 

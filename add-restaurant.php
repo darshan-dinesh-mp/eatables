@@ -92,7 +92,7 @@
                                    </label>
                                    <input name="desc" required class="border-none outline-none w-full text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s] md:col-span-2" id="grid-password" type="text">
                               </div>
-                              <input class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" type="submit" name="suggest" value="Add">
+                              <input class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" type="submit" name="suggest_restaurant" value="Submit">
                          </form>
                     </div>
                     *required
