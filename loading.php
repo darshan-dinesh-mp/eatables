@@ -6,7 +6,7 @@ if (!$_SESSION['status']) {
 	exit;
 } else {
 	include "dbconnect.php";
-	?>
+?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -38,16 +38,16 @@ if (!$_SESSION['status']) {
 							const mainPlace = placeName.split(",")[1];
 							const main2Place = placeName.split(",")[2];
 
-							setTimeout(function () {
+							setTimeout(function() {
 								// Redirect to another page after 5 seconds
 
 								$.ajax({
 									url: "livelocation.php",
 									type: "POST",
 									data: {
-										value: mainPlace
+										value: mainPlace.includes("managlore") || mainPlace.includes("mangaluru")
 									},
-									success: function (response) {
+									success: function(response) {
 										console.log(response);
 										if (response !== 'error') {
 											// Redirect to another page
@@ -106,14 +106,14 @@ if (!$_SESSION['status']) {
 		</style>
 	</head>
 
-	<body class=" min-h-screen flex flex-col items-center">
+	<body class="bg-img min-h-screen flex flex-col items-center">
 		<p class="text-3xl md:text-5xl font-colvet">GRASPING YOUR LOCATION</p>
 		<div class="location-icon">
 			<i class="fas fa-map-marker-alt"></i>
 		</div>
-		<?php
+	<?php
 } ?>
 
-</body>
+	</body>
 
-</html>
+	</html>
