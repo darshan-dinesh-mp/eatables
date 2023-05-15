@@ -17,8 +17,7 @@
     <body class="min-h-screen w-full bg-slate-200">
         <div class="flex flex-col items-center md:py-4 md:px-16">
             <div class="flex items-center w-full justify-between">
-                <a href="index.php"
-                    class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
+                <a href="index.php" class="text-2xl md:text-4xl font-colvet flex flex-row items-center justify-center space-x-2 ">
                     <img src="../media/images/admin.png" class="w-10 h-8" alt="">
                     <h1>
                         admin
@@ -31,7 +30,7 @@
                 </form>
             </div>
         </div>
-        <?php
+    <?php
 }
 include "dbconnect.php";
 $hid = null;
@@ -49,17 +48,15 @@ if (!isset($_POST["submit"])) {
     $sql = "select * from  item_suggestion";
     $res = $con->query($sql);
     ?>
-        <form action="add_item.php" method="post"
-            class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
-            Hotel name : <input type="text" required name="hname" value="<?= $hotel_name ?>" /><br>
-            Item name : <input type="text" required name="item" value="<?= $item_name ?>" /><br>
-            Item price : <input type="text" required name="price" value="<?= $price ?>" /><br>
+        <form action="add_item.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:my-2 place-items-center">
+            Hotel name : <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" required name="hname" value="<?= $hotel_name ?>" /><br>
+            Item name : <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" required name="item" value="<?= $item_name ?>" /><br>
+            Item price : <input class="hover:border-brand outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-16 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" type="text" required name="price" value="<?= $price ?>" /><br>
             <input type="hidden" name="hid" value="<?= $hid ?>">
             <input type="hidden" name="sid" value="<?= $sid ?>">
-            <input type="submit" name="submit" value="Submit"
-                class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
+            <input type="submit" name="submit" value="Submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
         </form>
-        <?php
+    <?php
 } else {
     $hid = $_POST["hid"];
     $hname = $_POST["hname"];
@@ -68,7 +65,7 @@ if (!isset($_POST["submit"])) {
     $sid = $_POST["sid"];
     $sql = "INSERT INTO `item` (`hotel_id`, `item_name`, `item_price`,`item_img`) VALUES ('$hid','$item_name','$price','https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')";
     $res = $con->query($sql);
-    echo $res."  |  ".$sql;
+    echo $res . "  |  " . $sql;
     if ($res) {
         echo "<script>alert('Item $item_name added successfully.')</script>";
         $sql = "select * from item_suggestion";
@@ -79,7 +76,7 @@ if (!isset($_POST["submit"])) {
         // echo "<script>window.location.href='../admin.php'</script>";
     }
 }
-?>
-</body>
+    ?>
+    </body>
 
 </html>
