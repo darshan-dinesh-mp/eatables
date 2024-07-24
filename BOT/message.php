@@ -10,17 +10,16 @@ if ($getmsg == 'no') {
     </script>";
 }
 if ($getmsg == 'price') {
-    echo "<button class='filter-button px-3 py-1 bg-brand rounded-md' data-value='low'>Low</button>
-    <button class='filter-button px-3 py-1 bg-brand rounded-md' data-value='medium'>Medium</button>
-    <button class='filter-button px-3 py-1 bg-brand rounded-md' data-value='high'>High</button>
+    echo "<button class='filter-button px-3 py-1 mx-1 bg-brand hover:bg-black hover:text-[#F9BB21] rounded-md' data-value='low'>Low</button>
+    <button class='filter-button px-3 py-1 mx-1 bg-brand hover:bg-black hover:text-[#F9BB21] rounded-md' data-value='medium'>Medium</button>
+    <button class='filter-button px-3 py-1 m-1 bg-brand hover:bg-black hover:text-[#F9BB21] rounded-md' data-value='high'>High</button>
     ";
 } else {
     if (mysqli_num_rows($run_query) > 0) {
-
         while ($fetch_data = mysqli_fetch_assoc($run_query)) {
 
             $reply = $fetch_data['option_text'];
-            echo "          <button class='option-btn px-4 py-1 bg-brand rounded-md' data-value=" . $reply . ">$reply</button>";
+            echo "          <button class='option-btn px-4 py-1 bg-brand hover:bg-black hover:text-[#F9BB21] rounded-md' data-value=" . $reply . ">$reply</button>";
         }
     } else {
         echo "INPUT NOT PROPER";

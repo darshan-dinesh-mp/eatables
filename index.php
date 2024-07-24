@@ -61,15 +61,12 @@ if (!$_SESSION['status']) {
 							},
 							success: function (data) {
 								$('#search-results').html(data);
+								document.getElementById('search-result-div').style.display = "block";
 							}
 						});
-						// $('#search-results').on('click', 'a', function(e) {
-						// 	e.preventDefault();
-						// 	var query = $(this).text();
-						// 	window.location.href = 'hotels.php?hotel_id=' + query;
-						// });
 					} else {
 						$('#search-results').html('');
+						document.getElementById('search-result-div').style.display = "none";
 					}
 				});
 
@@ -119,7 +116,12 @@ if (!$_SESSION['status']) {
 											class="hover:border-brand w-full outline-none opacity-90 border-0 text-xl md:text-2xl px-10 py-3 md:px-32 md:py-4 placeholder:opacity-70 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] blind "
 											placeholder="Search Restaurants" type="text" />
 									</form>
-									<div id="search-results" class="font-poppy text-xl pt-3 search-suggestions">
+									<div id="search-result-div" class="hidden font-poppy text-xl pt-3 m-10 search-suggestions">
+										<h1 class="font-poppy text-xl md:text-2xl font-medium text-center">
+											Your search result
+										</h1>
+										<div id="search-results" class="font-poppy text-xl pt-3 m-5 search-suggestions">
+										</div>
 									</div>
 									<a href="index.php"
 										class='font-poppy text-center font-medium text-[1.40rem] py-2 flex md:flex-row flex-col space-x-1 items-center justify-center'>

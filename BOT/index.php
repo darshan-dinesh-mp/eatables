@@ -36,7 +36,7 @@
             opacity: 0;
             padding: 10px 10px 10px 0;
             transition: opacity 0.5s ease;
-            width: 220px;
+            width: 250px;
             margin:0;
             border-radius: 5px;
             z-index: 1;
@@ -162,7 +162,6 @@
                 <div class="form">
                     <div class="bot-inbox inbox">
                         <div class="icon">
-
                         </div>
                         <div class="msg-header">
                             <p>Want to have filtered result?</p>
@@ -192,8 +191,6 @@
 
             <script>
                 $(document).ready(() => {
-
-
                     $(document).ready(() => {
                         $('.input-data').on('click', '.filter-button', (event) => {
                             let priceRange = $(event.target).data('value');
@@ -217,7 +214,7 @@
                             let value = $(event.target).data('value');
                             $msg = ` <div class="user-inbox inbox">
                                         <div class="reply flex items-end justify-end">
-                                            <p class='w-16 py-1 text-center rounded-md mb-2 bg-brand'>${value}</p>
+                                            <p class='w-16 py-1 text-center rounded-md mb-2'>${value}</p>
                                         </div>
                                     </div>`;
                             $('.form').append($msg);
