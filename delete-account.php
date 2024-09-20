@@ -39,8 +39,10 @@ if (isset($_POST['delete_account'])) {
 </head>
 
 <body>
-    <div class="bg-brand font-poppy min-h-screen bg-img w-full flex flex-col items-center justify-center p-4 md:py-0 md:px-16">
-        <div class="flex items-center justify-center flex-col bg-black/70 md:px-12 p-8 text-center  md:py-16 rounded-xl text-white shadow-2xl">
+    <div
+        class="bg-brand font-poppy min-h-screen bg-img w-full flex flex-col items-center justify-center p-4 md:py-0 md:px-16">
+        <div
+            class="flex items-center justify-center flex-col bg-black/70 md:px-12 p-8 text-center  md:py-16 rounded-xl text-white shadow-2xl">
 
             <div class="flex items-center justify-center space-x-2 text-[red]">
                 <i class="fa-solid fa-circle-exclamation text-lg md:text-2xl"></i>
@@ -54,7 +56,8 @@ if (isset($_POST['delete_account'])) {
 
             <form method="POST" action="">
                 <input type="hidden" name="delete_account" value="true">
-                <input type="submit" value="Delete Account" class="py-3 px-6 text-md md:text-lg rounded-lg text-red-600 hover:scale-[1.02] duration-500">
+                <input type="submit" value="Delete Account"
+                    class="py-3 px-6 text-md md:text-lg rounded-lg text-red-600 hover:scale-[1.02] duration-500">
             </form>
         </div>
     </div>
