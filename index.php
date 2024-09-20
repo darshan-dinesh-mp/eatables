@@ -178,14 +178,15 @@ if (!$_SESSION['status']) {
 							</div>
 						</div>
 						<?php
-						include ("bot/index.php");
+						include("bot/index.php");
 						?>
 					</div>
 					<?php
 					include 'components/footer.php'; ?>
 					<?php
 								} else {
-									require ('noservice.php');
+									echo $loc1 , "  " , $loc2;
+									require('noservice.php');
 								}
 							}
 						} else {

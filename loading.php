@@ -6,7 +6,7 @@ if (!$_SESSION['status']) {
 	exit;
 } else {
 	include "dbconnect.php";
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -33,12 +33,14 @@ if (!$_SESSION['status']) {
 						.then(response => response.json())
 						.then(data => {
 							const placeName = data.display_name;
-							console.log(placeName);
 							const currentPlace = placeName.split(",")[0];
 							const mainPlace = placeName.split(",")[1];
 							const main2Place = placeName.split(",")[2];
+							console.log("this is current place " + currentPlace);
+							console.log("This is main place " + mainPlace);
+							console.log("This i s main 2 place " + main2Place);
 
-							setTimeout(function() {
+							setTimeout(function () {
 								// Redirect to another page after 5 seconds
 
 								$.ajax({
@@ -47,8 +49,7 @@ if (!$_SESSION['status']) {
 									data: {
 										value: mainPlace
 									},
-									success: function(response) {
-										console.log(response);
+									success: function (response) {
 										if (response !== 'error') {
 											// Redirect to another page
 											window.location.href = 'index.php';
@@ -111,9 +112,9 @@ if (!$_SESSION['status']) {
 		<div class="location-icon">
 			<i class="fas fa-map-marker-alt"></i>
 		</div>
-	<?php
+		<?php
 } ?>
 
-	</body>
+</body>
 
-	</html>
+</html>

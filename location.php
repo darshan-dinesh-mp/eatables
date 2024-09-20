@@ -14,6 +14,5 @@ if($result->status=='success'){
 		echo "Lon:".$result->lon.'<br/>';
 	}
 	echo "IP:".$result->query.'<br/>';
-	
 }
 ?>
