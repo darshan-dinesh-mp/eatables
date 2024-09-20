@@ -107,28 +107,41 @@
                 </a>
                 <p class="font-poppy text-sm md:text-md">Find your next favourite.</p>
             </div>
-            <form action="signup.php" method="post" class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 place-items-center">
+            <form action="signup.php" method="post"
+                class="grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 gap-3 mt-4 md:mt-0 place-items-center">
                 <div class="w-full md:col-span-2">
-                    <input type="text" name="fullname" id="fullname" class="w-full border-none outline-none  text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] " placeholder="fullname" autocomplete="on" oninput="validateFullname()" />
+                    <input type="text" name="fullname" id="fullname"
+                        class="w-full border-none outline-none  text-xl md:text-2xl px-3 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s] "
+                        placeholder="fullname" autocomplete="on" oninput="validateFullname()" />
                     <p class="font-poppy text-red-500 text-2xl text-center w-full" id="error-fullname"></p>
                 </div>
                 <div class="md:w-2/4">
-                    <input type="text" name="username" id="username" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="username" maxlength={15} minlength={4} autocomplete="on" oninput="validateUsername()" />
+                    <input type="text" name="username" id="username"
+                        class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                        placeholder="username" maxlength={15} minlength={4} autocomplete="on"
+                        oninput="validateUsername()" />
                     <p class="font-poppy text-red-500 text-2xl text-center" id="error-username"></p>
                 </div>
                 <div class="md:w-2/4">
-                    <input type="email" name="email" id="email" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="email" autocomplete="on" oninput="validateEmail()" />
+                    <input type="email" name="email" id="email"
+                        class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                        placeholder="email" autocomplete="on" oninput="validateEmail()" />
                     <p class="font-poppy text-red-500 text-2xl text-center" id="error-email"></p>
                 </div>
                 <div class="md:w-2/4">
-                    <input type="password" name="password" id="password" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="password" autocomplete="on" oninput="validatePassword()" />
+                    <input type="password" name="password" id="password"
+                        class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                        placeholder="password" autocomplete="on" oninput="validatePassword()" />
                     <p class="font-poppy text-red-500 text-2xl text-center" id="error-password"></p>
                 </div>
                 <div class="md:w-2/4">
-                    <input type="password" name="confirm" id="confirm" class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]" placeholder="confirm-password" autocomplete="on" oninput="validateConfirm()" />
+                    <input type="password" name="confirm" id="confirm"
+                        class="border-none w-full outline-none text-xl md:text-2xl px-6 py-3 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:-translate-y-20 placeholder:duration-[0.5s]"
+                        placeholder="confirm-password" autocomplete="on" oninput="validateConfirm()" />
                     <p class="font-poppy text-red-500 text-2xl text-center" id="error-confirm"></p>
                 </div>
-                <input type="submit" value="explore" name="submit" id="submit" class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
+                <input type="submit" value="explore" name="submit" id="submit"
+                    class="py-[0.50rem] md:py-[0.70rem] w-44 md:col-span-2 text-white px-9 hover:cursor-pointer text-xl font-poppy rounded-md hover: duration-500" />
             </form>
             <div class='error-div'>
                 <p class="w-full font-poppy text-red-500 text-2xl text-center" id="error-all-cred"></p>
@@ -179,7 +192,7 @@
                 $flag = 0;
                 // echo "<script>document.getElementById('fullname').classList.add('error');</script>";
             }
-            if (!preg_match("/^[a-z]*$/",$username)) {
+            if (!preg_match("/^[a-z]*$/", $username)) {
                 $errusername = true;
                 $flag = 0;
                 // echo "<script>document.getElementById('username').classList.add('error');</script>";
@@ -219,7 +232,7 @@
                     $sql = "insert into user (uid,fullname,uname,email,password) values($id,'$fullname','$username','$email','$hash')";
                     $res = $con->query($sql);
                     if ($res) {
-                        $_SESSION["signupstatus"]=true;
+                        $_SESSION["signupstatus"] = true;
                         echo "<script>window.location.href='login.php'</script>";
                         exit();
                     } else {

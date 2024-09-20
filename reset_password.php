@@ -73,8 +73,7 @@
     if (strlen($pass) < 8 || (!preg_match("/[a-zA-Z]/", $pass) || !preg_match("/[0-9]/", $pass))) {
       echo "<script>alert('Minimum 8 characters with combination of number and alphabet required.')</script>";
       echo "<script>window.location.href='http://localhost/eatables/reset_password.php?token=$token'</script>";
-    }
-    else if ($pass != $cnfpass) {
+    } else if ($pass != $cnfpass) {
       echo "<script>alert('PASSWORD MISSMATCH')</script>";
       echo "<script>window.location.href='http://localhost/eatables/reset_password.php?token=$token'</script>";
     } else {
