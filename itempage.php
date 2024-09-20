@@ -46,7 +46,8 @@
     <div class="bg-brand min-h-screen bg-img w-full flex flex-col items-center p-4 md:py-0 md:px-16">
         <div class="flex items-center w-full justify-between md:py-4">
             <div>
-                <a href="hotels.php?hotel_id=<?php echo $rowone["hotel_id"]; ?>&hotel_name=<?php echo $rowone["hotel_name"]; ?>&rating=<?php echo $rowone["ratings"]; ?>" class="text-3xl md:text-4xl font-colvet">
+                <a href="hotels.php?hotel_id=<?php echo $rowone["hotel_id"]; ?>&hotel_name=<?php echo $rowone["hotel_name"]; ?>&rating=<?php echo $rowone["ratings"]; ?>"
+                    class="text-3xl md:text-4xl font-colvet">
                     <i class="fa-solid fa-chevron-left text-2xl"></i>
                 </a>
                 <a href="index.php" class="text-3xl md:text-4xl font-colvet">
@@ -82,55 +83,66 @@
                                 <h3><span class='text-2xl'>₹</span><span class='text-4xl font-medium'>" . $row["item_price"] . ".00</span></h3>
                             </div>
                             ";
-                ?>
+                        ?>
                         <div class="w-full flex space-x-2">
                             <?php
                             if ($item_in_fav == 0) {
-                            ?>
+                                ?>
                                 <form method="post" class="flex items-center justify-center">
                                     <input type="hidden" name="item_id">
-                                    <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="add_favorite">
+                                    <button type="submit"
+                                        class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl"
+                                        name="add_favorite">
                                         <i class="fa-regular fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                         <h1>Add to favorite</h1>
                                     </button>
-                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
+                                    <button onclick="copyPageUrlToClipboard()"><i
+                                            class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
                                 </form>
-                            <?php
+                                <?php
                             }
                             if ($item_in_fav == 1) {
-                            ?>
+                                ?>
                                 <form method="post" class="flex items-center justify-center">
                                     <input type="hidden" name="item_id">
-                                    <button type="submit" class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl" name="remove_favorite">
+                                    <button type="submit"
+                                        class="group hover:bg-white hover:text-black duration-500 flex items-center space-x-2 font-poppy font-regular bg-white/25 py-2 px-8 rounded-xl"
+                                        name="remove_favorite">
                                         <i class="fa-solid fa-heart text-3xl text-[#ff0000] duration-500"></i>
                                         <h1>Remove favorite</h1>
                                     </button>
-                                    <button onclick="copyPageUrlToClipboard()"><i class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
+                                    <button onclick="copyPageUrlToClipboard()"><i
+                                            class="fa-solid hover:text-[#f9bb21] fa-share-nodes text-white text-3xl ml-5"></i></button>
                                 </form> <?php
-                                    }
-                                        ?>
+                            }
+                            ?>
                         </div>
-            </div>
+                    </div>
 
-        </div>
-        <div class="w-full flex items-start flex-row justify-between my-4">
-            <form action="itempage.php" class="flex items-center justify-center shadow-sm w-full" method="post">
-                <input type='text' maxlength="256" class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]" placeholder="write your review here." name="review" id="review" required />
-                <button type="submit" class=" bg-[rgb(255,255,255,39%)] group py-[0.42rem]  md:py-[0.55rem] px-[0.90rem] rounded-e-lg" name="submit">
-                    <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
-                </button>
-            </form>
-        </div>
+                </div>
+                <div class="w-full flex items-start flex-row justify-between my-4">
+                    <form action="itempage.php" class="flex items-center justify-center shadow-sm w-full" method="post">
+                        <input type='text' maxlength="256"
+                            class="hover:border-brand outline-none rounded-s-lg w-full border-0 text-xl md:text-2xl px-10 py-[0.80rem] md:px-16 text-center placeholder:font-poppy bg-off-brand placeholder-color font-poppy hover:placeholder:opacity-0 placeholder:duration-[0.5s]"
+                            placeholder="write your review here." name="review" id="review" required />
+                        <button type="submit"
+                            class=" bg-[rgb(255,255,255,39%)] group py-[0.42rem]  md:py-[0.55rem] px-[0.90rem] rounded-e-lg"
+                            name="submit">
+                            <i class="fa-brands fa-telegram  text-4xl text-black group-hover:scale-[1.06] duration-500"></i>
+                        </button>
+                    </form>
+                </div>
 
-    <?php
+                <?php
                     }
 
-    ?>
+                    ?>
 
-    </div>
-    <p class="absolute py-2 bottom-5 duration-900 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium hidden" id='share-btn'>Link copied!</p>
-    <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
-<?php
+        </div>
+        <p class="absolute py-2 bottom-5 duration-900 rounded-md font-poppy text-white px-8 bg-black/80 z-80 text-lg font-medium hidden"
+            id='share-btn'>Link copied!</p>
+        <h1 class="text-2xl pb-3 font-poppy font-medium">Latest Reviews</h1>
+        <?php
                 }
                 //adding to favorites
                 $user_id = $_SESSION["id"];
@@ -245,32 +257,32 @@
                 } else {
                     echo "<h1 class='font-poppy text-xl font-bold'>Oops no reviews found!</h1>";
                 }
-?>
-</div>
-<script>
-    function copyPageUrlToClipboard() {
-        // Get the current page URL
-        const pageUrl = window.location.href;
+                ?>
+    </div>
+    <script>
+        function copyPageUrlToClipboard() {
+            // Get the current page URL
+            const pageUrl = window.location.href;
 
-        // Create a temporary input element to hold the URL
-        const tempInput = document.createElement('input');
-        tempInput.setAttribute('value', pageUrl);
-        document.body.appendChild(tempInput);
+            // Create a temporary input element to hold the URL
+            const tempInput = document.createElement('input');
+            tempInput.setAttribute('value', pageUrl);
+            document.body.appendChild(tempInput);
 
-        // Select the contents of the input element
-        tempInput.select();
+            // Select the contents of the input element
+            tempInput.select();
 
-        // Copy the selected contents to the clipboard
-        document.execCommand('copy');
+            // Copy the selected contents to the clipboard
+            document.execCommand('copy');
 
-        // Remove the temporary input element
-        document.body.removeChild(tempInput);
+            // Remove the temporary input element
+            document.body.removeChild(tempInput);
 
-        // Show a message to the user
-        const shareBtn = document.getElementById('share-btn');
-        shareBtn.classList.remove('hidden');
-    }
-</script>
+            // Show a message to the user
+            const shareBtn = document.getElementById('share-btn');
+            shareBtn.classList.remove('hidden');
+        }
+    </script>
 </body>
 
 </html>
