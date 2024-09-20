@@ -185,7 +185,7 @@ if (!$_SESSION['status']) {
 					include 'components/footer.php'; ?>
 					<?php
 								} else {
-									echo $loc1 , "  " , $loc2;
+									echo $loc1, "  ", $loc2;
 									require('noservice.php');
 								}
 							}

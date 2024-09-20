@@ -51,7 +51,6 @@ if (!$_SESSION['status']) {
 									},
 									success: function (response) {
 										if (response !== 'error') {
-											// Redirect to another page
 											window.location.href = 'index.php';
 										}
 									}
