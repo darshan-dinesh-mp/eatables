@@ -1,8 +1,5 @@
 ﻿Official GitHub repository for Eatables App!
 
-Project updates available at out twitter profile
-https://www.twitter.com/youreatables
-
 BCA final year project of -
 
      204682 - Ashwin K.V
